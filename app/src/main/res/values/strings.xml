@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">Mini-Poll</string>
+
+
+    <!-- Strings related to login and register-->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Mot de passe</string>
+    <string name="confirm_password">Confirmation du mot de passe</string>
+    <string name="action_sign_in">Se connecter</string>
+    <string name="action_sign_in_short">Login</string>
+    <string name="error_invalid_email">L\'adresse mail est invalide</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_invalid_password">Les mots de passe ne correspondent pas ou le mot de passe est invalide</string>
+    <string name="error_incorrect_credential">Le mot de passe ou l\'identifiant est incorrect.</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+    <string name="title_activity_login2">Sign in</string>
+    <string name="prompt_id">Pseudo</string>
+    <string name="no_account">Pas de compte ?</string>
+    <string name="action_register">S\'inscrire</string>
+
+
+</resources>

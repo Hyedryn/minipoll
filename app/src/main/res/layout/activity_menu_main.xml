@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="0dp"
+    android:layout_marginBottom="0dp"
+    android:layout_marginEnd="0dp"
+    android:layout_marginLeft="0dp"
+    android:layout_marginRight="0dp"
+    android:layout_marginStart="0dp"
+    android:layout_marginTop="0dp"
+    android:background="@drawable/app_background"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:paddingBottom="0dp"
+    android:paddingLeft="0dp"
+    android:paddingRight="0dp"
+    android:paddingTop="0dp"
+    android:weightSum="70"
+    tools:context="be.lsinf1225.g16.mini_poll.MenuMainActivity">
+
+    <!-- Login progress -->
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="10">
+
+        <ImageButton
+            android:id="@+id/imageButton4"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#a5d8ff"
+            android:elevation="0dp"
+            android:onClick="profile"
+            android:scaleType="fitStart"
+            app:srcCompat="@drawable/profile_icon" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:clickable="false"
+            android:text="Profil"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"></TextView>
+    </FrameLayout>
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="10"
+        >
+
+        <ImageButton
+            android:id="@+id/imageButton5"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="10"
+            android:adjustViewBounds="false"
+            android:background="#74c0fc"
+            android:cropToPadding="false"
+            android:onClick="profileedit"
+            android:scaleType="fitStart"
+            app:srcCompat="@drawable/edit_profile_icon" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:clickable="false"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:text="Modifier le Profil"></TextView>
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="10">
+
+        <ImageButton
+            android:id="@+id/imageButton6"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="10"
+            android:background="#4dabf7"
+            android:onClick="friends"
+            android:scaleType="fitStart"
+            app:srcCompat="@drawable/friends_icon" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:clickable="false"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:text="Amis"></TextView>
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="10">
+
+        <ImageButton
+            android:id="@+id/imageButton7"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="10"
+            android:background="#339af0"
+            android:onClick="menu_agreement"
+            android:scaleType="fitStart"
+            app:srcCompat="@drawable/survey_agreement_icon" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:clickable="false"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:text="Sondage entre amis"></TextView>
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="10">
+
+        <ImageButton
+            android:id="@+id/imageButton8"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="10"
+            android:background="#228be6"
+            android:onClick="menu_question"
+            android:scaleType="fitStart"
+            app:srcCompat="@drawable/survey_question_icon" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:clickable="false"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:text="Questionnaire"></TextView>
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="10">
+
+        <ImageButton
+            android:id="@+id/imageButton9"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="10"
+            android:background="#1c7ed6"
+            android:onClick="menu_choice"
+            android:scaleType="fitStart"
+            app:srcCompat="@drawable/survey_choice_icon" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:clickable="false"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:text="Aider un ami"></TextView>
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="10">
+
+
+        <ImageButton
+            android:id="@+id/imageButton10"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="10"
+            android:background="#1971c2"
+            android:onClick="menu_survey_creation"
+            android:scaleType="fitStart"
+            app:srcCompat="@drawable/survey_creation_icon" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:clickable="false"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:text="Créer un sondage"></TextView>
+    </FrameLayout>
+</LinearLayout>

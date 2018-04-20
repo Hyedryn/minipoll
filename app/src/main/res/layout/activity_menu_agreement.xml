@@ -10,7 +10,7 @@
     android:paddingLeft="0dp"
     android:paddingRight="0dp"
     android:paddingTop="0dp"
-    tools:context="be.lsinf1225.g16.mini_poll.MenuAgreementActivity"
+    tools:context="be.lsinf1225.g16.mini_poll.activity.MenuAgreementActivity"
     android:weightSum="100">
 
 

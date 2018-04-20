@@ -1,13 +1,15 @@
-package be.lsinf1225.g16.mini_poll;
+package be.lsinf1225.g16.mini_poll.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class MenuAgreementActivity extends AppCompatActivity {
+import be.lsinf1225.g16.mini_poll.R;
+
+public class ProfileActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_menu_agreement);
+        setContentView(R.layout.activity_profile);
     }
 }

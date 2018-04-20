@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="be.lsinf1225.g16.mini_poll.CreationAgreementActivity"
+    tools:context="be.lsinf1225.g16.mini_poll.activity.CreationAgreementActivity"
     tools:showIn="@layout/activity_creation_agreement">
 
 

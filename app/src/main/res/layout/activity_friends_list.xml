@@ -12,7 +12,7 @@
     android:paddingTop="0dp"
     android:background="@drawable/app_background"
     android:weightSum="90"
-    tools:context="be.lsinf1225.g16.mini_poll.FriendsListActivity">
+    tools:context="be.lsinf1225.g16.mini_poll.activity.FriendsListActivity">
 
 
     <RelativeLayout

@@ -15,31 +15,31 @@
         android:theme="@style/AppTheme"
         android:screenOrientation="portrait"
         android:configChanges="orientation|keyboardHidden">
-        <activity android:name=".LoginActivity">
+        <activity android:name=".activity.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RegisterActivity" />
-        <activity android:name=".ProfileEditActivity" />
-        <activity android:name=".ProfileCreateActivity" />
-        <activity android:name=".ProfileActivity" />
-        <activity android:name=".MenuMainActivity" />
-        <activity android:name=".MenuSurveyCreationActivity" />
-        <activity android:name=".CreationAgreementActivity" />
-        <activity android:name=".CreationQuestionActivity" />
-        <activity android:name=".CreationChoiceActivity" />
-        <activity android:name=".FriendsActivity" />
-        <activity android:name=".FriendsAddActivity" />
-        <activity android:name=".FriendsListActivity" />
-        <activity android:name=".MenuAgreementActivity" />
-        <activity android:name=".MenuQuestionActivity" />
-        <activity android:name=".MenuChoiceActivity" />
-        <activity android:name=".ReplyAgreementActivity" />
-        <activity android:name=".ReplyQuestionActivity" />
-        <activity android:name=".ReplyChoiceActivity" />
+        <activity android:name=".activity.RegisterActivity" />
+        <activity android:name=".activity.ProfileEditActivity" />
+        <activity android:name=".activity.ProfileCreateActivity" />
+        <activity android:name=".activity.ProfileActivity" />
+        <activity android:name=".activity.MenuMainActivity" />
+        <activity android:name=".activity.MenuSurveyCreationActivity" />
+        <activity android:name=".activity.CreationAgreementActivity" />
+        <activity android:name=".activity.CreationQuestionActivity" />
+        <activity android:name=".activity.CreationChoiceActivity" />
+        <activity android:name=".activity.FriendsActivity" />
+        <activity android:name=".activity.FriendsAddActivity" />
+        <activity android:name=".activity.FriendsListActivity" />
+        <activity android:name=".activity.MenuAgreementActivity" />
+        <activity android:name=".activity.MenuQuestionActivity" />
+        <activity android:name=".activity.MenuChoiceActivity" />
+        <activity android:name=".activity.ReplyAgreementActivity" />
+        <activity android:name=".activity.ReplyQuestionActivity" />
+        <activity android:name=".activity.ReplyChoiceActivity" />
     </application>
 
 </manifest>

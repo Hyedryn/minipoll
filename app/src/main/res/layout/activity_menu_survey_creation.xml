@@ -19,7 +19,7 @@
     android:paddingRight="0dp"
     android:paddingTop="0dp"
     android:weightSum="30"
-    tools:context="be.lsinf1225.g16.mini_poll.MenuSurveyCreationActivity">
+    tools:context="be.lsinf1225.g16.mini_poll.activity.MenuSurveyCreationActivity">
 
     <!-- Login progress -->
 

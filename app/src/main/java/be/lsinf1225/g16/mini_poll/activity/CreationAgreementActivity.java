@@ -1,4 +1,4 @@
-package be.lsinf1225.g16.mini_poll;
+package be.lsinf1225.g16.mini_poll.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -6,10 +6,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
-import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,7 +18,9 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class CreationChoiceActivity extends AppCompatActivity {
+import be.lsinf1225.g16.mini_poll.R;
+
+public class CreationAgreementActivity extends AppCompatActivity {
 
 
     private ViewPager viewPager;
@@ -55,6 +55,7 @@ public class CreationChoiceActivity extends AppCompatActivity {
                 R.layout.creation_agreement_total_choice,
                 R.layout.creation_agreement_fill_choice,
                 R.layout.creation_agreement_preview,
+                R.layout.creation_agreement_edit_order,
                 R.layout.creation_agreement_send};
 
         // adding bottom dots
@@ -114,7 +115,7 @@ public class CreationChoiceActivity extends AppCompatActivity {
     }
 
     private void launchHomeScreen() {
-        startActivity(new Intent(CreationChoiceActivity.this, MenuMainActivity.class));
+        startActivity(new Intent(CreationAgreementActivity.this, MenuMainActivity.class));
         finish();
     }
 

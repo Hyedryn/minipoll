@@ -4,6 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="be.lsinf1225.g16.mini_poll.ReplyQuestionActivity">
+    tools:context="be.lsinf1225.g16.mini_poll.activity.ReplyQuestionActivity">
 
 </android.support.constraint.ConstraintLayout>

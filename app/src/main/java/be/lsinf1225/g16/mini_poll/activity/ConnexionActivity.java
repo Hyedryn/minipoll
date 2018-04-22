@@ -8,24 +8,24 @@ import android.content.Intent;
 
 import be.lsinf1225.g16.mini_poll.R;
 
-public class LoginActivity extends AppCompatActivity {
+public class ConnexionActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_connexion);
 
     }
 
     public void register(View view)
     {
-        Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+        Intent intent = new Intent(ConnexionActivity.this, RegisterActivity.class);
         startActivity(intent);
     }
 
     public void login(View view)
     {
-        Intent intent = new Intent(LoginActivity.this, MenuMainActivity.class);
+        Intent intent = new Intent(ConnexionActivity.this, MenuMainActivity.class);
         startActivity(intent);
     }
 }

@@ -57,12 +57,4 @@ obj/
 *.ipr
 *~
 *.swp
-settings.gradle
-gradlew.bat
-gradlew
-gradle/wrapper/gradle-wrapper.properties
-gradle/wrapper/gradle-wrapper.jar
-gradle.properties
-build.gradle
-app/proguard-rules.pro
-app/build.gradle
+

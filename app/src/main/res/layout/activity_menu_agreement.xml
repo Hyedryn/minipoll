@@ -10,7 +10,7 @@
     android:paddingLeft="0dp"
     android:paddingRight="0dp"
     android:paddingTop="0dp"
-    tools:context="be.lsinf1225.g16.mini_poll.MenuAgreementActivity"
+    tools:context="be.lsinf1225.g16.mini_poll.activity.MenuAgreementActivity"
     android:weightSum="100">
 
 
@@ -19,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="2"
-        android:text="Sondage pour un accord entre amis"
+        android:text="@string/sondage_accord_entre_amis"
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textColor="@android:color/black"
@@ -47,8 +47,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="80"
                 android:background="#a5d8ff"
-                android:elevation="0dp"
-                android:text="Mes Sondages"
+                android:text="@string/mes_sondages"
                 android:textAlignment="center"
                 android:textAllCaps="true"
                 android:textColor="@android:color/black"
@@ -60,24 +59,15 @@
                 android:layout_height="match_parent"
                 android:layout_weight="80"
                 android:background="#74c0fc"
-                android:elevation="0dp"
-                android:text="Sondage 1" />
+                android:text="@string/sondage_1" />
 
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="80"
-                android:background="#4dabf7"
-                android:elevation="0dp"
-                android:text="Sondage 2" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="80"
                 android:background="#a5d8ff"
-                android:elevation="0dp"
-                android:text="Sondages Ouverts"
+                android:text="@string/sondages_ouverts"
                 android:textAlignment="center"
                 android:textAllCaps="true"
                 android:textColor="@android:color/black"
@@ -87,34 +77,9 @@
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:text="@string/sondage_de_nom_createur"
                 android:layout_weight="80"
-                android:text="Sondage de Basile"
-                android:background="#74c0fc"
-                android:elevation="0dp" />
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Sondage de Fred"
-                android:layout_weight="80"
-                android:background="#4dabf7"
-                android:elevation="0dp" />
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Sondage de Jerem"
-                android:layout_weight="80"
-                android:background="#339af0"
-                android:elevation="0dp" />
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Sondage de nom_du_createur"
-                android:layout_weight="80"
-                android:background="#228be6"
-                android:elevation="0dp" />
+                android:background="#228be6" />
 
             <TextView
                 android:id="@+id/textView5"
@@ -122,119 +87,21 @@
                 android:layout_height="match_parent"
                 android:layout_weight="80"
                 android:background="#a5d8ff"
-                android:elevation="0dp"
-                android:text="Sondages Cloturés"
+                android:text="@string/sondages_clotures"
                 android:textAlignment="center"
                 android:textAllCaps="true"
                 android:textColor="@android:color/black"
                 android:textSize="24sp"
                 android:textStyle="bold" />
 
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="80"
-                android:text="Sondage de Romain"
-                android:background="#74c0fc"
-                android:elevation="0dp" />
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Sondage de Alfred"
-                android:layout_weight="80"
-                android:background="#4dabf7"
-                android:elevation="0dp" />
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Sondage de Nicolas"
-                android:layout_weight="80"
-                android:background="#339af0"
-                android:elevation="0dp" />
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Sondage de nom_du_createur"
-                android:layout_weight="80"
-                android:background="#228be6"
-                android:elevation="0dp" />
 
 
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Sondage de nom_du_createur"
+                android:text="@string/sondage_de_nom_createur"
                 android:layout_weight="80"
-                android:background="#1c7ed6"
-                android:elevation="0dp" />
-
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Sondage de nom_du_createur"
-                android:layout_weight="80"
-                android:background="#1971c2"
-                android:elevation="0dp" />
-
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="80"
-                android:background="#74c0fc"
-                android:elevation="0dp"
-                android:text="Sondage de Marie" />
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Sondage de Valentine"
-                android:layout_weight="80"
-                android:background="#4dabf7"
-                android:elevation="0dp" />
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Sondage de John"
-                android:layout_weight="80"
-                android:background="#339af0"
-                android:elevation="0dp" />
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Sondage de nom_du_createur"
-                android:layout_weight="80"
-                android:background="#228be6"
-                android:elevation="0dp" />
-
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Sondage de nom_du_createur"
-                android:layout_weight="80"
-                android:background="#1c7ed6"
-                android:elevation="0dp" />
-
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Sondage de nom_du_createur"
-                android:layout_weight="80"
-                android:background="#1971c2"
-                android:elevation="0dp" />
-
-
-
-
-
+                android:background="#1971c2" />
 
 
         </LinearLayout>

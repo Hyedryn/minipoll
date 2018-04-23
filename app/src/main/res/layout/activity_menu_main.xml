@@ -34,17 +34,17 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#a5d8ff"
-            android:elevation="0dp"
             android:onClick="profile"
             android:scaleType="fitStart"
-            app:srcCompat="@drawable/profile_icon" />
+            app:srcCompat="@drawable/profile_icon"
+            android:contentDescription="@string/profil" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:clickable="false"
-            android:text="Profil"
+            android:text="@string/profil"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"></TextView>
     </FrameLayout>
 
@@ -59,13 +59,13 @@
             android:id="@+id/imageButton5"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="10"
             android:adjustViewBounds="false"
             android:background="#74c0fc"
             android:cropToPadding="false"
             android:onClick="profileedit"
             android:scaleType="fitStart"
-            app:srcCompat="@drawable/edit_profile_icon" />
+            app:srcCompat="@drawable/edit_profile_icon"
+            android:contentDescription="@string/modifier_le_profil" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -73,7 +73,7 @@
             android:layout_gravity="center"
             android:clickable="false"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:text="Modifier le Profil"></TextView>
+            android:text="@string/modifier_le_profil"></TextView>
     </FrameLayout>
 
     <FrameLayout
@@ -85,11 +85,11 @@
             android:id="@+id/imageButton6"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="10"
             android:background="#4dabf7"
             android:onClick="friends"
             android:scaleType="fitStart"
-            app:srcCompat="@drawable/friends_icon" />
+            app:srcCompat="@drawable/friends_icon"
+            android:contentDescription="@string/amis" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -97,7 +97,7 @@
             android:layout_gravity="center"
             android:clickable="false"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:text="Amis"></TextView>
+            android:text="@string/amis"></TextView>
     </FrameLayout>
 
     <FrameLayout
@@ -109,11 +109,11 @@
             android:id="@+id/imageButton7"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="10"
             android:background="#339af0"
             android:onClick="menu_agreement"
             android:scaleType="fitStart"
-            app:srcCompat="@drawable/survey_agreement_icon" />
+            app:srcCompat="@drawable/survey_agreement_icon"
+            android:contentDescription="@string/sondage_entre_amis" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -121,7 +121,7 @@
             android:layout_gravity="center"
             android:clickable="false"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:text="Sondage entre amis"></TextView>
+            android:text="@string/sondage_entre_amis"></TextView>
     </FrameLayout>
 
     <FrameLayout
@@ -133,11 +133,11 @@
             android:id="@+id/imageButton8"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="10"
             android:background="#228be6"
             android:onClick="menu_question"
             android:scaleType="fitStart"
-            app:srcCompat="@drawable/survey_question_icon" />
+            app:srcCompat="@drawable/survey_question_icon"
+            android:contentDescription="@string/questionnaire" />
 
 
         <TextView
@@ -146,7 +146,7 @@
             android:layout_gravity="center"
             android:clickable="false"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:text="Questionnaire"></TextView>
+            android:text="@string/questionnaire"></TextView>
     </FrameLayout>
 
     <FrameLayout
@@ -158,11 +158,11 @@
             android:id="@+id/imageButton9"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="10"
             android:background="#1c7ed6"
             android:onClick="menu_choice"
             android:scaleType="fitStart"
-            app:srcCompat="@drawable/survey_choice_icon" />
+            app:srcCompat="@drawable/survey_choice_icon"
+            android:contentDescription="@string/aider_un_ami" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -170,7 +170,7 @@
             android:layout_gravity="center"
             android:clickable="false"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:text="Aider un ami"></TextView>
+            android:text="@string/aider_un_ami"></TextView>
     </FrameLayout>
 
     <FrameLayout
@@ -183,11 +183,11 @@
             android:id="@+id/imageButton10"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="10"
             android:background="#1971c2"
             android:onClick="menu_survey_creation"
             android:scaleType="fitStart"
-            app:srcCompat="@drawable/survey_creation_icon" />
+            app:srcCompat="@drawable/survey_creation_icon"
+            android:contentDescription="@string/creer_un_sondage" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -195,6 +195,6 @@
             android:layout_gravity="center"
             android:clickable="false"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:text="Créer un sondage"></TextView>
+            android:text="@string/creer_un_sondage"></TextView>
     </FrameLayout>
 </LinearLayout>

@@ -55,7 +55,7 @@
             android:layout_toLeftOf="@+id/imageButton2"
             android:background="@android:color/white"
             android:gravity="center"
-            android:text="Ami"
+            android:text="@string/ami"
             android:textAlignment="center"
             android:textAllCaps="true"
             android:textColor="@android:color/black"
@@ -78,7 +78,7 @@
         android:layout_height="0dp"
         android:layout_weight="5"
         android:background="@drawable/textview_border"
-        android:text="Nom: name"
+        android:text="@string/nom_name"
         android:textAlignment="center"
         android:textColor="@android:color/black"
         android:textSize="18sp" />
@@ -88,7 +88,7 @@
         android:layout_height="0dp"
         android:layout_weight="5"
         android:background="@drawable/textview_border"
-        android:text="Prénom: prénom"
+        android:text="@string/pr_nom_pr_nom"
         android:textAlignment="center"
         android:textColor="@android:color/black"
         android:textSize="18sp" />
@@ -97,7 +97,7 @@
         android:layout_height="0dp"
         android:layout_weight="5"
         android:background="@drawable/textview_border"
-        android:text="Identifiant: id"
+        android:text="@string/identifiant_id"
         android:textAlignment="center"
         android:textColor="@android:color/black"
         android:textSize="18sp" />
@@ -106,7 +106,7 @@
         android:layout_height="0dp"
         android:layout_weight="5"
         android:background="@drawable/textview_border"
-        android:text="Adresse Mail: mail"
+        android:text="@string/adresse_mail"
         android:textAlignment="center"
         android:textColor="@android:color/black"
         android:textSize="18sp" />

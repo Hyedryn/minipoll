@@ -20,6 +20,36 @@
     <string name="prompt_id">Pseudo</string>
     <string name="no_account">Pas de compte ?</string>
     <string name="action_register">S\'inscrire</string>
+    <string name="suivant">SUIVANT</string>
+    <string name="annule">ANNULE</string>
+    <string name="ami">Ami</string>
+    <string name="nom_name">Nom: name</string>
+    <string name="pr_nom_pr_nom">Prénom: prénom</string>
+    <string name="identifiant_id">Identifiant: id</string>
+    <string name="adresse_mail">Adresse Mail: mail</string>
+    <string name="creer_un_sondage">Créer un sondage</string>
+    <string name="aider_un_ami">Aider un ami</string>
+    <string name="questionnaire">Questionnaire</string>
+    <string name="sondage_entre_amis">Sondage entre amis</string>
+    <string name="amis">Amis</string>
+    <string name="modifier_le_profil">Modifier le Profil</string>
+    <string name="profil">Profil</string>
+    <string name="creation_demande_aide_amis">Création d\'une demande d\'aide à un amis</string>
+    <string name="creation_questionnaire">Création d\'un questionnaire</string>
+    <string name="creation_sondage_accord">Creation d\'un sondage pour accord</string>
+    <string name="aider_amis_choix">Aider un amis à faire un choix</string>
+    <string name="nom_du_createur_a_fait_son_choix">nom_du_createur a fait son choix!</string>
+    <string name="demandes_aide_clotures">Demandes d\'aide Cloturés</string>
+    <string name="nom_du_createur_besoin_aide">nom_du_createur a besoin de ton aide!</string>
+    <string name="demandes_aide_ouvertes">Demandes d\'aide ouvertes</string>
+    <string name="demande_aide_nom_personne">Demande d\'aide à nom_de_la_personne</string>
+    <string name="mes_demandes_aide">Mes demandes d\'aide</string>
+    <string name="sondage_accord_entre_amis">Sondage pour un accord entre amis</string>
+    <string name="mes_sondages">Mes Sondages</string>
+    <string name="sondage_1">Sondage 1</string>
+    <string name="sondages_ouverts">Sondages Ouverts</string>
+    <string name="sondage_de_nom_createur">Sondage de nom_du_createur</string>
+    <string name="sondages_clotures">Sondages Cloturés</string>
 
 
 </resources>

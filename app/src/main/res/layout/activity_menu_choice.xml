@@ -16,7 +16,6 @@
 
 
     <TextView
-        android:id="@+id/login_logo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="7"
@@ -29,14 +28,12 @@
         android:visibility="visible" />
 
     <ScrollView
-        android:id="@+id/login_form"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="90">
 
 
         <LinearLayout
-            android:id="@+id/email_login_form"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -83,7 +80,6 @@
                 android:text="@string/nom_du_createur_besoin_aide" />
 
             <TextView
-                android:id="@+id/textView5"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="80"

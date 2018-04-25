@@ -23,10 +23,9 @@
     <string name="suivant">SUIVANT</string>
     <string name="annule">ANNULE</string>
     <string name="ami">Ami</string>
-    <string name="nom_name">Nom: name</string>
     <string name="pr_nom_pr_nom">Prénom: prénom</string>
     <string name="identifiant_id">Identifiant: id</string>
-    <string name="adresse_mail">Adresse Mail: mail</string>
+    <string name="adresse_mail_mail">Adresse Mail: mail</string>
     <string name="creer_un_sondage">Créer un sondage</string>
     <string name="aider_un_ami">Aider un ami</string>
     <string name="questionnaire">Questionnaire</string>
@@ -50,6 +49,24 @@
     <string name="sondages_ouverts">Sondages Ouverts</string>
     <string name="sondage_de_nom_createur">Sondage de nom_du_createur</string>
     <string name="sondages_clotures">Sondages Cloturés</string>
+    <string name="ok">ok</string>
+    <string name="ajouter_comme_amis">Ajouter comme amis</string>
+    <string name="nom_name">Nom: name</string>
+    <string name="prenom_prenom">Prénom: prénom</string>
+    <string name="ajouter_un_amis">Ajouter un amis</string>
+    <string name="consulter_la_liste_amis">Consulter la liste d\'amis</string>
+    <string name="mes_questionnaires">Mes Questionnaires</string>
+    <string name="questionnaire_1">Questionnaire 1</string>
+    <string name="questionnaires_ouverts">Questionnaires Ouverts</string>
+    <string name="questionnaire_de_nom_du_createur">Questionnaire de nom_du_createur</string>
+    <string name="questionnaire_clotures">Questionnaire Cloturés</string>
+    <string name="enregistrer">Enregistrer</string>
+    <string name="adresse_mail">Adresse Mail</string>
+    <string name="prenom">Prénom</string>
+    <string name="image">image</string>
+    <string name="nom">Nom</string>
+    <string name="main_image">Main Image</string>
+    <string name="image_border">Image Border</string>
 
 
 </resources>

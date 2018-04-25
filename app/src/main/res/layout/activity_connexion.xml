@@ -45,7 +45,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/wrongcredential"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/error_incorrect_credential"
@@ -88,7 +88,7 @@
                 android:layout_height="16dp" />
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/noaccount"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif"
@@ -98,7 +98,7 @@
                 android:typeface="normal" />
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/registerbutton"
                 style="@style/Base.TextAppearance.AppCompat.Small"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

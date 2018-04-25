@@ -30,7 +30,6 @@
         android:layout_weight="10">
 
         <ImageButton
-            android:id="@+id/imageButton4"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#a5d8ff"
@@ -56,7 +55,6 @@
         >
 
         <ImageButton
-            android:id="@+id/imageButton5"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:adjustViewBounds="false"
@@ -82,7 +80,6 @@
         android:layout_weight="10">
 
         <ImageButton
-            android:id="@+id/imageButton6"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#4dabf7"
@@ -106,7 +103,6 @@
         android:layout_weight="10">
 
         <ImageButton
-            android:id="@+id/imageButton7"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#339af0"
@@ -130,7 +126,6 @@
         android:layout_weight="10">
 
         <ImageButton
-            android:id="@+id/imageButton8"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#228be6"
@@ -155,7 +150,6 @@
         android:layout_weight="10">
 
         <ImageButton
-            android:id="@+id/imageButton9"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#1c7ed6"
@@ -180,7 +174,6 @@
 
 
         <ImageButton
-            android:id="@+id/imageButton10"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#1971c2"

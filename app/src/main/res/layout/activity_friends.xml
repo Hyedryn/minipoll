@@ -31,26 +31,27 @@
         android:background="#a5d8ff"
         android:clickable="true"
         android:layout_weight="10"
-        android:onClick="friendslist" >
+        android:onClick="friendslist"
+        android:focusable="true">
 
         <ImageButton
-            android:id="@+id/imageButton4"
+            android:id="@+id/seefriendslistbtn"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="18"
             android:background="#a5d8ff"
             android:clickable="false"
-            android:elevation="0dp"
             android:padding="10dp"
             android:scaleType="fitCenter"
-            app:srcCompat="@drawable/friends_list_icon" />
+            app:srcCompat="@drawable/friends_list_icon"
+            android:contentDescription="@string/consulter_la_liste_amis" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:clickable="false"
-            android:text="Consulter la liste d'amis"
+            android:text="@string/consulter_la_liste_amis"
             android:layout_weight="2"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"></TextView>
@@ -64,11 +65,12 @@
         android:weightSum="20"
         android:background="#1971c2"
         android:layout_weight="10"
-        android:onClick="friendsadd">
+        android:onClick="friendsadd"
+        android:focusable="true">
 
 
         <ImageButton
-            android:id="@+id/imageButton10"
+            android:id="@+id/addfriendsbtn"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="17"
@@ -76,7 +78,8 @@
             android:clickable="false"
             android:padding="10dp"
             android:scaleType="fitCenter"
-            app:srcCompat="@drawable/friends_add_icon" />
+            app:srcCompat="@drawable/friends_add_icon"
+            android:contentDescription="@string/ajouter_un_amis" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -86,7 +89,7 @@
             android:clickable="false"
             android:background="#1971c2"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:text="Ajouter un amis"></TextView>
+            android:text="@string/ajouter_un_amis"></TextView>
 
     </LinearLayout>
 </LinearLayout>

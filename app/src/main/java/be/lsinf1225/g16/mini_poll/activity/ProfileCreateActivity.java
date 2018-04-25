@@ -7,6 +7,9 @@ import android.view.View;
 
 import be.lsinf1225.g16.mini_poll.R;
 
+import static be.lsinf1225.g16.mini_poll.activity.ConnexionActivity.login;
+import static be.lsinf1225.g16.mini_poll.activity.RegisterActivity.register;
+
 public class ProfileCreateActivity extends AppCompatActivity {
 
     @Override
@@ -19,5 +22,8 @@ public class ProfileCreateActivity extends AppCompatActivity {
     {
         Intent intent = new Intent(ProfileCreateActivity.this, MenuMainActivity.class);
         startActivity(intent);
+        register.finish();
+        login.finish();
+        finish();
     }
 }

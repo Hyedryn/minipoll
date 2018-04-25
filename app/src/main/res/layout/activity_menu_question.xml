@@ -20,7 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="7"
-        android:text="Questionnaire"
+        android:text="@string/questionnaire"
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textColor="@android:color/black"
@@ -47,8 +47,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="80"
                 android:background="#a5d8ff"
-                android:elevation="0dp"
-                android:text="Mes Questionnaires"
+                android:text="@string/mes_questionnaires"
                 android:textAlignment="center"
                 android:textAllCaps="true"
                 android:textColor="@android:color/black"
@@ -60,61 +59,29 @@
                 android:layout_height="match_parent"
                 android:layout_weight="80"
                 android:background="#74c0fc"
-                android:elevation="0dp"
-                android:text="Questionnaire 1" />
+                android:text="@string/questionnaire_1" />
 
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="80"
-                android:background="#4dabf7"
-                android:elevation="0dp"
-                android:text="Questionnaire 2" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="80"
                 android:background="#a5d8ff"
-                android:elevation="0dp"
-                android:text="Questionnaires Ouverts"
+                android:text="@string/questionnaires_ouverts"
                 android:textAlignment="center"
                 android:textAllCaps="true"
                 android:textColor="@android:color/black"
                 android:textSize="24sp"
                 android:textStyle="bold" />
 
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="80"
-                android:background="#74c0fc"
-                android:elevation="0dp"
-                android:text="Questionnaire de Basile" />
 
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="80"
-                android:background="#4dabf7"
-                android:elevation="0dp"
-                android:text="Questionnaire de Fred" />
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="80"
-                android:background="#339af0"
-                android:elevation="0dp"
-                android:text="Questionnaire de Jerem" />
 
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="80"
                 android:background="#228be6"
-                android:elevation="0dp"
-                android:text="Questionnaire de nom_du_createur" />
+                android:text="@string/questionnaire_de_nom_du_createur" />
 
             <TextView
                 android:id="@+id/textView5"
@@ -122,114 +89,20 @@
                 android:layout_height="match_parent"
                 android:layout_weight="80"
                 android:background="#a5d8ff"
-                android:elevation="0dp"
-                android:text="Questionnaire Cloturés"
+                android:text="@string/questionnaire_clotures"
                 android:textAlignment="center"
                 android:textAllCaps="true"
                 android:textColor="@android:color/black"
                 android:textSize="24sp"
                 android:textStyle="bold" />
 
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="80"
-                android:background="#74c0fc"
-                android:elevation="0dp"
-                android:text="Questionnaire de Romain" />
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="80"
-                android:background="#4dabf7"
-                android:elevation="0dp"
-                android:text="Questionnaire de Alfred" />
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="80"
-                android:background="#339af0"
-                android:elevation="0dp"
-                android:text="Questionnaire de Nicolas" />
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="80"
-                android:background="#228be6"
-                android:elevation="0dp"
-                android:text="Questionnaire de nom_du_createur" />
-
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="80"
-                android:background="#1c7ed6"
-                android:elevation="0dp"
-                android:text="Questionnaire de nom_du_createur" />
-
 
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="80"
                 android:background="#1971c2"
-                android:elevation="0dp"
-                android:text="Questionnaire de nom_du_createur" />
-
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="80"
-                android:background="#74c0fc"
-                android:elevation="0dp"
-                android:text="Questionnaire de Marie" />
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="80"
-                android:background="#4dabf7"
-                android:elevation="0dp"
-                android:text="Questionnaire de Valentine" />
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="80"
-                android:background="#339af0"
-                android:elevation="0dp"
-                android:text="Questionnaire de John" />
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="80"
-                android:background="#228be6"
-                android:elevation="0dp"
-                android:text="Questionnaire de nom_du_createur" />
-
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="80"
-                android:background="#1c7ed6"
-                android:elevation="0dp"
-                android:text="Questionnaire de nom_du_createur" />
-
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="80"
-                android:background="#1971c2"
-                android:elevation="0dp"
-                android:text="Questionnaire de nom_du_createur" />
+                android:text="@string/questionnaire_de_nom_du_createur" />
 
 
         </LinearLayout>

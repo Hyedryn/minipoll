@@ -57,4 +57,4 @@ obj/
 *.ipr
 *~
 *.swp
-
+/app/build.gradle

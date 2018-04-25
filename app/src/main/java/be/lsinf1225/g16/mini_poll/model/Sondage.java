@@ -6,6 +6,8 @@ public class Sondage {
 
     protected Utilisateur participant;
 
+    protected final int sondageId;
+
     protected Question[] questions;
 
     protected Utilisateur[] participants;
@@ -26,14 +28,18 @@ public class Sondage {
     Type t;
     Etat etat;
 
-    public Sondage(Utilisateur createur, Utilisateur[] participants, Question[] questions, Type t, Choix[] choix) {
+    public Sondage(Utilisateur createur, Utilisateur[] participants, int sondageId, Question[] questions, Type t, Choix[] choix) {
         this.choix =choix;
         this.createur=createur;
         this.participants=participants;
+        this.sondageId=sondageId;
         this.questions = questions;
         this.t = t;
         etat = Etat.ACTIF;
     }
 
+    public int getSondageId() {
+        return this.sondageId;
+    }
 
 }

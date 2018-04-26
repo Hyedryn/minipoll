@@ -1,5 +1,6 @@
 package be.lsinf1225.g16.mini_poll.model;
 
+import android.graphics.Bitmap;
 import android.util.SparseArray;
 
 import be.lsinf1225.g16.mini_poll.MiniPollApp;
@@ -38,8 +39,14 @@ public class Utilisateur {
 
     private Utilisateur[] demandeAmis;
 
-    //private File photo;
+    private Bitmap photo;
 
+    public Utilisateur(String uId, String uPassword, String uNom, String uPrenom, String uEmail, String uMeilleurAmi, Bitmap photo) {
+
+        this(uId, uPassword, uNom, uPrenom, uEmail, uMeilleurAmi);
+
+        this.photo = photo;
+    }
 
     public Utilisateur(String uId, String uPassword, String uNom, String uPrenom, String uEmail, String uMeilleurAmi) {
 
@@ -81,6 +88,10 @@ public class Utilisateur {
     public String getEmail() {
         return this.email;
     }
+    public String getMeilleur_ami() {
+        return this.meilleur_ami;
+    }
+    public Bitmap getPhoto() { return this.photo; }
 
     //Methodes set//
 
@@ -96,6 +107,9 @@ public class Utilisateur {
     }
     public void setEmail(String email){
         this.email=email;
+    }
+    public void setPhoto(Bitmap photo){
+        this.photo=photo;
     }
 
     //retourne un objet de type Utilisateur de l'ami dans la liste d'amis dont le nom correspond au nom passé en parametre
@@ -185,11 +199,7 @@ public class Utilisateur {
 
 
     public boolean sameMdp(Utilisateur ut) {
-        if(this.getPassword().equals(ut.getPassword())==true) {
-            return true;
-        }else {
-            return false;
-        }
+        return this.getPassword().equals(ut.getPassword());
     }
 
 

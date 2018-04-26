@@ -39,6 +39,8 @@ android:orientation="vertical">
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/prompt_id"
+            android:imeActionId="5"
+            android:imeOptions="actionUnspecified"
             android:ems="10"
             android:inputType="textPersonName" />
 
@@ -47,26 +49,20 @@ android:orientation="vertical">
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/prompt_password"
-                android:imeActionId="6"
-                android:imeActionLabel="@string/action_sign_in_short"
+                android:imeActionId="5"
                 android:imeOptions="actionUnspecified"
                 android:inputType="textPassword"
                 android:maxLines="1"
                 android:singleLine="true" />
 
-
-
-
-
-            <EditText
+        <EditText
                 android:id="@+id/confirm_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/confirm_password"
-                android:imeActionId="6"
-                android:imeActionLabel="@string/action_sign_in_short"
-                android:imeOptions="actionUnspecified"
                 android:inputType="textPassword"
+                android:imeActionId="6"
+                android:imeOptions="actionUnspecified"
                 android:maxLines="1"
                 android:singleLine="true" />
 

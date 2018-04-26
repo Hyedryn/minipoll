@@ -56,10 +56,12 @@
                 android:visibility="invisible" />
 
             <AutoCompleteTextView
-                android:id="@+id/email"
+                android:id="@+id/login_id"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/prompt_email"
+                android:hint="@string/prompt_id"
+                android:imeActionId="5"
+                android:imeOptions="actionUnspecified"
                 android:inputType="textEmailAddress"
                 android:maxLines="1"
                 android:singleLine="true" />

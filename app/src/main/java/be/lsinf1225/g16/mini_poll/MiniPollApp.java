@@ -8,6 +8,8 @@ import android.view.Gravity;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import be.lsinf1225.g16.mini_poll.model.Utilisateur;
 
@@ -76,6 +78,27 @@ public class MiniPollApp extends Application {
         loadUtilisateurs();
     }
 
+
+    /**
+     *
+     *
+     * Class global statique
+     *
+     *
+     */
+
+    public boolean getSpecialCharacterCount(String s) {
+        if (s == null || s.trim().isEmpty()) {
+            System.out.println("Incorrect format of string");
+            return false;
+        }
+        Pattern p = Pattern.compile("[^A-Za-z0-9]");
+        Matcher m = p.matcher(s);
+        // boolean b = m.matches();
+        boolean b = m.find();
+        return b;
+    }
+
     /**
      * INTERACTION AVEC LA BASE DE DONNEE
      *
@@ -96,6 +119,16 @@ public class MiniPollApp extends Application {
     public  static void saveUser(Utilisateur u){
 
     }
+
+    public  static void updateID(String id){
+        Utilisateur user = new Utilisateur(id, connectedUser.getPassword(), connectedUser.getNom(), connectedUser.getPrenom(), connectedUser.getEmail(), connectedUser.getMeilleur_ami(), connectedUser.getPhoto());
+        saveUser(user);
+        //editDatabase
+        loadUtilisateurs();
+        loadFriendOfConnectedUser();
+        connectedUser = user;
+    }
+
 
 
     public static void loadUtilisateurs() {

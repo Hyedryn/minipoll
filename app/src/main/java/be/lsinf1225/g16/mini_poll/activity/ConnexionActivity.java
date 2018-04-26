@@ -59,14 +59,14 @@ public class ConnexionActivity extends AppCompatActivity implements TextView.OnE
 
     public void login(View view)
     {
-        AutoCompleteTextView userEditText = (AutoCompleteTextView) findViewById(R.id.email);
+        AutoCompleteTextView userEditText = (AutoCompleteTextView) findViewById(R.id.login_id);
         EditText passwordEditText = (EditText) findViewById(R.id.login_pwd);
         String password = passwordEditText.getText().toString();
-        String email = userEditText.getText().toString();
+        String id = userEditText.getText().toString();
 
         for(Utilisateur user : utilisateurs) {
 
-            if(user.getEmail().equals(email)) {
+            if(user.getIdentifiant().equals(id)) {
 
 
                 if(user.checkMdp(password)){
@@ -86,15 +86,12 @@ public class ConnexionActivity extends AppCompatActivity implements TextView.OnE
                 }
 
             }else{
-                MiniPollApp.notifyShort(R.string.error_invalid_email);
+                MiniPollApp.notifyShort(R.string.error_invalid_id);
                 return;
             }
         }
 
     }
-
-
-
 
     /**
      * Récupère les actions faites depuis le clavier.

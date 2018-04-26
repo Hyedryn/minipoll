@@ -17,6 +17,7 @@ public class MenuSurveyCreationActivity extends AppCompatActivity {
 
     public void agreement_creation(View view)
     {
+
         Intent intent = new Intent(MenuSurveyCreationActivity.this, CreationAgreementActivity.class);
         startActivity(intent);
     }

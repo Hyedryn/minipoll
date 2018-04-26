@@ -69,12 +69,12 @@ public class Questionnaire extends Sondage {
     public Utilisateur[] sortUtilisateurByScore(Sondage sondage){
         Utilisateur[] copy = sondage.participants;
         Utilisateur[] ret = new Utilisateur[sondage.participants.length];
-        int[] scoreSorted = sondage.sortScore();
+        int[] scoreSorted = this.sortScore();
         int score;
         for (int i = 0; i < sondage.participants.length; i++){
             score = scoreSorted[i];
             for (int j = 0; j < sondage.participants.length ; j++){
-                if(score == sondage.score[j]){
+                if(score == this.score[j]){
                     ret[i] = copy[j];
                     copy[j] = null;
                 }

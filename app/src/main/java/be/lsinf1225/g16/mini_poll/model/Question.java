@@ -8,6 +8,8 @@ public class Question {
 
     private Reponse[] ListeReponses;
 
+    // builders
+
     public Question(){
         this.Enonce = null;
         this.NombreReponses = 0;
@@ -26,6 +28,8 @@ public class Question {
         this.ListeReponses = ListeReponses;
     }
 
+    // les get
+
     public String getEnonce(){
         return this.Enonce;
     }
@@ -37,6 +41,8 @@ public class Question {
     public Reponse[] getListeReponses(){
         return this.ListeReponses;
     }
+
+    // les set
 
     public void setEnonce(String Enonce){
         this.Enonce = Enonce;

@@ -42,28 +42,31 @@ public class RegisterActivity extends AppCompatActivity  implements TextView.OnE
         String mdpconf = ((EditText)findViewById(R.id.confirm_password)).getText().toString();
 
 
-        if(!pseudo.isEmpty()&&!mdp.isEmpty()&&!mdpconf.isEmpty()){
-
-            if(mdp.equals(mdpconf)){
-
-                if(Utilisateur.utilisateurIsAvailable(pseudo)){
-                //Step ok ouverture de la fenetre de creation du profile
-                MiniPollApp.connectedUser = new Utilisateur(pseudo, mdp);
-
-                Intent intent = new Intent(RegisterActivity.this, ProfileCreateActivity.class);
-                startActivity(intent);
-
-                }else{
-                    MiniPollApp.notifyShort(R.string.error_id_already_exist);
-                }
-
-            }else{
-                MiniPollApp.notifyShort(R.string.error_notmatching_password);
-            }
-
-        }else{
-            MiniPollApp.notifyShort(R.string.error_field_required);
+        if(!(!pseudo.isEmpty()&&!mdp.isEmpty()&&!mdpconf.isEmpty())){
+        MiniPollApp.notifyShort(R.string.error_field_required);
+        return;
         }
+
+        if(!mdp.equals(mdpconf)) {
+            MiniPollApp.notifyShort(R.string.error_notmatching_password);
+            return;
+        }
+
+        if(!MiniPollApp.isValidCharacter(pseudo+mdp+mdpconf)){
+            MiniPollApp.notifyShort(R.string.error_invalid_char);
+            return;
+        }
+
+        if(Utilisateur.utilisateurIsAvailable(pseudo)) {
+            MiniPollApp.notifyShort(R.string.error_id_already_exist);
+            return;
+        }
+
+            //Step ok ouverture de la fenetre de creation du profile
+            MiniPollApp.connectedUser = new Utilisateur(pseudo, mdp);
+
+            Intent intent = new Intent(RegisterActivity.this, ProfileCreateActivity.class);
+            startActivity(intent);
     }
 
 

@@ -87,16 +87,14 @@ public class MiniPollApp extends Application {
      *
      */
 
-    public boolean getSpecialCharacterCount(String s) {
-        if (s == null || s.trim().isEmpty()) {
-            System.out.println("Incorrect format of string");
-            return false;
-        }
-        Pattern p = Pattern.compile("[^A-Za-z0-9]");
-        Matcher m = p.matcher(s);
-        // boolean b = m.matches();
-        boolean b = m.find();
-        return b;
+    public static boolean isValidCharacter(String s) {
+            int upperCases = s.replaceAll("[^A-Z]", "").length();
+            int lowerCases = s.replaceAll("[^a-z]", "").length();
+            int digits = s.replaceAll("[^0-9]", "").length();
+            int specialChars = s.replaceAll("[^-@#$€!_?&èàéùôêâî.,]", "").length();
+            // As '-' is a range operator otherwise, start the group with it.
+            int all = s.length();
+            return upperCases + lowerCases + digits + specialChars == all;
     }
 
     /**

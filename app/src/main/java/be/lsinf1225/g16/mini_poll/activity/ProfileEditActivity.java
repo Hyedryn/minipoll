@@ -79,9 +79,7 @@ public class ProfileEditActivity extends AppCompatActivity {
             imageView = (ImageView) findViewById(R.id.mpr_imgView);
             imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
 
-
         }
-
     }
 
     public void mainmenu(View view)
@@ -92,82 +90,114 @@ public class ProfileEditActivity extends AppCompatActivity {
 
         String email = ((EditText)findViewById(R.id.mpr_email)).getText().toString();
 
-        if(!nom.isEmpty()&&!prenom.isEmpty()&&!email.isEmpty()){
-            if(nom.length()<25&&prenom.length()<20&&email.length()<=50){
-                if (email.contains("@") && email.contains(".")) {
-
-                    //Step ok ouverture de la fenetre de creation du profile
-                    connectedUser.setEmail(email);
-                    connectedUser.setNom(nom);
-                    connectedUser.setPrenom(prenom);
-
-                    //Enregistrement eventuel de la photo de profile
-                    if (imageView != null) {
-                        imageView.buildDrawingCache();
-                        connectedUser.setPhoto(imageView.getDrawingCache().copy(imageView.getDrawingCache().getConfig(), true));
-                    }
-
-
-                    //ajout de l'utilisateur à la liste des utilisateurs et à la base de données
-                    MiniPollApp.saveUser(connectedUser);
-
-
-                    Intent intent = new Intent(ProfileEditActivity.this, MenuMainActivity.class);
-                    startActivity(intent);
-                    //fermeture des activités précédentes pour ne pas pouvoir retourner en arrière
-                    finish();
-
-                } else {
-                    MiniPollApp.notifyShort(R.string.error_invalid_email);
-                }
-            }else{
-                MiniPollApp.notifyShort(R.string.error_string_too_long);
-            }
-        }else{
+        if(nom.isEmpty()||prenom.isEmpty()||email.isEmpty()) {
             MiniPollApp.notifyShort(R.string.error_field_required);
+            return;
         }
 
+        if(nom.length()>25||prenom.length()>20||email.length()>50) {
+            MiniPollApp.notifyShort(R.string.error_string_too_long);
+            return;
+        }
+
+        if (!email.contains("@") || !email.contains(".")) {
+            MiniPollApp.notifyShort(R.string.error_invalid_email);
+            return;
+        }
+
+        if(!MiniPollApp.isValidCharacter(nom+prenom+email)){
+            MiniPollApp.notifyShort(R.string.error_invalid_char);
+            return;
+        }
+
+        //Step ok ouverture de la fenetre de creation du profile
+        connectedUser.setEmail(email);
+        connectedUser.setNom(nom);
+        connectedUser.setPrenom(prenom);
+
+        //Enregistrement eventuel de la photo de profile
+        if (imageView != null) {
+            imageView.buildDrawingCache();
+            connectedUser.setPhoto(imageView.getDrawingCache().copy(imageView.getDrawingCache().getConfig(), true));
+        }
+
+        //ajout de l'utilisateur à la liste des utilisateurs et à la base de données
+        MiniPollApp.saveUser(connectedUser);
+
+        Intent intent = new Intent(ProfileEditActivity.this, MenuMainActivity.class);
+        startActivity(intent);
+        //fermeture des activités précédentes pour ne pas pouvoir retourner en arrière
+        finish();
 
     }
 
 
-    public void editid(View view)
-    {
+    public void editid(View view) {
         String id = ((EditText) findViewById(R.id.mpr_id)).getText().toString();
 
         String mdp = ((EditText) findViewById(R.id.mpr_id_mdp)).getText().toString();
-        if(!id.isEmpty()&&!mdp.isEmpty()){
-            if(utilisateurIsAvailable(id)){
-
-                if(connectedUser.checkMdp(mdp)){
-
-                    //PHASE CRITIQUE: UPDATE DE l'ID
-                    MiniPollApp.updateID(id);
-                    MiniPollApp.notifyLong(R.string.id_modify);
-
-                }else{
-                    MiniPollApp.notifyShort(R.string.error_invalid_password);
-                    ((TextView)findViewById(R.id.mpr_id_mdp)).setText("");
-                }
-            }else{
-                MiniPollApp.notifyShort(R.string.error_id_already_exist);
-                ((TextView)findViewById(R.id.mpr_id_mdp)).setText("");
-                ((TextView)findViewById(R.id.mpr_id)).setText("");
-            }
-
-        }else{
+        if(id.isEmpty()||mdp.isEmpty()) {
             MiniPollApp.notifyShort(R.string.error_field_required);
             ((TextView)findViewById(R.id.mpr_id_mdp)).setText("");
+            return;
         }
+
+        if(!utilisateurIsAvailable(id)){
+            MiniPollApp.notifyShort(R.string.error_id_already_exist);
+            ((TextView)findViewById(R.id.mpr_id_mdp)).setText("");
+            ((TextView)findViewById(R.id.mpr_id)).setText("");
+            return;
+        }
+
+        if(!connectedUser.checkMdp(mdp)){
+            MiniPollApp.notifyShort(R.string.error_invalid_password);
+            ((TextView)findViewById(R.id.mpr_id_mdp)).setText("");
+            return;
+        }
+
+        if(!MiniPollApp.isValidCharacter(id+mdp)){
+            MiniPollApp.notifyShort(R.string.error_invalid_char);
+            return;
+        }
+
+        //PHASE CRITIQUE: UPDATE DE l'ID
+        MiniPollApp.updateID(id);
+        MiniPollApp.notifyLong(R.string.id_modify);
 
     }
 
 
+    public void editmdp(View view) {
 
+        String old_mdp = ((EditText) findViewById(R.id.mpr_old_pwd)).getText().toString();
+        String new_mdp = ((EditText) findViewById(R.id.mpr_new_pwd)).getText().toString();
+        String new_mdp_confirm = ((EditText) findViewById(R.id.mpr_new_pwd_confirm)).getText().toString();
 
-    public void editmdp(View view)
-    {
+        if(old_mdp.isEmpty()||new_mdp.isEmpty()||new_mdp_confirm.isEmpty()) {
+            MiniPollApp.notifyShort(R.string.error_field_required);
+            return;
+        }
 
+        if(!connectedUser.checkMdp(old_mdp)){
+            MiniPollApp.notifyShort(R.string.error_invalid_password);
+            ((TextView)findViewById(R.id.mpr_id_mdp)).setText("");
+            return;
+        }
+
+        if(!new_mdp.equals(new_mdp_confirm)){
+            MiniPollApp.notifyShort(R.string.error_notmatching_password);
+            ((TextView)findViewById(R.id.mpr_new_pwd)).setText("");
+            ((TextView)findViewById(R.id.mpr_new_pwd_confirm)).setText("");
+            return;
+        }
+
+        if(!MiniPollApp.isValidCharacter(old_mdp+new_mdp+new_mdp_confirm)){
+            MiniPollApp.notifyShort(R.string.error_invalid_char);
+            return;
+        }
+
+        connectedUser.setPassword(new_mdp);
+        MiniPollApp.saveUser(connectedUser);
 
     }
 

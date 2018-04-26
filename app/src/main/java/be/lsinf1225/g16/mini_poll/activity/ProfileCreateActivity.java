@@ -29,13 +29,10 @@ public class ProfileCreateActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_create);
-
     }
 
 
-    public void setpp(View view)
-    {
-
+    public void setpp(View view) {
         Intent i = new Intent(
                 Intent.ACTION_PICK,
                 android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
@@ -61,59 +58,59 @@ public class ProfileCreateActivity extends AppCompatActivity {
 
             imageView = (ImageView) findViewById(R.id.cr_imgView);
             imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
-
-
         }
-
 
     }
 
-    public void mainmenu(View view)
-    {
+    public void mainmenu(View view) {
         String nom = ((EditText) findViewById(R.id.cr_nom)).getText().toString();
 
         String prenom = ((EditText)findViewById(R.id.cr_prenom)).getText().toString();
 
         String email = ((EditText)findViewById(R.id.cr_email)).getText().toString();
 
-        if(!nom.isEmpty()&&!prenom.isEmpty()&&!email.isEmpty()){
-            if(nom.length()<25&&prenom.length()<20&&email.length()<=50){
-                if (email.contains("@") && email.contains(".")) {
-
-                    //Step ok ouverture de la fenetre de creation du profile
-                    connectedUser.setEmail(email);
-                    connectedUser.setNom(nom);
-                    connectedUser.setPrenom(prenom);
-
-                    //Enregistrement eventuel de la photo de profile
-                    if (imageView != null) {
-                        imageView.buildDrawingCache();
-                        connectedUser.setPhoto(imageView.getDrawingCache().copy(imageView.getDrawingCache().getConfig(), true));
-                    }
-
-
-                    //ajout de l'utilisateur à la liste des utilisateurs et à la base de données
-                    utilisateurs.add(connectedUser);
-                    MiniPollApp.saveUser(connectedUser);
-
-
-                    Intent intent = new Intent(ProfileCreateActivity.this, MenuMainActivity.class);
-                    startActivity(intent);
-                    //fermeture des activités précédentes pour ne pas pouvoir retourner en arrière
-                    register.finish();
-                    login.finish();
-                    finish();
-
-                } else {
-                    MiniPollApp.notifyShort(R.string.error_invalid_email);
-                }
-            }else{
-                MiniPollApp.notifyShort(R.string.error_string_too_long);
-            }
-        }else{
+        if(nom.isEmpty()||prenom.isEmpty()||email.isEmpty()) {
             MiniPollApp.notifyShort(R.string.error_field_required);
+            return;
         }
 
+        if(nom.length()>25||prenom.length()>20||email.length()>50) {
+            MiniPollApp.notifyShort(R.string.error_string_too_long);
+            return;
+        }
+
+        if (!email.contains("@") || !email.contains(".")) {
+            MiniPollApp.notifyShort(R.string.error_invalid_email);
+            return;
+        }
+
+        if(!MiniPollApp.isValidCharacter(email+nom+prenom)){
+            MiniPollApp.notifyShort(R.string.error_invalid_char);
+            return;
+        }
+
+        //Step ok ouverture de la fenetre de creation du profile
+        connectedUser.setEmail(email);
+        connectedUser.setNom(nom);
+        connectedUser.setPrenom(prenom);
+
+        //Enregistrement eventuel de la photo de profile
+        if (imageView != null) {
+            imageView.buildDrawingCache();
+            connectedUser.setPhoto(imageView.getDrawingCache().copy(imageView.getDrawingCache().getConfig(), true));
+        }
+
+
+        //ajout de l'utilisateur à la liste des utilisateurs et à la base de données
+        utilisateurs.add(connectedUser);
+        MiniPollApp.saveUser(connectedUser);
+
+        Intent intent = new Intent(ProfileCreateActivity.this, MenuMainActivity.class);
+        startActivity(intent);
+        //fermeture des activités précédentes pour ne pas pouvoir retourner en arrière
+        register.finish();
+        login.finish();
+        finish();
 
     }
 }

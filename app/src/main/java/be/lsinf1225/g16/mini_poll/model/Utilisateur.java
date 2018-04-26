@@ -1,10 +1,21 @@
 package be.lsinf1225.g16.mini_poll.model;
 
+import android.util.SparseArray;
+
 public class Utilisateur {
+
+
+    /**
+     * Contient les instances déjà existantes des utilisateurs afin d'éviter de créer deux instances
+     * du même utilisateur.
+     */
+    public static SparseArray<Utilisateur> userSparseArray = new SparseArray<>();
+
+
     /**
      * Identifiant unique de l'utilisateur courant. Correspond à _id dans la base de données.
      */
-    private final int identifiant;
+    private final String identifiant;
     /**
      * Nom (unique) de l'utilisateur courant. Correspond à u_nom dans la base de données.
      */
@@ -29,16 +40,17 @@ public class Utilisateur {
     //private File photo;
 
 
-    private Utilisateur(int uId, String uPassword, String uNom, String uPrenom, String uEmail) {
+    public Utilisateur(String uId, String uPassword, String uNom, String uPrenom, String uEmail, String uMeilleurAmi) {
 
         this.identifiant = uId;
         this.nom = uNom;
         this.password = uPassword;
         this.prenom = uPrenom;
         this.email = uEmail;
+        this.meilleur_ami = uMeilleurAmi;
     }
 
-    private Utilisateur(int uId, String uPassword, String uNom) {
+    public Utilisateur(String uId, String uPassword, String uNom) {
 
         this.identifiant=uId;
         this.password=uPassword;
@@ -46,7 +58,7 @@ public class Utilisateur {
     }
 
     //Methodes get //
-    public int getIdentifiant() {
+    public String getIdentifiant() {
         return this.identifiant;
     }
     public String getPassword() {
@@ -152,10 +164,9 @@ public class Utilisateur {
 
 
     public boolean checkId(String id) {
-        int identifiant;
         try {
-            identifiant=Integer.parseInt(id);
-            if(this.identifiant==identifiant) {
+
+            if(id.equals(this.identifiant)) {
                 return true;
             }else {
                 return false;
@@ -195,8 +206,7 @@ public class Utilisateur {
     }*/
 
     public String getID(Utilisateur ut) {
-        String identifiant = Integer.toString(ut.getIdentifiant());
-        return identifiant;
+        return ut.getIdentifiant();
     }
 
     public String getMdp(Utilisateur ut) {

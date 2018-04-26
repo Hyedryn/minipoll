@@ -5,11 +5,7 @@ import android.util.SparseArray;
 public class Utilisateur {
 
 
-    /**
-     * Contient les instances déjà existantes des utilisateurs afin d'éviter de créer deux instances
-     * du même utilisateur.
-     */
-    public static SparseArray<Utilisateur> userSparseArray = new SparseArray<>();
+
 
 
     /**
@@ -180,11 +176,7 @@ public class Utilisateur {
     }
 
     public boolean checkMdp(String mdp) {
-        if (this.getPassword().equals(mdp)==true) {
-            return true;
-        }else {
-            return false;
-        }
+        return mdp == this.password;
     }
     //a completer
     public void changeStatut(Utilisateur ut) {

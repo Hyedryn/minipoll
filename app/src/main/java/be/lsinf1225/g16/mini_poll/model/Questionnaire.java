@@ -30,19 +30,19 @@ public class Questionnaire extends Sondage {
     }
 
     public int calculateScore(Utilisateur utilisateur){
-
+return 0;
     }
 
     public int[] sortScore(){
-
+       return null;
     }
 
     public Utilisateur[] sortUtilisateurByScore(Sondage sondage){
-
+return null;
     }
 
     public boolean isAnswered(Sondage sondage){
-
+return false;
     }
 
     public void changeEtat(Sondage sondage){

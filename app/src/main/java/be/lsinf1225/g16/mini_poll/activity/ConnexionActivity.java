@@ -77,16 +77,17 @@ public class ConnexionActivity extends AppCompatActivity implements TextView.OnE
                     Intent intent = new Intent(ConnexionActivity.this, MenuMainActivity.class);
                     startActivity(intent);
                     finish();
-                    break;
+                    return;
                 }else{
 
                     MiniPollApp.notifyShort(R.string.error_invalid_password);
                     passwordEditText.setText("");
-                    break;
+                    return;
                 }
 
             }else{
                 MiniPollApp.notifyShort(R.string.error_invalid_email);
+                return;
             }
         }
 

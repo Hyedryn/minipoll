@@ -193,7 +193,7 @@ public class Utilisateur {
     }
 
 
-    public boolean utilisateurIsAvailable(String pseudo) {
+    public static boolean utilisateurIsAvailable(String pseudo) {
         for(Utilisateur user : utilisateurs) {
             if(user.getIdentifiant().equals(pseudo)){
                 return false;

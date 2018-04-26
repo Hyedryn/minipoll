@@ -46,9 +46,9 @@ public class RegisterActivity extends AppCompatActivity  implements TextView.OnE
 
             if(mdp.equals(mdpconf)){
 
-                if(connectedUser.utilisateurIsAvailable(pseudo)){
+                if(Utilisateur.utilisateurIsAvailable(pseudo)){
                 //Step ok ouverture de la fenetre de creation du profile
-                connectedUser = new Utilisateur(pseudo, mdp);
+                MiniPollApp.connectedUser = new Utilisateur(pseudo, mdp);
 
                 Intent intent = new Intent(RegisterActivity.this, ProfileCreateActivity.class);
                 startActivity(intent);

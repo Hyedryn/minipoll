@@ -43,15 +43,9 @@ public class Questionnaire extends Sondage {
      */
     public int calculateScore(Utilisateur utilisateur){
         int score = 0;
-        Choix createurChoix;
-        Choix utilisateurChoix;
-        for (int i = 0; i < questions.length; i++) {
-            createurChoix = ((this.createur).getSondage(this.getSondageId())).choix[i]; // obtenir le choix du créateur
-            utilisateurChoix = (utilisateur.getSondage(this.getSondageId())).choix[i]; // obtenir le choix de l'utilisateur
-            if (createurChoix.getReponse() == utilisateurChoix.getReponse()) { // si ils sont les mêmes
-                score++; // incrementation du score
-            }
-        }
+        // interrogation de la BDD, verifier que pour chaque question l'utilisateur
+        // a repondu la meme chose que le createur
+        // si c'est le cas: score++
         return score;
     }
 
@@ -70,16 +64,10 @@ public class Questionnaire extends Sondage {
      * return : tableau d'utilisateur
      */
     public Utilisateur[] sortUtilisateurByScore(Sondage sondage){
-        int[] sortedScore = sondage.sortScore();
-        Utilisateur[] copy = sondage.participants;
         Utilisateur[] ret = new Utilisateur[copy.length];
-        int score;
-        for(int i = 0; i < sortedScore.length; i++){
-            score = sortedScore[i];
-            for (int j = 0; j < sortedScore.length; j++){
-
-            }
-        }
+        // Modifier la BDD pour trier par ordre croissant
+        // les utilisateurs
+        return ret;
     }
 
     /**
@@ -90,7 +78,7 @@ public class Questionnaire extends Sondage {
     public boolean isAnswered(Sondage sondage){
         for (int i = 0; i < sondage.choix.length; i ++){
             // verification des reponses des utilisateurs
-            if (sondage.choix[i].getReponse() == null){ // si réponse est null, il n'a pas répondu
+            if (sondage.choix[i] == null){ // si choix est null, il n'a pas répondu
                 return false;
             }
         }

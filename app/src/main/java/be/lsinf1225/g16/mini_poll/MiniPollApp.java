@@ -76,11 +76,26 @@ public class MiniPollApp extends Application {
         loadUtilisateurs();
     }
 
+    /**
+     * INTERACTION AVEC LA BASE DE DONNEE
+     *
+     *
+     *
+     *
+     *
+     *
+     *
+     *
+     */
 
-public static void loadFriendOfConnectedUser(){
+    public static void loadFriendOfConnectedUser(){
 
-}
+    }
 
+
+    public  static void saveUser(Utilisateur u){
+
+    }
 
 
     public static void loadUtilisateurs() {

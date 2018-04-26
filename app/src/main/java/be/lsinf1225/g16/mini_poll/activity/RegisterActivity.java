@@ -52,6 +52,7 @@ public class RegisterActivity extends AppCompatActivity  implements TextView.OnE
 
                 Intent intent = new Intent(RegisterActivity.this, ProfileCreateActivity.class);
                 startActivity(intent);
+
                 }else{
                     MiniPollApp.notifyShort(R.string.error_id_already_exist);
                 }

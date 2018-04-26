@@ -40,7 +40,11 @@ public class ProfileCreateActivity extends AppCompatActivity {
                 connectedUser.setNom(nom);
                 connectedUser.setPrenom(prenom);
 
-                //connectedUser;
+                //ajout de l'utilisateur à la liste des utilisateurs et à la base de données
+                utilisateurs.add(connectedUser);
+                MiniPollApp.saveUser(connectedUser);
+
+
                 Intent intent = new Intent(ProfileCreateActivity.this, MenuMainActivity.class);
                 startActivity(intent);
                 //fermeture des activités précédentes pour ne pas pouvoir retourner en arrière

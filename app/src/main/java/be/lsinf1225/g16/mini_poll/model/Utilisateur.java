@@ -202,11 +202,6 @@ public class Utilisateur {
         return true;
     }
 
-    public String getID(Utilisateur ut) {
-        return ut.getIdentifiant();
-    }
 
-    public String getMdp(Utilisateur ut) {
-        return ut.getPassword();
-    }
+
 }

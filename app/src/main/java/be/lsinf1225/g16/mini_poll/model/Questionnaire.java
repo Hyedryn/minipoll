@@ -70,7 +70,8 @@ public class Questionnaire extends Sondage {
      * return : tableau d'utilisateur
      */
     public Utilisateur[] sortUtilisateurByScore(Sondage sondage){
-        int[] sortedScore = sondage.sortScore();
+       int[] sortedScore = null;
+               //sondage.sortScore();
         Utilisateur[] copy = sondage.participants;
         Utilisateur[] ret = new Utilisateur[copy.length];
         int score;
@@ -80,6 +81,7 @@ public class Questionnaire extends Sondage {
 
             }
         }
+        return null;
     }
 
     /**

@@ -2,6 +2,7 @@ package be.lsinf1225.g16.mini_poll.activity;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.provider.MediaStore;
@@ -24,6 +25,7 @@ public class ProfileCreateActivity extends AppCompatActivity {
 
     static int RESULT_LOAD_IMAGE = 1;
     static ImageView imageView;
+    Bitmap image;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +60,8 @@ public class ProfileCreateActivity extends AppCompatActivity {
 
             imageView = (ImageView) findViewById(R.id.cr_imgView);
             imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
+            imageView.buildDrawingCache();
+            image = imageView.getDrawingCache().copy(imageView.getDrawingCache().getConfig(), true);
         }
 
     }
@@ -96,8 +100,7 @@ public class ProfileCreateActivity extends AppCompatActivity {
 
         //Enregistrement eventuel de la photo de profile
         if (imageView != null) {
-            imageView.buildDrawingCache();
-            connectedUser.setPhoto(imageView.getDrawingCache().copy(imageView.getDrawingCache().getConfig(), true));
+            connectedUser.setPhoto(image);
         }
 
 

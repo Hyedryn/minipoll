@@ -21,7 +21,7 @@ public class ProfileActivity extends AppCompatActivity {
         ((TextView)findViewById(R.id.pr_prenom)).setText("Prénom:  "+MiniPollApp.connectedUser.getPrenom());
         ((TextView)findViewById(R.id.pr_email)).setText("Email:  "+MiniPollApp.connectedUser.getEmail());
 
-        if(MiniPollApp.connectedUser.getPhoto()!=null)
+        if(MiniPollApp.connectedUser.getPhoto()!=null&&MiniPollApp.connectedUser.getPhoto().getConfig()!=null)
             ((ImageView) findViewById(R.id.pr_imgView)).setImageBitmap(MiniPollApp.connectedUser.getPhoto());
 
     }

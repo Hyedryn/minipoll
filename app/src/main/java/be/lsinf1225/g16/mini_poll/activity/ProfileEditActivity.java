@@ -2,12 +2,14 @@ package be.lsinf1225.g16.mini_poll.activity;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -29,6 +31,7 @@ public class ProfileEditActivity extends AppCompatActivity {
 
     static int RESULT_LOAD_IMAGE = 1;
     static ImageView imageView;
+    Bitmap image;
 
 
 
@@ -42,7 +45,7 @@ public class ProfileEditActivity extends AppCompatActivity {
         ((TextView)findViewById(R.id.mpr_prenom)).setText(MiniPollApp.connectedUser.getPrenom());
         ((TextView)findViewById(R.id.mpr_email)).setText(MiniPollApp.connectedUser.getEmail());
 
-        if(MiniPollApp.connectedUser.getPhoto()!=null)
+        if(MiniPollApp.connectedUser.getPhoto()!=null&&MiniPollApp.connectedUser.getPhoto().getConfig()!=null)
             ((ImageView) findViewById(R.id.mpr_imgView)).setImageBitmap(MiniPollApp.connectedUser.getPhoto());
 
     }
@@ -78,6 +81,8 @@ public class ProfileEditActivity extends AppCompatActivity {
 
             imageView = (ImageView) findViewById(R.id.mpr_imgView);
             imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
+            imageView.buildDrawingCache();
+            image = imageView.getDrawingCache().copy(imageView.getDrawingCache().getConfig(), true);
 
         }
     }
@@ -117,8 +122,7 @@ public class ProfileEditActivity extends AppCompatActivity {
 
         //Enregistrement eventuel de la photo de profile
         if (imageView != null) {
-            imageView.buildDrawingCache();
-            connectedUser.setPhoto(imageView.getDrawingCache().copy(imageView.getDrawingCache().getConfig(), true));
+            connectedUser.setPhoto(image);
         }
 
         //ajout de l'utilisateur à la liste des utilisateurs et à la base de données
@@ -162,6 +166,7 @@ public class ProfileEditActivity extends AppCompatActivity {
 
         //PHASE CRITIQUE: UPDATE DE l'ID
         MiniPollApp.updateID(id);
+        ((Button)findViewById(R.id.mpr_btn_id)).setEnabled(false);
         MiniPollApp.notifyLong(R.string.id_modify);
 
     }
@@ -196,6 +201,8 @@ public class ProfileEditActivity extends AppCompatActivity {
             return;
         }
 
+        MiniPollApp.notifyLong(R.string.mdp_modify);
+        ((Button)findViewById(R.id.mpr_btn_pwd)).setEnabled(false);
         connectedUser.setPassword(new_mdp);
         MiniPollApp.saveUser(connectedUser);
 

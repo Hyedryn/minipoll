@@ -176,7 +176,7 @@ public class Utilisateur {
     }
 
     public boolean checkMdp(String mdp) {
-        return mdp == this.password;
+        return mdp.equals(this.password);
     }
     //a completer
     public void changeStatut(Utilisateur ut) {

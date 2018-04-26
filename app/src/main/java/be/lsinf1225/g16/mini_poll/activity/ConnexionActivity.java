@@ -63,29 +63,33 @@ public class ConnexionActivity extends AppCompatActivity implements TextView.OnE
         EditText passwordEditText = (EditText) findViewById(R.id.login_pwd);
         String password = passwordEditText.getText().toString();
         String email = userEditText.getText().toString();
-
+        System.out.println(email + password+"\n");
+        System.out.println(utilisateurs.size());
         //test si l'utilisateur est dans la bdd et si le mdp est ok
         //pas opti :/
         for(Utilisateur user : utilisateurs) {
+            System.out.println(user.getEmail());
             if(user.getEmail().equals(email)) {
+                System.out.println("mailok");
                 if(user.checkMdp(password)){
+                    System.out.println("mdpok");
                     be.lsinf1225.g16.mini_poll.MiniPollApp.connectedUser = user;
                     be.lsinf1225.g16.mini_poll.MiniPollApp.loadFriendOfConnectedUser();
 
                     Intent intent = new Intent(ConnexionActivity.this, MenuMainActivity.class);
                     startActivity(intent);
                     finish();
+
                 }else{
                     MiniPollApp.notifyShort(R.string.error_invalid_password);
                     passwordEditText.setText("");
                 }
+
             }else{
                 MiniPollApp.notifyShort(R.string.error_invalid_email);
                 findViewById(R.id.wrongcredential).setVisibility(View.VISIBLE);
             }
         }
-
-
 
     }
 

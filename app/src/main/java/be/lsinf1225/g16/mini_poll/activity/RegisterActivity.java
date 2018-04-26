@@ -45,18 +45,16 @@ public class RegisterActivity extends AppCompatActivity  implements TextView.OnE
         if(!pseudo.isEmpty()&&!mdp.isEmpty()&&!mdpconf.isEmpty()){
 
             if(mdp.equals(mdpconf)){
-                for(Utilisateur user : utilisateurs) {
-                    if(user.getIdentifiant().equals(pseudo)){
-                        MiniPollApp.notifyShort(R.string.error_id_already_exist);
-                        return;
-                    }
-                }
 
+                if(connectedUser.utilisateurIsAvailable(pseudo)){
                 //Step ok ouverture de la fenetre de creation du profile
                 connectedUser = new Utilisateur(pseudo, mdp);
 
                 Intent intent = new Intent(RegisterActivity.this, ProfileCreateActivity.class);
                 startActivity(intent);
+                }else{
+                    MiniPollApp.notifyShort(R.string.error_id_already_exist);
+                }
 
             }else{
                 MiniPollApp.notifyShort(R.string.error_notmatching_password);

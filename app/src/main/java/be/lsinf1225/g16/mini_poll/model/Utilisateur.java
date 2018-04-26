@@ -2,6 +2,11 @@ package be.lsinf1225.g16.mini_poll.model;
 
 import android.util.SparseArray;
 
+import be.lsinf1225.g16.mini_poll.MiniPollApp;
+import be.lsinf1225.g16.mini_poll.R;
+
+import static be.lsinf1225.g16.mini_poll.MiniPollApp.utilisateurs;
+
 public class Utilisateur {
 
 
@@ -167,25 +172,13 @@ public class Utilisateur {
 
 
     public boolean checkId(String id) {
-        try {
-
-            if(id.equals(this.identifiant)) {
-                return true;
-            }else {
-                return false;
-            }
-        }catch(NumberFormatException e) {
-            System.out.println("L'identifiant donné n'est pas valide");
-            return false;
-        }
-
-
+            return id.equals(this.identifiant);
     }
 
     public boolean checkMdp(String mdp) {
         return mdp.equals(this.password);
     }
-    //a completer
+
     public void changeStatut(Utilisateur ut) {
 
     }
@@ -199,10 +192,15 @@ public class Utilisateur {
         }
     }
 
-    //NECESSITE INTERACTION AVEC BDD
-    /*public boolean UtilisateurisAvailable(String nom) {
 
-    }*/
+    public boolean utilisateurIsAvailable(String pseudo) {
+        for(Utilisateur user : utilisateurs) {
+            if(user.getIdentifiant().equals(pseudo)){
+                return false;
+            }
+        }
+        return true;
+    }
 
     public String getID(Utilisateur ut) {
         return ut.getIdentifiant();

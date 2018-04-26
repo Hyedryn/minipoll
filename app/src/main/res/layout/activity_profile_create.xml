@@ -61,12 +61,13 @@
 
 
         <EditText
+            android:id="@+id/cr_nom"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:background="@drawable/textview_border"
             android:gravity="center_vertical"
-            android:text="@string/nom"
+            android:hint="@string/nom"
             android:paddingBottom="8dp"
             android:paddingStart="6dp"
             android:paddingTop="6dp"
@@ -74,12 +75,13 @@
             android:inputType="" />
 
         <EditText
+            android:id="@+id/cr_prenom"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:background="@drawable/textview_border"
             android:gravity="center_vertical"
-            android:text="@string/prenom"
+            android:hint="@string/prenom"
             android:paddingBottom="8dp"
             android:paddingStart="6dp"
             android:paddingTop="6dp"
@@ -87,12 +89,13 @@
             android:inputType="" />
 
         <EditText
+            android:id="@+id/cr_email"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:background="@drawable/textview_border"
             android:gravity="center_vertical"
-            android:text="@string/adresse_mail"
+            android:hint="@string/adresse_mail"
             android:paddingBottom="8dp"
             android:paddingStart="6dp"
             android:paddingTop="6dp"

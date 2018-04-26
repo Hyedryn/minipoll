@@ -71,13 +71,6 @@ android:orientation="vertical">
                 android:singleLine="true" />
 
 
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/error_invalid_password"
-            android:visibility="visible" />
-
         <Button
             android:id="@+id/register"
             style="@style/TextAppearance.AppCompat.Medium"

@@ -46,6 +46,13 @@ public class Utilisateur {
         this.meilleur_ami = uMeilleurAmi;
     }
 
+    public Utilisateur(String uId, String uPassword) {
+
+        this.identifiant=uId;
+        this.password=uPassword;
+
+    }
+
     public Utilisateur(String uId, String uPassword, String uNom) {
 
         this.identifiant=uId;

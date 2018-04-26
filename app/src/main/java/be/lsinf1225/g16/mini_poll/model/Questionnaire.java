@@ -43,9 +43,12 @@ public class Questionnaire extends Sondage {
      */
     public int calculateScore(Utilisateur utilisateur){
         int score = 0;
-        // interrogation de la BDD, verifier que pour chaque question l'utilisateur
-        // a repondu la meme chose que le createur
-        // si c'est le cas: score++
+        for (int i = 0; i < questions.length ; i++) {
+            // Si la reponse du créateur = reponse de l'utilisateur :
+            if (createur.getSondage(this.getSondageId()).choix[i].getReponse() == utilisateur.getSondage(this.getSondageId()).choix[i].getReponse()) {
+                score++;
+            }
+        }
         return score;
     }
 
@@ -64,9 +67,19 @@ public class Questionnaire extends Sondage {
      * return : tableau d'utilisateur
      */
     public Utilisateur[] sortUtilisateurByScore(Sondage sondage){
-        Utilisateur[] ret = new Utilisateur[copy.length];
-        // Modifier la BDD pour trier par ordre croissant
-        // les utilisateurs
+        Utilisateur[] copy = sondage.participants;
+        Utilisateur[] ret = new Utilisateur[sondage.participants.length];
+        int[] scoreSorted = sondage.sortScore();
+        int score;
+        for (int i = 0; i < sondage.participants.length; i++){
+            score = scoreSorted[i];
+            for (int j = 0; j < sondage.participants.length ; j++){
+                if(score == sondage.score[j]){
+                    ret[i] = copy[j];
+                    copy[j] = null;
+                }
+            }
+        }
         return ret;
     }
 

@@ -51,11 +51,11 @@ public class CreationChoiceActivity extends AppCompatActivity {
         // layouts of all welcome sliders
         // add few more layouts if you want
         layouts = new int[]{
-                R.layout.creation_agreement_friends_list,
-                R.layout.creation_agreement_total_choice,
-                R.layout.creation_agreement_fill_choice,
-                R.layout.creation_agreement_preview,
-                R.layout.creation_agreement_send};
+                R.layout.creation_choice_friend,
+                R.layout.creation_choice_format,
+                R.layout.creation_choice_fill_choice,
+                R.layout.creation_choice_preview,
+                R.layout.creation_choice_send};
 
         // adding bottom dots
         addBottomDots(0);

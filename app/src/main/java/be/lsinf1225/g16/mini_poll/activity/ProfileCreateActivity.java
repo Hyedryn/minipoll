@@ -88,7 +88,7 @@ public class ProfileCreateActivity extends AppCompatActivity {
             return;
         }
 
-        if(!MiniPollApp.isValidCharacter(email+nom+prenom)){
+        if(!MiniPollApp.isValidCharacter(nom+prenom)||!MiniPollApp.isValidCharacterNoSpace(email)){
             MiniPollApp.notifyShort(R.string.error_invalid_char);
             return;
         }

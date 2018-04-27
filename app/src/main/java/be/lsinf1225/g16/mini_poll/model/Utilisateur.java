@@ -157,8 +157,10 @@ public class Utilisateur {
     //NECESSITE INTERACTION AVEC BDD
     public void addDemandeAmi(String id) {
         for(Utilisateur demandeami : MiniPollApp.utilisateurs) {
-            //si utilisateur exist l'ajouter
+            //si utilisateur existe l'ajouter
             if(demandeami.getIdentifiant().equals(id)) {
+                if(demandeAmis==null)
+                    demandeAmis=new ArrayList<>();
                 demandeAmis.add(demandeami);
                 break;
             }

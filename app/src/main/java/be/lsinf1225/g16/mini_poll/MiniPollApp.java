@@ -87,11 +87,21 @@ public class MiniPollApp extends Application {
      *
      */
 
+    public static boolean isValidCharacterNoSpace(String s) {
+        int upperCases = s.replaceAll("[^A-Z]", "").length();
+        int lowerCases = s.replaceAll("[^a-z]", "").length();
+        int digits = s.replaceAll("[^0-9]", "").length();
+        int specialChars = s.replaceAll("[^-@#$€!_?&èàéùôêâî.,]", "").length();
+        // As '-' is a range operator otherwise, start the group with it.
+        int all = s.length();
+        return upperCases + lowerCases + digits + specialChars == all;
+    }
+
     public static boolean isValidCharacter(String s) {
             int upperCases = s.replaceAll("[^A-Z]", "").length();
             int lowerCases = s.replaceAll("[^a-z]", "").length();
             int digits = s.replaceAll("[^0-9]", "").length();
-            int specialChars = s.replaceAll("[^-@#$€!_?&èàéùôêâî.,]", "").length();
+            int specialChars = s.replaceAll("[^-@#$€!_?&è àéùôêâî.,]", "").length();
             // As '-' is a range operator otherwise, start the group with it.
             int all = s.length();
             return upperCases + lowerCases + digits + specialChars == all;

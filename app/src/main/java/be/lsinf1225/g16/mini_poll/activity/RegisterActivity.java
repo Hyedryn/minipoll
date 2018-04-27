@@ -52,7 +52,7 @@ public class RegisterActivity extends AppCompatActivity  implements TextView.OnE
             return;
         }
 
-        if(!MiniPollApp.isValidCharacter(pseudo+mdp+mdpconf)){
+        if(!MiniPollApp.isValidCharacter(mdp+mdpconf)||!MiniPollApp.isValidCharacterNoSpace(pseudo)){
             MiniPollApp.notifyShort(R.string.error_invalid_char);
             return;
         }

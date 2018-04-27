@@ -113,7 +113,7 @@ public class ProfileEditActivity extends AppCompatActivity {
             return;
         }
 
-        if(!MiniPollApp.isValidCharacter(nom+prenom+email)){
+        if(!MiniPollApp.isValidCharacter(nom+prenom)||!MiniPollApp.isValidCharacterNoSpace(email)){
             MiniPollApp.notifyShort(R.string.error_invalid_char);
             return;
         }
@@ -164,7 +164,7 @@ public class ProfileEditActivity extends AppCompatActivity {
             return;
         }
 
-        if(!MiniPollApp.isValidCharacter(id+mdp)){
+        if(!MiniPollApp.isValidCharacter(mdp)||!MiniPollApp.isValidCharacterNoSpace(id)){
             MiniPollApp.notifyShort(R.string.error_invalid_char);
             return;
         }

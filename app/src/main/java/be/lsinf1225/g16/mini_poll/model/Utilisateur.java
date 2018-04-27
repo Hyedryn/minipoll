@@ -3,9 +3,12 @@ package be.lsinf1225.g16.mini_poll.model;
 import android.graphics.Bitmap;
 import android.util.SparseArray;
 
+import java.util.ArrayList;
+
 import be.lsinf1225.g16.mini_poll.MiniPollApp;
 import be.lsinf1225.g16.mini_poll.R;
 
+import static be.lsinf1225.g16.mini_poll.MiniPollApp.connectedUser;
 import static be.lsinf1225.g16.mini_poll.MiniPollApp.utilisateurs;
 
 public class Utilisateur {
@@ -33,46 +36,46 @@ public class Utilisateur {
 
     private String meilleur_ami;
 
-    private Sondage[] sondages;
+    private ArrayList<Sondage> sondages;
 
-    private Utilisateur[] amis;
+    private ArrayList<Utilisateur> amis;
 
-    private Utilisateur[] demandeAmis;
+    private ArrayList<Utilisateur> demandeAmis;
 
     private Bitmap photo;
 
+
+    /**
+     * Constructeur de Utilisateur
+     */
+
     public Utilisateur(String uId, String uPassword, String uNom, String uPrenom, String uEmail, String uMeilleurAmi, Bitmap photo) {
-
         this(uId, uPassword, uNom, uPrenom, uEmail, uMeilleurAmi);
-
         this.photo = photo;
     }
 
     public Utilisateur(String uId, String uPassword, String uNom, String uPrenom, String uEmail, String uMeilleurAmi) {
-
-        this.identifiant = uId;
-        this.nom = uNom;
-        this.password = uPassword;
+        this(uId, uPassword, uNom);
         this.prenom = uPrenom;
         this.email = uEmail;
         this.meilleur_ami = uMeilleurAmi;
     }
 
     public Utilisateur(String uId, String uPassword) {
-
         this.identifiant=uId;
         this.password=uPassword;
-
     }
 
     public Utilisateur(String uId, String uPassword, String uNom) {
-
         this.identifiant=uId;
         this.password=uPassword;
         this.nom=uNom;
     }
 
-    //Methodes get //
+
+    /*
+    *  getter
+     */
     public String getIdentifiant() {
         return this.identifiant;
     }
@@ -91,9 +94,31 @@ public class Utilisateur {
     public String getMeilleur_ami() {
         return this.meilleur_ami;
     }
+
     public Bitmap getPhoto() { return this.photo; }
 
-    //Methodes set//
+    //retourne un objet de type Utilisateur de l'ami dans la liste d'amis dont le nom correspond au nom passé en parametre
+    public Utilisateur getAmi(String id) {
+        for(Utilisateur ami : amis) {
+            if(ami.getIdentifiant().equals(id)) {
+                return ami;
+            }
+        }
+        return null; //si ami n'existe pas dans la liste des amis, retourne null, est ce qu'il faut retourner autre chose?? provoque null pointer exception
+    }
+
+    //retourne le sondage dont la question correspond au string passé en parametre
+    public Sondage getSondage(int id) {
+        for(Sondage sondage : sondages) {
+            if(sondage.getSondageId()==id)
+                return sondage;
+        }
+        return null; //si pas trouvé dans la liste des sondages retourne null
+    }
+
+    /**
+     * Setter
+     */
 
     //pas de methode set pour identifiant parce que c'est un final int, ca sera un static augmente a chaque fois qu'on ajoute un utilisateur?
     public void setPassword(String password) {
@@ -112,64 +137,44 @@ public class Utilisateur {
         this.photo=photo;
     }
 
-    //retourne un objet de type Utilisateur de l'ami dans la liste d'amis dont le nom correspond au nom passé en parametre
-    public Utilisateur getAmi(String nom) {
-        for(int i=0;i<this.amis.length;i++) {
-            if(this.amis[i].getNom().equals(nom)==true) {
-                System.out.println("Ami trouvé");
-                System.out.println(this.amis[i].getNom().toString());
-                return this.amis[i];
-            }
+    //met la variable meilleurAmi à l'utilisateur (se trouvant deja dans la liste d'amis) dont l'id correspond au string passe en param
+    public void setMeilleurAmi(String id) {
 
-        }
-        return null; //si ami n'existe pas dans la liste des amis, retourne null, est ce qu'il faut retourner autre chose?? provoque null pointer exception
-        //il faudrait utiliser un try catch ?
-    }
-
-    //retourne le sondage dont la question correspond au string passé en parametre
-
-    public Sondage getSondage(final int id) {
-        for(int i=0;i<this.sondages.length;i++) {
-            if(this.sondages[i].getSondageId()==id) {
-                return this.sondages[i];
-            }
-        }
-        return null; //si pas trouvé dans la liste des sondages retourne null
-    }
-
-    //ajoute au tableau demandeAmis l'utilisateur dans la base de données dont le nom correspond au nom passé en parametre
-    //NECESSITE INTERACTION AVEC BDD
-    public void addDemandeAmi(String nom) {
-
-    }
-    //retire du tableau demandeAmis, l'utlisareur dont le nom correspond au nom passé en parametre
-    public void removeDemandeAmi(String nom) {
-        for(int i=0;i<this.demandeAmis.length;i++) {
-            if(this.demandeAmis[i]!=null && this.demandeAmis[i].getNom().equals(nom)) {
-                this.demandeAmis[i]=null;
-                System.out.println("Demande supprimée");
+        for(Utilisateur ami : amis) {
+            if(ami.getIdentifiant().equals(id)) {
+                this.meilleur_ami=ami.getIdentifiant();
                 break;
             }
         }
 
     }
 
-    //met la variable meilleurAmi à l'utilisateur (se trouvant deja dans la liste d'amis) dont le nom correspond au string passe en param
-    public void setMeilleurAmi(String nom) {
 
-        if((this.meilleur_ami!=null && this.meilleur_ami.equals(nom))==true) {
-            System.out.println("Cet utilisateur est déjà votre meilleur ami");
-        }else {
-            for(int i=0;i<this.amis.length;i++) {
-                if(this.amis[i]!=null && this.amis[i].getNom().equals(nom)==true) {
-                    this.meilleur_ami=this.amis[i].getNom();
-                    System.out.print("Meilleur ami changé à : ");
-                    System.out.println(this.amis[i].getNom());
-                    break;
-                }
+    //ajoute au tableau demandeAmis l'utilisateur dans la base de données dont le nom correspond au nom passé en parametre
+    //NECESSITE INTERACTION AVEC BDD
+    public void addDemandeAmi(String id) {
+        for(Utilisateur demandeami : MiniPollApp.utilisateurs) {
+            //si utilisateur exist l'ajouter
+            if(demandeami.getIdentifiant().equals(id)) {
+                demandeAmis.add(demandeami);
+                break;
             }
         }
+        MiniPollApp.saveUser(connectedUser);
     }
+
+    //retire du tableau demandeAmis, l'utlisareur dont le nom correspond au nom passé en parametre
+    public void removeDemandeAmi(String id) {
+        for(Utilisateur demandeami : demandeAmis) {
+            if(demandeami.getIdentifiant().equals(id)) {
+                demandeAmis.remove(demandeami);
+                break;
+            }
+        }
+        MiniPollApp.saveUser(connectedUser);
+    }
+
+
 
     //a completer
     /*public boolean isAccepted(Utilisateur ut1, Utilisateur ut2) {

@@ -109,8 +109,7 @@ public class MiniPollApp extends Application {
      *
      */
 
-    public static void loadFriendOfConnectedUser(){
-
+    public static void loadConnectedUser(){
     }
 
 
@@ -123,7 +122,7 @@ public class MiniPollApp extends Application {
         saveUser(user);
         //editDatabase
         loadUtilisateurs();
-        loadFriendOfConnectedUser();
+        loadConnectedUser();
         connectedUser = user;
     }
 
@@ -171,6 +170,10 @@ public class MiniPollApp extends Application {
         cursor.close();
         db.close(); **/
         ArrayList<Utilisateur> users = new ArrayList<>();
+        users.add(new Utilisateur("egio", "mdp", "Desin", "Quen", "quenti4@hotmail.be", ""));
+        users.add(new Utilisateur("marc", "mdp", "verfrfrf", "Frfd", "fr@gmx.com", ""));
+        users.add(new Utilisateur("nat", "mdp", "Dessa", "Qutin", "quentin124@mail.be", ""));
+        users.add(new Utilisateur("pap", "mdp", "ver", "Fred", "freddy@gmx.com", ""));
         users.add(new Utilisateur("qdessain", "mdp", "Dessain", "Quentin", "quentin124@hotmail.be", ""));
         users.add(new Utilisateur("Fred", "mdp", "ver", "Fred", "freddy@gmx.com", ""));
         utilisateurs = users;

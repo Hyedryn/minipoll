@@ -42,7 +42,7 @@ public class RegisterActivity extends AppCompatActivity  implements TextView.OnE
         String mdpconf = ((EditText)findViewById(R.id.confirm_password)).getText().toString();
 
 
-        if(!(!pseudo.isEmpty()&&!mdp.isEmpty()&&!mdpconf.isEmpty())){
+        if(pseudo.isEmpty()||mdp.isEmpty()||mdpconf.isEmpty()){
         MiniPollApp.notifyShort(R.string.error_field_required);
         return;
         }
@@ -57,7 +57,7 @@ public class RegisterActivity extends AppCompatActivity  implements TextView.OnE
             return;
         }
 
-        if(Utilisateur.utilisateurIsAvailable(pseudo)) {
+        if(!Utilisateur.utilisateurIsAvailable(pseudo)) {
             MiniPollApp.notifyShort(R.string.error_id_already_exist);
             return;
         }

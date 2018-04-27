@@ -112,6 +112,8 @@ public class MiniPollApp extends Application {
     public static void loadConnectedUser(){
     }
 
+    public static void loadUser(Utilisateur u){
+    }
 
     public  static void saveUser(Utilisateur u){
 

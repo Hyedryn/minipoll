@@ -99,7 +99,10 @@ public class Utilisateur {
 
     //retourne un objet de type Utilisateur de l'ami dans la liste d'amis dont le nom correspond au nom passé en parametre
     public Utilisateur getAmi(String id) {
-        for(Utilisateur ami : amis) {
+        if(this.amis==null)
+            return null;
+
+        for(Utilisateur ami : this.amis) {
             if(ami.getIdentifiant().equals(id)) {
                 return ami;
             }
@@ -146,7 +149,7 @@ public class Utilisateur {
                 break;
             }
         }
-
+        MiniPollApp.saveUser(connectedUser);
     }
 
 

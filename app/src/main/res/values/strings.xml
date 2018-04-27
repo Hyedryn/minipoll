@@ -15,6 +15,7 @@
     <string name="error_invalid_char">Certains caractères ne sont pas autorisés</string>
     <string name="error_incorrect_credential">Le mot de passe ou l\'identifiant est incorrect.</string>
     <string name="error_field_required">Tout les champs requis n\'ont pas été complété</string>
+    <string name="error_no_available_friend">Aucune proposition n\'est disponible</string>
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>

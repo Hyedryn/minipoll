@@ -21,9 +21,6 @@ import be.lsinf1225.g16.mini_poll.MySQLiteHelper;
 import be.lsinf1225.g16.mini_poll.R;
 import be.lsinf1225.g16.mini_poll.model.Utilisateur;
 
-import static be.lsinf1225.g16.mini_poll.MiniPollApp.connectedUser;
-import static be.lsinf1225.g16.mini_poll.MiniPollApp.loadFriendOfConnectedUser;
-import static be.lsinf1225.g16.mini_poll.MiniPollApp.utilisateurs;
 
 public class ConnexionActivity extends AppCompatActivity implements TextView.OnEditorActionListener {
 
@@ -64,7 +61,7 @@ public class ConnexionActivity extends AppCompatActivity implements TextView.OnE
         String password = passwordEditText.getText().toString();
         String id = userEditText.getText().toString();
 
-        for(Utilisateur user : utilisateurs) {
+        for(Utilisateur user : MiniPollApp.utilisateurs) {
 
             if(user.getIdentifiant().equals(id)) {
 
@@ -74,8 +71,8 @@ public class ConnexionActivity extends AppCompatActivity implements TextView.OnE
                     return;
                 }
 
-                be.lsinf1225.g16.mini_poll.MiniPollApp.connectedUser = user;
-                be.lsinf1225.g16.mini_poll.MiniPollApp.loadFriendOfConnectedUser();
+                MiniPollApp.connectedUser = user;
+                MiniPollApp.loadConnectedUser();
 
                 Intent intent = new Intent(ConnexionActivity.this, MenuMainActivity.class);
                 startActivity(intent);

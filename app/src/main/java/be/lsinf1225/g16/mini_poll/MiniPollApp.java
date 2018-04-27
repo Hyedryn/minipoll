@@ -178,6 +178,7 @@ public class MiniPollApp extends Application {
         users.add(new Utilisateur("pap", "mdp", "ver", "Fred", "freddy@gmx.com", ""));
         users.add(new Utilisateur("qdessain", "mdp", "Dessain", "Quentin", "quentin124@hotmail.be", ""));
         users.add(new Utilisateur("Fred", "mdp", "ver", "Fred", "freddy@gmx.com", ""));
+        users.add(new Utilisateur("Peter", "cat", "Van Roy", "Peter", "peter_vanroy@uclouvain.be", "Oz"));
         utilisateurs = users;
 
     }

@@ -14,14 +14,15 @@
         <ImageView
             android:layout_width="@dimen/img_width_height"
             android:layout_height="@dimen/img_width_height"
+            android:baselineAligned="false"
             android:src="@drawable/ok" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:text="Appuyez sur terminé pour confirmer l'envoie du sondage"
             android:textColor="@android:color/white"
-            android:gravity="center"
             android:textSize="@dimen/slide_title"
             android:textStyle="bold" />
 

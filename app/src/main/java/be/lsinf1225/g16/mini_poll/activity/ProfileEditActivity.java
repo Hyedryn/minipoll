@@ -1,13 +1,16 @@
 package be.lsinf1225.g16.mini_poll.activity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.provider.MediaStore;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -137,6 +140,8 @@ public class ProfileEditActivity extends AppCompatActivity {
 
 
     public void editid(View view) {
+
+
         String id = ((EditText) findViewById(R.id.mpr_id)).getText().toString();
 
         String mdp = ((EditText) findViewById(R.id.mpr_id_mdp)).getText().toString();

@@ -11,7 +11,7 @@
     android:paddingRight="0dp"
     android:paddingTop="0dp"
     android:background="@drawable/app_background"
-    android:weightSum="80"
+    android:weightSum="87"
     tools:context="be.lsinf1225.g16.mini_poll.activity.FriendsAddActivity">
 
 
@@ -83,6 +83,42 @@
         android:textAlignment="center"
         android:textColor="@android:color/black"
         android:textSize="18sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="0dp"
+        android:layout_weight="7"
+        android:orientation="horizontal"
+        android:padding="0dp">
+
+
+        <ImageButton
+            android:id="@+id/imageButton"
+            style="@android:style/Widget.Holo.ImageButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_margin="0dp"
+            android:layout_weight="50"
+            android:contentDescription="@string/annule"
+            android:scaleType="fitStart"
+            app:srcCompat="@drawable/left_arrow" />
+
+        <ImageButton
+            android:id="@+id/imageButton2"
+            style="@android:style/Widget.Holo.ImageButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="50"
+            android:contentDescription="@string/annule"
+            android:scaleType="fitEnd"
+            app:srcCompat="@drawable/right_arrow" />
+
+
+    </LinearLayout>
+
+
 
 
 </LinearLayout>

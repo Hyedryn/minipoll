@@ -120,6 +120,9 @@ public class MiniPollApp extends Application {
      */
 
     public static void loadConnectedUser(){
+        MiniPollApp.connectedUser.addAmi(utilisateurs.get(0));
+        MiniPollApp.connectedUser.addAmi(utilisateurs.get(1));
+        MiniPollApp.connectedUser.addAmi(utilisateurs.get(2));
     }
 
     public static void loadUser(Utilisateur u){
@@ -130,7 +133,7 @@ public class MiniPollApp extends Application {
     }
 
     public  static void updateID(String id){
-        Utilisateur user = new Utilisateur(id, connectedUser.getPassword(), connectedUser.getNom(), connectedUser.getPrenom(), connectedUser.getEmail(), connectedUser.getMeilleur_ami(), connectedUser.getPhoto());
+        Utilisateur user = new Utilisateur(id, connectedUser.getPassword(), connectedUser.getNom(), connectedUser.getPrenom(), connectedUser.getEmail(), connectedUser.getMeilleurAmi(), connectedUser.getPhoto());
         saveUser(user);
         //editDatabase
         loadUtilisateurs();
@@ -186,9 +189,9 @@ public class MiniPollApp extends Application {
         users.add(new Utilisateur("marc", "mdp", "verfrfrf", "Frfd", "fr@gmx.com", ""));
         users.add(new Utilisateur("nat", "mdp", "Dessa", "Qutin", "quentin124@mail.be", ""));
         users.add(new Utilisateur("pap", "mdp", "ver", "Fred", "freddy@gmx.com", ""));
-        users.add(new Utilisateur("qdessain", "mdp", "Dessain", "Quentin", "quentin124@hotmail.be", ""));
         users.add(new Utilisateur("Fred", "mdp", "ver", "Fred", "freddy@gmx.com", ""));
         users.add(new Utilisateur("Peter", "cat", "Van Roy", "Peter", "peter_vanroy@uclouvain.be", "Oz"));
+        users.add(new Utilisateur("qdessain", "mdp", "Dessain", "Quentin", "quentin124@hotmail.be", ""));
         utilisateurs = users;
 
     }

@@ -1,12 +1,10 @@
 package be.lsinf1225.g16.mini_poll.model;
 
 import android.graphics.Bitmap;
-import android.util.SparseArray;
 
 import java.util.ArrayList;
 
 import be.lsinf1225.g16.mini_poll.MiniPollApp;
-import be.lsinf1225.g16.mini_poll.R;
 
 import static be.lsinf1225.g16.mini_poll.MiniPollApp.connectedUser;
 import static be.lsinf1225.g16.mini_poll.MiniPollApp.utilisateurs;
@@ -91,9 +89,10 @@ public class Utilisateur {
     public String getEmail() {
         return this.email;
     }
-    public String getMeilleur_ami() {
+    public String getMeilleurAmi() {
         return this.meilleur_ami;
     }
+    public ArrayList<Utilisateur> getListAmi(){ return amis;}
 
     public Bitmap getPhoto() { return this.photo; }
 
@@ -149,7 +148,7 @@ public class Utilisateur {
                 break;
             }
         }
-        MiniPollApp.saveUser(connectedUser);
+        MiniPollApp.saveUser(this);
     }
 
 
@@ -165,7 +164,7 @@ public class Utilisateur {
                 break;
             }
         }
-        MiniPollApp.saveUser(connectedUser);
+        MiniPollApp.saveUser(this);
     }
 
     //retire du tableau demandeAmis, l'utlisareur dont le nom correspond au nom passé en parametre
@@ -176,7 +175,33 @@ public class Utilisateur {
                 break;
             }
         }
-        MiniPollApp.saveUser(connectedUser);
+        MiniPollApp.saveUser(this);
+    }
+
+    public void removeAmi(String id) {
+        if(amis==null)
+            amis=new ArrayList<>();
+        for(Utilisateur ami : amis) {
+            if(ami.getIdentifiant().equals(id)) {
+                amis.remove(ami);
+                break;
+            }
+        }
+        MiniPollApp.saveUser(this);
+    }
+
+    public void addAmi(Utilisateur u) {
+        if(amis==null)
+            amis=new ArrayList<>();
+        for(Utilisateur ami : this.amis) {
+            //si utilisateur existe l'ajouter
+            if(ami.equals(u)) {
+                return;
+            }
+        }
+
+        amis.add(u);
+        MiniPollApp.saveUser(this);
     }
 
 

@@ -17,6 +17,11 @@ public class MiniPollApp extends Application {
 
 
 
+    private static final String DB_COLUMN_ID = "u_id";
+    private static final String DB_COLUMN_NAME = "u_name";
+    private static final String DB_COLUMN_PASSWORD = "u_password";
+    private static final String DB_TABLE = "users";
+
 //ArrayList comprennant tout les utilisateurs de la database
     public static ArrayList<Utilisateur> utilisateurs = new ArrayList<>();
 
@@ -123,6 +128,8 @@ public class MiniPollApp extends Application {
         MiniPollApp.connectedUser.addAmi(utilisateurs.get(0));
         MiniPollApp.connectedUser.addAmi(utilisateurs.get(1));
         MiniPollApp.connectedUser.addAmi(utilisateurs.get(2));
+
+        //load sondage of connected user ---->
     }
 
     public static void loadUser(Utilisateur u){
@@ -144,9 +151,11 @@ public class MiniPollApp extends Application {
 
 
     public static void loadUtilisateurs() {
-    /**    // Récupération du  SQLiteHelper et de la base de données.
-        SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
+       // Récupération du  SQLiteHelper et de la base de données.
+    //    SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
 
+
+/**
         // Colonnes à récupérer
         String[] colonnes = {DB_COLUMN_ID, DB_COLUMN_NAME, DB_COLUMN_PASSWORD};
 
@@ -184,7 +193,7 @@ public class MiniPollApp extends Application {
         // Fermeture du curseur et de la base de données.
         cursor.close();
         db.close(); **/
-    
+
         ArrayList<Utilisateur> users = new ArrayList<>();
         users.add(new Utilisateur("egio", "mdp", "Desin", "Quen", "quenti4@hotmail.be", ""));
         users.add(new Utilisateur("marc", "mdp", "verfrfrf", "Frfd", "fr@gmx.com", ""));

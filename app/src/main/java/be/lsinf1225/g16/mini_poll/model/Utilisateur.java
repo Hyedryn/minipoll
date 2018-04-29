@@ -169,6 +169,8 @@ public class Utilisateur {
 
     //retire du tableau demandeAmis, l'utlisareur dont le nom correspond au nom passé en parametre
     public void removeDemandeAmi(String id) {
+        if(demandeAmis==null)
+            demandeAmis=new ArrayList<>();
         for(Utilisateur demandeami : demandeAmis) {
             if(demandeami.getIdentifiant().equals(id)) {
                 demandeAmis.remove(demandeami);
@@ -201,6 +203,19 @@ public class Utilisateur {
         }
 
         amis.add(u);
+        MiniPollApp.saveUser(this);
+    }
+
+    public void addAmi(String id) {
+        for(Utilisateur ami : MiniPollApp.utilisateurs) {
+            //si utilisateur existe l'ajouter
+            if(ami.getIdentifiant().equals(id)) {
+                if(amis==null)
+                    amis=new ArrayList<>();
+                amis.add(ami);
+                break;
+            }
+        }
         MiniPollApp.saveUser(this);
     }
 

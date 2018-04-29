@@ -58,7 +58,6 @@ public class FriendsAddActivity extends AppCompatActivity implements OnGestureLi
             return;
         }
 
-        MiniPollApp.loadUser(u);
         ((TextView)findViewById(R.id.add_name_inf)).setText("Nom: "+u.getPrenom()+" "+u.getNom());
         ((TextView)findViewById(R.id.add_email_inf)).setText("Email: "+u.getEmail());
         ((TextView)findViewById(R.id.add_id_inf)).setText("ID: "+u.getIdentifiant());

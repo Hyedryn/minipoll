@@ -21,20 +21,13 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="Appuyez sur terminé pour confirmer l'envoie du sondage"
+<<<<<<< HEAD
             android:textColor="@android:color/white"
+=======
+            android:textColor="@android:color/black"
+>>>>>>> 12f7606eb7911e935354b7e39adbc8a123131ead
             android:textSize="@dimen/slide_title"
             android:textStyle="bold" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:paddingLeft="@dimen/desc_padding"
-            android:paddingRight="@dimen/desc_padding"
-            android:text="PV 4"
-            android:textAlignment="center"
-            android:textColor="@android:color/white"
-            android:textSize="@dimen/slide_desc" />
 
     </LinearLayout>
 

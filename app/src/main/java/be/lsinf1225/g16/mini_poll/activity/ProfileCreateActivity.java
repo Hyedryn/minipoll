@@ -106,7 +106,7 @@ public class ProfileCreateActivity extends AppCompatActivity {
 
         //ajout de l'utilisateur à la liste des utilisateurs et à la base de données
         utilisateurs.add(connectedUser);
-        MiniPollApp.saveUser(connectedUser);
+        MiniPollApp.saveNewUser(connectedUser);
 
         Intent intent = new Intent(ProfileCreateActivity.this, MenuMainActivity.class);
         startActivity(intent);

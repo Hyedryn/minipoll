@@ -58,7 +58,6 @@ public class FriendsListActivity extends AppCompatActivity implements GestureDet
             ((ImageButton) findViewById(R.id.list_crown_btn)).setBackgroundColor(getResources().getColor(android.R.color.darker_gray));
         }
 
-        MiniPollApp.loadUser(u);
         ((TextView)findViewById(R.id.list_name)).setText("Nom: "+u.getPrenom()+" "+u.getNom());
         ((TextView)findViewById(R.id.list_email)).setText("Email: "+u.getEmail());
         ((TextView)findViewById(R.id.list_id)).setText("ID: "+u.getIdentifiant());

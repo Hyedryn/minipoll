@@ -28,18 +28,18 @@ INSERT INTO contenu (ID_question, ID_sondage, type) VALUES (4, 3, 'aide à un ami
 DROP TABLE IF EXISTS liste_amis;
 CREATE TABLE liste_amis (identifiant_1 text NOT NULL REFERENCES utilisateur (identifiant), identifiant_2 text NOT NULL REFERENCES utilisateur (identifiant), statut text NOT NULL);
 INSERT INTO liste_amis (identifiant_1, identifiant_2, statut) VALUES ('floflo', 'Baptiste', 'en cours');
-INSERT INTO liste_amis (identifiant_1, identifiant_2, statut) VALUES ('floflo', 'Edouard', 'accepté');
-INSERT INTO liste_amis (identifiant_1, identifiant_2, statut) VALUES ('Soukéina', 'Edouard', 'accepté');
-INSERT INTO liste_amis (identifiant_1, identifiant_2, statut) VALUES ('Sara', 'Quentin', 'accepté');
+INSERT INTO liste_amis (identifiant_1, identifiant_2, statut) VALUES ('floflo', 'Edouard', 'accepte');
+INSERT INTO liste_amis (identifiant_1, identifiant_2, statut) VALUES ('Soukéina', 'Edouard', 'accepte');
+INSERT INTO liste_amis (identifiant_1, identifiant_2, statut) VALUES ('Sara', 'Quentin', 'accepte');
 
 -- Table: liste_participants
 DROP TABLE IF EXISTS liste_participants;
 CREATE TABLE liste_participants (identifiant text NOT NULL REFERENCES utilisateur (identifiant), ID_sondage integer NOT NULL REFERENCES sondage (ID_sondage), statut text NOT NULL);
 INSERT INTO liste_participants (identifiant, ID_sondage, statut) VALUES ('floflo', 1, 'en attente');
 INSERT INTO liste_participants (identifiant, ID_sondage, statut) VALUES ('Sara', 1, 'en attente');
-INSERT INTO liste_participants (identifiant, ID_sondage, statut) VALUES ('Soukéina', 2, 'en attente');
-INSERT INTO liste_participants (identifiant, ID_sondage, statut) VALUES ('Quentin', 2, 'a répondu');
-INSERT INTO liste_participants (identifiant, ID_sondage, statut) VALUES ('Edouard', 3, 'a répondu');
+INSERT INTO liste_participants (identifiant, ID_sondage, statut) VALUES ('Soukeina', 2, 'en attente');
+INSERT INTO liste_participants (identifiant, ID_sondage, statut) VALUES ('Quentin', 2, 'a repondu');
+INSERT INTO liste_participants (identifiant, ID_sondage, statut) VALUES ('Edouard', 3, 'a repondu');
 INSERT INTO liste_participants (identifiant, ID_sondage, statut) VALUES ('floflo', 3, 'en attente');
 
 -- Table: question
@@ -87,7 +87,7 @@ INSERT INTO utilisateur (identifiant, mail, nom, prenom, mdp, photo, meilleur_am
 INSERT INTO utilisateur (identifiant, mail, nom, prenom, mdp, photo, meilleur_ami) VALUES ('Quentin', 'quentin.dessain@student.uclouvain.be', 'dessain', 'quentin', '12345', NULL, 'Soukéina');
 INSERT INTO utilisateur (identifiant, mail, nom, prenom, mdp, photo, meilleur_ami) VALUES ('Sara', 'sara.kaczynska@student.uclouvain.be', 'kaczynska', 'sara', 'SaRa33', NULL, 'Quentin');
 INSERT INTO utilisateur (identifiant, mail, nom, prenom, mdp, photo, meilleur_ami) VALUES ('Baptiste', 'baptiste.standaert@student.uclouvain.be', 'standaert', 'baptiste', '123Bap', NULL, 'Edouard');
-INSERT INTO utilisateur (identifiant, mail, nom, prenom, mdp, photo, meilleur_ami) VALUES ('Soukéina', 'soukeina.bojabza@student.uclouvain.be', 'bojabza', 'soukéina', 'Souki17', NULL, 'Sara');
+INSERT INTO utilisateur (identifiant, mail, nom, prenom, mdp, photo, meilleur_ami) VALUES ('Soukeina', 'soukeina.bojabza@student.uclouvain.be', 'bojabza', 'soukeina', 'Souki17', NULL, 'Sara');
 
 COMMIT TRANSACTION;
 PRAGMA foreign_keys = on;

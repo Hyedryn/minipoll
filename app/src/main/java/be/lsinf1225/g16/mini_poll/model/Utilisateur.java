@@ -93,6 +93,7 @@ public class Utilisateur {
         return this.meilleur_ami;
     }
     public ArrayList<Utilisateur> getListAmi(){ return amis;}
+    public ArrayList<Utilisateur> getListDemandeAmi(){ return demandeAmis;}
 
     public Bitmap getPhoto() { return this.photo; }
 
@@ -167,6 +168,15 @@ public class Utilisateur {
         MiniPollApp.saveUser(this);
     }
 
+    public void addDemandeAmi(Utilisateur u) {
+                if(demandeAmis==null)
+                    demandeAmis=new ArrayList<>();
+
+                demandeAmis.add(u);
+
+        MiniPollApp.saveUser(this);
+    }
+
     //retire du tableau demandeAmis, l'utlisareur dont le nom correspond au nom passé en parametre
     public void removeDemandeAmi(String id) {
         if(demandeAmis==null)
@@ -180,6 +190,15 @@ public class Utilisateur {
         MiniPollApp.saveUser(this);
     }
 
+    public void removeDemandeAmi(Utilisateur u) {
+        if(demandeAmis==null)
+            demandeAmis=new ArrayList<>();
+
+                demandeAmis.remove(u);
+
+        MiniPollApp.saveUser(this);
+    }
+
     public void removeAmi(String id) {
         if(amis==null)
             amis=new ArrayList<>();
@@ -189,6 +208,15 @@ public class Utilisateur {
                 break;
             }
         }
+        MiniPollApp.saveUser(this);
+    }
+
+    public void removeAmi(Utilisateur u) {
+        if(amis==null)
+            amis=new ArrayList<>();
+
+        amis.remove(u);
+
         MiniPollApp.saveUser(this);
     }
 

@@ -77,6 +77,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
      */
     @Override
     public void onCreate(SQLiteDatabase db) {
+        deleteDatabase(db);//temporaire
         initDatabase(db);
     }
 

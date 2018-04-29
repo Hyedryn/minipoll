@@ -3,10 +3,13 @@ package be.lsinf1225.g16.mini_poll;
 import android.app.Application;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.util.SparseArray;
 import android.view.Gravity;
 import android.widget.Toast;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -17,10 +20,6 @@ public class MiniPollApp extends Application {
 
 
 
-    private static final String DB_COLUMN_ID = "u_id";
-    private static final String DB_COLUMN_NAME = "u_name";
-    private static final String DB_COLUMN_PASSWORD = "u_password";
-    private static final String DB_TABLE = "users";
 
 //ArrayList comprennant tout les utilisateurs de la database
     public static ArrayList<Utilisateur> utilisateurs = new ArrayList<>();
@@ -125,9 +124,7 @@ public class MiniPollApp extends Application {
      */
 
     public static void loadConnectedUser(){
-        MiniPollApp.connectedUser.addAmi(utilisateurs.get(0));
-        MiniPollApp.connectedUser.addAmi(utilisateurs.get(1));
-        MiniPollApp.connectedUser.addAmi(utilisateurs.get(2));
+
 
         //load sondage of connected user ---->
     }
@@ -136,6 +133,28 @@ public class MiniPollApp extends Application {
     }
 
     public  static void saveUser(Utilisateur u){
+
+        final String DB_COLUMN_ID = "identifiant";
+        final String DB_COLUMN_MAIL = "mail";
+        final String DB_COLUMN_NAME = "nom";
+        final String DB_COLUMN_SURNAME = "prenom";
+        final String DB_COLUMN_PASSWORD = "mdp";
+        final String DB_COLUMN_PHOTO = "photo";
+        final String DB_COLUMN_BEST_FRIEND = "meilleur_ami";
+        final String DB_TABLE = "utilisateur";
+
+
+
+        SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
+    //    Cursor cursor = db.;
+
+
+        Bitmap photo = u.getPhoto();
+        if(photo!=null){
+        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+        photo.compress(Bitmap.CompressFormat.PNG, 100, bos);
+        byte[] bArray = bos.toByteArray();
+        }
 
     }
 
@@ -152,12 +171,21 @@ public class MiniPollApp extends Application {
 
     public static void loadUtilisateurs() {
        // Récupération du  SQLiteHelper et de la base de données.
-    //    SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
+        SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
 
 
-/**
+       final String DB_COLUMN_ID = "identifiant";
+       final String DB_COLUMN_MAIL = "mail";
+       final String DB_COLUMN_NAME = "nom";
+       final String DB_COLUMN_SURNAME = "prenom";
+       final String DB_COLUMN_PASSWORD = "mdp";
+       final String DB_COLUMN_PHOTO = "photo";
+       final String DB_COLUMN_BEST_FRIEND = "meilleur_ami";
+       final String DB_TABLE = "utilisateur";
+
+
         // Colonnes à récupérer
-        String[] colonnes = {DB_COLUMN_ID, DB_COLUMN_NAME, DB_COLUMN_PASSWORD};
+        String[] colonnes = {DB_COLUMN_ID, DB_COLUMN_MAIL, DB_COLUMN_NAME, DB_COLUMN_SURNAME, DB_COLUMN_PASSWORD, DB_COLUMN_PHOTO, DB_COLUMN_BEST_FRIEND};
 
         // Requête de selection (SELECT)
         Cursor cursor = db.query(DB_TABLE, colonnes, null, null, null, null, null);
@@ -177,12 +205,18 @@ public class MiniPollApp extends Application {
             String uPrenom = cursor.getString(3);
             String uPassword = cursor.getString(4);
 
+            byte[] byteArrayPhoto = cursor.getBlob(5);
+
             String uMeilleurAmi = cursor.getString(6);
 
             // Creation d'une instance de l'utilisateur.
-            Utilisateur user =  new Utilisateur(uId, uPassword, uNom, uPrenom, uEmail, uMeilleurAmi);
-
-
+            Utilisateur user;
+            if(byteArrayPhoto==null||byteArrayPhoto.length<10){
+                 user =  new Utilisateur(uId, uPassword, uNom, uPrenom, uEmail, uMeilleurAmi);
+            }else{
+                Bitmap bm = BitmapFactory.decodeByteArray(byteArrayPhoto, 0, byteArrayPhoto.length);
+                user =  new Utilisateur(uId, uPassword, uNom, uPrenom, uEmail, uMeilleurAmi, bm.copy(bm.getConfig(), true));
+            }
             // Ajout de l'utilisateur à la liste.
             users.add(user);
 
@@ -192,9 +226,11 @@ public class MiniPollApp extends Application {
 
         // Fermeture du curseur et de la base de données.
         cursor.close();
-        db.close(); **/
+        db.close();
 
-        ArrayList<Utilisateur> users = new ArrayList<>();
+
+
+        //ajout manuel d'utilisateur en plus
         users.add(new Utilisateur("egio", "mdp", "Desin", "Quen", "quenti4@hotmail.be", ""));
         users.add(new Utilisateur("marc", "mdp", "verfrfrf", "Frfd", "fr@gmx.com", ""));
         users.add(new Utilisateur("nat", "mdp", "Dessa", "Qutin", "quentin124@mail.be", ""));
@@ -202,6 +238,7 @@ public class MiniPollApp extends Application {
         users.add(new Utilisateur("Fred", "mdp", "ver", "Fred", "freddy@gmx.com", ""));
         users.add(new Utilisateur("Peter", "cat", "Van Roy", "Peter", "peter_vanroy@uclouvain.be", "Oz"));
         users.add(new Utilisateur("qdessain", "mdp", "Dessain", "Quentin", "quentin124@hotmail.be", ""));
+
         utilisateurs = users;
 
     }

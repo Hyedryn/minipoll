@@ -9,6 +9,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
         android:gravity="center_horizontal"
         android:orientation="vertical">
 
@@ -27,29 +29,32 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
             android:background="@drawable/textview_border"
+            android:ems="10"
             android:inputType="textPersonName"
             android:text="Entrez la réponse 1" />
+
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
             android:background="@drawable/textview_border"
+            android:ems="10"
             android:inputType="textPersonName"
             android:text="Entrez la réponse 2" />
+
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
             android:background="@drawable/textview_border"
+            android:ems="10"
             android:inputType="textPersonName"
             android:text="Entrez la réponse 3" />
+
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
             android:background="@drawable/textview_border"
+            android:ems="10"
             android:inputType="textPersonName"
             android:text="Entrez la réponse 4" />
 
@@ -63,40 +68,41 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
             android:background="@drawable/textview_border"
+            android:ems="10"
             android:inputType="textPersonName"
             android:text="Entrez la réponse 1" />
+
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
             android:background="@drawable/textview_border"
+            android:ems="10"
             android:inputType="textPersonName"
             android:text="Entrez la réponse 2" />
+
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
             android:background="@drawable/textview_border"
+            android:ems="10"
             android:inputType="textPersonName"
             android:text="Entrez la réponse 3" />
+
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
             android:background="@drawable/textview_border"
+            android:ems="10"
             android:inputType="textPersonName"
             android:text="Entrez la réponse 4" />
-
-
 
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Remplissez les informations relatives au sondage"
             android:gravity="center"
+            android:text="Remplissez les informations relatives au sondage"
             android:textColor="@android:color/white"
             android:textSize="@dimen/slide_title"
             android:textStyle="bold" />

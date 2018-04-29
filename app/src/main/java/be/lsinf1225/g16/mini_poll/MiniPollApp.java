@@ -184,6 +184,7 @@ public class MiniPollApp extends Application {
         // Fermeture du curseur et de la base de données.
         cursor.close();
         db.close(); **/
+    
         ArrayList<Utilisateur> users = new ArrayList<>();
         users.add(new Utilisateur("egio", "mdp", "Desin", "Quen", "quenti4@hotmail.be", ""));
         users.add(new Utilisateur("marc", "mdp", "verfrfrf", "Frfd", "fr@gmx.com", ""));

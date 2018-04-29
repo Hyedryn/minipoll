@@ -15,7 +15,7 @@
         android:icon="@drawable/survey_logo"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
+        android:theme="@style/NoActionBar"
         android:screenOrientation="portrait"
         android:configChanges="orientation|keyboardHidden">
         <activity android:name=".activity.ConnexionActivity">
@@ -31,18 +31,18 @@
         <activity android:name=".activity.ProfileActivity" />
         <activity android:name=".activity.MenuMainActivity" />
         <activity android:name=".activity.MenuSurveyCreationActivity" />
-        <activity android:name=".activity.CreationAgreementActivity" />
-        <activity android:name=".activity.CreationQuestionActivity" />
-        <activity android:name=".activity.CreationChoiceActivity" />
+        <activity android:theme="@style/NoActionBar" android:name=".activity.CreationAgreementActivity" />
+        <activity android:theme="@style/NoActionBar" android:name=".activity.CreationQuestionActivity" />
+        <activity android:theme="@style/NoActionBar" android:name=".activity.CreationChoiceActivity" />
         <activity android:name=".activity.FriendsActivity" />
         <activity android:name=".activity.FriendsAddActivity" />
         <activity android:name=".activity.FriendsListActivity" />
         <activity android:name=".activity.MenuAgreementActivity" />
         <activity android:name=".activity.MenuQuestionActivity" />
         <activity android:name=".activity.MenuChoiceActivity" />
-        <activity android:name=".activity.ReplyAgreementActivity" />
-        <activity android:name=".activity.ReplyQuestionActivity" />
-        <activity android:name=".activity.ReplyChoiceActivity" />
+        <activity android:theme="@style/NoActionBar" android:name=".activity.ReplyAgreementActivity" />
+        <activity android:theme="@style/NoActionBar" android:name=".activity.ReplyQuestionActivity" />
+        <activity android:theme="@style/NoActionBar" android:name=".activity.ReplyChoiceActivity" />
     </application>
 
 </manifest>

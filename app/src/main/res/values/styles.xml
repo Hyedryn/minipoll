@@ -2,6 +2,8 @@
 
     <!-- Base application theme. -->
      <style name="AppTheme" parent="Base.Theme.AppCompat.Light.DarkActionBar">
+         <item name="android:windowActionBar">false</item>
+         <item name="android:windowNoTitle">true</item>
           <!-- Base application theme. -->
 
     <!-- Customize your theme here. -->
@@ -10,6 +12,22 @@
   <!--      <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item> -->
+
+
+
+    </style>
+
+    <style name="NoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <!-- Base application theme. -->
+
+        <!-- Customize your theme here. -->
+
+        <!-- Customize your theme here. -->
+        <!--      <item name="colorPrimary">@color/colorPrimary</item>
+              <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+              <item name="colorAccent">@color/colorAccent</item> -->
 
 
 

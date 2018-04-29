@@ -24,32 +24,30 @@ public class MenuMainActivity extends AppCompatActivity {
 
         for(Utilisateur demandeami : MiniPollApp.connectedUser.getListDemandeAmi()) {
             friendRequest(demandeami);
+            alertDialog.show();
+
         }
 
     }
 
-    private void friendRequest(Utilisateur u){
+    private void friendRequest(final Utilisateur u){
         alertDialog = new AlertDialog.Builder(this).create();
 
-        alertDialog.setTitle("Dialog Button");
+        alertDialog.setTitle("Nouvelle demande d'Ami!!");
 
         alertDialog.setMessage(u.getIdentifiant()+" vous a demandé en ami!");
 
         alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Refuser", new DialogInterface.OnClickListener() {
 
             public void onClick(DialogInterface dialog, int id) {
-
-                //...
                 MiniPollApp.connectedUser.removeDemandeAmi(u);
-
+                return;
             } });
 
         alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "Ignorer", new DialogInterface.OnClickListener() {
 
             public void onClick(DialogInterface dialog, int id) {
-
                 return;
-
             }});
 
         alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "Ajouter", new DialogInterface.OnClickListener() {
@@ -58,8 +56,10 @@ public class MenuMainActivity extends AppCompatActivity {
                 MiniPollApp.connectedUser.removeDemandeAmi(u);
                 MiniPollApp.connectedUser.addAmi(u);
                 u.addAmi(MiniPollApp.connectedUser);
+                return;
             }});
     }
+
     public void friends(View view)
     {
         Intent intent = new Intent(MenuMainActivity.this, FriendsActivity.class);

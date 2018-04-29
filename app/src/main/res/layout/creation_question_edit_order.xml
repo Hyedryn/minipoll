@@ -12,28 +12,31 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:gravity="center_horizontal"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingBottom="4dp">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="136dp"
+            android:background="@color/colorPrimary"
             android:gravity="center"
             android:text="Changez l'ordre des questions si vous le souhaitez"
             android:textColor="@android:color/black"
             android:textSize="@dimen/slide_title"
-            android:textStyle="bold"
-            android:background="@color/colorPrimary"/>
+            android:textStyle="bold" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingBottom="2dp">
 
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_weight="1"
+                android:background="#4d6dbe"
                 android:gravity="center"
                 android:text="Question 1"
                 android:textColor="@android:color/white"
@@ -42,45 +45,54 @@
 
             <ImageButton
                 android:id="@+id/imageButton"
+                style="@android:style/Widget.Material.Light.ImageButton"
                 android:layout_width="150dp"
-                android:layout_height="50dp"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
-                app:srcCompat="@android:drawable/arrow_up_float" />
+                android:tint="@android:color/white"
+                android:background="#4d6dbe"
+                app:srcCompat="@drawable/ic_reorder" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingBottom="2dp">
 
             <TextView
-                android:id="@+id/teuxtView"
+                android:id="@+id/txtView"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="Question 2"
                 android:textColor="@android:color/white"
+                android:background="#4d6dbe"
                 android:textSize="@dimen/slide_title"
                 android:textStyle="bold" />
 
             <ImageButton
-                android:id="@+id/imageButtono"
+                android:id="@+id/iageButton"
+                style="@android:style/Widget.Material.ImageButton"
                 android:layout_width="150dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
-                app:srcCompat="@android:drawable/arrow_up_float" />
+                android:background="#4d6dbe"
+                android:tint="@android:color/white"
+                app:srcCompat="@drawable/ic_reorder" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingBottom="2dp">
 
             <TextView
-                android:id="@+id/textVijew"
+                android:id="@+id/textViw"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_weight="1"
@@ -88,24 +100,29 @@
                 android:text="Question 3"
                 android:textColor="@android:color/white"
                 android:textSize="@dimen/slide_title"
+                android:background="#4d6dbe"
                 android:textStyle="bold" />
 
             <ImageButton
-                android:id="@+id/imageButtonj"
+                android:id="@+id/imageButtn"
+                style="@android:style/Widget.Material.ImageButton"
                 android:layout_width="150dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
-                app:srcCompat="@android:drawable/arrow_up_float" />
+                android:background="#4d6dbe"
+                android:tint="@android:color/white"
+                app:srcCompat="@drawable/ic_reorder" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingBottom="2dp">
 
             <TextView
-                android:id="@+id/textlView"
+                android:id="@+id/extView"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_weight="1"
@@ -113,24 +130,29 @@
                 android:text="Question 4"
                 android:textColor="@android:color/white"
                 android:textSize="@dimen/slide_title"
+                android:background="#4d6dbe"
                 android:textStyle="bold" />
 
             <ImageButton
-                android:id="@+id/imageButtjon"
+                android:id="@+id/mageButton"
+                style="@android:style/Widget.Material.ImageButton"
                 android:layout_width="150dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
-                app:srcCompat="@android:drawable/arrow_up_float" />
+                android:background="#4d6dbe"
+                android:tint="@android:color/white"
+                app:srcCompat="@drawable/ic_reorder" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:paddingBottom="2dp">
 
             <TextView
-                android:id="@+id/texjtView"
+                android:id="@+id/textVie"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_weight="1"
@@ -138,52 +160,20 @@
                 android:text="Question 5"
                 android:textColor="@android:color/white"
                 android:textSize="@dimen/slide_title"
+                android:background="#4d6dbe"
                 android:textStyle="bold" />
 
             <ImageButton
-                android:id="@+id/imageButtokn"
+                android:id="@+id/imageButto"
+                style="@android:style/Widget.Material.ImageButton"
                 android:layout_width="150dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
-                app:srcCompat="@android:drawable/arrow_up_float" />
+                android:background="#4d6dbe"
+                android:tint="@android:color/white"
+                app:srcCompat="@drawable/ic_reorder" />
 
         </LinearLayout>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:orientation="horizontal"
-        android:background="@color/colorPrimary">
-
-
-        <Button
-            android:id="@+id/Annule"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/annule"
-            tools:text="Annule" />
-
-        <ProgressBar
-            android:id="@+id/progressBar"
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:max="100"
-            android:progress="50" />
-
-        <Button
-            android:id="@+id/Next"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/suivant"
-            tools:text="Next" />
 
     </LinearLayout>
 

@@ -55,7 +55,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/txtView"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_weight="1"
@@ -66,7 +66,7 @@
                 android:textStyle="bold" />
 
             <ImageButton
-                android:id="@+id/imageButton"
+                android:id="@+id/iageButton"
                 android:layout_width="150dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
@@ -80,7 +80,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/textViw"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_weight="1"
@@ -91,7 +91,7 @@
                 android:textStyle="bold" />
 
             <ImageButton
-                android:id="@+id/imageButton"
+                android:id="@+id/imageButtn"
                 android:layout_width="150dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
@@ -105,7 +105,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/extView"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_weight="1"
@@ -116,7 +116,7 @@
                 android:textStyle="bold" />
 
             <ImageButton
-                android:id="@+id/imageButton"
+                android:id="@+id/mageButton"
                 android:layout_width="150dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
@@ -130,7 +130,7 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/textVie"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_weight="1"
@@ -141,7 +141,7 @@
                 android:textStyle="bold" />
 
             <ImageButton
-                android:id="@+id/imageButton"
+                android:id="@+id/imageButto"
                 android:layout_width="150dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
@@ -165,7 +165,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/ANNULE"
+            android:text="@string/annule"
             tools:text="Annule" />
 
         <ProgressBar
@@ -182,7 +182,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/NEXT"
+            android:text="@string/suivant"
             tools:text="Next" />
 
     </LinearLayout>

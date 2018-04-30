@@ -3,6 +3,7 @@ package be.lsinf1225.g16.mini_poll;
 import android.app.Application;
 import android.content.ContentValues;
 import android.database.Cursor;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -156,7 +157,7 @@ public class MiniPollApp extends Application {
             String uID_1 = cursor.getString(0);
             String uID_2 = cursor.getString(1);
             String uStatut = cursor.getString(2);
-System.out.println("Status:"+uStatut);
+
             if(uID_1.equals(connectedUser.getIdentifiant())&&uStatut.equals("accepte")){
                 connectedUser.addAmi(uID_2);
             } else if(uID_2.equals(connectedUser.getIdentifiant())&&uStatut.equals("accepte")){
@@ -196,23 +197,38 @@ System.out.println("Status:"+uStatut);
 
         String[] colonnes = {DB_COLUMN_ID, DB_COLUMN_MAIL, DB_COLUMN_NAME, DB_COLUMN_SURNAME, DB_COLUMN_PASSWORD, DB_COLUMN_PHOTO, DB_COLUMN_BEST_FRIEND};
 
-
         SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
-       // Cursor cursor = db.update(DB_TABLE,colonnes, );
 
-
+        ContentValues values = new ContentValues();
+        values.put(DB_COLUMN_MAIL, u.getEmail());
+        values.put(DB_COLUMN_NAME, u.getNom());
+        values.put(DB_COLUMN_SURNAME, u.getPrenom());
+        values.put(DB_COLUMN_PASSWORD, u.getPassword());
         Bitmap photo = u.getPhoto();
         if(photo!=null){
-        ByteArrayOutputStream bos = new ByteArrayOutputStream();
-        photo.compress(Bitmap.CompressFormat.PNG, 100, bos);
-        byte[] bArray = bos.toByteArray();
+            ByteArrayOutputStream bos = new ByteArrayOutputStream();
+            photo.compress(Bitmap.CompressFormat.PNG, 100, bos);
+            byte[] bArray = bos.toByteArray();
+            values.put(DB_COLUMN_PHOTO, bArray);
         }
+
+        values.put(DB_COLUMN_BEST_FRIEND, u.getMeilleurAmi());
+        try{
+            db.update(DB_TABLE, values, "identifiant"+"= "+"'"+u.getIdentifiant()+"'", null);
+        }catch (SQLException e){
+            MiniPollApp.notifyLong(R.string.error_unknown);
+        }
+        db.close();
+    }
+
+    public static void saveUserFriendsList(Utilisateur u){
 
     }
 
+
     public  static void updateID(String id){
         Utilisateur user = new Utilisateur(id, connectedUser.getPassword(), connectedUser.getNom(), connectedUser.getPrenom(), connectedUser.getEmail(), connectedUser.getMeilleurAmi(), connectedUser.getPhoto());
-        saveUser(user);
+       // saveUser(user);
         //editDatabase
         loadUtilisateurs();
         loadConnectedUser();

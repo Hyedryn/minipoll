@@ -1,10 +1,16 @@
 package be.lsinf1225.g16.mini_poll.model;
 
+import android.content.ContentValues;
+import android.database.SQLException;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
 import be.lsinf1225.g16.mini_poll.MiniPollApp;
+import be.lsinf1225.g16.mini_poll.MySQLiteHelper;
+import be.lsinf1225.g16.mini_poll.R;
 
 import static be.lsinf1225.g16.mini_poll.MiniPollApp.connectedUser;
 import static be.lsinf1225.g16.mini_poll.MiniPollApp.utilisateurs;
@@ -169,8 +175,35 @@ public class Utilisateur {
     public void addDemandeAmi(Utilisateur u) {
                 if(demandeAmis==null)
                     demandeAmis=new ArrayList<>();
-
+                if(u.equals(this))
+                    return;
+            for(Utilisateur dami : this.demandeAmis) {
+                //si utilisateur existe l'ajouter
+                if(dami.equals(u)) {
+                    return;
+                }
+            }
                 demandeAmis.add(u);
+
+        final String DB_COLUMN_ID_1 = "identifiant_1";
+        final String DB_COLUMN_ID_2 = "identifiant_2";
+        final String DB_COLUMN_STATUT = "statut";
+        final String DB_TABLE = "liste_amis";
+
+        SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(DB_COLUMN_ID_1, u.getIdentifiant());
+        values.put(DB_COLUMN_ID_2, this.getIdentifiant());
+        values.put(DB_COLUMN_STATUT, "en cours");
+
+        try{
+            db.insert(DB_TABLE, null, values);
+        }catch (SQLException e){
+            MiniPollApp.notifyLong(R.string.error_unknown);
+        }
+
+        db.close();
     }
 
     //retire du tableau demandeAmis, l'utlisareur dont le nom correspond au nom passé en parametre
@@ -179,7 +212,7 @@ public class Utilisateur {
             demandeAmis=new ArrayList<>();
         for(Utilisateur demandeami : demandeAmis) {
             if(demandeami.getIdentifiant().equals(id)) {
-                demandeAmis.remove(demandeami);
+                removeDemandeAmi(demandeami);
                 break;
             }
         }
@@ -189,7 +222,23 @@ public class Utilisateur {
         if(demandeAmis==null)
             demandeAmis=new ArrayList<>();
 
-                demandeAmis.remove(u);
+        demandeAmis.remove(u);
+
+        final String DB_COLUMN_ID_1 = "identifiant_1";
+        final String DB_COLUMN_ID_2 = "identifiant_2";
+        final String DB_COLUMN_STATUT = "statut";
+        final String DB_TABLE = "liste_amis";
+
+        SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
+
+        try{
+            db.delete(DB_TABLE, DB_COLUMN_ID_1+"= '"+u.getIdentifiant()+"' AND "+DB_COLUMN_ID_2+"= '"+this.getIdentifiant()+"' AND "+DB_COLUMN_STATUT+"= 'en cours'",null);
+        }catch (SQLException e){
+            MiniPollApp.notifyLong(R.string.error_unknown);
+        }
+
+        db.close();
+
     }
 
     public void removeAmi(String id) {
@@ -197,7 +246,7 @@ public class Utilisateur {
             amis=new ArrayList<>();
         for(Utilisateur ami : amis) {
             if(ami.getIdentifiant().equals(id)) {
-                amis.remove(ami);
+                removeAmi(ami);
                 break;
             }
         }
@@ -207,9 +256,24 @@ public class Utilisateur {
         if(amis==null)
             amis=new ArrayList<>();
         amis.remove(u);
+
+        final String DB_COLUMN_ID_1 = "identifiant_1";
+        final String DB_COLUMN_ID_2 = "identifiant_2";
+        final String DB_COLUMN_STATUT = "statut";
+        final String DB_TABLE = "liste_amis";
+
+        SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
+
+        try{
+            db.delete(DB_TABLE, DB_COLUMN_ID_1+"= '"+u.getIdentifiant()+"' AND "+DB_COLUMN_ID_2+"= '"+this.getIdentifiant()+"' AND "+DB_COLUMN_STATUT+"= 'accepte'",null);
+        }catch (SQLException e){
+            MiniPollApp.notifyLong(R.string.error_unknown);
+        }
     }
 
     public void addAmi(Utilisateur u) {
+        if(u.equals(this))
+            return;
         if(amis==null)
             amis=new ArrayList<>();
         for(Utilisateur ami : this.amis) {
@@ -220,6 +284,26 @@ public class Utilisateur {
         }
 
         amis.add(u);
+
+        final String DB_COLUMN_ID_1 = "identifiant_1";
+        final String DB_COLUMN_ID_2 = "identifiant_2";
+        final String DB_COLUMN_STATUT = "statut";
+        final String DB_TABLE = "liste_amis";
+
+        SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(DB_COLUMN_ID_1, u.getIdentifiant());
+        values.put(DB_COLUMN_ID_2, this.getIdentifiant());
+        values.put(DB_COLUMN_STATUT, "accepte");
+
+        try{
+            db.insert(DB_TABLE, null, values);
+        }catch (SQLException e){
+            MiniPollApp.notifyLong(R.string.error_unknown);
+        }
+
+        db.close();
     }
 
     public void addAmi(String id) {
@@ -228,7 +312,7 @@ public class Utilisateur {
             if(ami.getIdentifiant().equals(id)) {
                 if(amis==null)
                     amis=new ArrayList<>();
-                amis.add(ami);
+                addAmi(ami);
                 break;
             }
         }
@@ -258,7 +342,7 @@ public class Utilisateur {
         return mdp.equals(this.password);
     }
 
-    public void changeStatut(Utilisateur ut) {
+    public void changeStatut(Utilisateur u) {
 
     }
 

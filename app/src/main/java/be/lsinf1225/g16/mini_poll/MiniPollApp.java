@@ -221,9 +221,7 @@ public class MiniPollApp extends Application {
         db.close();
     }
 
-    public static void saveUserFriendsList(Utilisateur u){
 
-    }
 
 
     public  static void updateID(String id){

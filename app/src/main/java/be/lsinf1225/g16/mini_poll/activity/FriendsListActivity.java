@@ -119,7 +119,6 @@ public class FriendsListActivity extends AppCompatActivity implements GestureDet
             return;
         }
 
-        listamis.get(i).removeAmi(MiniPollApp.connectedUser.getIdentifiant());
         MiniPollApp.connectedUser.removeAmi(listamis.get(i).getIdentifiant());
         list_next(view);
     }
@@ -127,6 +126,7 @@ public class FriendsListActivity extends AppCompatActivity implements GestureDet
 
     @Override
     public void onBackPressed(){
+        MiniPollApp.saveUser(MiniPollApp.connectedUser);
         super.onBackPressed();
         finish();
     }

@@ -8,16 +8,9 @@
 
     <LinearLayout
         android:layout_width="wrap_content"
-<<<<<<< HEAD
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-=======
         android:layout_height="508dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
->>>>>>> 12f7606eb7911e935354b7e39adbc8a123131ead
         android:gravity="center_horizontal"
         android:orientation="vertical"
         android:paddingBottom="4dp">
@@ -31,39 +24,6 @@
             android:textSize="@dimen/slide_title"
             android:textStyle="bold" />
 
-<<<<<<< HEAD
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/textview_border"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Entrez la réponse 1" />
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/textview_border"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Entrez la réponse 2" />
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/textview_border"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Entrez la réponse 3" />
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/textview_border"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Entrez la réponse 4" />
-=======
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -164,7 +124,6 @@
                     android:textColor="@android:color/white"
                     android:textSize="18sp"
                     android:textStyle="bold" />
->>>>>>> 12f7606eb7911e935354b7e39adbc8a123131ead
 
                 <ImageButton
                     android:id="@+id/imageButton"
@@ -215,36 +174,6 @@
         <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-<<<<<<< HEAD
-            android:background="@drawable/textview_border"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Entrez la réponse 1" />
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/textview_border"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Entrez la réponse 2" />
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/textview_border"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Entrez la réponse 3" />
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/textview_border"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Entrez la réponse 4" />
-=======
             android:layout_margin="5dp"
             app:cardBackgroundColor="#4d6dbe"
             app:cardCornerRadius="2dp"
@@ -361,23 +290,12 @@
             app:cardBackgroundColor="@color/dot_dark_screen3"
             app:cardCornerRadius="2dp"
             app:cardElevation="2dp">
->>>>>>> 12f7606eb7911e935354b7e39adbc8a123131ead
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-<<<<<<< HEAD
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Remplissez les informations relatives au sondage"
-            android:textColor="@android:color/white"
-            android:textSize="@dimen/slide_title"
-            android:textStyle="bold" />
-=======
                 <TextView
                     android:id="@+id/textView"
                     android:layout_width="match_parent"
@@ -397,7 +315,6 @@
                     app:srcCompat="@android:drawable/btn_dialog" />
 
             </LinearLayout>
->>>>>>> 12f7606eb7911e935354b7e39adbc8a123131ead
 
         </android.support.v7.widget.CardView>
 

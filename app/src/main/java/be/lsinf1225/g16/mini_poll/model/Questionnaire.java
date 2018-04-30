@@ -66,15 +66,15 @@ public class Questionnaire extends Sondage {
      * sortUtilisateurByScore : trie les utilisateurs selon leur score
      * return : tableau d'utilisateur
      */
-    public Utilisateur[] sortUtilisateurByScore(Sondage sondage){
-        Utilisateur[] copy = sondage.participants;
-        Utilisateur[] ret = new Utilisateur[sondage.participants.length];
-        int[] scoreSorted = sondage.sortScore();
+    public Utilisateur[] sortUtilisateurByScore(Questionnaire questionnaire){
+        Utilisateur[] copy = questionnaire.participants;
+        Utilisateur[] ret = new Utilisateur[questionnaire.participants.length];
+        int[] scoreSorted = questionnaire.sortScore();
         int score;
-        for (int i = 0; i < sondage.participants.length; i++){
+        for (int i = 0; i < questionnaire.participants.length; i++){
             score = scoreSorted[i];
-            for (int j = 0; j < sondage.participants.length ; j++){
-                if(score == sondage.score[j] && copy[j] != null){
+            for (int j = 0; j < questionnaire.participants.length ; j++){
+                if(score == questionnaire.score[j] && copy[j] != null){
                     ret[i] = copy[j];
                     copy[j] = null;
                 }

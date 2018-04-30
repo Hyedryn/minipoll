@@ -5,14 +5,12 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 
-import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
 import be.lsinf1225.g16.mini_poll.MiniPollApp;
 import be.lsinf1225.g16.mini_poll.MySQLiteHelper;
 import be.lsinf1225.g16.mini_poll.R;
 
-import static be.lsinf1225.g16.mini_poll.MiniPollApp.connectedUser;
 import static be.lsinf1225.g16.mini_poll.MiniPollApp.utilisateurs;
 
 public class Utilisateur {
@@ -319,38 +317,9 @@ public class Utilisateur {
     }
 
 
-
-    //a completer
-    /*public boolean isAccepted(Utilisateur ut1, Utilisateur ut2) {
-
-    }*/
-
-    //utilisation des tableaux dynamiques ici?
-    //j'ai changé type de retour de sondage à void
-    //necessite interaction avec base de données pour chercher un sondage avec id correspondant
-
-    /*public void addSondage (int id) {
-
-    }*/
-
-
-    public boolean checkId(String id) {
-            return id.equals(this.identifiant);
-    }
-
     public boolean checkMdp(String mdp) {
         return mdp.equals(this.password);
     }
-
-    public void changeStatut(Utilisateur u) {
-
-    }
-
-
-    public boolean sameMdp(Utilisateur ut) {
-        return this.getPassword().equals(ut.getPassword());
-    }
-
 
     public static boolean utilisateurIsAvailable(String pseudo) {
         for(Utilisateur user : utilisateurs) {

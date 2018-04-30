@@ -7,14 +7,11 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.util.SparseArray;
 import android.view.Gravity;
 import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import be.lsinf1225.g16.mini_poll.model.Utilisateur;
 
@@ -115,10 +112,6 @@ public class MiniPollApp extends Application {
 
     /**
      * INTERACTION AVEC LA BASE DE DONNEE
-     *
-     *
-     *
-     *
      *
      *
      *
@@ -326,17 +319,6 @@ public class MiniPollApp extends Application {
         // Fermeture du curseur et de la base de données.
         cursor.close();
         db.close();
-
-
-
-        //ajout manuel d'utilisateur en plus
-      /**  users.add(new Utilisateur("egio", "mdp", "Desin", "Quen", "quenti4@hotmail.be", ""));
-        users.add(new Utilisateur("marc", "mdp", "verfrfrf", "Frfd", "fr@gmx.com", ""));
-        users.add(new Utilisateur("nat", "mdp", "Dessa", "Qutin", "quentin124@mail.be", ""));
-        users.add(new Utilisateur("pap", "mdp", "ver", "Fred", "freddy@gmx.com", ""));
-        users.add(new Utilisateur("Fred", "mdp", "ver", "Fred", "freddy@gmx.com", ""));
-        users.add(new Utilisateur("Peter", "cat", "Van Roy", "Peter", "peter_vanroy@uclouvain.be", "Oz"));
-        users.add(new Utilisateur("qdessain", "mdp", "Dessain", "Quentin", "quentin124@hotmail.be", ""));**/
 
         utilisateurs = users;
 

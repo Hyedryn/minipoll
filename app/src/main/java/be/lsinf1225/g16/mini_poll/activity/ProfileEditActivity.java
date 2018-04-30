@@ -169,6 +169,10 @@ public class ProfileEditActivity extends AppCompatActivity {
             return;
         }
 
+        if(true){
+            MiniPollApp.notifyShort(R.string.error_not_coded);
+            return;
+        }
         //PHASE CRITIQUE: UPDATE DE l'ID
         MiniPollApp.updateID(id);
         ((Button)findViewById(R.id.mpr_btn_id)).setEnabled(false);

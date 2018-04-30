@@ -36,7 +36,8 @@ public class FriendsAddActivity extends AppCompatActivity implements OnGestureLi
 
         for(Utilisateur u : MiniPollApp.utilisateurs){
             if(MiniPollApp.connectedUser.getAmi(u.getIdentifiant())==null&&!u.equals(MiniPollApp.connectedUser)){
-                notfriends.add(u);
+                if(u.getListDemandeAmi()==null||!u.getListDemandeAmi().contains(MiniPollApp.connectedUser))
+                    notfriends.add(u);
             }
         }
 
@@ -53,6 +54,7 @@ public class FriendsAddActivity extends AppCompatActivity implements OnGestureLi
             ((TextView)findViewById(R.id.add_id_inf)).setVisibility(View.INVISIBLE);
             ((TextView)findViewById(R.id.add_email_inf)).setVisibility(View.INVISIBLE);
             ((ImageButton)findViewById(R.id.add_ok_btn)).setVisibility(View.INVISIBLE);
+            ((ImageView)findViewById(R.id.add_profil_img)).setVisibility(View.INVISIBLE);
             ((TextView)findViewById(R.id.add_ajouter_txt)).setText(R.string.error_no_available_friend);
             ((TextView)findViewById(R.id.add_ajouter_txt)).setTextSize(12);
             return;

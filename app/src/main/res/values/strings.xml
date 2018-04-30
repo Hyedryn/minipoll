@@ -14,6 +14,7 @@
     <string name="error_invalid_password">Le mot de passe est invalide</string>
     <string name="error_invalid_char">Certains caractères ne sont pas autorisés</string>
     <string name="error_incorrect_credential">Le mot de passe ou l\'identifiant est incorrect.</string>
+    <string name="error_unknown">Erreur inconnue.</string>
     <string name="error_field_required">Tout les champs requis n\'ont pas été complété</string>
     <string name="error_no_available_friend">Aucune proposition n\'est disponible</string>
     <string name="permission_rationale">"Contacts permissions are needed for providing email
@@ -76,6 +77,7 @@
     <string name="modifier_le_mot_de_passe">Modifier le mot de passe</string>
     <string name="enregistrer_les_modifications">Enregistrer les modifications</string>
     <string name="id_modify">L\'id a été modifé avec succès!</string>
+    <string name="error_not_coded">Fonctionnalité non disponible pour le moment</string>
     <string name="mdp_modify">Le mot de passe a été modifé avec succès!</string>
 
 

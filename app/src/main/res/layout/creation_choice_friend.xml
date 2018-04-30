@@ -31,7 +31,7 @@
 
             <TextView
                 android:id="@+id/textView"
-                android:layout_width="699dp"
+                android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -42,9 +42,8 @@
 
             <CheckBox
                 android:id="@+id/checkBox2"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1" />
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent" />
 
         </LinearLayout>
 
@@ -67,9 +66,8 @@
 
             <CheckBox
                 android:id="@+id/checkjBox2"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1" />
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent" />
 
         </LinearLayout>
 
@@ -81,7 +79,7 @@
 
             <TextView
                 android:id="@+id/thextView"
-                android:layout_width="699dp"
+                android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -92,9 +90,8 @@
 
             <CheckBox
                 android:id="@+id/checkdBox2"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1" />
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent" />
 
         </LinearLayout>
 
@@ -106,7 +103,7 @@
 
             <TextView
                 android:id="@+id/texatView"
-                android:layout_width="699dp"
+                android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -117,9 +114,8 @@
 
             <CheckBox
                 android:id="@+id/checkBoox2"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1" />
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent" />
 
         </LinearLayout>
 
@@ -131,7 +127,7 @@
 
             <TextView
                 android:id="@+id/textVpiew"
-                android:layout_width="699dp"
+                android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -142,9 +138,8 @@
 
             <CheckBox
                 android:id="@+id/checkkBox2"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1" />
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent" />
 
         </LinearLayout>
 

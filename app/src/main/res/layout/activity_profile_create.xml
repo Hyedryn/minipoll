@@ -12,19 +12,20 @@
     android:background="@drawable/app_background"
     android:orientation="vertical" >
 
+
     <RelativeLayout
-        android:layout_weight="1.25"
         android:layout_width="match_parent"
-        android:layout_height="0dp">
+        android:layout_height="0dp"
+        android:layout_weight="1.25">
 
         <ImageView
             android:id="@+id/cr_imgView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/default_profile_picture"
-            android:scaleType="fitXY"
             android:contentDescription="@string/main_image"
-            android:padding="1dp"/>
+            android:padding="1dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/default_profile_picture" />
 
         <ImageView
             android:layout_width="match_parent"
@@ -43,13 +44,13 @@
             android:adjustViewBounds="false"
             android:background="@drawable/editor_state"
             android:clickable="true"
-            android:onClick="setpp"
             android:contentDescription="@string/image"
             android:cropToPadding="false"
+            android:focusable="true"
+            android:onClick="setpp"
             android:padding="4dp"
             android:scaleType="fitXY"
-            android:src="@drawable/edit_pen"
-            android:focusable="true" />
+            android:src="@drawable/edit_pen" />
 
     </RelativeLayout>
 
@@ -58,7 +59,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:layout_weight="0.75"
+        android:layout_weight="0.7"
         android:orientation="vertical"
         android:weightSum="4">
 
@@ -71,11 +72,11 @@
             android:background="@drawable/textview_border"
             android:gravity="center_vertical"
             android:hint="@string/nom"
+            android:inputType="textPersonName"
             android:paddingBottom="8dp"
             android:paddingStart="6dp"
             android:paddingTop="6dp"
-            android:textSize="18sp"
-            android:inputType="textPersonName" />
+            android:textSize="18sp" />
 
         <EditText
             android:id="@+id/cr_prenom"
@@ -85,11 +86,11 @@
             android:background="@drawable/textview_border"
             android:gravity="center_vertical"
             android:hint="@string/prenom"
+            android:inputType="text"
             android:paddingBottom="8dp"
             android:paddingStart="6dp"
             android:paddingTop="6dp"
-            android:textSize="18sp"
-            android:inputType="text" />
+            android:textSize="18sp" />
 
         <EditText
             android:id="@+id/cr_email"
@@ -99,11 +100,11 @@
             android:background="@drawable/textview_border"
             android:gravity="center_vertical"
             android:hint="@string/adresse_mail"
+            android:inputType="textEmailAddress"
             android:paddingBottom="8dp"
             android:paddingStart="6dp"
             android:paddingTop="6dp"
-            android:textSize="18sp"
-            android:inputType="textEmailAddress" />
+            android:textSize="18sp" />
 
         <Button
             android:id="@+id/button2"

@@ -10,7 +10,7 @@
     android:paddingLeft="0dp"
     android:paddingRight="0dp"
     android:paddingTop="0dp"
-    android:background="@drawable/app_background"
+    android:background="@drawable/minimalbackground"
     android:weightSum="90"
     tools:context="be.lsinf1225.g16.mini_poll.activity.FriendsListActivity">
 

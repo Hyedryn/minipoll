@@ -40,7 +40,7 @@ public class CreationChoiceActivity extends AppCompatActivity {
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
         }
 
-        setContentView(R.layout.activity_creation_agreement);
+        setContentView(R.layout.activity_creation_choice);
 
         viewPager = (ViewPager) findViewById(R.id.view_pager);
         dotsLayout = (LinearLayout) findViewById(R.id.layoutDots);
@@ -51,11 +51,11 @@ public class CreationChoiceActivity extends AppCompatActivity {
         // layouts of all welcome sliders
         // add few more layouts if you want
         layouts = new int[]{
-                R.layout.creation_agreement_friends_list,
-                R.layout.creation_agreement_total_choice,
-                R.layout.creation_agreement_fill_choice,
-                R.layout.creation_agreement_preview,
-                R.layout.creation_agreement_send};
+                R.layout.creation_choice_friend,
+                R.layout.creation_choice_format,
+                R.layout.creation_choice_fill_choice,
+                R.layout.creation_choice_preview,
+                R.layout.creation_choice_send};
 
         // adding bottom dots
         addBottomDots(0);

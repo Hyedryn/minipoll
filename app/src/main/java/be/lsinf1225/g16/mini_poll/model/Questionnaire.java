@@ -74,7 +74,7 @@ public class Questionnaire extends Sondage {
         for (int i = 0; i < sondage.participants.length; i++){
             score = scoreSorted[i];
             for (int j = 0; j < sondage.participants.length ; j++){
-                if(score == sondage.score[j]){
+                if(score == sondage.score[j] && copy[j] != null){
                     ret[i] = copy[j];
                     copy[j] = null;
                 }

@@ -21,9 +21,6 @@ import be.lsinf1225.g16.mini_poll.MySQLiteHelper;
 import be.lsinf1225.g16.mini_poll.R;
 import be.lsinf1225.g16.mini_poll.model.Utilisateur;
 
-import static be.lsinf1225.g16.mini_poll.MiniPollApp.connectedUser;
-import static be.lsinf1225.g16.mini_poll.MiniPollApp.loadFriendOfConnectedUser;
-import static be.lsinf1225.g16.mini_poll.MiniPollApp.utilisateurs;
 
 public class ConnexionActivity extends AppCompatActivity implements TextView.OnEditorActionListener {
 
@@ -59,42 +56,35 @@ public class ConnexionActivity extends AppCompatActivity implements TextView.OnE
 
     public void login(View view)
     {
-        AutoCompleteTextView userEditText = (AutoCompleteTextView) findViewById(R.id.email);
+        AutoCompleteTextView userEditText = (AutoCompleteTextView) findViewById(R.id.login_id);
         EditText passwordEditText = (EditText) findViewById(R.id.login_pwd);
         String password = passwordEditText.getText().toString();
-        String email = userEditText.getText().toString();
-        System.out.println(email + password+"\n");
-        System.out.println(utilisateurs.size());
-        //test si l'utilisateur est dans la bdd et si le mdp est ok
-        //pas opti :/
-        for(Utilisateur user : utilisateurs) {
-            System.out.println(user.getEmail());
-            if(user.getEmail().equals(email)) {
-                System.out.println("mailok");
-                if(user.checkMdp(password)){
-                    System.out.println("mdpok");
-                    be.lsinf1225.g16.mini_poll.MiniPollApp.connectedUser = user;
-                    be.lsinf1225.g16.mini_poll.MiniPollApp.loadFriendOfConnectedUser();
+        String id = userEditText.getText().toString();
 
-                    Intent intent = new Intent(ConnexionActivity.this, MenuMainActivity.class);
-                    startActivity(intent);
-                    finish();
+        for(Utilisateur user : MiniPollApp.utilisateurs) {
 
-                }else{
+            if(user.getIdentifiant().equals(id)) {
+
+                if(!user.checkMdp(password)) {
                     MiniPollApp.notifyShort(R.string.error_invalid_password);
                     passwordEditText.setText("");
+                    return;
                 }
 
-            }else{
-                MiniPollApp.notifyShort(R.string.error_invalid_email);
-                findViewById(R.id.wrongcredential).setVisibility(View.VISIBLE);
+                MiniPollApp.connectedUser = user;
+                MiniPollApp.loadConnectedUser();
+
+                Intent intent = new Intent(ConnexionActivity.this, MenuMainActivity.class);
+                startActivity(intent);
+                finish();
+                return;
+
             }
         }
 
+        MiniPollApp.notifyShort(R.string.error_invalid_id);
+
     }
-
-
-
 
     /**
      * Récupère les actions faites depuis le clavier.

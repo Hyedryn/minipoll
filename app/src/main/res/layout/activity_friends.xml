@@ -41,10 +41,10 @@
             android:layout_weight="18"
             android:background="#a5d8ff"
             android:clickable="false"
+            android:contentDescription="@string/consulter_la_liste_amis"
             android:padding="10dp"
             android:scaleType="fitCenter"
-            app:srcCompat="@drawable/friends_list_icon"
-            android:contentDescription="@string/consulter_la_liste_amis" />
+            app:srcCompat="@drawable/friends_list_icon" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -76,20 +76,22 @@
             android:layout_weight="17"
             android:background="#1971c2"
             android:clickable="false"
+            android:contentDescription="@string/ajouter_un_amis"
             android:padding="10dp"
             android:scaleType="fitCenter"
-            app:srcCompat="@drawable/friends_add_icon"
-            android:contentDescription="@string/ajouter_un_amis" />
+            android:tint="#ffffff"
+            app:srcCompat="@drawable/friends_add_icon" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:layout_weight="3"
             android:layout_gravity="center"
-            android:clickable="false"
+            android:layout_weight="3"
             android:background="#1971c2"
+            android:clickable="false"
+            android:text="@string/ajouter_un_amis"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:text="@string/ajouter_un_amis"></TextView>
+            android:textColor="#ffffff"></TextView>
 
     </LinearLayout>
 </LinearLayout>

@@ -1,6 +1,19 @@
 package be.lsinf1225.g16.mini_poll.model;
 
-import android.util.SparseArray;
+import android.content.ContentValues;
+import android.database.SQLException;
+import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+
+import java.io.ByteArrayOutputStream;
+import java.util.ArrayList;
+
+import be.lsinf1225.g16.mini_poll.MiniPollApp;
+import be.lsinf1225.g16.mini_poll.MySQLiteHelper;
+import be.lsinf1225.g16.mini_poll.R;
+
+import static be.lsinf1225.g16.mini_poll.MiniPollApp.connectedUser;
+import static be.lsinf1225.g16.mini_poll.MiniPollApp.utilisateurs;
 
 public class Utilisateur {
 
@@ -27,33 +40,46 @@ public class Utilisateur {
 
     private String meilleur_ami;
 
-    private Sondage[] sondages;
+    private ArrayList<Sondage> sondages;
 
-    private Utilisateur[] amis;
+    private ArrayList<Utilisateur> amis;
 
-    private Utilisateur[] demandeAmis;
+    private ArrayList<Utilisateur> demandeAmis;
 
-    //private File photo;
+    private Bitmap photo;
 
+
+    /**
+     * Constructeur de Utilisateur
+     */
+
+    public Utilisateur(String uId, String uPassword, String uNom, String uPrenom, String uEmail, String uMeilleurAmi, Bitmap photo) {
+        this(uId, uPassword, uNom, uPrenom, uEmail, uMeilleurAmi);
+        this.photo = photo;
+    }
 
     public Utilisateur(String uId, String uPassword, String uNom, String uPrenom, String uEmail, String uMeilleurAmi) {
-
-        this.identifiant = uId;
-        this.nom = uNom;
-        this.password = uPassword;
+        this(uId, uPassword, uNom);
         this.prenom = uPrenom;
         this.email = uEmail;
         this.meilleur_ami = uMeilleurAmi;
     }
 
-    public Utilisateur(String uId, String uPassword, String uNom) {
+    public Utilisateur(String uId, String uPassword) {
+        this.identifiant=uId;
+        this.password=uPassword;
+    }
 
+    public Utilisateur(String uId, String uPassword, String uNom) {
         this.identifiant=uId;
         this.password=uPassword;
         this.nom=uNom;
     }
 
-    //Methodes get //
+
+    /*
+    *  getter
+     */
     public String getIdentifiant() {
         return this.identifiant;
     }
@@ -69,8 +95,39 @@ public class Utilisateur {
     public String getEmail() {
         return this.email;
     }
+    public String getMeilleurAmi() {
+        return this.meilleur_ami;
+    }
+    public ArrayList<Utilisateur> getListAmi(){ return amis;}
+    public ArrayList<Utilisateur> getListDemandeAmi(){ return demandeAmis;}
 
-    //Methodes set//
+    public Bitmap getPhoto() { return this.photo; }
+
+    //retourne un objet de type Utilisateur de l'ami dans la liste d'amis dont le nom correspond au nom passé en parametre
+    public Utilisateur getAmi(String id) {
+        if(this.amis==null)
+            return null;
+
+        for(Utilisateur ami : this.amis) {
+            if(ami.getIdentifiant().equals(id)) {
+                return ami;
+            }
+        }
+        return null; //si ami n'existe pas dans la liste des amis, retourne null, est ce qu'il faut retourner autre chose?? provoque null pointer exception
+    }
+
+    //retourne le sondage dont la question correspond au string passé en parametre
+    public Sondage getSondage(int id) {
+        for(Sondage sondage : sondages) {
+            if(sondage.getSondageId()==id)
+                return sondage;
+        }
+        return null; //si pas trouvé dans la liste des sondages retourne null
+    }
+
+    /**
+     * Setter
+     */
 
     //pas de methode set pour identifiant parce que c'est un final int, ca sera un static augmente a chaque fois qu'on ajoute un utilisateur?
     public void setPassword(String password) {
@@ -85,65 +142,183 @@ public class Utilisateur {
     public void setEmail(String email){
         this.email=email;
     }
-
-    //retourne un objet de type Utilisateur de l'ami dans la liste d'amis dont le nom correspond au nom passé en parametre
-    public Utilisateur getAmi(String nom) {
-        for(int i=0;i<this.amis.length;i++) {
-            if(this.amis[i].getNom().equals(nom)==true) {
-                System.out.println("Ami trouvé");
-                System.out.println(this.amis[i].getNom().toString());
-                return this.amis[i];
-            }
-
-        }
-        return null; //si ami n'existe pas dans la liste des amis, retourne null, est ce qu'il faut retourner autre chose?? provoque null pointer exception
-        //il faudrait utiliser un try catch ?
+    public void setPhoto(Bitmap photo){
+        this.photo=photo;
     }
 
-    //retourne le sondage dont la question correspond au string passé en parametre
+    //met la variable meilleurAmi à l'utilisateur (se trouvant deja dans la liste d'amis) dont l'id correspond au string passe en param
+    public void setMeilleurAmi(String id) {
 
-    public Sondage getSondage(final int id) {
-        for(int i=0;i<this.sondages.length;i++) {
-            if(this.sondages[i].getSondageId()==id) {
-                return this.sondages[i];
-            }
-        }
-        return null; //si pas trouvé dans la liste des sondages retourne null
-    }
-
-    //ajoute au tableau demandeAmis l'utilisateur dans la base de données dont le nom correspond au nom passé en parametre
-    //NECESSITE INTERACTION AVEC BDD
-    public void addDemandeAmi(String nom) {
-
-    }
-    //retire du tableau demandeAmis, l'utlisareur dont le nom correspond au nom passé en parametre
-    public void removeDemandeAmi(String nom) {
-        for(int i=0;i<this.demandeAmis.length;i++) {
-            if(this.demandeAmis[i]!=null && this.demandeAmis[i].getNom().equals(nom)) {
-                this.demandeAmis[i]=null;
-                System.out.println("Demande supprimée");
+        for(Utilisateur ami : amis) {
+            if(ami.getIdentifiant().equals(id)) {
+                this.meilleur_ami=ami.getIdentifiant();
                 break;
             }
         }
-
     }
 
-    //met la variable meilleurAmi à l'utilisateur (se trouvant deja dans la liste d'amis) dont le nom correspond au string passe en param
-    public void setMeilleurAmi(String nom) {
 
-        if((this.meilleur_ami!=null && this.meilleur_ami.equals(nom))==true) {
-            System.out.println("Cet utilisateur est déjà votre meilleur ami");
-        }else {
-            for(int i=0;i<this.amis.length;i++) {
-                if(this.amis[i]!=null && this.amis[i].getNom().equals(nom)==true) {
-                    this.meilleur_ami=this.amis[i].getNom();
-                    System.out.print("Meilleur ami changé à : ");
-                    System.out.println(this.amis[i].getNom());
-                    break;
-                }
+    //ajoute au tableau demandeAmis l'utilisateur dans la base de données dont le nom correspond au nom passé en parametre
+    //NECESSITE INTERACTION AVEC BDD
+    public void addDemandeAmi(String id) {
+        for(Utilisateur demandeami : MiniPollApp.utilisateurs) {
+            //si utilisateur existe l'ajouter
+            if(demandeami.getIdentifiant().equals(id)) {
+                if(demandeAmis==null)
+                    demandeAmis=new ArrayList<>();
+                demandeAmis.add(demandeami);
+                break;
             }
         }
     }
+
+    public void addDemandeAmi(Utilisateur u) {
+                if(demandeAmis==null)
+                    demandeAmis=new ArrayList<>();
+                if(u.equals(this))
+                    return;
+            for(Utilisateur dami : this.demandeAmis) {
+                //si utilisateur existe l'ajouter
+                if(dami.equals(u)) {
+                    return;
+                }
+            }
+                demandeAmis.add(u);
+
+        final String DB_COLUMN_ID_1 = "identifiant_1";
+        final String DB_COLUMN_ID_2 = "identifiant_2";
+        final String DB_COLUMN_STATUT = "statut";
+        final String DB_TABLE = "liste_amis";
+
+        SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(DB_COLUMN_ID_1, u.getIdentifiant());
+        values.put(DB_COLUMN_ID_2, this.getIdentifiant());
+        values.put(DB_COLUMN_STATUT, "en cours");
+
+        try{
+            db.insert(DB_TABLE, null, values);
+        }catch (SQLException e){
+            MiniPollApp.notifyLong(R.string.error_unknown);
+        }
+
+        db.close();
+    }
+
+    //retire du tableau demandeAmis, l'utlisareur dont le nom correspond au nom passé en parametre
+    public void removeDemandeAmi(String id) {
+        if(demandeAmis==null)
+            demandeAmis=new ArrayList<>();
+        for(Utilisateur demandeami : demandeAmis) {
+            if(demandeami.getIdentifiant().equals(id)) {
+                removeDemandeAmi(demandeami);
+                break;
+            }
+        }
+    }
+
+    public void removeDemandeAmi(Utilisateur u) {
+        if(demandeAmis==null)
+            demandeAmis=new ArrayList<>();
+
+        demandeAmis.remove(u);
+
+        final String DB_COLUMN_ID_1 = "identifiant_1";
+        final String DB_COLUMN_ID_2 = "identifiant_2";
+        final String DB_COLUMN_STATUT = "statut";
+        final String DB_TABLE = "liste_amis";
+
+        SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
+
+        try{
+            db.delete(DB_TABLE, DB_COLUMN_ID_1+"= '"+u.getIdentifiant()+"' AND "+DB_COLUMN_ID_2+"= '"+this.getIdentifiant()+"' AND "+DB_COLUMN_STATUT+"= 'en cours'",null);
+        }catch (SQLException e){
+            MiniPollApp.notifyLong(R.string.error_unknown);
+        }
+
+        db.close();
+
+    }
+
+    public void removeAmi(String id) {
+        if(amis==null)
+            amis=new ArrayList<>();
+        for(Utilisateur ami : amis) {
+            if(ami.getIdentifiant().equals(id)) {
+                removeAmi(ami);
+                break;
+            }
+        }
+    }
+
+    public void removeAmi(Utilisateur u) {
+        if(amis==null)
+            amis=new ArrayList<>();
+        amis.remove(u);
+
+        final String DB_COLUMN_ID_1 = "identifiant_1";
+        final String DB_COLUMN_ID_2 = "identifiant_2";
+        final String DB_COLUMN_STATUT = "statut";
+        final String DB_TABLE = "liste_amis";
+
+        SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
+
+        try{
+            db.delete(DB_TABLE, DB_COLUMN_ID_1+"= '"+u.getIdentifiant()+"' AND "+DB_COLUMN_ID_2+"= '"+this.getIdentifiant()+"' AND "+DB_COLUMN_STATUT+"= 'accepte'",null);
+        }catch (SQLException e){
+            MiniPollApp.notifyLong(R.string.error_unknown);
+        }
+    }
+
+    public void addAmi(Utilisateur u) {
+        if(u.equals(this))
+            return;
+        if(amis==null)
+            amis=new ArrayList<>();
+        for(Utilisateur ami : this.amis) {
+            //si utilisateur existe l'ajouter
+            if(ami.equals(u)) {
+                return;
+            }
+        }
+
+        amis.add(u);
+
+        final String DB_COLUMN_ID_1 = "identifiant_1";
+        final String DB_COLUMN_ID_2 = "identifiant_2";
+        final String DB_COLUMN_STATUT = "statut";
+        final String DB_TABLE = "liste_amis";
+
+        SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(DB_COLUMN_ID_1, u.getIdentifiant());
+        values.put(DB_COLUMN_ID_2, this.getIdentifiant());
+        values.put(DB_COLUMN_STATUT, "accepte");
+
+        try{
+            db.insert(DB_TABLE, null, values);
+        }catch (SQLException e){
+            MiniPollApp.notifyLong(R.string.error_unknown);
+        }
+
+        db.close();
+    }
+
+    public void addAmi(String id) {
+        for(Utilisateur ami : MiniPollApp.utilisateurs) {
+            //si utilisateur existe l'ajouter
+            if(ami.getIdentifiant().equals(id)) {
+                if(amis==null)
+                    amis=new ArrayList<>();
+                addAmi(ami);
+                break;
+            }
+        }
+    }
+
+
 
     //a completer
     /*public boolean isAccepted(Utilisateur ut1, Utilisateur ut2) {
@@ -160,48 +335,32 @@ public class Utilisateur {
 
 
     public boolean checkId(String id) {
-        try {
-
-            if(id.equals(this.identifiant)) {
-                return true;
-            }else {
-                return false;
-            }
-        }catch(NumberFormatException e) {
-            System.out.println("L'identifiant donné n'est pas valide");
-            return false;
-        }
-
-
+            return id.equals(this.identifiant);
     }
 
     public boolean checkMdp(String mdp) {
         return mdp.equals(this.password);
     }
-    //a completer
-    public void changeStatut(Utilisateur ut) {
+
+    public void changeStatut(Utilisateur u) {
 
     }
 
 
     public boolean sameMdp(Utilisateur ut) {
-        if(this.getPassword().equals(ut.getPassword())==true) {
-            return true;
-        }else {
-            return false;
+        return this.getPassword().equals(ut.getPassword());
+    }
+
+
+    public static boolean utilisateurIsAvailable(String pseudo) {
+        for(Utilisateur user : utilisateurs) {
+            if(user.getIdentifiant().equals(pseudo)){
+                return false;
+            }
         }
+        return true;
     }
 
-    //NECESSITE INTERACTION AVEC BDD
-    /*public boolean UtilisateurisAvailable(String nom) {
 
-    }*/
 
-    public String getID(Utilisateur ut) {
-        return ut.getIdentifiant();
-    }
-
-    public String getMdp(Utilisateur ut) {
-        return ut.getPassword();
-    }
 }

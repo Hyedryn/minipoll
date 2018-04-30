@@ -6,12 +6,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:gravity="center_horizontal"
     android:orientation="vertical"
-    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingBottom="1dp"
     android:paddingLeft="0dp"
     android:paddingRight="0dp"
     android:paddingTop="0dp"
     android:background="@drawable/app_background"
-    android:weightSum="80"
+    android:weightSum="92"
     tools:context="be.lsinf1225.g16.mini_poll.activity.FriendsAddActivity">
 
 
@@ -22,10 +22,10 @@
         android:padding="0dp">
 
         <ImageButton
-            android:id="@+id/ok_btn"
+            android:id="@+id/add_ok_btn"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-
+            android:onClick="add_ok"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:adjustViewBounds="true"
@@ -36,11 +36,11 @@
             android:contentDescription="@string/ok" />
 
         <TextView
-            android:id="@+id/ajouter_btn"
+            android:id="@+id/add_ajouter_txt"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_alignParentTop="true"
-            android:layout_toEndOf="@+id/ok_btn"
+            android:layout_toEndOf="@+id/add_ok_btn"
 
             android:background="@android:color/white"
             android:gravity="center"
@@ -54,7 +54,7 @@
     </RelativeLayout>
 
     <ImageView
-        android:id="@+id/profil_img"
+        android:id="@+id/add_profil_img"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_margin="5dp"
@@ -64,25 +64,78 @@
         android:contentDescription="@string/profil" />
 
     <TextView
-        android:id="@+id/name_inf"
+        android:id="@+id/add_id_inf"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="5"
         android:background="@drawable/textview_border"
-        android:text="@string/nom_name"
-        android:textAlignment="center"
+        android:paddingStart="26dp"
+        android:text="@string/identifiant_id"
+        android:textAlignment="viewStart"
         android:textColor="@android:color/black"
         android:textSize="18sp" />
+
     <TextView
-        android:id="@+id/surname_inf"
+        android:id="@+id/add_name_inf"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="5"
         android:background="@drawable/textview_border"
-        android:text="@string/prenom_prenom"
-        android:textAlignment="center"
+        android:paddingStart="26dp"
+        android:text="@string/nom_name"
+        android:textAlignment="viewStart"
         android:textColor="@android:color/black"
         android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/add_email_inf"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5"
+        android:background="@drawable/textview_border"
+        android:paddingStart="26dp"
+        android:text="Email :email"
+        android:textAlignment="viewStart"
+        android:textColor="@android:color/black"
+        android:textSize="18sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="0dp"
+        android:layout_weight="7"
+        android:orientation="horizontal"
+        android:padding="0dp">
+
+
+        <ImageButton
+            android:id="@+id/add_next_btn"
+            style="@android:style/Widget.Holo.ImageButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_margin="0dp"
+            android:layout_weight="50"
+            android:contentDescription="@string/annule"
+            android:onClick="add_next"
+            android:scaleType="fitStart"
+            app:srcCompat="@drawable/left_arrow" />
+
+        <ImageButton
+            android:id="@+id/add_previous_btn"
+            style="@android:style/Widget.Holo.ImageButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="50"
+            android:onClick="add_previous"
+            android:contentDescription="@string/annule"
+            android:scaleType="fitEnd"
+            app:srcCompat="@drawable/right_arrow" />
+
+
+    </LinearLayout>
+
+
 
 
 </LinearLayout>

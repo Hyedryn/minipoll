@@ -9,10 +9,14 @@
     <string name="action_sign_in">Se connecter</string>
     <string name="action_sign_in_short">Login</string>
     <string name="error_invalid_email">L\'adresse mail est invalide</string>
-    <string name="error_incorrect_password">This password is incorrect</string>
-    <string name="error_invalid_password">Les mots de passe ne correspondent pas ou le mot de passe est invalide</string>
+    <string name="error_invalid_id">L\'identifiant est invalide</string>
+    <string name="error_notmatching_password">Les mots de passe ne correspondent pas.</string>
+    <string name="error_invalid_password">Le mot de passe est invalide</string>
+    <string name="error_invalid_char">Certains caractères ne sont pas autorisés</string>
     <string name="error_incorrect_credential">Le mot de passe ou l\'identifiant est incorrect.</string>
-    <string name="error_field_required">This field is required</string>
+    <string name="error_unknown">Erreur inconnue.</string>
+    <string name="error_field_required">Tout les champs requis n\'ont pas été complété</string>
+    <string name="error_no_available_friend">Aucune proposition n\'est disponible</string>
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
@@ -67,6 +71,14 @@
     <string name="nom">Nom</string>
     <string name="main_image">Main Image</string>
     <string name="image_border">Image Border</string>
+    <string name="error_id_already_exist">L\'identifiant utilisé existe déjà.</string>
+    <string name="error_string_too_long">Certains champ sont trop long.</string>
+    <string name="confirmer_le_mot_de_passe">Confirmer le mot de passe</string>
+    <string name="modifier_le_mot_de_passe">Modifier le mot de passe</string>
+    <string name="enregistrer_les_modifications">Enregistrer les modifications</string>
+    <string name="id_modify">L\'id a été modifé avec succès!</string>
+    <string name="error_not_coded">Fonctionnalité non disponible pour le moment</string>
+    <string name="mdp_modify">Le mot de passe a été modifé avec succès!</string>
 
 
 </resources>

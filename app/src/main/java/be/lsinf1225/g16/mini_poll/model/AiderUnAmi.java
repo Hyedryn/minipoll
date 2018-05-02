@@ -4,20 +4,22 @@ public class AiderUnAmi extends Sondage {
 
     private Reponse resultat;
 
-    public AiderUnAmi(Utilisateur createur, Utilisateur[] participants, int sondageId, Question[] questions, Type t, Choix[] choix) {
+    public AiderUnAmi(Utilisateur createur, Arraylist<Utilisateur> participants, int sondageId, Question[] questions, Type t, Choix[] choix) {
         super(createur, participants, sondageId, questions, t, choix);
     }
+
+    //get et set hérités de sondage
 
     public Reponse getChoix(Choix x) {
         return x.getReponse();
     }
 
-    public void setResult(Reponse reponse) {
-        this.resultat = reponse;
-    }
-
     public Reponse getResult() {
         return this.resultat;
+    }
+
+        public void setResult(Reponse reponse) {
+        this.resultat = reponse;
     }
 
 //pour determiner si le participant a deja repondu a la question on regarde la valeur de resultat, si null: pas repondu

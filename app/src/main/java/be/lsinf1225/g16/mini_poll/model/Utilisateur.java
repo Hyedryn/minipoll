@@ -156,8 +156,6 @@ public class Utilisateur {
     }
 
 
-    //ajoute au tableau demandeAmis l'utilisateur dans la base de données dont le nom correspond au nom passé en parametre
-    //NECESSITE INTERACTION AVEC BDD
     public void addDemandeAmi(String id) {
         for(Utilisateur demandeami : MiniPollApp.utilisateurs) {
             //si utilisateur existe l'ajouter
@@ -329,7 +327,14 @@ public class Utilisateur {
         }
         return true;
     }
+    public boolean checkId(String id) {
+        return id.equals(this.identifiant);
+    }
 
-
+    public void addSondage(Sondage sondage){
+        this.sondages.add(sondage);
+    }
+    public boolean sameMdp(Utilisateur ut) {
+        return this.getPassword().equals(ut.getPassword());}
 
 }

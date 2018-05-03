@@ -1,5 +1,7 @@
 package be.lsinf1225.g16.mini_poll.model;
 
+import java.util.ArrayList;
+
 public class AiderUnAmi extends Sondage {
 
     private Reponse resultat;

@@ -68,17 +68,17 @@ public class Questionnaire extends Sondage {
      * return : tableau d'utilisateur
      */
     public Utilisateur[] sortUtilisateurByScore(Questionnaire questionnaire){
-        Utilisateur[] copy = questionnaire.participants;
-        Utilisateur[] ret = new Utilisateur[questionnaire.participants.length];
+        ArrayList<Utilisateur> copy = questionnaire.participants;
+        Utilisateur[] ret = new Utilisateur[questionnaire.participants.size()];
         int[] scoreSorted = questionnaire.sortScore();
         int score;
-        for (int i = 0; i < questionnaire.participants.length; i++){
+        for (int i = 0; i < questionnaire.participants.size(); i++){
             score = scoreSorted[i];
-            for (int j = 0; j < questionnaire.participants.length ; j++){
-                if(score == questionnaire.score[j] && copy[j] != null){
-                    ret[i] = copy[j];
-                    copy[j] = null;
-                }
+            for (int j = 0; j < questionnaire.participants.size() ; j++){
+          //      if(score == questionnaire.score[j] && copy[j] != null){
+               //     ret[i] = copy[j];
+                 //   copy[j] = null;
+            //    }
             }
         }
         return ret;

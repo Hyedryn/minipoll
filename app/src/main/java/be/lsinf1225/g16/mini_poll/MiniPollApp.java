@@ -13,6 +13,8 @@ import android.widget.Toast;
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
+import be.lsinf1225.g16.mini_poll.model.Choix;
+import be.lsinf1225.g16.mini_poll.model.Sondage;
 import be.lsinf1225.g16.mini_poll.model.Utilisateur;
 
 public class MiniPollApp extends Application {
@@ -171,8 +173,82 @@ public class MiniPollApp extends Application {
         db.close();
 
 
-        //todo: charge les sondages
+    //    loadSondage();
 
+    }
+
+
+    private static void loadSondage(){
+
+        SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
+
+        final String DB_COLUMN_ID_P = "identifiant";
+        final String DB_COLUMN_ID_SONDAGE_P = "ID_sondage";
+        final String DB_COLUMN_STATUT_P = "statut";
+        final String DB_TABLE_P = "liste_participants";
+
+
+        // Colonnes à récupérer
+        String[] colonnes = {DB_COLUMN_ID_P, DB_COLUMN_ID_SONDAGE_P, DB_COLUMN_STATUT_P};
+
+        // Requête de selection (SELECT)
+        Cursor cursorP = db.query(DB_TABLE_P, colonnes, "identifiant"+"= "+"'"+connectedUser.getIdentifiant()+"'", null, null, null, null);
+
+        // Placement du curseur sur la première ligne.
+        cursorP.moveToFirst();
+
+        // Initialisation la liste des utilisateurs.
+        ArrayList<Choix> choix = new ArrayList<>();
+
+        // Tant qu'il y a des lignes.
+        while (!cursorP.isAfterLast()) {
+            // Récupération des informations de l'utilisateur pour chaque ligne.
+            String uID = cursorP.getString(0);
+            int uID_Sondage = Integer.parseInt(cursorP.getString(1));
+            String uStatut = cursorP.getString(2);
+
+            if(uID.equals(connectedUser.getIdentifiant())){
+                Choix c_choix = new Choix(connectedUser,uID_Sondage, uStatut);
+                choix.add(c_choix);
+            }
+
+            // Passe à la ligne suivante.
+            cursorP.moveToNext();
+        }
+
+        // Placement du curseur sur la première ligne.
+        cursorP.moveToFirst();
+
+        //Chargement des participants du même Sondage
+
+        // Tant qu'il y a des lignes.
+        while (!cursorP.isAfterLast()) {
+            // Récupération des informations de l'utilisateur pour chaque ligne.
+            String uID = cursorP.getString(0);
+            int uID_Sondage = Integer.parseInt(cursorP.getString(1));
+            String uStatut = cursorP.getString(2);
+
+            Choix c_choix=null;
+            for(Choix c : choix) {
+                if(!uID.equals(connectedUser.getIdentifiant())&&uID_Sondage==c.getSondageID()){
+                    c_choix = new Choix(uID,uID_Sondage, uStatut);
+                }
+            }
+
+            if(c_choix!=null)
+                choix.add(c_choix);
+
+            // Passe à la ligne suivante.
+            cursorP.moveToNext();
+        }
+
+        // Fermeture du curseur
+        cursorP.close();
+
+
+
+
+        db.close();
     }
 
 
@@ -323,4 +399,7 @@ public class MiniPollApp extends Application {
         utilisateurs = users;
 
     }
+
+
+
 }

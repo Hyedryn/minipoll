@@ -44,7 +44,7 @@ public class Sondage {
         return this.sondageId;
     }
 
-    public void setCreateur(Utilisateur x) {this.createur = x;}
+
 
     public Utilisateur getCreateur() {return this.createur;}
 
@@ -54,14 +54,14 @@ public class Sondage {
 
     public void setListeParticipants(Utilisateur[] liste)
     {
-        for (int i = 0; i < liste.length(); i++){
+        for (int i = 0; i < liste.length; i++){
             participants.add(liste[i]);
         }
     }
 
     public ArrayList<Utilisateur> getListeParticipants() {return this.participants;}
 
-    public boolean getState() {return this.etat;}
+    public Etat getState() {return this.etat;}
 
     public void setQuestions(Question[] q) {this.questions = q;}
 
@@ -71,7 +71,7 @@ public class Sondage {
 
     public Choix[] getChoix() {return this.choix;}
 
-    public String getType() {return this.t;}
+    public Type getType() {return this.t;}
 
     public boolean isCreatedBy(String name)
     {
@@ -85,7 +85,7 @@ public class Sondage {
 
     public void addQuestion(Question question)
     {
-        for (int i = 0; i < this.questions.length(); i++){
+        for (int i = 0; i < this.questions.length; i++){
             if (this.questions[i] == null){
                 this.questions[i] = question;
             }

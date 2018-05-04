@@ -177,8 +177,20 @@ public class MiniPollApp extends Application {
 
     }
 
-
+    /**
+     * But de la classe: charger tout les sondages lié à l'utilisateur
+     *
+     * Etape:
+     * 1) Chargé les id des participants qui participe au même sondage que la personne
+     * 2) Chargé les sondages à proprement parlé
+     * 3) Chargé les questions des sondages
+     * 4) Chargé les réponses des sondages
+     * 5) Chargé les choix effectué par les utilisateurs
+     */
     private static void loadSondage(){
+
+
+
 
         SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
 

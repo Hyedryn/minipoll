@@ -178,7 +178,7 @@ public class MiniPollApp extends Application {
     }
 
     /**
-     * But de la classe: charger tout les sondages lié à l'utilisateur
+     * But de la classe: charger tout les sondages lié à l'utilisateur ConnectedUser
      *
      * Etape:
      * 1) Chargé les id des participants qui participe au même sondage que la personne

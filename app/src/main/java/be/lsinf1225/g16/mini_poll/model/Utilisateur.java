@@ -15,18 +15,16 @@ import static be.lsinf1225.g16.mini_poll.MiniPollApp.utilisateurs;
 
 public class Utilisateur {
 
-
-
-
-
     /**
      * Identifiant unique de l'utilisateur courant. Correspond à _id dans la base de données.
      */
     private final String identifiant;
+
     /**
      * Nom (unique) de l'utilisateur courant. Correspond à u_nom dans la base de données.
      */
     private String nom;
+
     /**
      * Mot de passe de l'utilisateur courant. Correspond à u_password dans la base de données.
      */
@@ -127,7 +125,7 @@ public class Utilisateur {
      * Setter
      */
 
-    //pas de methode set pour identifiant parce que c'est un final int, ca sera un static augmente a chaque fois qu'on ajoute un utilisateur?
+    //pas de methode set pour identifiant parce que c'est un final String
     public void setPassword(String password) {
         this.password=password;
     }
@@ -156,32 +154,31 @@ public class Utilisateur {
     }
 
 
-    //ajoute au tableau demandeAmis l'utilisateur dans la base de données dont le nom correspond au nom passé en parametre
-    //NECESSITE INTERACTION AVEC BDD
     public void addDemandeAmi(String id) {
         for(Utilisateur demandeami : MiniPollApp.utilisateurs) {
             //si utilisateur existe l'ajouter
             if(demandeami.getIdentifiant().equals(id)) {
                 if(demandeAmis==null)
                     demandeAmis=new ArrayList<>();
-                demandeAmis.add(demandeami);
+                addDemandeAmi(demandeami);
                 break;
             }
         }
     }
 
     public void addDemandeAmi(Utilisateur u) {
-                if(demandeAmis==null)
-                    demandeAmis=new ArrayList<>();
-                if(u.equals(this))
-                    return;
-            for(Utilisateur dami : this.demandeAmis) {
-                //si utilisateur existe l'ajouter
-                if(dami.equals(u)) {
-                    return;
-                }
+        if(demandeAmis==null)
+            demandeAmis=new ArrayList<>();
+        if(u.equals(this))
+            return;
+        for(Utilisateur dami : this.demandeAmis) {
+            //si utilisateur existe deja exit
+            if(dami.equals(u)) {
+                return;
             }
-                demandeAmis.add(u);
+        }
+
+        demandeAmis.add(u);
 
         final String DB_COLUMN_ID_1 = "identifiant_1";
         final String DB_COLUMN_ID_2 = "identifiant_2";
@@ -207,7 +204,7 @@ public class Utilisateur {
     //retire du tableau demandeAmis, l'utlisareur dont le nom correspond au nom passé en parametre
     public void removeDemandeAmi(String id) {
         if(demandeAmis==null)
-            demandeAmis=new ArrayList<>();
+            return;
         for(Utilisateur demandeami : demandeAmis) {
             if(demandeami.getIdentifiant().equals(id)) {
                 removeDemandeAmi(demandeami);
@@ -218,7 +215,7 @@ public class Utilisateur {
 
     public void removeDemandeAmi(Utilisateur u) {
         if(demandeAmis==null)
-            demandeAmis=new ArrayList<>();
+            return;
 
         demandeAmis.remove(u);
 
@@ -330,6 +327,18 @@ public class Utilisateur {
         return true;
     }
 
+    /**
+     * Never used methods
+    public boolean checkId(String id) {
+        return id.equals(this.identifiant);
+    }
 
+    public void addSondage(Sondage sondage){
+        this.sondages.add(sondage);
+    }
+    public boolean sameMdp(Utilisateur ut) {
+        return this.getPassword().equals(ut.getPassword());}
+
+     */
 
 }

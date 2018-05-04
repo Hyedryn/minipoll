@@ -1,6 +1,5 @@
 package be.lsinf1225.g16.mini_poll.model;
 
-
 import java.util.ArrayList;
 
 public class Sondage {
@@ -31,7 +30,7 @@ public class Sondage {
     Type t;
     Etat etat;
 
-    public Sondage(Utilisateur createur, Utilisateur[] participants, int sondageId, Question[] questions, Type t, Choix[] choix) {
+    public Sondage(Utilisateur createur, ArrayList<Utilisateur> participants, int sondageId, Question[] questions, Type t, Choix[] choix) {
         this.choix =choix;
         this.createur=createur;
         this.participants=participants;

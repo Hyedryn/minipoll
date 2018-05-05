@@ -52,7 +52,6 @@ public class CreationAgreementActivity extends AppCompatActivity {
         // add few more layouts if you want
         layouts = new int[]{
                 R.layout.creation_agreement_friends_list,
-                R.layout.creation_agreement_total_choice,
                 R.layout.creation_agreement_fill_choice,
                 R.layout.creation_agreement_preview,
                 R.layout.creation_agreement_edit_order,

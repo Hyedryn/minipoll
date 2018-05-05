@@ -54,7 +54,6 @@ public class ReplyChoiceActivity extends AppCompatActivity {
         // add few more layouts if you want
         layouts = new int[]{
                 R.layout.reply_choice_fill_answer,
-                R.layout.reply_choice_preview,
                 R.layout.reply_question_summary};
 
         // adding bottom dots

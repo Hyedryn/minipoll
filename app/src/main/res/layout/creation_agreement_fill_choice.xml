@@ -18,7 +18,7 @@
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="136dp"
+            android:layout_height="120sp"
             android:gravity="center"
             android:text="Remplissez les informations relatives au sondage"
             android:textColor="@android:color/white"
@@ -26,10 +26,9 @@
             android:textStyle="bold" />
 
 
-
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="480dp">
+            android:layout_height="350sp">
 
             <LinearLayout
                 android:layout_width="match_parent"

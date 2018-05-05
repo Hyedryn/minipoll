@@ -7,8 +7,8 @@ public class SondagePourAccord extends Sondage {
     private Reponse[] classement;
     private int[] score;
 
-    public SondagePourAccord(Utilisateur createur, ArrayList<Utilisateur> participants, int sondageId, Question[] questions, Type t, Choix[] choix) {
-        super(createur, participants, sondageId, questions, t, choix);
+    public SondagePourAccord(Utilisateur createur, ArrayList<Participant> participants, int sondageId, ArrayList<Question> questions, Type t) {
+        super(createur, participants, sondageId, questions, t);
 
     //    classement = new Reponse[questions[0].getNbreReponse()];
     //    score = new int[questions[0].getNbreReponse()];

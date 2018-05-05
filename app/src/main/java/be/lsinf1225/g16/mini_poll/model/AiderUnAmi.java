@@ -6,8 +6,8 @@ public class AiderUnAmi extends Sondage {
 
     private Reponse resultat;
 
-    public AiderUnAmi(Utilisateur createur, ArrayList<Utilisateur> participants, int sondageId, ArrayList<Question> questions, Type t, Choix[] choix) {
-        super(createur, participants, sondageId, questions, t, choix);
+    public AiderUnAmi(Utilisateur createur, ArrayList<Participant> participants, int sondageId, ArrayList<Question> questions, Type t) {
+        super(createur, participants, sondageId, questions, t);
     }
 
     //get et set hérités de sondage

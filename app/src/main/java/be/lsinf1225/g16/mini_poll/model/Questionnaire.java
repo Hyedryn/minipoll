@@ -6,22 +6,22 @@ import java.util.ArrayList;
 
 public class Questionnaire extends Sondage {
 
-    private Utilisateur[] classement;
+    private Participant[] classement;
 
     private int[] score;
 
     // builder
 
-    public Questionnaire(Utilisateur createur, ArrayList<Utilisateur> participants, int sondageId, ArrayList<Question> questions, Type t, Choix[] choix) {
-        super(createur, participants,sondageId, questions, t, choix);
+    public Questionnaire(Utilisateur createur, ArrayList<Participant> participants, int sondageId, ArrayList<Question> questions, Type t) {
+        super(createur, participants,sondageId, questions, t);
 
-        this.classement = new Utilisateur[participants.size()];
+        this.classement = new Participant[participants.size()];
         this.score = new int[participants.size()];
     }
 
     // les get
 
-    public Utilisateur[] getClassement() {
+    public Participant[] getClassement() {
         return this.classement;
     }
 
@@ -31,7 +31,7 @@ public class Questionnaire extends Sondage {
 
     // les set
 
-    public void setClassement(Utilisateur[] classement) {
+    public void setClassement(Participant[] classement) {
         this.classement = classement;
     }
 
@@ -47,9 +47,9 @@ public class Questionnaire extends Sondage {
         int score = 0;
         for (int i = 0; i < questions.size() ; i++) {
             // Si la reponse du créateur = reponse de l'utilisateur :
-            if (createur.getSondage(this.getSondageId()).choix[i].getReponse().equals(utilisateur.getSondage(this.getSondageId()).choix[i].getReponse())) {
-                score++;
-            }
+    //        if (createur.getSondage(this.getSondageId()).choix[i].getReponse().equals(utilisateur.getSondage(this.getSondageId()).choix[i].getReponse())) {
+      //          score++;
+        //    }
         }
         return score;
     }
@@ -69,7 +69,7 @@ public class Questionnaire extends Sondage {
      * return : tableau d'utilisateur
      */
     public Utilisateur[] sortUtilisateurByScore(Questionnaire questionnaire){
-        ArrayList<Utilisateur> copy = questionnaire.participants;
+        ArrayList<Participant> copy = questionnaire.participants;
         Utilisateur[] ret = new Utilisateur[questionnaire.participants.size()];
         int[] scoreSorted = questionnaire.sortScore();
         int score;
@@ -91,12 +91,12 @@ public class Questionnaire extends Sondage {
      * Si false : pas repondu par tout le monde
      */
     public boolean isAnswered(Sondage sondage){
-        for (int i = 0; i < sondage.choix.length; i ++){
+      //  for (int i = 0; i < sondage.choix.length; i ++){
             // verification des reponses des utilisateurs
-            if (sondage.choix[i] == null){ // si choix est null, il n'a pas répondu
-                return false;
-            }
-        }
+        //    if (sondage.choix[i] == null){ // si choix est null, il n'a pas répondu
+          //      return false;
+         //   }
+       // }
         return true;
     }
 

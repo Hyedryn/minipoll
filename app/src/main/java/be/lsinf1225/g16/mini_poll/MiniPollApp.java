@@ -11,9 +11,12 @@ import android.view.Gravity;
 import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import be.lsinf1225.g16.mini_poll.model.Choix;
+import be.lsinf1225.g16.mini_poll.model.Question;
+import be.lsinf1225.g16.mini_poll.model.Reponse;
 import be.lsinf1225.g16.mini_poll.model.Sondage;
 import be.lsinf1225.g16.mini_poll.model.Utilisateur;
 
@@ -167,7 +170,7 @@ public class MiniPollApp extends Application {
      * Etape:
      * 1) Chargé les id des participants qui participe au même sondage que la personne OK
      * 2) Chargé les sondages à proprement parlé OK
-     * 3) Chargé les questions des sondages
+     * 3) Chargé les questions des sondages OK
      * 4) Chargé les réponses des sondages
      * 5) Chargé les choix effectué par les utilisateurs
      */
@@ -256,32 +259,32 @@ public class MiniPollApp extends Application {
         ArrayList<Sondage> sondages = new ArrayList<Sondage>();
 
         while (!cursorA.isAfterLast()) {
-        int uID_Sondage = cursorA.getInt(0);
-        String uCreateur = cursorA.getString(1);
-        String uStatut = cursorP.getString(2);
-        Utilisateur createur = null;
+            int uID_Sondage = cursorA.getInt(0);
+            String uCreateur = cursorA.getString(1);
+            String uStatut = cursorP.getString(2);
+            Utilisateur createur = null;
 
-        for (Utilisateur u : utilisateurs) { //on cherche l'utilisateur qui correspond a l'identifiant du createur dans la bdd
-            if (u.getIdentifiant().equals(uCreateur)) {
-                createur = u;
+            for (Utilisateur u : utilisateurs) { //on cherche l'utilisateur qui correspond a l'identifiant du createur dans la bdd
+                if (u.getIdentifiant().equals(uCreateur)) {
+                    createur = u;
+                }
             }
-        }
-        Sondage sondage_s = null;
+            Sondage sondage_s = null;
 
-        for (Choix c : choix) {
-            if (uID_Sondage == c.getSondageID() && createur != null) {
-                sondage_s = new Sondage(uID_Sondage, createur, uStatut);
+            for (Choix c : choix) {
+                if (uID_Sondage == c.getSondageID() && createur != null) {
+                    sondage_s = new Sondage(uID_Sondage, createur, uStatut);
+                }
             }
+
+            if (sondage_s != null)
+                sondages.add(sondage_s);
+
+            // Passe à la ligne suivante.
+            cursorA.moveToNext();
         }
-
-        if (sondage_s != null)
-            sondages.add(sondage_s);
-
-        // Passe à la ligne suivante.
-        cursorA.moveToNext();
-    }
-     //We now have basic sondage info in arraylist sondage (id, createur, statut ), need to add liste participants for each one, info already in choix
-    for(Choix c : choix){
+        //We now have basic sondage info in arraylist sondage (id, createur, statut ), need to add liste participants for each one, info already in choix
+        for(Choix c : choix){
             for(Sondage s : sondages){
                 ArrayList<Utilisateur> participants=new ArrayList<Utilisateur>();
                 s.setListeParticipants(participants);
@@ -289,28 +292,97 @@ public class MiniPollApp extends Application {
                     participants.add(c.getParticipant());
                 }
             }
-    }
-    cursorA.close();
-    //Info in sondages: id, createur, statut, liste de participants
+        }
+        cursorA.close();
+        //Info in sondages: id, createur, statut, liste de participants
 
-    //Need to go to table contenu to find type information
-     String[]colonnes3={"ID_sondage","type"};
-     Cursor cursorB = db.query("contenu",colonnes3, null, null, null, null, null);
+        //Need to go to table contenu to find type information
+        String[]colonnes3={"ID_sondage","type"};
+        Cursor cursorB = db.query("contenu",colonnes3, null, null, null, null, null);
 
-     cursorB.moveToFirst();
+        cursorB.moveToFirst();
 
-     while (!cursorB.isAfterLast()) {
-        int uID_Sondage=cursorB.getInt(0);
-        String type=cursorB.getString(1);
-             for(Sondage s : sondages){
+        while (!cursorB.isAfterLast()) {
+            int uID_Sondage=cursorB.getInt(0);
+            String type=cursorB.getString(1);
+            for(Sondage s : sondages){
                 if(s.getSondageId()==uID_Sondage){
                     s.setType(type);
                 }
-         }
-         cursorB.moveToNext();
-     }
+            }
+            cursorB.moveToNext();
+        }
+
+        cursorB.close();
+
+        //Retrieve questions from table Question: all elements of this table are saved in arraylist of objects Question
+        String[] colonnes4={"ID_question","enonce","nombreReponses"} ;
+        Cursor cursorC = db.query("question", colonnes4, null,null, null, null, null);
+
+        cursorC.moveToFirst();
+        ArrayList<Question> questions = new ArrayList<Question>();
+        while(!cursorC.isAfterLast()){
+            int uQuestionId=cursorC.getInt(0);
+            String uEnonce=cursorC.getString(1);
+            int uNombreReponses=cursorC.getInt(1);
+
+            Question q=null;
+            q=new Question(uEnonce,uNombreReponses,null,uQuestionId);
+            if(q!=null){questions.add(q);}
+
+            cursorC.moveToNext();
+        }
+
+        cursorC.close();
+
+        Cursor cursorD= db.rawQuery("select contenu.ID_question, sondage.ID_sondage from contenu," +
+                "question,sondage where contenu.ID_question==question.ID_question and sondage.ID_sondage=contenu.ID_sondage " +
+                "group by question.ID_question",null);
+
+        while(!cursorD.isAfterLast()){
+            int Q=cursorD.getInt(0);
+            int S=cursorD.getInt(1);
+            for(Sondage s : sondages){
+                ArrayList<Question> questions_sondages =new ArrayList<Question>();
+                s.setQuestions(questions_sondages);
+                for(Question q : questions){
+                    if(S==s.getSondageId()&& Q==q.getQuestionId()){
+                        s.addQuestion(q);
+                    }
+                }
+            }
+        }
+
+        cursorD.close();
+
+        Cursor cursorE= db.rawQuery("select reponse.ID_question, reponse.format, reponse.donnees, reponse.categorie " +
+                "from reponse,question where reponse.ID_question==question.ID_question order by reponse.ID_question;",null);
+
+        while(!cursorE.isAfterLast()){
+            int ID_question=cursorE.getInt(0);
+            String reponse_format=cursorE.getString(1);
+            String reponse_donnees=cursorE.getString(2);
+            String reponse_cat=cursorE.getString(3);
+
+            for(Sondage s : sondages){
+                for(Question q : s.getQuestions()){
+                    ArrayList<Reponse> reponses= new ArrayList<Reponse>();
+                    q.setListeReponses(reponses);
+                    if(q.getQuestionId()==ID_question){
+                        Reponse r= new Reponse(reponse_cat,reponse_format,reponse_donnees);
+                        if(r!=null){
+                            q.addReponse(r);
+                        }
+                    }
+                }
+            }
+            cursorE.moveToNext();
+        }
+
+        cursorE.close();
+
         db.close();
-}
+    }
 
 
 
@@ -358,7 +430,7 @@ public class MiniPollApp extends Application {
 
     public  static void updateID(String id){
         Utilisateur user = new Utilisateur(id, connectedUser.getPassword(), connectedUser.getNom(), connectedUser.getPrenom(), connectedUser.getEmail(), connectedUser.getMeilleurAmi(), connectedUser.getPhoto());
-       // saveUser(user);
+        // saveUser(user);
         //editDatabase
         loadUtilisateurs();
         loadConnectedUser();
@@ -401,7 +473,7 @@ public class MiniPollApp extends Application {
     }
 
     public static void loadUtilisateurs() {
-         // Récupération du  SQLiteHelper et de la base de données.
+        // Récupération du  SQLiteHelper et de la base de données.
         SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
 
 
@@ -465,4 +537,4 @@ public class MiniPollApp extends Application {
 
 
 
-    }
+}

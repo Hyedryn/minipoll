@@ -1,5 +1,6 @@
 package be.lsinf1225.g16.mini_poll.model;
 
+import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.ArrayList;
 
@@ -11,7 +12,7 @@ public class Questionnaire extends Sondage {
 
     // builder
 
-    public Questionnaire(Utilisateur createur, ArrayList<Utilisateur> participants, int sondageId, Question[] questions, Type t, Choix[] choix) {
+    public Questionnaire(Utilisateur createur, ArrayList<Utilisateur> participants, int sondageId, ArrayList<Question> questions, Type t, Choix[] choix) {
         super(createur, participants,sondageId, questions, t, choix);
 
         this.classement = new Utilisateur[participants.size()];
@@ -75,10 +76,10 @@ public class Questionnaire extends Sondage {
         for (int i = 0; i < questionnaire.participants.size(); i++){
             score = scoreSorted[i];
             for (int j = 0; j < questionnaire.participants.size() ; j++){
-          //      if(score == questionnaire.score[j] && copy[j] != null){
-               //     ret[i] = copy[j];
-                 //   copy[j] = null;
-            //    }
+                //      if(score == questionnaire.score[j] && copy[j] != null){
+                //     ret[i] = copy[j];
+                //   copy[j] = null;
+                //    }
             }
         }
         return ret;

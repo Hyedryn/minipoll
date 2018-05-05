@@ -1,12 +1,15 @@
 package be.lsinf1225.g16.mini_poll.model;
 
+import java.util.ArrayList;
+
 public class Question {
+    private int questionId;
 
     private String Enonce;
 
     private int NombreReponses;
 
-    private Reponse[] ListeReponses;
+    private ArrayList<Reponse> ListeReponses;
 
     // builders
 
@@ -22,10 +25,11 @@ public class Question {
         this.ListeReponses = null;
     }
 
-    public Question(String Enonce, int NombreReponses, Reponse[] ListeReponses){
+    public Question(String Enonce, int NombreReponses, ArrayList<Reponse> ListeReponses, int questionId){
         this.Enonce = Enonce;
         this.NombreReponses = NombreReponses;
         this.ListeReponses = ListeReponses;
+        this.questionId=questionId;
     }
 
     // les get
@@ -38,9 +42,11 @@ public class Question {
         return this.NombreReponses;
     }
 
-    public Reponse[] getListeReponses(){
+    public ArrayList<Reponse> getListeReponses(){
         return this.ListeReponses;
     }
+
+    public int getQuestionId(){return this.questionId;}
 
     // les set
 
@@ -52,8 +58,13 @@ public class Question {
         this.NombreReponses = NombreReponses;
     }
 
-    public void setListeReponses(Reponse[] ListeReponses){
+    public void setListeReponses(ArrayList<Reponse> ListeReponses){
         this.ListeReponses = ListeReponses;
     }
 
+    public void setQuestionId(int questionId){this.questionId=questionId;}
+
+    public void addReponse(Reponse r){this.ListeReponses.add(r);}
+
 }
+

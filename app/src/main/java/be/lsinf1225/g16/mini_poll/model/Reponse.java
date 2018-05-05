@@ -23,15 +23,23 @@ public class Reponse {
     private Bitmap donnee_img;
 
     public Reponse(Categorie c, Format f, String d){
-    this.c =c;
-    this.f =f;
-    this.donnee_txt =d;
+        this.c =c;
+        this.f =f;
+        this.donnee_txt =d;
     }
 
     public Reponse(Categorie c, Format f, Bitmap d){
         this.c =c;
         this.f =f;
         this.donnee_img =d;
+    }
+
+    public Reponse(String c, String f, String d){
+        if(c.equals("bonne")){this.c=Categorie.BONNE;}
+        else{this.c=Categorie.MAUVAISE;};
+        if(f.equals("texte")){this.f=Format.TEXTE;}
+        else{this.f=Format.IMAGE;};
+        this.donnee_txt =d;
     }
 
     public void setFormat(Format f) {

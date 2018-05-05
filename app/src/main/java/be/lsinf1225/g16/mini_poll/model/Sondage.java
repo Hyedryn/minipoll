@@ -10,7 +10,7 @@ public class Sondage {
 
     protected final int sondageId;
 
-    protected Question[] questions;
+    protected ArrayList<Question> questions;
 
     protected ArrayList<Utilisateur> participants;
 
@@ -30,7 +30,7 @@ public class Sondage {
     Type t;
     Etat etat;
 
-    public Sondage(Utilisateur createur, ArrayList<Utilisateur> participants, int sondageId, Question[] questions, Type t, Choix[] choix) {
+    public Sondage(Utilisateur createur, ArrayList<Utilisateur> participants, int sondageId, ArrayList<Question> questions, Type t, Choix[] choix) {
         this.choix =choix;
         this.createur=createur;
         this.participants=participants;
@@ -67,18 +67,18 @@ public class Sondage {
 
     public Etat getState() {return this.etat;}
 
-    public void setQuestions(Question[] q) {this.questions = q;}
+    public void setQuestions(ArrayList<Question> q) {this.questions = q;}
 
-    public Question[] getQuestions() {return this.questions;}
+    public ArrayList<Question> getQuestions() {return this.questions;}
 
     public void setChoix(Choix[] c) {this.choix = c;}
 
     public Choix[] getChoix() {return this.choix;}
 
     public void setType(String type){
-       if(type.equals("sondage")){this.t=Type.SONDAGE_POUR_ACCORD;}
-       else if(type.equals("questionnaire")){this.t=Type.QUESTIONNAIRE;}
-       else{this.t=Type.AIDER_UN_AMi;}
+        if(type.equals("sondage")){this.t=Type.SONDAGE_POUR_ACCORD;}
+        else if(type.equals("questionnaire")){this.t=Type.QUESTIONNAIRE;}
+        else{this.t=Type.AIDER_UN_AMi;}
     }
 
     public Type getType() {return this.t;}
@@ -95,10 +95,6 @@ public class Sondage {
 
     public void addQuestion(Question question)
     {
-        for (int i = 0; i < this.questions.length; i++){
-            if (this.questions[i] == null){
-                this.questions[i] = question;
-            }
-        }
+        this.questions.add(question);
     }
 }

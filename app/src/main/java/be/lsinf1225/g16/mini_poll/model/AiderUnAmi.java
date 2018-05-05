@@ -6,7 +6,7 @@ public class AiderUnAmi extends Sondage {
 
     private Reponse resultat;
 
-    public AiderUnAmi(Utilisateur createur, ArrayList<Utilisateur> participants, int sondageId, Question[] questions, Type t, Choix[] choix) {
+    public AiderUnAmi(Utilisateur createur, ArrayList<Utilisateur> participants, int sondageId, ArrayList<Question> questions, Type t, Choix[] choix) {
         super(createur, participants, sondageId, questions, t, choix);
     }
 

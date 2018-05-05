@@ -45,7 +45,7 @@ public class Questionnaire extends Sondage {
      */
     public int calculateScore(Utilisateur utilisateur){
         int score = 0;
-        for (int i = 0; i < questions.length ; i++) {
+        for (int i = 0; i < questions.size() ; i++) {
             // Si la reponse du créateur = reponse de l'utilisateur :
             if (createur.getSondage(this.getSondageId()).choix[i].getReponse().equals(utilisateur.getSondage(this.getSondageId()).choix[i].getReponse())) {
                 score++;

@@ -39,7 +39,13 @@ public class Sondage {
         this.t = t;
         etat = Etat.ACTIF;
     }
+    public Sondage(int sondageId,Utilisateur createur,String etat){
+        this.sondageId=sondageId;
+        this.createur=createur;
+        if(etat.toUpperCase().equals("ACTIF")){this.etat=Etat.ACTIF;}
+        else{this.etat=Etat.CLOTURE;};
 
+    }
     public int getSondageId() {
         return this.sondageId;
     }
@@ -52,11 +58,9 @@ public class Sondage {
 
     public Utilisateur getParicipant() {return this.participant;}
 
-    public void setListeParticipants(Utilisateur[] liste)
+    public void setListeParticipants(ArrayList<Utilisateur> participants)
     {
-        for (int i = 0; i < liste.length; i++){
-            participants.add(liste[i]);
-        }
+        this.participants=participants;
     }
 
     public ArrayList<Utilisateur> getListeParticipants() {return this.participants;}
@@ -70,6 +74,12 @@ public class Sondage {
     public void setChoix(Choix[] c) {this.choix = c;}
 
     public Choix[] getChoix() {return this.choix;}
+
+    public void setType(String type){
+       if(type.equals("sondage")){this.t=Type.SONDAGE_POUR_ACCORD;}
+       else if(type.equals("questionnaire")){this.t=Type.QUESTIONNAIRE;}
+       else{this.t=Type.AIDER_UN_AMi;}
+    }
 
     public Type getType() {return this.t;}
 

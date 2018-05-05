@@ -20,9 +20,7 @@ import be.lsinf1225.g16.mini_poll.model.Utilisateur;
 public class MiniPollApp extends Application {
 
 
-
-
-//ArrayList comprennant tout les utilisateurs de la database
+    //ArrayList comprennant tout les utilisateurs de la database
     public static ArrayList<Utilisateur> utilisateurs = new ArrayList<>();
 
     public static Utilisateur connectedUser;
@@ -46,7 +44,6 @@ public class MiniPollApp extends Application {
      * Affiche une notification pendant une courte durée à l'utilisateur.
      *
      * @param resId Id de la ressource (R.string.* ) contenant le message à afficher.
-     *
      * @see MiniPollApp#notify
      */
     public static void notifyShort(int resId) {
@@ -57,7 +54,6 @@ public class MiniPollApp extends Application {
      * Affiche une notification pendant une longue durée à l'utilisateur.
      *
      * @param resId Id de la ressource (R.string.* ) contenant le message à afficher.
-     *
      * @see MiniPollApp#notify
      */
     public static void notifyLong(int resId) {
@@ -85,11 +81,7 @@ public class MiniPollApp extends Application {
 
 
     /**
-     *
-     *
      * Class global statique
-     *
-     *
      */
 
     public static boolean isValidCharacterNoSpace(String s) {
@@ -103,24 +95,20 @@ public class MiniPollApp extends Application {
     }
 
     public static boolean isValidCharacter(String s) {
-            int upperCases = s.replaceAll("[^A-Z]", "").length();
-            int lowerCases = s.replaceAll("[^a-z]", "").length();
-            int digits = s.replaceAll("[^0-9]", "").length();
-            int specialChars = s.replaceAll("[^-@#$€!_?&è àéùôêâî.,]", "").length();
-            // As '-' is a range operator otherwise, start the group with it.
-            int all = s.length();
-            return upperCases + lowerCases + digits + specialChars == all;
+        int upperCases = s.replaceAll("[^A-Z]", "").length();
+        int lowerCases = s.replaceAll("[^a-z]", "").length();
+        int digits = s.replaceAll("[^0-9]", "").length();
+        int specialChars = s.replaceAll("[^-@#$€!_?&è àéùôêâî.,]", "").length();
+        // As '-' is a range operator otherwise, start the group with it.
+        int all = s.length();
+        return upperCases + lowerCases + digits + specialChars == all;
     }
 
     /**
      * INTERACTION AVEC LA BASE DE DONNEE
-     *
-     *
-     *
-     *
      */
 
-    public static void loadConnectedUser(){
+    public static void loadConnectedUser() {
 
         //Charge les amis
 
@@ -153,16 +141,16 @@ public class MiniPollApp extends Application {
             String uID_2 = cursor.getString(1);
             String uStatut = cursor.getString(2);
 
-            if(uID_1.equals(connectedUser.getIdentifiant())&&uStatut.equals("accepte")){
+            if (uID_1.equals(connectedUser.getIdentifiant()) && uStatut.equals("accepte")) {
                 connectedUser.addAmi(uID_2);
-            } else if(uID_2.equals(connectedUser.getIdentifiant())&&uStatut.equals("accepte")){
+            } else if (uID_2.equals(connectedUser.getIdentifiant()) && uStatut.equals("accepte")) {
                 connectedUser.addAmi(uID_1);
-            }else if(uID_2.equals(connectedUser.getIdentifiant())&&uStatut.equals("en cours")){
+            } else if (uID_2.equals(connectedUser.getIdentifiant()) && uStatut.equals("en cours")) {
                 connectedUser.addDemandeAmi(uID_1);
             }
             // connecteduser à demande à uID_2
-        //    else if(uID_1.equals(connectedUser.getIdentifiant())&&uStatut.equals("en cours")){
-        //        connectedUser.addDemandeAmi(uID_2);
+            //    else if(uID_1.equals(connectedUser.getIdentifiant())&&uStatut.equals("en cours")){
+            //        connectedUser.addDemandeAmi(uID_2);
 
             // Passe à la ligne suivante.
             cursor.moveToNext();
@@ -171,25 +159,19 @@ public class MiniPollApp extends Application {
         // Fermeture du curseur et de la base de données.
         cursor.close();
         db.close();
-
-
-    //    loadSondage();
-
     }
 
     /**
      * But de la classe: charger tout les sondages lié à l'utilisateur ConnectedUser
-     *
+     * <p>
      * Etape:
-     * 1) Chargé les id des participants qui participe au même sondage que la personne
-     * 2) Chargé les sondages à proprement parlé
+     * 1) Chargé les id des participants qui participe au même sondage que la personne OK
+     * 2) Chargé les sondages à proprement parlé OK
      * 3) Chargé les questions des sondages
      * 4) Chargé les réponses des sondages
      * 5) Chargé les choix effectué par les utilisateurs
      */
-    private static void loadSondage(){
-
-
+    private static void loadSondage() {
 
 
         SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
@@ -203,11 +185,12 @@ public class MiniPollApp extends Application {
         // Colonnes à récupérer
         String[] colonnes = {DB_COLUMN_ID_P, DB_COLUMN_ID_SONDAGE_P, DB_COLUMN_STATUT_P};
 
+
         // Requête de selection (SELECT)
-        Cursor cursorP = db.query(DB_TABLE_P, colonnes, "identifiant"+"= "+"'"+connectedUser.getIdentifiant()+"'", null, null, null, null);
+        Cursor cursorP = db.query(DB_TABLE_P, colonnes, "identifiant" + "= " + "'" + connectedUser.getIdentifiant() + "'", null, null, null, null);
 
         // Placement du curseur sur la première ligne.
-        cursorP.moveToFirst();
+        cursorP.moveToFirst(); //we have a pointer to the first record
 
         // Initialisation la liste des utilisateurs.
         ArrayList<Choix> choix = new ArrayList<>();
@@ -219,8 +202,8 @@ public class MiniPollApp extends Application {
             int uID_Sondage = Integer.parseInt(cursorP.getString(1));
             String uStatut = cursorP.getString(2);
 
-            if(uID.equals(connectedUser.getIdentifiant())){
-                Choix c_choix = new Choix(connectedUser,uID_Sondage, uStatut);
+            if (uID.equals(connectedUser.getIdentifiant())) {
+                Choix c_choix = new Choix(connectedUser, uID_Sondage, uStatut); //here we use second constructor method with identifiant, sondage if and status responded or not
                 choix.add(c_choix);
             }
 
@@ -229,7 +212,7 @@ public class MiniPollApp extends Application {
         }
 
         // Placement du curseur sur la première ligne.
-        cursorP.moveToFirst();
+        cursorP.moveToFirst(); //cursor still on liste_participants
 
         //Chargement des participants du même Sondage
 
@@ -240,28 +223,96 @@ public class MiniPollApp extends Application {
             int uID_Sondage = Integer.parseInt(cursorP.getString(1));
             String uStatut = cursorP.getString(2);
 
-            Choix c_choix=null;
-            for(Choix c : choix) {
-                if(!uID.equals(connectedUser.getIdentifiant())&&uID_Sondage==c.getSondageID()){
-                    c_choix = new Choix(uID,uID_Sondage, uStatut);
+            Choix c_choix = null;
+            for (Choix c : choix) {
+                if (!uID.equals(connectedUser.getIdentifiant()) && uID_Sondage == c.getSondageID()) { //look at all users whose name is not
+                    //the same as connected user but the sondage id is the same as connected user
+                    c_choix = new Choix(uID, uID_Sondage, uStatut);
                 }
             }
 
-            if(c_choix!=null)
+            if (c_choix != null)
                 choix.add(c_choix);
 
             // Passe à la ligne suivante.
             cursorP.moveToNext();
         }
 
+        //At this point we have connected user's info and all of the other users that participate in the same sondage
+        //Now we need to get the information about all polls in the choix arraylist
+        //need to access table sondage in database
+
         // Fermeture du curseur
         cursorP.close();
 
+        final String DB_COLUMN_CREATEUR = "createur";
 
+        String[] colonnes2 = {DB_COLUMN_ID_SONDAGE_P, DB_COLUMN_CREATEUR, DB_COLUMN_STATUT_P};
 
+        Cursor cursorA = db.query("sondage", colonnes2, null, null, null, null, null);
 
-        db.close();
+        cursorA.moveToFirst();
+
+        ArrayList<Sondage> sondages = new ArrayList<Sondage>();
+
+        while (!cursorA.isAfterLast()) {
+        int uID_Sondage = cursorA.getInt(0);
+        String uCreateur = cursorA.getString(1);
+        String uStatut = cursorP.getString(2);
+        Utilisateur createur = null;
+
+        for (Utilisateur u : utilisateurs) { //on cherche l'utilisateur qui correspond a l'identifiant du createur dans la bdd
+            if (u.getIdentifiant().equals(uCreateur)) {
+                createur = u;
+            }
+        }
+        Sondage sondage_s = null;
+
+        for (Choix c : choix) {
+            if (uID_Sondage == c.getSondageID() && createur != null) {
+                sondage_s = new Sondage(uID_Sondage, createur, uStatut);
+            }
+        }
+
+        if (sondage_s != null)
+            sondages.add(sondage_s);
+
+        // Passe à la ligne suivante.
+        cursorA.moveToNext();
     }
+     //We now have basic sondage info in arraylist sondage (id, createur, statut ), need to add liste participants for each one, info already in choix
+    for(Choix c : choix){
+            for(Sondage s : sondages){
+                ArrayList<Utilisateur> participants=new ArrayList<Utilisateur>();
+                s.setListeParticipants(participants);
+                if(c.getSondageID()==s.getSondageId()){
+                    participants.add(c.getParticipant());
+                }
+            }
+    }
+    cursorA.close();
+    //Info in sondages: id, createur, statut, liste de participants
+
+    //Need to go to table contenu to find type information
+     String[]colonnes3={"ID_sondage","type"};
+     Cursor cursorB = db.query("contenu",colonnes3, null, null, null, null, null);
+
+     cursorB.moveToFirst();
+
+     while (!cursorB.isAfterLast()) {
+        int uID_Sondage=cursorB.getInt(0);
+        String type=cursorB.getString(1);
+             for(Sondage s : sondages){
+                if(s.getSondageId()==uID_Sondage){
+                    s.setType(type);
+                }
+         }
+         cursorB.moveToNext();
+     }
+        db.close();
+}
+
+
 
 
 
@@ -414,4 +465,4 @@ public class MiniPollApp extends Application {
 
 
 
-}
+    }

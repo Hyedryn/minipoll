@@ -6,20 +6,17 @@ public class Sondage {
 
     protected final Utilisateur createur;
 
-    protected Utilisateur participant;
-
     protected final int sondageId;
 
     protected ArrayList<Question> questions;
 
-    protected ArrayList<Utilisateur> participants;
+    protected ArrayList<Participant> participants;
 
     protected enum Etat {
         ACTIF,
         CLOTURE;
     }
 
-    protected Choix[] choix;
 
     protected enum Type {
         QUESTIONNAIRE,
@@ -30,8 +27,7 @@ public class Sondage {
     Type t;
     Etat etat;
 
-    public Sondage(Utilisateur createur, ArrayList<Utilisateur> participants, int sondageId, ArrayList<Question> questions, Type t, Choix[] choix) {
-        this.choix =choix;
+    public Sondage(Utilisateur createur, ArrayList<Participant> participants, int sondageId, ArrayList<Question> questions, Type t) {
         this.createur=createur;
         this.participants=participants;
         this.sondageId=sondageId;
@@ -46,24 +42,20 @@ public class Sondage {
         else{this.etat=Etat.CLOTURE;};
 
     }
+
     public int getSondageId() {
         return this.sondageId;
     }
 
-
-
     public Utilisateur getCreateur() {return this.createur;}
 
-    public void setParticipant(Utilisateur name) {this.participant = name;}
 
-    public Utilisateur getParicipant() {return this.participant;}
-
-    public void setListeParticipants(ArrayList<Utilisateur> participants)
+    public void setListeParticipants(ArrayList<Participant> participants)
     {
         this.participants=participants;
     }
 
-    public ArrayList<Utilisateur> getListeParticipants() {return this.participants;}
+    public ArrayList<Participant> getListeParticipants() {return this.participants;}
 
     public Etat getState() {return this.etat;}
 
@@ -71,9 +63,6 @@ public class Sondage {
 
     public ArrayList<Question> getQuestions() {return this.questions;}
 
-    public void setChoix(Choix[] c) {this.choix = c;}
-
-    public Choix[] getChoix() {return this.choix;}
 
     public void setType(String type){
         if(type.equals("sondage")){this.t=Type.SONDAGE_POUR_ACCORD;}
@@ -91,10 +80,17 @@ public class Sondage {
         return false;
     }
 
-    public void addParticipants(Utilisateur ami) {this.participants.add(ami);}
+    public void addParticipants(Participant ami) {
+        if(this.participants==null)
+            this.participants= new ArrayList<Participant>();
+
+        this.participants.add(ami);
+    }
 
     public void addQuestion(Question question)
     {
+        if(this.questions==null)
+            this.questions= new ArrayList<Question>();
         this.questions.add(question);
     }
 }

@@ -72,6 +72,10 @@ public class Sondage {
 
     public Type getType() {return this.t;}
 
+    public void setEtat(Etat e){
+        this.etat = e;
+    }
+
     public boolean isCreatedBy(String name)
     {
         if (name.equals(createur.getIdentifiant())){
@@ -91,6 +95,7 @@ public class Sondage {
     {
         if(this.questions==null)
             this.questions= new ArrayList<Question>();
+
         this.questions.add(question);
     }
 }

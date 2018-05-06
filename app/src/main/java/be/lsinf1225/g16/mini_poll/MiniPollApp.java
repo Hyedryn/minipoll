@@ -163,6 +163,8 @@ public class MiniPollApp extends Application {
         // Fermeture du curseur et de la base de données.
         cursor.close();
         db.close();
+
+        loadSondage();
     }
 
     /**

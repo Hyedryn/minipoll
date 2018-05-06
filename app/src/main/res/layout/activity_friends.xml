@@ -26,35 +26,37 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:orientation="vertical"
-        android:weightSum="20"
-        android:background="#a5d8ff"
-        android:clickable="true"
         android:layout_weight="10"
+        android:background="#508cc3"
+        android:clickable="true"
+        android:focusable="true"
         android:onClick="friendslist"
-        android:focusable="true">
+        android:orientation="vertical"
+        android:weightSum="20">
 
         <ImageButton
             android:id="@+id/seefriendslistbtn"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="18"
-            android:background="#a5d8ff"
+            android:background="#508dc4"
             android:clickable="false"
             android:contentDescription="@string/consulter_la_liste_amis"
             android:padding="10dp"
             android:scaleType="fitCenter"
+            android:tint="@android:color/white"
             app:srcCompat="@drawable/friends_list_icon" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_weight="2"
             android:clickable="false"
             android:text="@string/consulter_la_liste_amis"
-            android:layout_weight="2"
             android:textAlignment="center"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"></TextView>
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="@android:color/white"></TextView>
     </LinearLayout>
 
     <LinearLayout

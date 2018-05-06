@@ -27,25 +27,31 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
-            android:clickable="true"
-            android:onClick="list_delete"
             android:adjustViewBounds="true"
+            android:background="#0044ff"
+            android:clickable="true"
+            android:contentDescription="@string/annule"
             android:cropToPadding="false"
+            android:foregroundGravity="center_vertical"
+            android:onClick="list_delete"
             android:scaleType="fitEnd"
-            app:srcCompat="@drawable/exit_icon"
-            android:contentDescription="@string/annule" />
+            android:tint="#ffffffff"
+            app:srcCompat="@drawable/exit_icon" />
 
         <ImageButton
             android:id="@+id/list_crown_btn"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:adjustViewBounds="true"
+            android:background="#0044ff"
             android:clickable="true"
+            android:contentDescription="@string/ok"
+            android:foregroundGravity="center_vertical"
             android:onClick="list_crown"
             android:scaleType="fitStart"
+            android:tint="#ffffffff"
             android:visibility="visible"
-            app:srcCompat="@drawable/crown_icon"
-            android:contentDescription="@string/ok" />
+            app:srcCompat="@drawable/crown_icon" />
 
         <TextView
             android:id="@+id/list_ami_banner"

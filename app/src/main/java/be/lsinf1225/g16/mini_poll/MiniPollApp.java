@@ -164,7 +164,7 @@ public class MiniPollApp extends Application {
         cursor.close();
         db.close();
 
-      //  loadSondage();
+      loadSondage();
     }
 
     /**
@@ -345,16 +345,15 @@ public class MiniPollApp extends Application {
         while(!cursorD.isAfterLast()){
             int Q=cursorD.getInt(0);
             int S=cursorD.getInt(1);
-            ArrayList<Question> questions_sondages =new ArrayList<Question>();
-            for(Sondage s : sondages){
 
-                s.setQuestions(questions_sondages);
+            for(Sondage s : sondages){
                 for(Question q : questions){
                     if(S==s.getSondageId()&& Q==q.getQuestionId()){
                         s.addQuestion(q);
                     }
                 }
             }
+            cursorD.moveToNext();
         }
 
         cursorD.close();
@@ -363,6 +362,7 @@ public class MiniPollApp extends Application {
 
         Cursor cursorE= db.rawQuery("select reponse.ID_question, reponse.format, reponse.donnees, reponse.categorie, reponse.ID_reponse " +
                 "from reponse,question where reponse.ID_question==question.ID_question order by reponse.ID_question;",null);
+        cursorE.moveToFirst();
 
         while(!cursorE.isAfterLast()){
             int ID_question=cursorE.getInt(0);
@@ -374,7 +374,8 @@ public class MiniPollApp extends Application {
             for(Sondage s : sondages){
                 for(Question q : s.getQuestions()){
                     if(q.getQuestionId()==ID_question){
-                        Reponse r= new Reponse(reponse_id,reponse_cat,reponse_format,reponse_donnees);
+                        Reponse r=null;
+                        r= new Reponse(reponse_id,reponse_cat,reponse_format,reponse_donnees);
                         if(r!=null){
                             q.addReponse(r);
                         }
@@ -390,10 +391,10 @@ public class MiniPollApp extends Application {
         //On charge les choix des participants aux sondages, on les enregistre dans une ArrayList de choix pour chaque Participant de chaque Sondage
 
         Cursor cursorF=db.rawQuery("select ID_sondage,ID_question,ID_participant,score,ID_reponse from choix order by ID_sondage ;",null);
-
+        cursorF.moveToFirst();
         while(!cursorF.isAfterLast()){
             int ID_sondage=cursorF.getInt(0);
-            int ID_question=cursorE.getInt(1);
+            int ID_question=cursorF.getInt(1);
             String ID_participant=cursorF.getString(2);
             int score=cursorF.getInt(3);
             int ID_reponse=cursorF.getInt(4);

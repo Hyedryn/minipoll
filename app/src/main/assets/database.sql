@@ -29,7 +29,7 @@ DROP TABLE IF EXISTS liste_amis;
 CREATE TABLE liste_amis (identifiant_1 text NOT NULL REFERENCES utilisateur (identifiant), identifiant_2 text NOT NULL REFERENCES utilisateur (identifiant), statut text NOT NULL);
 INSERT INTO liste_amis (identifiant_1, identifiant_2, statut) VALUES ('floflo', 'Baptiste', 'en cours');
 INSERT INTO liste_amis (identifiant_1, identifiant_2, statut) VALUES ('floflo', 'Edouard', 'accepte');
-INSERT INTO liste_amis (identifiant_1, identifiant_2, statut) VALUES ('Soukéina', 'Edouard', 'accepte');
+INSERT INTO liste_amis (identifiant_1, identifiant_2, statut) VALUES ('Soukeina', 'Edouard', 'accepte');
 INSERT INTO liste_amis (identifiant_1, identifiant_2, statut) VALUES ('Sara', 'Quentin', 'accepte');
 
 -- Table: liste_participants

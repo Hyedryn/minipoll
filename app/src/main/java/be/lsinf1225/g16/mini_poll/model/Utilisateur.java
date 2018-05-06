@@ -97,6 +97,10 @@ public class Utilisateur {
     public ArrayList<Utilisateur> getListAmi(){ return amis;}
     public ArrayList<Utilisateur> getListDemandeAmi(){ return demandeAmis;}
 
+    public ArrayList<Sondage> getSondages() {
+        return sondages;
+    }
+
     public Bitmap getPhoto() { return this.photo; }
 
     //retourne un objet de type Utilisateur de l'ami dans la liste d'amis dont le nom correspond au nom passé en parametre
@@ -121,11 +125,16 @@ public class Utilisateur {
         return null; //si pas trouvé dans la liste des sondages retourne null
     }
 
+    public void setSondages(ArrayList<Sondage> sondages) {
+        this.sondages = sondages;
+    }
+
     /**
      * Setter
      */
 
     //pas de methode set pour identifiant parce que c'est un final String
+
     public void setPassword(String password) {
         this.password=password;
     }

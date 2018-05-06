@@ -423,6 +423,8 @@ public class MiniPollApp extends Application {
 
 
         db.close();
+
+        MiniPollApp.connectedUser.setSondages(sondages);
     }
 
 

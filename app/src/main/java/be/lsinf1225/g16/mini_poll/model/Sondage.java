@@ -12,15 +12,15 @@ public class Sondage {
 
     protected ArrayList<Participant> participants;
 
-    protected enum Etat {
+    public enum Etat {
         ACTIF,
         CLOTURE;
     }
 
 
-    protected enum Type {
+    public enum Type {
         QUESTIONNAIRE,
-        AIDER_UN_AMi,
+        AIDER_UN_AMI,
         SONDAGE_POUR_ACCORD;
     }
 
@@ -38,7 +38,7 @@ public class Sondage {
     public Sondage(int sondageId,Utilisateur createur,String etat){
         this.sondageId=sondageId;
         this.createur=createur;
-        if(etat.toUpperCase().equals("ACTIF")){this.etat=Etat.ACTIF;}
+        if(etat.equalsIgnoreCase("ACTIF")||etat.equalsIgnoreCase("ouvert")){this.etat=Etat.ACTIF;}
         else{this.etat=Etat.CLOTURE;};
 
     }
@@ -67,7 +67,7 @@ public class Sondage {
     public void setType(String type){
         if(type.equals("sondage")){this.t=Type.SONDAGE_POUR_ACCORD;}
         else if(type.equals("questionnaire")){this.t=Type.QUESTIONNAIRE;}
-        else{this.t=Type.AIDER_UN_AMi;}
+        else{this.t=Type.AIDER_UN_AMI;}
     }
 
     public Type getType() {return this.t;}

@@ -263,7 +263,7 @@ public class MiniPollApp extends Application {
         while (!cursorA.isAfterLast()) {
             int uID_Sondage = cursorA.getInt(0);
             String uCreateur = cursorA.getString(1);
-            String uStatut = cursorP.getString(3);
+            String uStatut = cursorA.getString(2);
             Utilisateur createur = null;
 
             for (Utilisateur u : utilisateurs) { //on cherche l'utilisateur qui correspond a l'identifiant du createur dans la bdd
@@ -339,11 +339,15 @@ public class MiniPollApp extends Application {
                 "question,sondage where contenu.ID_question==question.ID_question and sondage.ID_sondage=contenu.ID_sondage " +
                 "group by question.ID_question",null);
 
+
+        System.out.println(" C ok");
+        cursorD.moveToFirst();
         while(!cursorD.isAfterLast()){
             int Q=cursorD.getInt(0);
             int S=cursorD.getInt(1);
+            ArrayList<Question> questions_sondages =new ArrayList<Question>();
             for(Sondage s : sondages){
-                ArrayList<Question> questions_sondages =new ArrayList<Question>();
+
                 s.setQuestions(questions_sondages);
                 for(Question q : questions){
                     if(S==s.getSondageId()&& Q==q.getQuestionId()){
@@ -354,6 +358,8 @@ public class MiniPollApp extends Application {
         }
 
         cursorD.close();
+
+        System.out.println(" D ok");
 
         Cursor cursorE= db.rawQuery("select reponse.ID_question, reponse.format, reponse.donnees, reponse.categorie, reponse.ID_reponse " +
                 "from reponse,question where reponse.ID_question==question.ID_question order by reponse.ID_question;",null);
@@ -380,6 +386,7 @@ public class MiniPollApp extends Application {
 
         cursorE.close();
 
+        System.out.println(" E ok");
         //On charge les choix des participants aux sondages, on les enregistre dans une ArrayList de choix pour chaque Participant de chaque Sondage
 
         Cursor cursorF=db.rawQuery("select ID_sondage,ID_question,ID_participant,score,ID_reponse from choix order by ID_sondage ;",null);
@@ -410,6 +417,7 @@ public class MiniPollApp extends Application {
 
         }
 
+        System.out.println(" F ok");
         cursorF.close();
 
 

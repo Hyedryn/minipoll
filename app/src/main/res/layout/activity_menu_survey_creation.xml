@@ -26,48 +26,55 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:orientation="vertical"
-        android:weightSum="20"
-        android:background="#a5d8ff"
-        android:clickable="true"
-        android:onClick="agreement_creation"
         android:layout_weight="10"
-        android:focusable="true">
+        android:background="#1971c2"
+        android:clickable="true"
+        android:focusable="true"
+        android:onClick="agreement_creation"
+        android:orientation="vertical"
+        android:padding="10dp"
+        android:weightSum="20">
 
         <ImageButton
             android:id="@+id/agreement_creation"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="18"
-            android:background="#a5d8ff"
+            android:background="#1971c2"
             android:clickable="false"
-            android:padding="10dp"
+            android:contentDescription="@string/creation_sondage_accord"
+            android:padding="15dp"
             android:scaleType="fitCenter"
-            app:srcCompat="@drawable/survey_agreement_creation_icon"
-            android:contentDescription="@string/creation_sondage_accord" />
+            android:tint="#ffffffff"
+            app:srcCompat="@drawable/survey_agreement_creation_icon" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:clickable="false"
-            android:text="@string/creation_sondage_accord"
             android:layout_weight="2"
+            android:background="#1971c2"
+            android:clickable="false"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="@string/creation_sondage_accord"
             android:textAlignment="center"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"></TextView>
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="#ffffffff"></TextView>
     </LinearLayout>
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_weight="10"
+        android:background="#228be6"
         android:clickable="true"
+        android:focusable="true"
         android:onClick="question_creation"
         android:orientation="vertical"
-        android:weightSum="20"
-        android:background="#228be6"
-        android:layout_weight="10"
-        android:focusable="true">
+        android:padding="10dp"
+        android:weightSum="20">
 
 
         <ImageButton
@@ -76,10 +83,11 @@
             android:layout_weight="17"
             android:background="#228be6"
             android:clickable="false"
-            android:padding="10dp"
+            android:contentDescription="@string/creation_questionnaire"
+            android:padding="15dp"
             android:scaleType="fitCenter"
-            app:srcCompat="@drawable/survey_question_creation_icon"
-            android:contentDescription="@string/creation_questionnaire" />
+            android:tint="#ffffffff"
+            app:srcCompat="@drawable/survey_question_creation_icon" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -88,22 +96,26 @@
             android:layout_weight="3"
             android:background="#228be6"
             android:clickable="false"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
             android:text="@string/creation_questionnaire"
             android:textAlignment="center"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"></TextView>
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="#ffffffff"></TextView>
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:clickable="true"
-        android:orientation="vertical"
-        android:weightSum="20"
-        android:background="#1971c2"
-        android:onClick="choice_creation"
         android:layout_weight="10"
-        android:focusable="true">
+        android:background="#1971c2"
+        android:clickable="true"
+        android:focusable="true"
+        android:onClick="choice_creation"
+        android:orientation="vertical"
+        android:padding="10dp"
+        android:weightSum="20">
 
 
         <ImageButton
@@ -113,10 +125,11 @@
             android:layout_weight="17"
             android:background="#1971c2"
             android:clickable="false"
-            android:padding="10dp"
+            android:contentDescription="@string/creation_demande_aide_amis"
+            android:padding="15dp"
             android:scaleType="fitCenter"
-            app:srcCompat="@drawable/survey_choice_creation_icon"
-            android:contentDescription="@string/creation_demande_aide_amis" />
+            android:tint="#ffffffff"
+            app:srcCompat="@drawable/survey_choice_creation_icon" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -125,9 +138,12 @@
             android:layout_weight="3"
             android:background="#1971c2"
             android:clickable="false"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
             android:text="@string/creation_demande_aide_amis"
             android:textAlignment="center"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"></TextView>
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="#ffffffff"></TextView>
 
     </LinearLayout>
 

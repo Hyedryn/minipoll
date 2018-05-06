@@ -28,7 +28,7 @@
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
             android:adjustViewBounds="true"
-            android:background="#0044ff"
+            android:background="#2454d6"
             android:clickable="true"
             android:contentDescription="@string/annule"
             android:cropToPadding="false"
@@ -44,7 +44,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:adjustViewBounds="true"
-            android:background="#0044ff"
+            android:background="#2454d6"
             android:clickable="true"
             android:contentDescription="@string/ok"
             android:foregroundGravity="center_vertical"
@@ -64,12 +64,12 @@
 
             android:layout_toStartOf="@+id/list_delete_btn"
 
-            android:background="@android:color/white"
+            android:background="#6382d5"
             android:gravity="center"
             android:text="@string/ami"
             android:textAlignment="center"
             android:textAllCaps="true"
-            android:textColor="@android:color/black"
+            android:textColor="#ffffffff"
             android:textSize="24sp"
             android:typeface="normal" />
 

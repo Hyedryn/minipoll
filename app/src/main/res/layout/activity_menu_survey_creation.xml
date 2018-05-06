@@ -43,7 +43,7 @@
             android:background="#1971c2"
             android:clickable="false"
             android:contentDescription="@string/creation_sondage_accord"
-            android:padding="10dp"
+            android:padding="15dp"
             android:scaleType="fitCenter"
             android:tint="#ffffffff"
             app:srcCompat="@drawable/survey_agreement_creation_icon" />
@@ -84,7 +84,7 @@
             android:background="#228be6"
             android:clickable="false"
             android:contentDescription="@string/creation_questionnaire"
-            android:padding="10dp"
+            android:padding="15dp"
             android:scaleType="fitCenter"
             android:tint="#ffffffff"
             app:srcCompat="@drawable/survey_question_creation_icon" />
@@ -126,7 +126,7 @@
             android:background="#1971c2"
             android:clickable="false"
             android:contentDescription="@string/creation_demande_aide_amis"
-            android:padding="10dp"
+            android:padding="15dp"
             android:scaleType="fitCenter"
             android:tint="#ffffffff"
             app:srcCompat="@drawable/survey_choice_creation_icon" />

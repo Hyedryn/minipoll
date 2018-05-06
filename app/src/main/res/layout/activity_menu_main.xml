@@ -35,7 +35,7 @@
             android:background="#1971c2"
             android:contentDescription="@string/profil"
             android:onClick="profile"
-            android:padding="8dp"
+            android:padding="15dp"
             android:scaleType="fitStart"
             android:tint="#ffffffff"
             app:srcCompat="@drawable/profile_icon" />
@@ -46,7 +46,8 @@
             android:layout_gravity="center"
             android:clickable="false"
             android:text="@string/profil"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"></TextView>
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="#ffffffff"></TextView>
     </FrameLayout>
 
 
@@ -64,7 +65,7 @@
             android:contentDescription="@string/modifier_le_profil"
             android:cropToPadding="false"
             android:onClick="profileedit"
-            android:padding="8dp"
+            android:padding="15dp"
             android:scaleType="fitStart"
             android:tint="#ffffffff"
             app:srcCompat="@drawable/edit_profile_icon" />
@@ -74,8 +75,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:clickable="false"
+            android:text="@string/modifier_le_profil"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:text="@string/modifier_le_profil"></TextView>
+            android:textColor="#ffffffff"></TextView>
     </FrameLayout>
 
     <FrameLayout
@@ -89,7 +91,7 @@
             android:background="#1971c2"
             android:contentDescription="@string/amis"
             android:onClick="friends"
-            android:padding="8dp"
+            android:padding="15dp"
             android:scaleType="fitStart"
             android:tint="#ffffffff"
             app:srcCompat="@drawable/friends_icon" />
@@ -99,8 +101,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:clickable="false"
+            android:text="@string/amis"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:text="@string/amis"></TextView>
+            android:textColor="#ffffffff"></TextView>
     </FrameLayout>
 
     <FrameLayout
@@ -114,7 +117,7 @@
             android:background="#1c7ed6"
             android:contentDescription="@string/sondage_entre_amis"
             android:onClick="menu_agreement"
-            android:padding="8dp"
+            android:padding="15dp"
             android:scaleType="fitStart"
             android:tint="#ffffffff"
             app:srcCompat="@drawable/survey_agreement_icon" />
@@ -124,8 +127,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:clickable="false"
+            android:text="@string/sondage_entre_amis"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:text="@string/sondage_entre_amis"></TextView>
+            android:textColor="#ffffffff"></TextView>
     </FrameLayout>
 
     <FrameLayout
@@ -139,7 +143,7 @@
             android:background="#1971c2"
             android:contentDescription="@string/questionnaire"
             android:onClick="menu_question"
-            android:padding="8dp"
+            android:padding="15dp"
             android:scaleType="fitStart"
             android:tint="#ffffffff"
             app:srcCompat="@drawable/survey_question_icon" />
@@ -150,8 +154,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:clickable="false"
+            android:text="@string/questionnaire"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:text="@string/questionnaire"></TextView>
+            android:textColor="#ffffffff"></TextView>
     </FrameLayout>
 
     <FrameLayout
@@ -165,7 +170,7 @@
             android:background="#1c7ed6"
             android:contentDescription="@string/aider_un_ami"
             android:onClick="menu_choice"
-            android:padding="8dp"
+            android:padding="15dp"
             android:scaleType="fitStart"
             android:tint="#ffffffff"
             app:srcCompat="@drawable/survey_choice_icon" />
@@ -175,8 +180,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:clickable="false"
+            android:text="@string/aider_un_ami"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:text="@string/aider_un_ami"></TextView>
+            android:textColor="#ffffffff"></TextView>
     </FrameLayout>
 
     <FrameLayout
@@ -191,7 +197,7 @@
             android:background="#1971c2"
             android:contentDescription="@string/creer_un_sondage"
             android:onClick="menu_survey_creation"
-            android:padding="8dp"
+            android:padding="15dp"
             android:scaleType="fitStart"
             android:tint="#ffffffff"
             app:srcCompat="@drawable/survey_creation_icon" />
@@ -201,7 +207,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:clickable="false"
+            android:text="@string/creer_un_sondage"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
-            android:text="@string/creer_un_sondage"></TextView>
+            android:textColor="#ffffffff"></TextView>
     </FrameLayout>
 </LinearLayout>

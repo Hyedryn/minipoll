@@ -50,7 +50,8 @@
             android:onClick="setpp"
             android:padding="4dp"
             android:scaleType="fitXY"
-            android:src="@drawable/edit_pen" />
+            android:src="@drawable/edit_pen"
+            android:tint="#ffffffff" />
 
     </RelativeLayout>
 

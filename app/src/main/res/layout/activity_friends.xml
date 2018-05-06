@@ -42,7 +42,7 @@
             android:background="#508dc4"
             android:clickable="false"
             android:contentDescription="@string/consulter_la_liste_amis"
-            android:padding="10dp"
+            android:padding="40dp"
             android:scaleType="fitCenter"
             android:tint="@android:color/white"
             app:srcCompat="@drawable/friends_list_icon" />
@@ -79,7 +79,7 @@
             android:background="#1971c2"
             android:clickable="false"
             android:contentDescription="@string/ajouter_un_amis"
-            android:padding="10dp"
+            android:padding="40dp"
             android:scaleType="fitCenter"
             android:tint="#ffffff"
             app:srcCompat="@drawable/friends_add_icon" />

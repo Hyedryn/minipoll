@@ -53,13 +53,14 @@
             android:layout_alignParentRight="true"
             android:adjustViewBounds="false"
             android:background="@drawable/editor_state"
-            android:onClick="editpp"
             android:clickable="true"
             android:contentDescription="image"
             android:cropToPadding="false"
+            android:onClick="editpp"
             android:padding="4dp"
             android:scaleType="fitXY"
-            android:src="@drawable/edit_pen" />
+            android:src="@drawable/edit_pen"
+            android:tint="#ffffffff" />
 
     </RelativeLayout>
 

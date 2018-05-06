@@ -31,6 +31,7 @@
             android:background="#25d007"
             android:contentDescription="@string/ok"
             android:onClick="add_ok"
+            android:padding="10dp"
             android:scaleType="fitStart"
             android:tint="@android:color/white"
             android:visibility="visible"

@@ -263,7 +263,7 @@ public class MiniPollApp extends Application {
         while (!cursorA.isAfterLast()) {
             int uID_Sondage = cursorA.getInt(0);
             String uCreateur = cursorA.getString(1);
-            String uStatut = cursorP.getString(2);
+            String uStatut = cursorP.getString(3);
             Utilisateur createur = null;
 
             for (Utilisateur u : utilisateurs) { //on cherche l'utilisateur qui correspond a l'identifiant du createur dans la bdd

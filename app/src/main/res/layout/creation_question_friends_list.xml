@@ -17,7 +17,6 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="120sp"
-            android:background="@color/colorPrimary"
             android:gravity="center"
             android:text="Sélectionnez les participants"
             android:textColor="@android:color/background_light"

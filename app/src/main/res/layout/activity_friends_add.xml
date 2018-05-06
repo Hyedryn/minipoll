@@ -44,12 +44,12 @@
             android:layout_alignParentTop="true"
             android:layout_toEndOf="@+id/add_ok_btn"
 
-            android:background="@android:color/white"
+            android:background="#2454d6"
             android:gravity="center"
             android:text="@string/ajouter_comme_amis"
             android:textAlignment="center"
             android:textAllCaps="true"
-            android:textColor="@android:color/black"
+            android:textColor="#ffffffff"
             android:textSize="24sp"
             android:typeface="normal" />
 

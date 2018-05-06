@@ -19,6 +19,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import be.lsinf1225.g16.mini_poll.R;
+import be.lsinf1225.g16.mini_poll.activity.creationFragment.CreationChoiceFriend;
 
 public class CreationChoiceActivity extends AppCompatActivity {
 
@@ -83,6 +84,8 @@ public class CreationChoiceActivity extends AppCompatActivity {
                 if (current < layouts.length) {
                     // move to next screen
                     viewPager.setCurrentItem(current);
+
+
                 } else {
                     launchHomeScreen();
                 }
@@ -166,6 +169,7 @@ public class CreationChoiceActivity extends AppCompatActivity {
         private LayoutInflater layoutInflater;
 
         public MyViewPagerAdapter() {
+
         }
 
         @Override
@@ -174,8 +178,8 @@ public class CreationChoiceActivity extends AppCompatActivity {
 
             View view = layoutInflater.inflate(layouts[position], container, false);
             container.addView(view);
-
             return view;
+
         }
 
         @Override

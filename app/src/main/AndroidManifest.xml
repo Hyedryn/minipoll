@@ -17,6 +17,8 @@
         android:supportsRtl="true"
         android:theme="@style/NoActionBar"
         android:screenOrientation="portrait"
+        android:hardwareAccelerated="false"
+        android:largeHeap="true"
         android:configChanges="orientation|keyboardHidden">
         <activity android:name=".activity.ConnexionActivity">
             <intent-filter>

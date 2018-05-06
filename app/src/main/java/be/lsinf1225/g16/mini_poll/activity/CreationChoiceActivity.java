@@ -1,19 +1,15 @@
 package be.lsinf1225.g16.mini_poll.activity;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
-import android.os.Build;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.text.Html;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -21,52 +17,73 @@ import android.widget.TextView;
 import be.lsinf1225.g16.mini_poll.R;
 import be.lsinf1225.g16.mini_poll.activity.creationFragment.CreationChoiceFriend;
 
-public class CreationChoiceActivity extends AppCompatActivity {
+public class CreationChoiceActivity extends FragmentActivity {
+    /**
+     * The number of pages (wizard steps) to show in this demo.
+     */
+    private static final int NUM_PAGES = 5;
+
+    /**
+     * The pager widget, which handles animation and allows swiping horizontally to access previous
+     * and next wizard steps.
+     */
+    private ViewPager mPager;
 
 
-    private ViewPager viewPager;
-    private MyViewPagerAdapter myViewPagerAdapter;
+    //dots
+    private Button btnSkip, btnNext;
     private LinearLayout dotsLayout;
     private TextView[] dots;
-    private int[] layouts;
-    private Button btnSkip, btnNext;
+
+    /**
+     * The pager adapter, which provides the pages to the view pager widget.
+     */
+    private PagerAdapter mPagerAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
-        // Making notification bar transparent
-        if (Build.VERSION.SDK_INT >= 21) {
-            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
-        }
-
         setContentView(R.layout.activity_creation_choice);
 
-        viewPager = (ViewPager) findViewById(R.id.view_pager);
+        // Instantiate a ViewPager and a PagerAdapter.
+        mPager = (ViewPager) findViewById(R.id.view_pager);
+        mPagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
+        mPager.setAdapter(mPagerAdapter);
+
+
+
+        mPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            public void onPageScrollStateChanged(int state) {}
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {}
+
+            public void onPageSelected(int position) {
+                // Check if this is the page you want.
+
+                System.out.println("Position +"+position);
+                addBottomDots(position);
+
+                // changing the next button text 'NEXT' / 'GOT IT'
+                if (position == mPagerAdapter.getCount()-1) {
+                    // last page. make button text to GOT IT
+                    btnNext.setText("TERMINÉ");
+                    btnSkip.setVisibility(View.VISIBLE);
+                } else {
+                    // still pages are left "getString(R.string.next)"
+                    btnNext.setText("SUIVANT");
+                    btnSkip.setVisibility(View.VISIBLE);
+                }
+
+            }
+        });
+
+
+        //dots
         dotsLayout = (LinearLayout) findViewById(R.id.layoutDots);
         btnNext = (Button) findViewById(R.id.btn_next);
         btnSkip = (Button) findViewById(R.id.btn_skip);
 
-
-        // layouts of all welcome sliders
-        // add few more layouts if you want
-        layouts = new int[]{
-                R.layout.creation_choice_friend,
-                R.layout.creation_choice_format,
-                R.layout.creation_choice_fill_choice,
-                R.layout.creation_choice_preview,
-                R.layout.creation_choice_send};
-
         // adding bottom dots
         addBottomDots(0);
-
-        // making notification bar transparent
-        changeStatusBarColor();
-
-        myViewPagerAdapter = new MyViewPagerAdapter();
-        viewPager.setAdapter(myViewPagerAdapter);
-        viewPager.addOnPageChangeListener(viewPagerPageChangeListener);
 
         btnSkip.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,10 +97,11 @@ public class CreationChoiceActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // checking for last page
                 // if last page home screen will be launched
-                int current = getItem(+1);
-                if (current < layouts.length) {
+                int current = mPager.getCurrentItem()+1;
+                System.out.println("Current page:"+current);
+                if (current < NUM_PAGES) {
                     // move to next screen
-                    viewPager.setCurrentItem(current);
+                    mPager.setCurrentItem(current);
 
 
                 } else {
@@ -93,8 +111,25 @@ public class CreationChoiceActivity extends AppCompatActivity {
         });
     }
 
+
+
+    @Override
+    public void onBackPressed() {
+        if (mPager.getCurrentItem() == 0) {
+            // If the user is currently looking at the first step, allow the system to handle the
+            // Back button. This calls finish() on this activity and pops the back stack.
+            super.onBackPressed();
+        } else {
+            // Otherwise, select the previous step.
+            mPager.setCurrentItem(mPager.getCurrentItem() - 1);
+        }
+    }
+
+
+
+
     private void addBottomDots(int currentPage) {
-        dots = new TextView[layouts.length];
+        dots = new TextView[NUM_PAGES];
 
         int[] colorsActive = getResources().getIntArray(R.array.array_dot_active);
         int[] colorsInactive = getResources().getIntArray(R.array.array_dot_inactive);
@@ -112,92 +147,38 @@ public class CreationChoiceActivity extends AppCompatActivity {
             dots[currentPage].setTextColor(colorsActive[currentPage]);
     }
 
-    private int getItem(int i) {
-        return viewPager.getCurrentItem() + i;
-    }
+
+
 
     private void launchHomeScreen() {
         startActivity(new Intent(CreationChoiceActivity.this, MenuMainActivity.class));
         finish();
     }
 
-    //  viewpager change listener
-    ViewPager.OnPageChangeListener viewPagerPageChangeListener = new ViewPager.OnPageChangeListener() {
 
-        @Override
-        public void onPageSelected(int position) {
-            addBottomDots(position);
-
-            // changing the next button text 'NEXT' / 'GOT IT'
-            if (position == layouts.length - 1) {
-                // last page. make button text to GOT IT
-                btnNext.setText("TERMINÉ");
-                btnSkip.setVisibility(View.VISIBLE);
-            } else {
-                // still pages are left "getString(R.string.next)"
-                btnNext.setText("NEXT");
-                btnSkip.setVisibility(View.VISIBLE);
-            }
-        }
-
-        @Override
-        public void onPageScrolled(int arg0, float arg1, int arg2) {
-
-        }
-
-        @Override
-        public void onPageScrollStateChanged(int arg0) {
-
-        }
-    };
 
     /**
-     * Making notification bar transparent
+     * A simple pager adapter that represents 5 ScreenSlidePageFragment objects, in
+     * sequence.
      */
-    private void changeStatusBarColor() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            Window window = getWindow();
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            window.setStatusBarColor(Color.TRANSPARENT);
-        }
-    }
-
-    /**
-     * View pager adapter
-     */
-    public class MyViewPagerAdapter extends PagerAdapter {
-        private LayoutInflater layoutInflater;
-
-        public MyViewPagerAdapter() {
-
+    private class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
+        public ScreenSlidePagerAdapter(FragmentManager fm) {
+            super(fm);
         }
 
         @Override
-        public Object instantiateItem(ViewGroup container, int position) {
-            layoutInflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        public Fragment getItem(int position) {
 
-            View view = layoutInflater.inflate(layouts[position], container, false);
-            container.addView(view);
-            return view;
 
+
+            return new CreationChoiceFriend();
         }
+
+
 
         @Override
         public int getCount() {
-            return layouts.length;
-        }
-
-        @Override
-        public boolean isViewFromObject(View view, Object obj) {
-            return view == obj;
-        }
-
-
-        @Override
-        public void destroyItem(ViewGroup container, int position, Object object) {
-            View view = (View) object;
-            container.removeView(view);
+            return NUM_PAGES;
         }
     }
-
 }

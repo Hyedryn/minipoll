@@ -22,7 +22,7 @@ public class MenuMainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_main);
 
-        if(MiniPollApp.connectedUser.getListDemandeAmi()!=null){
+        if(MiniPollApp.connectedUser!=null&&MiniPollApp.connectedUser.getListDemandeAmi()!=null){
         for(Utilisateur demandeami : MiniPollApp.connectedUser.getListDemandeAmi()) {
             friendRequest(demandeami);
             alertDialog.show();

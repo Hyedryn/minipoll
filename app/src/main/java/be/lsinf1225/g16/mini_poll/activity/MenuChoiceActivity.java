@@ -27,10 +27,11 @@ public class MenuChoiceActivity extends AppCompatActivity {
             //si utilisateur existe l'ajouter
             System.out.println("Sondage non vide!!");
             if(s.getType().equals(Sondage.Type.AIDER_UN_AMI)) {
-
+                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT, 80.0f);
+                params.setMargins(1,1,1,1);
                 if(s.getCreateur().equals(MiniPollApp.connectedUser)){
                     Button b = new Button(this);
-                    b.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT, 80.0f));
+                    b.setLayoutParams(params);
                     String id;
                     if(s.getListeParticipants().get(0).getParticipant().equals(MiniPollApp.connectedUser)){
                         id=s.getListeParticipants().get(1).getParticipant().getIdentifiant();
@@ -56,7 +57,7 @@ public class MenuChoiceActivity extends AppCompatActivity {
                             startActivity(intent);
                         }
                     });
-                    b.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT, 80.0f));
+                    b.setLayoutParams(params);
                     b.setText(s.getCreateur().getIdentifiant()+" a besoin de ton aide!");
                     b.setBackgroundColor(getResources().getColor(R.color.Button1));
                     linearLayout.addView(b, linearLayout.indexOfChild(findViewById(R.id.menu_choice_demandes_aides_ouvertes))+1);
@@ -69,7 +70,7 @@ public class MenuChoiceActivity extends AppCompatActivity {
                             startActivity(intent);
                         }
                     });
-                    b.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT, 80.0f));
+                    b.setLayoutParams(params);
                     b.setText(s.getCreateur().getIdentifiant()+" a besoin de ton aide!");
                     b.setBackgroundColor(getResources().getColor(R.color.Button1));
                     linearLayout.addView(b, linearLayout.indexOfChild(findViewById(R.id.menu_choice__demandes_aides_clotures))+1);

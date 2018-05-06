@@ -50,6 +50,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="80"
+                android:layout_margin="10dp"
                 android:background="#0044ff"
                 android:text="@string/mes_questionnaires"
                 android:textAlignment="center"
@@ -58,12 +59,7 @@
                 android:textSize="24sp"
                 android:textStyle="bold" />
 
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="80"
-                android:background="#77a7f5"
-                android:text="@string/questionnaire_1" />
+
 
 
             <TextView
@@ -77,21 +73,17 @@
                 android:textAllCaps="true"
                 android:textColor="#ffffffff"
                 android:textSize="24sp"
+                android:layout_margin="10dp"
                 android:textStyle="bold" />
 
 
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="80"
-                android:background="#77a7f5"
-                android:text="@string/questionnaire_de_nom_du_createur" />
 
             <TextView
                 android:id="@+id/menu_question_questions_clotures"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="80"
+                android:layout_margin="10dp"
                 android:background="#0044ff"
                 android:text="@string/questionnaire_clotures"
                 android:textAlignment="center"
@@ -101,12 +93,7 @@
                 android:textStyle="bold" />
 
 
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="80"
-                android:background="#77a7f5"
-                android:text="@string/questionnaire_de_nom_du_createur" />
+
 
 
         </LinearLayout>

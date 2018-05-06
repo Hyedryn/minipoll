@@ -24,11 +24,14 @@ public class MenuAgreementActivity extends AppCompatActivity {
             for(final Sondage s : MiniPollApp.connectedUser.getSondages()) {
                 //si utilisateur existe l'ajouter
 
-                if(s.getType().equals(Sondage.Type.QUESTIONNAIRE)) {
+                if(s.getType().equals(Sondage.Type.SONDAGE_POUR_ACCORD)) {
+
+                    LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT, 80.0f);
+                    params.setMargins(1,1,1,1);
 
                     if(s.getCreateur().equals(MiniPollApp.connectedUser)){
                         Button b = new Button(this);
-                        b.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT, 80.0f));
+                        b.setLayoutParams(params);
 
                         b.setOnClickListener(new View.OnClickListener() {
                             public void onClick(View v) {
@@ -49,7 +52,7 @@ public class MenuAgreementActivity extends AppCompatActivity {
                                 startActivity(intent);
                             }
                         });
-                        b.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT, 80.0f));
+                        b.setLayoutParams(params);
                         b.setText("Sondage de "+s.getCreateur().getIdentifiant());
                         b.setBackgroundColor(getResources().getColor(R.color.Button1));
                         linearLayout.addView(b, linearLayout.indexOfChild(findViewById(R.id.menu_sondage_ouverts))+1);
@@ -62,7 +65,7 @@ public class MenuAgreementActivity extends AppCompatActivity {
                                 startActivity(intent);
                             }
                         });
-                        b.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT, 80.0f));
+                        b.setLayoutParams(params);
                         b.setText("Sondage de "+s.getCreateur().getIdentifiant());
                         b.setBackgroundColor(getResources().getColor(R.color.Button1));
                         linearLayout.addView(b, linearLayout.indexOfChild(findViewById(R.id.menu_sondage_clotures))+1);

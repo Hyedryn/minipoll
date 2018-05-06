@@ -47,6 +47,7 @@
                 android:id="@+id/menu_choice_mes_demandes_aides"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_margin="10dp"
                 android:layout_weight="80"
                 android:background="#0044ff"
                 android:text="@string/mes_demandes_aide"
@@ -57,18 +58,14 @@
                 android:textStyle="bold" />
 
 
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="80"
-                android:background="#77a7f5"
-                android:text="@string/demande_aide_nom_personne" />
+
 
             <TextView
                 android:id="@+id/menu_choice_demandes_aides_ouvertes"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="80"
+                android:layout_margin="10dp"
                 android:background="#0044ff"
                 android:text="@string/demandes_aide_ouvertes"
                 android:textAlignment="center"
@@ -78,12 +75,6 @@
                 android:textStyle="bold" />
 
 
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="80"
-                android:background="#77a7f5"
-                android:text="@string/nom_du_createur_besoin_aide" />
 
             <TextView
                 android:id="@+id/menu_choice__demandes_aides_clotures"
@@ -91,6 +82,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="80"
                 android:background="#0044ff"
+                android:layout_margin="10dp"
                 android:text="@string/demandes_aide_clotures"
                 android:textAlignment="center"
                 android:textAllCaps="true"
@@ -98,12 +90,6 @@
                 android:textSize="24sp"
                 android:textStyle="bold" />
 
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="80"
-                android:background="#77a7f5"
-                android:text="@string/nom_du_createur_a_fait_son_choix" />
 
 
 

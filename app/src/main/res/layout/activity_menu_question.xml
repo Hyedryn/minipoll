@@ -39,13 +39,14 @@
 
 
         <LinearLayout
-            android:id="@+id/email_login_form"
+            android:id="@+id/menu_question_linear_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:weightSum="80">
 
             <TextView
+                android:id="@+id/menu_question_mes_questions"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="80"
@@ -66,6 +67,7 @@
 
 
             <TextView
+                android:id="@+id/menu_question_ouvertes"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="80"
@@ -86,7 +88,7 @@
                 android:text="@string/questionnaire_de_nom_du_createur" />
 
             <TextView
-                android:id="@+id/textView5"
+                android:id="@+id/menu_question_questions_clotures"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="80"

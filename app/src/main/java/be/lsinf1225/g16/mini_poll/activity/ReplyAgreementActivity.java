@@ -34,6 +34,8 @@ public class ReplyAgreementActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        Intent intent = getIntent();
+        int sondageID = intent.getIntExtra("sondageID",0);
 
         // Making notification bar transparent
         if (Build.VERSION.SDK_INT >= 21) {

@@ -14,7 +14,7 @@ public class Choix {
 
     private Status s;
 
-    private Choix(Reponse reponse, int poids){
+    public Choix(Reponse reponse, int poids){
         this.reponse=reponse;
         this.poids=poids;
     }

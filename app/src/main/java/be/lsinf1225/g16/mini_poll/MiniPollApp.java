@@ -15,6 +15,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import be.lsinf1225.g16.mini_poll.model.Choix;
+import be.lsinf1225.g16.mini_poll.model.Participant;
 import be.lsinf1225.g16.mini_poll.model.Question;
 import be.lsinf1225.g16.mini_poll.model.Reponse;
 import be.lsinf1225.g16.mini_poll.model.Sondage;
@@ -196,7 +197,7 @@ public class MiniPollApp extends Application {
         cursorP.moveToFirst(); //we have a pointer to the first record
 
         // Initialisation la liste des utilisateurs.
-        ArrayList<Choix> choix = new ArrayList<>();
+        ArrayList<Participant> part = new ArrayList<Participant>();
 
         // Tant qu'il y a des lignes.
         while (!cursorP.isAfterLast()) {
@@ -206,8 +207,8 @@ public class MiniPollApp extends Application {
             String uStatut = cursorP.getString(2);
 
             if (uID.equals(connectedUser.getIdentifiant())) {
-                Choix c_choix = new Choix(connectedUser, uID_Sondage, uStatut); //here we use second constructor method with identifiant, sondage if and status responded or not
-                choix.add(c_choix);
+                Participant p = new Participant(uID,uID_Sondage,uStatut); //here we use second constructor method with identifiant, sondage if and status responded or not
+                part.add(p);
             }
 
             // Passe à la ligne suivante.
@@ -226,16 +227,15 @@ public class MiniPollApp extends Application {
             int uID_Sondage = Integer.parseInt(cursorP.getString(1));
             String uStatut = cursorP.getString(2);
 
-            Choix c_choix = null;
-            for (Choix c : choix) {
-                if (!uID.equals(connectedUser.getIdentifiant()) && uID_Sondage == c.getSondageID()) { //look at all users whose name is not
-                    //the same as connected user but the sondage id is the same as connected user
-                    c_choix = new Choix(uID, uID_Sondage, uStatut);
+            Participant participant_p = null;
+            for (Participant p : part) {
+                if (!uID.equals(connectedUser.getIdentifiant()) && uID_Sondage == p.getSondageID()) {
+                    participant_p = new Participant(uID, uID_Sondage, uStatut);
                 }
             }
 
-            if (c_choix != null)
-                choix.add(c_choix);
+            if (participant_p != null)
+                part.add(participant_p);
 
             // Passe à la ligne suivante.
             cursorP.moveToNext();
@@ -271,8 +271,8 @@ public class MiniPollApp extends Application {
             }
             Sondage sondage_s = null;
 
-            for (Choix c : choix) {
-                if (uID_Sondage == c.getSondageID() && createur != null) {
+            for (Participant p : part) {
+                if (uID_Sondage == p.getSondageID() && createur != null) {
                     sondage_s = new Sondage(uID_Sondage, createur, uStatut);
                 }
             }
@@ -284,12 +284,10 @@ public class MiniPollApp extends Application {
             cursorA.moveToNext();
         }
         //We now have basic sondage info in arraylist sondage (id, createur, statut ), need to add liste participants for each one, info already in choix
-        for(Choix c : choix){
+        for(Participant p : part){
             for(Sondage s : sondages){
-                ArrayList<Utilisateur> participants=new ArrayList<Utilisateur>();
-                s.setListeParticipants(participants);
-                if(c.getSondageID()==s.getSondageId()){
-                    participants.add(c.getParticipant());
+                if(p.getSondageID()==s.getSondageId()){
+                    s.addParticipants(p);
                 }
             }
         }
@@ -355,7 +353,7 @@ public class MiniPollApp extends Application {
 
         cursorD.close();
 
-        Cursor cursorE= db.rawQuery("select reponse.ID_question, reponse.format, reponse.donnees, reponse.categorie " +
+        Cursor cursorE= db.rawQuery("select reponse.ID_question, reponse.format, reponse.donnees, reponse.categorie, reponse.ID_reponse " +
                 "from reponse,question where reponse.ID_question==question.ID_question order by reponse.ID_question;",null);
 
         while(!cursorE.isAfterLast()){
@@ -363,13 +361,12 @@ public class MiniPollApp extends Application {
             String reponse_format=cursorE.getString(1);
             String reponse_donnees=cursorE.getString(2);
             String reponse_cat=cursorE.getString(3);
+            int reponse_id=cursorE.getInt(4);
 
             for(Sondage s : sondages){
                 for(Question q : s.getQuestions()){
-                    ArrayList<Reponse> reponses= new ArrayList<Reponse>();
-                    q.setListeReponses(reponses);
                     if(q.getQuestionId()==ID_question){
-                        Reponse r= new Reponse(reponse_cat,reponse_format,reponse_donnees);
+                        Reponse r= new Reponse(reponse_id,reponse_cat,reponse_format,reponse_donnees);
                         if(r!=null){
                             q.addReponse(r);
                         }
@@ -380,6 +377,39 @@ public class MiniPollApp extends Application {
         }
 
         cursorE.close();
+
+        //On charge les choix des participants aux sondages, on les enregistre dans une ArrayList de choix pour chaque Participant de chaque Sondage
+
+        Cursor cursorF=db.rawQuery("select ID_sondage,ID_question,ID_participant,score,ID_reponse from choix order by ID_sondage ;",null);
+
+        while(!cursorF.isAfterLast()){
+            int ID_sondage=cursorF.getInt(0);
+            int ID_question=cursorE.getInt(1);
+            String ID_participant=cursorF.getString(2);
+            int score=cursorF.getInt(3);
+            int ID_reponse=cursorF.getInt(4);
+
+            for(Sondage s : sondages){
+                for(Question q :s.getQuestions()){
+                   for(Reponse r : q.getListeReponses()){
+                       for(int i=0;i<s.getListeParticipants().size();i++) {
+                           if (s.getSondageId() == ID_sondage && q.getQuestionId() == ID_question && r.getReponseId() == ID_reponse
+                                   && s.getListeParticipants().get(i).getParticipant().getIdentifiant() == ID_participant) {
+                                        Choix c = new Choix(r, score);
+                                        if(c!=null){s.getListeParticipants().get(i).addChoix(c);}
+
+                           }
+                       }
+                   }
+                }
+            }
+
+        cursorF.moveToNext();
+
+        }
+
+        cursorF.close();
+
 
         db.close();
     }

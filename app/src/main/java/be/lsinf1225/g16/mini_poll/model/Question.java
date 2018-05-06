@@ -64,7 +64,13 @@ public class Question {
 
     public void setQuestionId(int questionId){this.questionId=questionId;}
 
-    public void addReponse(Reponse r){this.ListeReponses.add(r);}
+    public void addReponse(Reponse r){
+        if(this.ListeReponses==null){
+            this.ListeReponses=new ArrayList<Reponse>();
+            this.ListeReponses.add(r);
+        }else
+        this.ListeReponses.add(r);
+    }
 
 }
 

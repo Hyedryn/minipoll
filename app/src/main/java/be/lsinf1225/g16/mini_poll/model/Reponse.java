@@ -40,9 +40,9 @@ public class Reponse {
 
     public Reponse(int reponseId,String c, String f, String d){
         this.reponseId=reponseId;
-        if(c.equals("bonne")){this.c=Categorie.BONNE;}
+        if("bonne".equals(c)){this.c=Categorie.BONNE;}
         else{this.c=Categorie.MAUVAISE;};
-        if(f.equals("texte")){this.f=Format.TEXTE;}
+        if("texte".equals(f)){this.f=Format.TEXTE;}
         else{this.f=Format.IMAGE;};
         this.donnee_txt =d;
     }

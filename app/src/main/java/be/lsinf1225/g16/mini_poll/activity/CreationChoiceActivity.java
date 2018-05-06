@@ -15,7 +15,13 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import be.lsinf1225.g16.mini_poll.R;
+import be.lsinf1225.g16.mini_poll.activity.creationFragment.CreationChoiceFillChoice;
+import be.lsinf1225.g16.mini_poll.activity.creationFragment.CreationChoiceFormat;
 import be.lsinf1225.g16.mini_poll.activity.creationFragment.CreationChoiceFriend;
+import be.lsinf1225.g16.mini_poll.activity.creationFragment.CreationChoicePreview;
+import be.lsinf1225.g16.mini_poll.activity.creationFragment.CreationChoiceSend;
+
+import static be.lsinf1225.g16.mini_poll.activity.MenuSurveyCreationActivity.creationmenu;
 
 public class CreationChoiceActivity extends FragmentActivity {
     /**
@@ -151,7 +157,9 @@ public class CreationChoiceActivity extends FragmentActivity {
 
 
     private void launchHomeScreen() {
-        startActivity(new Intent(CreationChoiceActivity.this, MenuMainActivity.class));
+     //   startActivity(new Intent(CreationChoiceActivity.this, MenuMainActivity.class));
+        if(creationmenu!=null)
+            creationmenu.finish();
         finish();
     }
 
@@ -169,9 +177,21 @@ public class CreationChoiceActivity extends FragmentActivity {
         @Override
         public Fragment getItem(int position) {
 
-
-
-            return new CreationChoiceFriend();
+            switch (position) {
+                case 0:
+                    return new CreationChoiceFriend();
+                case 1:
+                    return new CreationChoiceFormat();
+                case 2:
+                    return new CreationChoiceFillChoice();
+                case 3:
+                    return new CreationChoicePreview();
+                case 4:
+                    return new CreationChoiceSend();
+                default:
+                    // This should never happen. Always account for each position above
+                    return null;
+            }
         }
 
 

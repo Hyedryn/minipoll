@@ -51,7 +51,6 @@ public class CreationQuestionActivity extends AppCompatActivity {
         // add few more layouts if you want
         layouts = new int[]{
                 R.layout.creation_question_friends_list,
-                R.layout.creation_question_total_choice,
                 R.layout.creation_question_fill_choice,
                 R.layout.creation_question_preview,
                 R.layout.creation_question_edit_order,

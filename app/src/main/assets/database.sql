@@ -8,13 +8,13 @@ BEGIN TRANSACTION;
 
 -- Table: choix
 DROP TABLE IF EXISTS choix;
-CREATE TABLE choix (ID_question integer NOT NULL REFERENCES contenu (ID_question), ID_sondage integer NOT NULL REFERENCES sondage (ID_sondage), donnees REFERENCES reponse (donnees), ID_participant text NOT NULL REFERENCES utilisateur (identifiant), score INTEGER);
-INSERT INTO choix (ID_question, ID_sondage, donnees, ID_participant, score) VALUES (1, 1, 'Margherita', 'floflo', 1);
-INSERT INTO choix (ID_question, ID_sondage, donnees, ID_participant, score) VALUES (1, 1, '4 Fromaggi', 'floflo', 2);
-INSERT INTO choix (ID_question, ID_sondage, donnees, ID_participant, score) VALUES (2, 1, 'Star Wars', 'floflo', 1);
-INSERT INTO choix (ID_question, ID_sondage, donnees, ID_participant, score) VALUES (2, 1, 'Avengers', 'floflo', 2);
-INSERT INTO choix (ID_question, ID_sondage, donnees, ID_participant, score) VALUES (3, 2, '11.35 millions', 'Quentin', 1);
-INSERT INTO choix (ID_question, ID_sondage, donnees, ID_participant, score) VALUES (4, 3, 'bleu', 'Edouard', 1);
+CREATE TABLE choix (ID_question integer NOT NULL REFERENCES contenu (ID_question), ID_sondage integer NOT NULL REFERENCES sondage (ID_sondage), ID_reponse integer NOT NULL REFERENCES reponse (ID_reponse),donnees REFERENCES reponse (donnees),  ID_participant text NOT NULL REFERENCES utilisateur (identifiant), score INTEGER);
+INSERT INTO choix (ID_question, ID_sondage, donnees, ID_participant, score) VALUES (1, 1, 1, 'Margherita', 'floflo', 1);
+INSERT INTO choix (ID_question, ID_sondage, donnees, ID_participant, score) VALUES (1, 1, 2, '4 Fromaggi', 'floflo', 2);
+INSERT INTO choix (ID_question, ID_sondage, donnees, ID_participant, score) VALUES (2, 1, 5, 'Star Wars', 'floflo', 1);
+INSERT INTO choix (ID_question, ID_sondage, donnees, ID_participant, score) VALUES (2, 1, 6, 'Avengers', 'floflo', 2);
+INSERT INTO choix (ID_question, ID_sondage, donnees, ID_participant, score) VALUES (3, 2, 12, '11.35 millions', 'Quentin', 1);
+INSERT INTO choix (ID_question, ID_sondage, donnees, ID_participant, score) VALUES (4, 3, 9, 'bleu', 'Edouard', 1);
 
 -- Table: contenu
 DROP TABLE IF EXISTS contenu;
@@ -52,19 +52,19 @@ INSERT INTO question (ID_question, enonce, nombreReponses) VALUES (3, 'Populatio
 
 -- Table: reponse
 DROP TABLE IF EXISTS reponse;
-CREATE TABLE reponse (ID_question integer NOT NULL REFERENCES contenu (ID_question), format text NOT NULL, donnees NOT NULL PRIMARY KEY, categorie text);
-INSERT INTO reponse (ID_question, format, donnees, categorie) VALUES (1, 'texte', 'Margherita', NULL);
-INSERT INTO reponse (ID_question, format, donnees, categorie) VALUES (1, 'texte', '4 Fromaggi', NULL);
-INSERT INTO reponse (ID_question, format, donnees, categorie) VALUES (1, 'texte', 'Prosciutto', NULL);
-INSERT INTO reponse (ID_question, format, donnees, categorie) VALUES (1, 'texte', 'Hawai', NULL);
-INSERT INTO reponse (ID_question, format, donnees, categorie) VALUES (2, 'texte', 'Star Wars', NULL);
-INSERT INTO reponse (ID_question, format, donnees, categorie) VALUES (2, 'texte', 'Avengers', NULL);
-INSERT INTO reponse (ID_question, format, donnees, categorie) VALUES (2, 'texte', 'Inglourious Basterds', NULL);
-INSERT INTO reponse (ID_question, format, donnees, categorie) VALUES (4, 'texte', 'rouge', NULL);
-INSERT INTO reponse (ID_question, format, donnees, categorie) VALUES (4, 'texte', 'bleu', NULL);
-INSERT INTO reponse (ID_question, format, donnees, categorie) VALUES (3, 'texte', 150, 'mauvaise');
-INSERT INTO reponse (ID_question, format, donnees, categorie) VALUES (3, 'texte', '1.000.000.000.000', 'mauvaise');
-INSERT INTO reponse (ID_question, format, donnees, categorie) VALUES (3, 'texte', '11.35 millions', 'bonne');
+CREATE TABLE reponse (ID_reponse integer NOT NULL , ID_question integer NOT NULL REFERENCES contenu (ID_question), format text NOT NULL, donnees NOT NULL PRIMARY KEY, categorie text);
+INSERT INTO reponse (ID_reponse, ID_question, format, donnees, categorie) VALUES (1, 1, 'texte', 'Margherita', NULL);
+INSERT INTO reponse (ID_reponse,ID_question, format, donnees, categorie) VALUES (2, 1, 'texte', '4 Fromaggi', NULL);
+INSERT INTO reponse (ID_reponse, ID_question, format, donnees, categorie) VALUES (3, 1, 'texte', 'Prosciutto', NULL);
+INSERT INTO reponse (ID_reponse,ID_question, format, donnees, categorie) VALUES (4, 1, 'texte', 'Hawai', NULL);
+INSERT INTO reponse (ID_reponse,ID_question, format, donnees, categorie) VALUES (5, 2, 'texte', 'Star Wars', NULL);
+INSERT INTO reponse (ID_reponse,ID_question, format, donnees, categorie) VALUES (6, 2, 'texte', 'Avengers', NULL);
+INSERT INTO reponse (ID_reponse,ID_question, format, donnees, categorie) VALUES (7, 2, 'texte', 'Inglourious Basterds', NULL);
+INSERT INTO reponse (ID_reponse,ID_question, format, donnees, categorie) VALUES (8, 4, 'texte', 'rouge', NULL);
+INSERT INTO reponse (ID_reponse,ID_question, format, donnees, categorie) VALUES (9, 4, 'texte', 'bleu', NULL);
+INSERT INTO reponse (ID_reponse,ID_question, format, donnees, categorie) VALUES (10, 3, 'texte', 150, 'mauvaise');
+INSERT INTO reponse (ID_reponse,ID_question, format, donnees, categorie) VALUES (11, 3, 'texte', '1.000.000.000.000', 'mauvaise');
+INSERT INTO reponse (ID_reponse,ID_question, format, donnees, categorie) VALUES (12, 3, 'texte', '11.35 millions', 'bonne');
 
 -- Table: sondage
 DROP TABLE IF EXISTS sondage;

@@ -4,6 +4,8 @@ import android.graphics.Bitmap;
 
 public class Reponse {
 
+    protected int reponseId;
+
     protected enum Format {
         IMAGE,
         TEXTE;
@@ -22,25 +24,32 @@ public class Reponse {
 
     private Bitmap donnee_img;
 
-    public Reponse(Categorie c, Format f, String d){
+    public Reponse(int reponseId, Categorie c, Format f, String d){
+        this.reponseId=reponseId;
         this.c =c;
         this.f =f;
         this.donnee_txt =d;
     }
 
-    public Reponse(Categorie c, Format f, Bitmap d){
+    public Reponse(int reponseId,Categorie c, Format f, Bitmap d){
+        this.reponseId=reponseId;
         this.c =c;
         this.f =f;
         this.donnee_img =d;
     }
 
-    public Reponse(String c, String f, String d){
+    public Reponse(int reponseId,String c, String f, String d){
+        this.reponseId=reponseId;
         if(c.equals("bonne")){this.c=Categorie.BONNE;}
         else{this.c=Categorie.MAUVAISE;};
         if(f.equals("texte")){this.f=Format.TEXTE;}
         else{this.f=Format.IMAGE;};
         this.donnee_txt =d;
     }
+
+    public int getReponseId() {return this.reponseId;}
+
+    public void setReponseId(int reponseId){this.reponseId=reponseId;}
 
     public void setFormat(Format f) {
         this.f = f;

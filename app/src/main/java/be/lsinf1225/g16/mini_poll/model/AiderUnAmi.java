@@ -12,15 +12,11 @@ public class AiderUnAmi extends Sondage {
 
     //get et set hérités de sondage
 
-    public Reponse getChoix(Choix x) {
-        return x.getReponse();
-    }
-
     public Reponse getResult() {
         return this.resultat;
     }
 
-        public void setResult(Reponse reponse) {
+    public void setResult(Reponse reponse) {
         this.resultat = reponse;
     }
 
@@ -34,7 +30,4 @@ public class AiderUnAmi extends Sondage {
         }
     }
 
-    public void changeEtat(Etat etat) {
-        this.etat = etat;
-    }
 }

@@ -61,28 +61,19 @@ public class ConnexionActivity extends AppCompatActivity implements TextView.OnE
         String password = passwordEditText.getText().toString();
         String id = userEditText.getText().toString();
 
-        for(Utilisateur user : MiniPollApp.utilisateurs) {
+        int success = MiniPollApp.connect(id,password);
 
-            if(user.getIdentifiant().equals(id)) {
-
-                if(!user.checkMdp(password)) {
-                    MiniPollApp.notifyShort(R.string.error_invalid_password);
-                    passwordEditText.setText("");
-                    return;
-                }
-
-                MiniPollApp.connectedUser = MiniPollApp.utilisateurs.get(MiniPollApp.utilisateurs.indexOf(user));
-                MiniPollApp.loadConnectedUser();
-
-                Intent intent = new Intent(ConnexionActivity.this, MenuMainActivity.class);
-                startActivity(intent);
-                finish();
-                return;
-
-            }
+        if(success==0) {
+            Intent intent = new Intent(ConnexionActivity.this, MenuMainActivity.class);
+            startActivity(intent);
+            finish();
         }
 
-        MiniPollApp.notifyShort(R.string.error_invalid_id);
+        if(success==1)
+            passwordEditText.setText("");
+
+        if(success==2)
+            MiniPollApp.notifyShort(R.string.error_invalid_id);
 
     }
 

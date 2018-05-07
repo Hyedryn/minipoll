@@ -24,7 +24,6 @@ import android.widget.TextView;
 
 import be.lsinf1225.g16.mini_poll.MiniPollApp;
 import be.lsinf1225.g16.mini_poll.R;
-import be.lsinf1225.g16.mini_poll.activity.creationFragment.CreationAgreementEditOrder;
 import be.lsinf1225.g16.mini_poll.activity.creationFragment.CreationAgreementFillChoice;
 import be.lsinf1225.g16.mini_poll.activity.creationFragment.CreationAgreementFriendsList;
 import be.lsinf1225.g16.mini_poll.activity.creationFragment.CreationAgreementPreview;

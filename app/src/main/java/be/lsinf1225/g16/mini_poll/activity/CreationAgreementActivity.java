@@ -15,7 +15,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import be.lsinf1225.g16.mini_poll.R;
-import be.lsinf1225.g16.mini_poll.activity.creationFragment.CreationAgreementEditOrder;
 import be.lsinf1225.g16.mini_poll.activity.creationFragment.CreationAgreementFillChoice;
 import be.lsinf1225.g16.mini_poll.activity.creationFragment.CreationAgreementFriendsList;
 import be.lsinf1225.g16.mini_poll.activity.creationFragment.CreationAgreementPreview;
@@ -27,7 +26,7 @@ public class CreationAgreementActivity extends FragmentActivity {
     /**
      * The number of pages (wizard steps) to show in this demo.
      */
-    private static final int NUM_PAGES = 5;
+    private static final int NUM_PAGES = 4;
 
     /**
      * The pager widget, which handles animation and allows swiping horizontally to access previous
@@ -184,8 +183,6 @@ public class CreationAgreementActivity extends FragmentActivity {
                     return new CreationAgreementFillChoice();
                 case 2:
                     return new CreationAgreementPreview();
-                case 3:
-                    return new CreationAgreementEditOrder();
                 case 4:
                     return new CreationAgreementSend();
                 default:

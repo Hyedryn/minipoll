@@ -50,7 +50,7 @@ public class ReplyChoiceFillAnswer extends Fragment {
         questionText = (TextView) getActivity().findViewById(R.id.reply_choice_question);
         titre.setText("Aider " + sondage.getCreateur().getPrenom() + " à faire un choix");
         questionText.setText(question.get(0).getEnonce());
-        reponse1 = (TextView) getActivity().findViewById(R.id.reply_choice_reponse1);
+        reponse1 = (TextView) getActivity().findViewById(R.id.reply_choice_reponse2);
         reponse2 = (TextView) getActivity().findViewById(R.id.reply_choice_reponse2);
         reponse1.setText(ListeReponses.get(0).getDonnee_txt());
         reponse2.setText(ListeReponses.get(0).getDonnee_txt());

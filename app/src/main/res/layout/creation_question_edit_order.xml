@@ -13,8 +13,9 @@
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="120sp"
+            android:layout_height="wrap_content"
             android:gravity="center"
+            android:padding="20dp"
             android:text="Changez l'ordre des questions si vous le souhaitez"
             android:textColor="@android:color/white"
             android:textSize="@dimen/slide_title"
@@ -60,10 +61,13 @@
                         <ImageButton
                             android:id="@+id/imageButton"
                             style="@android:style/Widget.Material.Light.ImageButton"
-                            android:layout_width="150dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="match_parent"
-                            android:layout_weight="1"
+                            android:layout_gravity="center"
                             android:background="#00000000"
+                            android:foregroundGravity="center_vertical|center"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp"
                             android:tint="@android:color/white"
                             app:srcCompat="@drawable/ic_reorder" />
 
@@ -97,10 +101,13 @@
                         <ImageButton
                             android:id="@+id/iageButton"
                             style="@android:style/Widget.Material.ImageButton"
-                            android:layout_width="150dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="50dp"
-                            android:layout_weight="1"
+                            android:layout_gravity="center"
                             android:background="#00000000"
+                            android:foregroundGravity="center_vertical|center"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp"
                             android:tint="@android:color/white"
                             app:srcCompat="@drawable/ic_reorder" />
 

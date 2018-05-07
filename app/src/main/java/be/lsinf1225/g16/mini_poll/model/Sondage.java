@@ -57,6 +57,15 @@ public class Sondage {
 
     public ArrayList<Participant> getListeParticipants() {return this.participants;}
 
+    public Participant getParticipant(Utilisateur u) {
+        for(Participant p : this.participants) {
+            if(p.getParticipant().equals(u)) {
+                return p;
+            }
+        }
+        return null;
+    }
+
     public Etat getState() {return this.etat;}
 
     public void setQuestions(ArrayList<Question> q) {this.questions = q;}

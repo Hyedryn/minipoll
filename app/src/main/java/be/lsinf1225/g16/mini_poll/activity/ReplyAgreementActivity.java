@@ -4,6 +4,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -18,79 +22,160 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import be.lsinf1225.g16.mini_poll.MiniPollApp;
 import be.lsinf1225.g16.mini_poll.R;
+import be.lsinf1225.g16.mini_poll.activity.creationFragment.CreationAgreementEditOrder;
+import be.lsinf1225.g16.mini_poll.activity.creationFragment.CreationAgreementFillChoice;
+import be.lsinf1225.g16.mini_poll.activity.creationFragment.CreationAgreementFriendsList;
+import be.lsinf1225.g16.mini_poll.activity.creationFragment.CreationAgreementPreview;
+import be.lsinf1225.g16.mini_poll.activity.creationFragment.CreationAgreementSend;
+import be.lsinf1225.g16.mini_poll.activity.replyFragment.ReplyAgreementFillAnswer;
+import be.lsinf1225.g16.mini_poll.activity.replyFragment.ReplyAgreementSummary;
+import be.lsinf1225.g16.mini_poll.model.Participant;
+import be.lsinf1225.g16.mini_poll.model.Sondage;
+import be.lsinf1225.g16.mini_poll.model.SondagePourAccord;
 
-public class ReplyAgreementActivity extends AppCompatActivity {
+import static be.lsinf1225.g16.mini_poll.activity.MenuSurveyCreationActivity.creationmenu;
+
+public class ReplyAgreementActivity  extends FragmentActivity {
 
 
-    private ViewPager viewPager;
-    private ReplyAgreementActivity.MyViewPagerAdapter myViewPagerAdapter;
+    /**
+     * The number of pages (wizard steps) to show in this demo.
+     */
+    private static int NUM_PAGES = 2;
+
+    /**
+     * The pager widget, which handles animation and allows swiping horizontally to access previous
+     * and next wizard steps.
+     */
+    private ViewPager mPager;
+
+
+    //dots
+    private Button btnSkip, btnNext;
     private LinearLayout dotsLayout;
     private TextView[] dots;
-    private int[] layouts;
-    private Button btnSkip, btnNext;
+
+    /**
+     * The pager adapter, which provides the pages to the view pager widget.
+     */
+    private PagerAdapter mPagerAdapter;
+
+    private SondagePourAccord s;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_reply_agreement);
+
 
         Intent intent = getIntent();
         int sondageID = intent.getIntExtra("sondageID",0);
+        this.s = (SondagePourAccord) MiniPollApp.connectedUser.getSondage(sondageID);
 
-        // Making notification bar transparent
-        if (Build.VERSION.SDK_INT >= 21) {
-            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
-        }
-
-        setContentView(R.layout.activity_reply_agreement);
-
-        viewPager = (ViewPager) findViewById(R.id.view_pager);
+        //dots
         dotsLayout = (LinearLayout) findViewById(R.id.layoutDots);
         btnNext = (Button) findViewById(R.id.btn_next);
         btnSkip = (Button) findViewById(R.id.btn_skip);
 
+        if(s==null)
+            finish();
 
-        // layouts of all welcome sliders
-        // add few more layouts if you want
-        layouts = new int[]{
-                R.layout.reply_agreement_fill_answer,
-                R.layout.reply_agreement_summary};
 
-        // adding bottom dots
-        addBottomDots(0);
+        // Instantiate a ViewPager and a PagerAdapter.
+        mPager = (ViewPager) findViewById(R.id.view_pager);
+        mPagerAdapter = new ReplyAgreementActivity.ScreenSlidePagerAdapter(getSupportFragmentManager());
+        mPager.setAdapter(mPagerAdapter);
 
-        // making notification bar transparent
-        changeStatusBarColor();
+        if(s.getState().equals(Sondage.Etat.CLOTURE)||(s.getParticipant(MiniPollApp.connectedUser)!=null&&s.getParticipant(MiniPollApp.connectedUser).getStatus().equals(Participant.Status.A_REPONDU))){
 
-        myViewPagerAdapter = new ReplyAgreementActivity.MyViewPagerAdapter();
-        viewPager.setAdapter(myViewPagerAdapter);
-        viewPager.addOnPageChangeListener(viewPagerPageChangeListener);
+            NUM_PAGES=1;
+            btnSkip.setVisibility(View.INVISIBLE);
+            btnNext.setVisibility(View.INVISIBLE);
+            dotsLayout.setVisibility(View.INVISIBLE);
 
-        btnSkip.setOnClickListener(new View.OnClickListener() {
+        }else{
+
+
+
+            mPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+                public void onPageScrollStateChanged(int state) {}
+                public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {}
+
+                public void onPageSelected(int position) {
+                    // Check if this is the page you want.
+
+
+                    addBottomDots(position);
+
+                  // changing the next button text 'NEXT' / 'GOT IT'
+                    if (position == mPagerAdapter.getCount()-1) {
+                        // last page. make button text to GOT IT
+                        btnNext.setText("TERMINÉ");
+                        btnSkip.setVisibility(View.VISIBLE);
+                    } else {
+                        // still pages are left "getString(R.string.next)"
+                        btnNext.setText("SUIVANT");
+                        btnSkip.setVisibility(View.VISIBLE);
+                    }
+
+                }
+            });
+
+
+            // adding bottom dots
+            addBottomDots(0);
+
+            btnSkip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 launchHomeScreen();
             }
         });
 
-        btnNext.setOnClickListener(new View.OnClickListener() {
+            btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // checking for last page
                 // if last page home screen will be launched
-                int current = getItem(+1);
-                if (current < layouts.length) {
+                int current = mPager.getCurrentItem()+1;
+                System.out.println("Current page:"+current);
+                if (current < NUM_PAGES) {
                     // move to next screen
-                    viewPager.setCurrentItem(current);
+                    mPager.setCurrentItem(current);
+
+
                 } else {
                     launchHomeScreen();
                 }
-            }
-        });
+                }
+            });
+
+        }
+
+
     }
 
+
+
+    @Override
+    public void onBackPressed() {
+        if (mPager.getCurrentItem() == 0) {
+            // If the user is currently looking at the first step, allow the system to handle the
+            // Back button. This calls finish() on this activity and pops the back stack.
+            super.onBackPressed();
+        } else {
+            // Otherwise, select the previous step.
+            mPager.setCurrentItem(mPager.getCurrentItem() - 1);
+        }
+    }
+
+
+
+
     private void addBottomDots(int currentPage) {
-        dots = new TextView[layouts.length];
+        dots = new TextView[NUM_PAGES];
 
         int[] colorsActive = getResources().getIntArray(R.array.array_dot_active);
         int[] colorsInactive = getResources().getIntArray(R.array.array_dot_inactive);
@@ -108,90 +193,49 @@ public class ReplyAgreementActivity extends AppCompatActivity {
             dots[currentPage].setTextColor(colorsActive[currentPage]);
     }
 
-    private int getItem(int i) {
-        return viewPager.getCurrentItem() + i;
-    }
+
+
 
     private void launchHomeScreen() {
-        startActivity(new Intent(ReplyAgreementActivity.this, MenuMainActivity.class));
         finish();
     }
 
-    //  viewpager change listener
-    ViewPager.OnPageChangeListener viewPagerPageChangeListener = new ViewPager.OnPageChangeListener() {
+
+
+    /**
+     * A simple pager adapter that represents 5 ScreenSlidePageFragment objects, in
+     * sequence.
+     */
+    private class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
+        public ScreenSlidePagerAdapter(FragmentManager fm) {
+            super(fm);
+        }
 
         @Override
-        public void onPageSelected(int position) {
-            addBottomDots(position);
+        public Fragment getItem(int position) {
 
-            // changing the next button text 'NEXT' / 'GOT IT'
-            if (position == layouts.length - 1) {
-                // last page. make button text to GOT IT
-                btnNext.setText("TERMINÉ");
-                btnSkip.setVisibility(View.VISIBLE);
-            } else {
-                // still pages are left "getString(R.string.next)"
-                btnNext.setText("NEXT");
-                btnSkip.setVisibility(View.VISIBLE);
+            if(getCount()==1){
+                return new ReplyAgreementSummary();
+            }else {
+
+                switch (position) {
+                    case 0:
+                        return new ReplyAgreementFillAnswer();
+                    case 1:
+                        return new ReplyAgreementSummary();
+                    default:
+                        // This should never happen. Always account for each position above
+                        return null;
+                }
             }
-        }
-
-        @Override
-        public void onPageScrolled(int arg0, float arg1, int arg2) {
 
         }
 
-        @Override
-        public void onPageScrollStateChanged(int arg0) {
 
-        }
-    };
-
-    /**
-     * Making notification bar transparent
-     */
-    private void changeStatusBarColor() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            Window window = getWindow();
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            window.setStatusBarColor(Color.TRANSPARENT);
-        }
-    }
-
-    /**
-     * View pager adapter
-     */
-    public class MyViewPagerAdapter extends PagerAdapter {
-        private LayoutInflater layoutInflater;
-
-        public MyViewPagerAdapter() {
-        }
-
-        @Override
-        public Object instantiateItem(ViewGroup container, int position) {
-            layoutInflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
-            View view = layoutInflater.inflate(layouts[position], container, false);
-            container.addView(view);
-
-            return view;
-        }
 
         @Override
         public int getCount() {
-            return layouts.length;
-        }
-
-        @Override
-        public boolean isViewFromObject(View view, Object obj) {
-            return view == obj;
-        }
-
-
-        @Override
-        public void destroyItem(ViewGroup container, int position, Object object) {
-            View view = (View) object;
-            container.removeView(view);
+            return NUM_PAGES;
         }
     }
 

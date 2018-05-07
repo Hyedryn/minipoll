@@ -11,7 +11,7 @@ public class Participant {
     private ArrayList<Choix> choix;
 
 
-    protected enum Status {
+    public enum Status {
         A_REPONDU,
         EN_ATTENTE;
     }

@@ -183,7 +183,7 @@ public class CreationAgreementActivity extends FragmentActivity {
                     return new CreationAgreementFillChoice();
                 case 2:
                     return new CreationAgreementPreview();
-                case 4:
+                case 3:
                     return new CreationAgreementSend();
                 default:
                     // This should never happen. Always account for each position above

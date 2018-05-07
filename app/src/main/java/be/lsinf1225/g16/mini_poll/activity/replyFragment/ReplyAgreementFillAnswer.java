@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import be.lsinf1225.g16.mini_poll.R;
+import be.lsinf1225.g16.mini_poll.activity.ReplyAgreementActivity;
 
 public class ReplyAgreementFillAnswer extends Fragment {
 

@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import be.lsinf1225.g16.mini_poll.MiniPollApp;
 import be.lsinf1225.g16.mini_poll.R;
 
 public class CreationAgreementFriendsList extends Fragment {
@@ -18,4 +19,6 @@ public class CreationAgreementFriendsList extends Fragment {
 
         return rootView;
     }
+
+
 }

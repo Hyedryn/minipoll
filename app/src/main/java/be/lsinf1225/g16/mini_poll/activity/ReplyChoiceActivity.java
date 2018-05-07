@@ -65,7 +65,7 @@ public class ReplyChoiceActivity  extends FragmentActivity {
      */
     private PagerAdapter mPagerAdapter;
 
-    private Sondage s;
+    private Sondage sondage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,14 +75,14 @@ public class ReplyChoiceActivity  extends FragmentActivity {
 
         Intent intent = getIntent();
         int sondageID = intent.getIntExtra("sondageID",0);
-        this.s = MiniPollApp.connectedUser.getSondage(sondageID);
+        this.sondage = MiniPollApp.connectedUser.getSondage(sondageID);
 
         //dots
         dotsLayout = (LinearLayout) findViewById(R.id.layoutDots);
         btnNext = (Button) findViewById(R.id.btn_next);
         btnSkip = (Button) findViewById(R.id.btn_skip);
 
-        if(s==null)
+        if(sondage==null)
             finish();
 
 
@@ -91,7 +91,7 @@ public class ReplyChoiceActivity  extends FragmentActivity {
         mPagerAdapter = new ReplyChoiceActivity.ScreenSlidePagerAdapter(getSupportFragmentManager());
         mPager.setAdapter(mPagerAdapter);
 
-        if(s.getState().equals(Sondage.Etat.CLOTURE)||(s.getParticipant(MiniPollApp.connectedUser)!=null&&s.getParticipant(MiniPollApp.connectedUser).getStatus().equals(Participant.Status.A_REPONDU))){
+        if(sondage.getState().equals(Sondage.Etat.CLOTURE)||(sondage.getParticipant(MiniPollApp.connectedUser)!=null&&sondage.getParticipant(MiniPollApp.connectedUser).getStatus().equals(Participant.Status.A_REPONDU))){
 
             NUM_PAGES=1;
             btnSkip.setVisibility(View.INVISIBLE);

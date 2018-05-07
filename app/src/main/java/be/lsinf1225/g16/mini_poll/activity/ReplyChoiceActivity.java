@@ -65,7 +65,7 @@ public class ReplyChoiceActivity  extends FragmentActivity {
      */
     private PagerAdapter mPagerAdapter;
 
-    private Sondage sondage;
+    public static Sondage sondage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -11,7 +11,6 @@ import android.view.Gravity;
 import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import be.lsinf1225.g16.mini_poll.model.Choix;
@@ -577,7 +576,5 @@ public class MiniPollApp extends Application {
         utilisateurs = users;
 
     }
-
-
 
 }

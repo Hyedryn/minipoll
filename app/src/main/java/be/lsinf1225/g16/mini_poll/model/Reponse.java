@@ -49,6 +49,10 @@ public class Reponse {
 
     public int getReponseId() {return this.reponseId;}
 
+    public String getDonnee_txt(){
+        return this.donnee_txt;
+    }
+
     public void setReponseId(int reponseId){this.reponseId=reponseId;}
 
     public void setFormat(Format f) {

@@ -17,6 +17,7 @@
         android:paddingBottom="4dp">
 
         <TextView
+            android:id="@+id/reply_choice_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -32,6 +33,7 @@
             android:layout_height="350sp">
 
             <LinearLayout
+                android:id="@+id/reply_choice_question"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
@@ -50,7 +52,7 @@
                         android:orientation="horizontal">
 
                         <TextView
-                            android:id="@+id/textView"
+                            android:id="@+id/reply_choice_question"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -78,7 +80,7 @@
                         android:orientation="horizontal">
 
                         <TextView
-                            android:id="@+id/textView"
+                            android:id="@+id/reply_choice_reponse1"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -89,7 +91,7 @@
                             android:textStyle="bold" />
 
                         <CheckBox
-                            android:id="@+id/checkdBox2"
+                            android:id="@+id/reply_choice_checkbox1"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:layout_weight="0" />
@@ -112,7 +114,7 @@
                         android:orientation="horizontal">
 
                         <TextView
-                            android:id="@+id/textView"
+                            android:id="@+id/reply_choice_reponse2"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -123,7 +125,7 @@
                             android:textStyle="bold" />
 
                         <CheckBox
-                            android:id="@+id/checkdBox"
+                            android:id="@+id/reply_choice_checkbox2"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:layout_weight="0" />

@@ -95,8 +95,9 @@
                             android:id="@+id/imageButtohn"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            app:srcCompat="@android:drawable/btn_dialog" />
+                            android:background="#43b5b5b5"
+                            android:tint="#ffffffff"
+                            app:srcCompat="@android:drawable/ic_delete" />
 
                     </LinearLayout>
 
@@ -130,8 +131,9 @@
                             android:id="@+id/imageBuhtton"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            app:srcCompat="@android:drawable/btn_dialog" />
+                            android:background="#43b5b5b5"
+                            android:tint="#ffffffff"
+                            app:srcCompat="@android:drawable/ic_delete" />
 
                     </LinearLayout>
 
@@ -141,7 +143,11 @@
                     android:id="@+id/button"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Ajouter Réponse" />
+                    android:layout_margin="15dp"
+                    android:background="#3d5aa3"
+                    android:padding="8dp"
+                    android:text="Ajouter Question"
+                    android:textColor="#ffffffff"  />
 
             </LinearLayout>
         </ScrollView>

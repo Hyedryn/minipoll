@@ -71,7 +71,7 @@ public class ConnexionActivity extends AppCompatActivity implements TextView.OnE
                     return;
                 }
 
-                MiniPollApp.connectedUser = user;
+                MiniPollApp.connectedUser = MiniPollApp.utilisateurs.get(MiniPollApp.utilisateurs.indexOf(user));
                 MiniPollApp.loadConnectedUser();
 
                 Intent intent = new Intent(ConnexionActivity.this, MenuMainActivity.class);

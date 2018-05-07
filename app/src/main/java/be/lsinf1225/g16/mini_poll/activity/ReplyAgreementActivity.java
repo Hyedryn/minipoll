@@ -24,7 +24,6 @@ import android.widget.TextView;
 
 import be.lsinf1225.g16.mini_poll.MiniPollApp;
 import be.lsinf1225.g16.mini_poll.R;
-import be.lsinf1225.g16.mini_poll.activity.creationFragment.CreationAgreementEditOrder;
 import be.lsinf1225.g16.mini_poll.activity.creationFragment.CreationAgreementFillChoice;
 import be.lsinf1225.g16.mini_poll.activity.creationFragment.CreationAgreementFriendsList;
 import be.lsinf1225.g16.mini_poll.activity.creationFragment.CreationAgreementPreview;
@@ -43,7 +42,10 @@ public class ReplyAgreementActivity  extends FragmentActivity {
     /**
      * The number of pages (wizard steps) to show in this demo.
      */
-    private static int NUM_PAGES = 2;
+    private final static int NUM_PAGES = 2;
+
+
+    private int active_page = 2;
 
     /**
      * The pager widget, which handles animation and allows swiping horizontally to access previous
@@ -90,7 +92,7 @@ public class ReplyAgreementActivity  extends FragmentActivity {
 
         if(sondage.getState().equals(Sondage.Etat.CLOTURE)||(sondage.getParticipant(MiniPollApp.connectedUser)!=null&&sondage.getParticipant(MiniPollApp.connectedUser).getStatus().equals(Participant.Status.A_REPONDU))){
 
-            NUM_PAGES=1;
+            active_page=1;
             btnSkip.setVisibility(View.INVISIBLE);
             btnNext.setVisibility(View.INVISIBLE);
             dotsLayout.setVisibility(View.INVISIBLE);
@@ -141,7 +143,7 @@ public class ReplyAgreementActivity  extends FragmentActivity {
                 // if last page home screen will be launched
                 int current = mPager.getCurrentItem()+1;
                 System.out.println("Current page:"+current);
-                if (current < NUM_PAGES) {
+                if (current < active_page) {
                     // move to next screen
                     mPager.setCurrentItem(current);
 
@@ -175,7 +177,7 @@ public class ReplyAgreementActivity  extends FragmentActivity {
 
 
     private void addBottomDots(int currentPage) {
-        dots = new TextView[NUM_PAGES];
+        dots = new TextView[active_page];
 
         int[] colorsActive = getResources().getIntArray(R.array.array_dot_active);
         int[] colorsInactive = getResources().getIntArray(R.array.array_dot_inactive);
@@ -214,7 +216,7 @@ public class ReplyAgreementActivity  extends FragmentActivity {
         @Override
         public Fragment getItem(int position) {
 
-            if(getCount()==1){
+            if(active_page==1){
                 return new ReplyAgreementSummary();
             }else {
 

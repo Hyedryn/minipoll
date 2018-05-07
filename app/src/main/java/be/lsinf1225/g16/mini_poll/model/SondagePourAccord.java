@@ -106,9 +106,16 @@ public class SondagePourAccord extends Sondage {
     public Reponse getResult()
     {
         if (checkNumberOfPoidsMax() > 1){
-            return chooseReponse(2); // --> !! faudra changer!! je sais pas quoi mettre :/
+            return null;//chooseReponse(2); // --> !! faudra changer!! je sais pas quoi mettre :/
         }
         return classement[0];
+    }
+
+    public Reponse[] moreThanOne(){
+        if (checkNumberOfPoidsMax() > 1){
+            return classement;
+        }
+        return null;
     }
 
     /**

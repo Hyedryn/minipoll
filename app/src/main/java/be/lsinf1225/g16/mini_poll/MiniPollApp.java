@@ -2,6 +2,7 @@ package be.lsinf1225.g16.mini_poll;
 
 import android.app.Application;
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
@@ -13,6 +14,8 @@ import android.widget.Toast;
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
+import be.lsinf1225.g16.mini_poll.activity.ConnexionActivity;
+import be.lsinf1225.g16.mini_poll.activity.MenuMainActivity;
 import be.lsinf1225.g16.mini_poll.model.Choix;
 import be.lsinf1225.g16.mini_poll.model.Participant;
 import be.lsinf1225.g16.mini_poll.model.Question;
@@ -25,6 +28,27 @@ public class MiniPollApp extends Application {
 
     //ArrayList comprennant tout les utilisateurs de la database
     public static ArrayList<Utilisateur> utilisateurs = new ArrayList<>();
+
+    public static int connect(String id, String password){
+        for(Utilisateur user : MiniPollApp.utilisateurs) {
+
+            if(user.getIdentifiant().equals(id)) {
+
+                if(!user.checkMdp(password)) {
+                    MiniPollApp.notifyShort(R.string.error_invalid_password);
+                    return 1;
+                }
+
+                MiniPollApp.connectedUser = MiniPollApp.utilisateurs.get(MiniPollApp.utilisateurs.indexOf(user));
+                MiniPollApp.loadConnectedUser();
+
+
+                return 0;
+
+            }
+        }
+        return 2;
+    }
 
     public static Utilisateur connectedUser;
 

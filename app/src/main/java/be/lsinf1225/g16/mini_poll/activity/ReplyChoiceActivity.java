@@ -65,7 +65,7 @@ public class ReplyChoiceActivity  extends FragmentActivity {
      */
     private PagerAdapter mPagerAdapter;
 
-    private AiderUnAmi s;
+    private Sondage s;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,7 +75,7 @@ public class ReplyChoiceActivity  extends FragmentActivity {
 
         Intent intent = getIntent();
         int sondageID = intent.getIntExtra("sondageID",0);
-        this.s = (AiderUnAmi) MiniPollApp.connectedUser.getSondage(sondageID);
+        this.s = MiniPollApp.connectedUser.getSondage(sondageID);
 
         //dots
         dotsLayout = (LinearLayout) findViewById(R.id.layoutDots);

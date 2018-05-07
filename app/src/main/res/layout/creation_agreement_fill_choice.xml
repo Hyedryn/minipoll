@@ -29,7 +29,8 @@
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="350sp">
+            android:layout_height="match_parent"
+            android:paddingBottom="30dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -49,177 +50,19 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
-                        <ImageButton
-                            android:id="@+id/imageButton8"
-                            android:layout_width="100dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            app:srcCompat="@android:drawable/ic_input_add" />
-
-                        <TextView
-                            android:id="@+id/textView"
-                            android:layout_width="match_parent"
-                            android:layout_height="50dp"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:text="Question 1"
-                            android:textColor="@android:color/white"
-                            android:textSize="@dimen/slide_title"
-                            android:textStyle="bold" />
-
-                        <ImageButton
-                            android:id="@+id/imageButton"
-                            android:layout_width="100dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            app:srcCompat="@android:drawable/ic_delete" />
-
-                    </LinearLayout>
-
-                </android.support.v7.widget.CardView>
-
-                <android.support.v7.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="5dp"
-                    app:cardBackgroundColor="@color/dot_dark_screen3"
-                    app:cardCornerRadius="2dp"
-                    app:cardElevation="2dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:id="@+id/textView"
+                        <EditText
+                            android:id="@+id/Question"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:gravity="center"
-                            android:text="Réponse 1"
-                            android:textColor="@android:color/white"
-                            android:textSize="18sp"
-                            android:textStyle="bold" />
-
-                        <ImageButton
-                            android:id="@+id/imageButton"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            app:srcCompat="@android:drawable/btn_dialog" />
-
-                    </LinearLayout>
-
-                </android.support.v7.widget.CardView>
-
-                <android.support.v7.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="5dp"
-                    app:cardBackgroundColor="@color/dot_dark_screen3"
-                    app:cardCornerRadius="2dp"
-                    app:cardElevation="2dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:id="@+id/textView"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:text="Réponse 2"
-                            android:textColor="@android:color/white"
-                            android:textSize="18sp"
-                            android:textStyle="bold" />
-
-                        <ImageButton
-                            android:id="@+id/imageButton"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            app:srcCompat="@android:drawable/btn_dialog" />
-
-                    </LinearLayout>
-
-                </android.support.v7.widget.CardView>
-
-                <android.support.v7.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="5dp"
-                    app:cardBackgroundColor="@color/dot_dark_screen3"
-                    app:cardCornerRadius="2dp"
-                    app:cardElevation="2dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:id="@+id/textView"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:text="Réponse 3"
-                            android:textColor="@android:color/white"
-                            android:textSize="18sp"
-                            android:textStyle="bold" />
-
-                        <ImageButton
-                            android:id="@+id/imageButton"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            app:srcCompat="@android:drawable/btn_dialog" />
-
-                    </LinearLayout>
-
-                </android.support.v7.widget.CardView>
-
-                <android.support.v7.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="5dp"
-                    app:cardBackgroundColor="#4d6dbe"
-                    app:cardCornerRadius="2dp"
-                    app:cardElevation="2dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <ImageButton
-                            android:id="@+id/imageButton11"
-                            android:layout_width="100dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            app:srcCompat="@android:drawable/ic_input_add" />
-
-                        <TextView
-                            android:id="@+id/txtView"
-                            android:layout_width="match_parent"
-                            android:layout_height="50dp"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:text="Question 2"
-                            android:textColor="@android:color/white"
-                            android:textSize="@dimen/slide_title"
-                            android:textStyle="bold" />
-
-                        <ImageButton
-                            android:id="@+id/imageButton5"
-                            android:layout_width="100dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            app:srcCompat="@android:drawable/ic_delete" />
+                            android:background="@drawable/textview_border"
+                            android:gravity="center_vertical|center"
+                            android:hint="Question"
+                            android:inputType="text"
+                            android:paddingBottom="8dp"
+                            android:paddingStart="6dp"
+                            android:paddingTop="6dp"
+                            android:textSize="18sp" />
 
                     </LinearLayout>
 
@@ -334,7 +177,7 @@
                     android:id="@+id/button"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Ajouter Question" />
+                    android:text="Ajouter Réponse" />
 
             </LinearLayout>
         </ScrollView>

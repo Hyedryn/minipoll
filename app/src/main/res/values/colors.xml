@@ -50,5 +50,6 @@
     </array>
 
 
+    <color name="CardViewCreationBackground">#4d6dbe</color>
     <color name="Button1">#77a7f5</color>
 </resources>

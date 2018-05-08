@@ -2,12 +2,15 @@ package be.lsinf1225.g16.mini_poll;
 
 import android.app.Application;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.util.TypedValue;
 import android.view.Gravity;
 import android.widget.Toast;
 
@@ -106,6 +109,16 @@ public class MiniPollApp extends Application {
         loadUtilisateurs();
     }
 
+
+
+    public static int getPixelValue(Context context, int dimenId) {
+        Resources resources = context.getResources();
+        return (int) TypedValue.applyDimension(
+                TypedValue.COMPLEX_UNIT_DIP,
+                dimenId,
+                resources.getDisplayMetrics()
+        );
+    }
 
     /**
      * Class global statique

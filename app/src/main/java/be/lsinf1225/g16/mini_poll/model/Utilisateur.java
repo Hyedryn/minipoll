@@ -94,7 +94,12 @@ public class Utilisateur {
     public String getMeilleurAmi() {
         return this.meilleur_ami;
     }
-    public ArrayList<Utilisateur> getListAmi(){ return amis;}
+    public ArrayList<Utilisateur> getListAmi(){
+        if(amis==null)
+            amis = new ArrayList<Utilisateur>();
+
+        return amis;
+    }
     public ArrayList<Utilisateur> getListDemandeAmi(){ return demandeAmis;}
 
     public ArrayList<Sondage> getSondages() {

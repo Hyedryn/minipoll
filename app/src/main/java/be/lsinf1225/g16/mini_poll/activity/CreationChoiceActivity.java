@@ -2,6 +2,7 @@ package be.lsinf1225.g16.mini_poll.activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
@@ -13,6 +14,7 @@ import android.support.v4.view.ViewPager;
 import android.text.Html;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -34,8 +36,17 @@ public class CreationChoiceActivity extends FragmentActivity {
      */
     private static final int NUM_PAGES = 5;
 
+    CreationChoiceFillChoice fillchoice;
+    CreationChoicePreview preview;
 
     public static Activity creationchoice;
+
+    public static Bitmap image1;
+    public static Bitmap image2;
+
+    public static String question;
+    public static String texte1;
+    public static String texte2;
 
     /**
      * The pager widget, which handles animation and allows swiping horizontally to access previous
@@ -63,8 +74,9 @@ public class CreationChoiceActivity extends FragmentActivity {
         mPager = (ViewPager) findViewById(R.id.view_pager);
         mPagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
         mPager.setAdapter(mPagerAdapter);
+        mPager.setOffscreenPageLimit(2);
 
-    creationchoice =this;
+        creationchoice =this;
 
         mPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             public void onPageScrollStateChanged(int state) {}
@@ -73,6 +85,9 @@ public class CreationChoiceActivity extends FragmentActivity {
             public void onPageSelected(int position) {
                 // Check if this is the page you want.
 
+                if(position==3){
+                    saveReponse();
+                }
                 System.out.println("Position +"+position);
                 addBottomDots(position);
 
@@ -126,6 +141,17 @@ public class CreationChoiceActivity extends FragmentActivity {
     }
 
 
+    public void saveReponse(){
+
+
+        question = ((TextView) findViewById(R.id.question)).getText().toString();
+
+        fillchoice.save();
+        preview.settxt();
+
+
+
+    }
 
     @Override
     public void onBackPressed() {
@@ -205,9 +231,10 @@ public class CreationChoiceActivity extends FragmentActivity {
                 case 1:
                     return new CreationChoiceFormat();
                 case 2:
-                    return new CreationChoiceFillChoice();
+
+                    return fillchoice = new CreationChoiceFillChoice();
                 case 3:
-                    return new CreationChoicePreview();
+                    return preview = new CreationChoicePreview();
                 case 4:
                     return new CreationChoiceSend();
                 default:

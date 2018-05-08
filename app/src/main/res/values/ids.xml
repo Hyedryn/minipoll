@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="r1" type="id"/>
+    <item name="r2" type="id"/>
+    <item name="r3" type="id"/>
+    <item name="r4" type="id"/>
+    <item name="r5" type="id"/>
+    <item name="r6" type="id"/>
+
+    <item name="i1" type="id"/>
+    <item name="i2" type="id"/>
+    <item name="i3" type="id"/>
+    <item name="i4" type="id"/>
+    <item name="i5" type="id"/>
+    <item name="i6" type="id"/>
+
+    <item name="q1" type="id"/>
+</resources>

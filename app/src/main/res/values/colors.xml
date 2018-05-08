@@ -52,4 +52,6 @@
 
     <color name="CardViewCreationBackground">#4d6dbe</color>
     <color name="Button1">#77a7f5</color>
+    <color name="tint1">#ffffffff</color>
+    <color name="backgroundqcrea1">#43b5b5b5</color>
 </resources>

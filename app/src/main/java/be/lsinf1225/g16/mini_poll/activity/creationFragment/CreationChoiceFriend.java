@@ -53,47 +53,24 @@ public class CreationChoiceFriend extends Fragment {
 
         for(Utilisateur u: MiniPollApp.connectedUser.getListAmi()){
 
-        CardView c = new CardView(getActivity());
-        LinearLayout l = new LinearLayout(getActivity());
-        TextView t = new TextView(getActivity());
+
         RadioButton cb = new RadioButton(getActivity());
 
-        CardView.LayoutParams paramsL = new CardView.LayoutParams(CardView.LayoutParams.MATCH_PARENT, CardView.LayoutParams.WRAP_CONTENT);
+        RadioGroup.LayoutParams paramsCB = new RadioGroup.LayoutParams(RadioGroup.LayoutParams.MATCH_PARENT, RadioGroup.LayoutParams.WRAP_CONTENT);
 
-        RadioGroup.LayoutParams paramsC = new RadioGroup.LayoutParams(RadioGroup.LayoutParams.MATCH_PARENT, RadioGroup.LayoutParams.WRAP_CONTENT);
+        paramsCB.setMargins(20,20,20,20);
 
-        paramsC.setMargins(20,20,20,20);
-
-        LinearLayout.LayoutParams paramsT = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT, 1);
-
-        LinearLayout.LayoutParams paramsCB = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.MATCH_PARENT);
-
-        c.setMaxCardElevation(5);
-        c.setCardElevation(2.0f);
-        c.setRadius(2.0f);
-        c.setCardBackgroundColor(getResources().getColor(R.color.CardViewCreationBackground));
-        c.setLayoutParams(paramsC);
-
-        l.setOrientation(LinearLayout.HORIZONTAL);
-        l.setBackgroundColor(getResources().getColor(R.color.dot_light_screen6));
-        l.setLayoutParams(paramsL);
-
-        t.setText(u.getIdentifiant());
-        t.setGravity(Gravity.CENTER);
-        t.setTextColor(Color.WHITE);
-        t.setTextSize(30f);
-
-        t.setTypeface(Typeface.DEFAULT_BOLD);
-        t.setLayoutParams(paramsT);
-
+        cb.setPadding(3,3,3,3);
+        cb.setText(u.getIdentifiant());
+        cb.setBackgroundColor(getResources().getColor(R.color.dot_light_screen6));
+        cb.setTextColor(Color.WHITE);
+        cb.setGravity(Gravity.CENTER);
+        cb.setTextSize(30f);
+        cb.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+        cb.setTypeface(Typeface.DEFAULT_BOLD);
         cb.setLayoutParams(paramsCB);
 
-        l.addView(t);
-        l.addView(cb);
-        c.addView(l);
-
-
-        radioGroup.addView(c);
+        radioGroup.addView(cb);
 
         }
 

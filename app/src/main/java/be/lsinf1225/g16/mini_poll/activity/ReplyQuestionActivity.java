@@ -1,5 +1,6 @@
 package be.lsinf1225.g16.mini_poll.activity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -23,6 +24,7 @@ import be.lsinf1225.g16.mini_poll.model.Questionnaire;
 import be.lsinf1225.g16.mini_poll.model.Sondage;
 
 public class ReplyQuestionActivity  extends FragmentActivity {
+
 
 
     /**

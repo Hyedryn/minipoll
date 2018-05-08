@@ -79,6 +79,7 @@
     <string name="id_modify">L\'id a été modifé avec succès!</string>
     <string name="error_not_coded">Fonctionnalité non disponible pour le moment</string>
     <string name="mdp_modify">Le mot de passe a été modifé avec succès!</string>
-
+    <string name="error_no_friend_selected">Veuillez choisir un ami</string>
+    <string name="error_no_format_selected">Vous n\'avez pas choisis de format. Fin de la creation du sondage.</string>
 
 </resources>

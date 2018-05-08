@@ -1,7 +1,9 @@
 package be.lsinf1225.g16.mini_poll.activity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -12,8 +14,11 @@ import android.text.Html;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import be.lsinf1225.g16.mini_poll.MiniPollApp;
 import be.lsinf1225.g16.mini_poll.R;
 import be.lsinf1225.g16.mini_poll.activity.creationFragment.CreationChoiceFillChoice;
 import be.lsinf1225.g16.mini_poll.activity.creationFragment.CreationChoiceFormat;
@@ -27,7 +32,10 @@ public class CreationChoiceActivity extends FragmentActivity {
     /**
      * The number of pages (wizard steps) to show in this demo.
      */
-    private static final int NUM_PAGES = 4;
+    private static final int NUM_PAGES = 5;
+
+
+    public static Activity creationchoice;
 
     /**
      * The pager widget, which handles animation and allows swiping horizontally to access previous
@@ -56,7 +64,7 @@ public class CreationChoiceActivity extends FragmentActivity {
         mPagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
         mPager.setAdapter(mPagerAdapter);
 
-
+    creationchoice =this;
 
         mPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             public void onPageScrollStateChanged(int state) {}
@@ -158,6 +166,20 @@ public class CreationChoiceActivity extends FragmentActivity {
 
     private void launchHomeScreen() {
      //   startActivity(new Intent(CreationChoiceActivity.this, MenuMainActivity.class));
+
+        RadioGroup radioButtonGroup = CreationChoiceFriend.radioGroup; //(RadioGroup) findViewById(R.id.creation_choice_placeholder);
+        int radioButtonID = radioButtonGroup.getCheckedRadioButtonId();
+        if(radioButtonID==-1){
+            MiniPollApp.notifyShort(R.string.error_no_friend_selected);
+            return;
+        }
+        View radioButton = radioButtonGroup.findViewById(radioButtonID);
+        int idx = radioButtonGroup.indexOfChild(radioButton);
+        RadioButton btn = (RadioButton) radioButtonGroup.getChildAt(idx);
+        String identifiant = (String) btn.getText();
+
+
+
         if(creationmenu!=null)
             creationmenu.finish();
         finish();

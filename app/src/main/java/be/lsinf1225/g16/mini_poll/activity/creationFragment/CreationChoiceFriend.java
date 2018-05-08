@@ -26,7 +26,7 @@ import be.lsinf1225.g16.mini_poll.model.Utilisateur;
 
 public class CreationChoiceFriend extends Fragment {
 
-    RadioGroup radioGroup;
+    public static RadioGroup radioGroup;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

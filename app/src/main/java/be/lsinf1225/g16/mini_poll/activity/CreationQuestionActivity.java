@@ -1,5 +1,6 @@
 package be.lsinf1225.g16.mini_poll.activity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -19,6 +20,7 @@ import be.lsinf1225.g16.mini_poll.R;
 import be.lsinf1225.g16.mini_poll.activity.creationFragment.CreationAgreementFriendsList;
 import be.lsinf1225.g16.mini_poll.activity.creationFragment.CreationQuestionEditOrder;
 import be.lsinf1225.g16.mini_poll.activity.creationFragment.CreationQuestionFillChoice;
+import be.lsinf1225.g16.mini_poll.activity.creationFragment.CreationQuestionFormat;
 import be.lsinf1225.g16.mini_poll.activity.creationFragment.CreationQuestionFriendsList;
 import be.lsinf1225.g16.mini_poll.activity.creationFragment.CreationQuestionPreview;
 import be.lsinf1225.g16.mini_poll.activity.creationFragment.CreationQuestionSend;
@@ -29,7 +31,7 @@ public class CreationQuestionActivity extends FragmentActivity {
     /**
      * The number of pages (wizard steps) to show in this demo.
      */
-    private static final int NUM_PAGES = 5;
+    private static final int NUM_PAGES = 6;
 
     /**
      * The pager widget, which handles animation and allows swiping horizontally to access previous
@@ -37,6 +39,7 @@ public class CreationQuestionActivity extends FragmentActivity {
      */
     private ViewPager mPager;
 
+    public static Activity creationquestion;
 
     //dots
     private Button btnSkip, btnNext;
@@ -52,7 +55,7 @@ public class CreationQuestionActivity extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_creation_question);
-
+        creationquestion = this;
         // Instantiate a ViewPager and a PagerAdapter.
         mPager = (ViewPager) findViewById(R.id.view_pager);
         mPagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
@@ -198,12 +201,14 @@ public class CreationQuestionActivity extends FragmentActivity {
                 case 0:
                     return new CreationQuestionFriendsList();
                 case 1:
-                    return new CreationQuestionFillChoice();
+                    return new CreationQuestionFormat();
                 case 2:
-                    return new CreationQuestionPreview();
+                    return new CreationQuestionFillChoice();
                 case 3:
-                    return new CreationQuestionEditOrder();
+                    return new CreationQuestionPreview();
                 case 4:
+                    return new CreationQuestionEditOrder();
+                case 5:
                     return new CreationQuestionSend();
                 default:
                     // This should never happen. Always account for each position above

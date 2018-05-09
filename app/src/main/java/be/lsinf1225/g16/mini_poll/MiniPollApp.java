@@ -614,4 +614,53 @@ public class MiniPollApp extends Application {
 
     }
 
+    public static void insertSondage(Sondage s, ArrayList<Participant> p,
+                                     ArrayList<Question> q){
+
+    //On ajoute les informations dans la table sondage: sondage id, createur, statut
+
+        SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
+        ContentValues values = new ContentValues();
+        int sondageId=s.getSondageId();
+        values.put("ID_sondage",s.getSondageId());
+        values.put("createur",s.getCreateur().getIdentifiant());
+        values.put("statut",s.getStateAsString());
+
+        db.insert("sondage",null,values);
+
+        ContentValues values_part = new ContentValues();
+
+        for(Participant part : p){
+            values_part.put("identifiant",part.getParticipant().getIdentifiant());
+            values_part.put("ID_sondage",sondageId);
+            values_part.put("statut",part.getStatusAsString());
+            db.insert("liste_participants",null,values_part);
+        }
+
+        ContentValues values_quest = new ContentValues();
+
+        for(Question quest : q){
+            values_quest.put("ID_question",quest.getQuestionId());
+            values_quest.put("enonce",quest.getEnonce());
+            values_quest.put("nombreReponses",quest.getNbreReponses());
+            db.insert("question",null,values_quest);
+        }
+
+        ContentValues values_rep = new ContentValues();
+        for(Question quest : q){
+            for(int i=0;i<quest.getListeReponses().size();i++){
+                values_rep.put("ID_reponse",quest.getListeReponses().get(i).getReponseId());
+                values_rep.put("ID_question",quest.getQuestionId());
+                values_rep.put("format",quest.getListeReponses().get(i).getFormatAsString());
+                values_rep.put("donnees",quest.getListeReponses().get(i).getDonnee_txt());
+                values_rep.put("categorie",quest.getListeReponses().get(i).getCategorieAsString());
+                db.insert("reponse",null, values_rep);
+            }
+        }
+
+    db.close();
+
+    }
+
+
 }

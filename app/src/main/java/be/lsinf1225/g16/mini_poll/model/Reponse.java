@@ -14,6 +14,7 @@ public class Reponse {
     public enum Categorie {
         BONNE,
         MAUVAISE;
+
     }
 
     private Format f;
@@ -51,6 +52,21 @@ public class Reponse {
 
     public String getDonnee_txt(){
         return this.donnee_txt;
+    }
+
+    public String getFormatAsString(){
+        if(this.f==Format.IMAGE){return "image";}
+        else{return "texte";}
+    }
+
+    public Format getFormat(){
+        return this.f;
+    }
+
+    public String getCategorieAsString(){
+        if(this.c==Categorie.BONNE){return "bonne";}
+        else if(this.c==Categorie.MAUVAISE){return "mauvaise";}
+        else{return null;}
     }
 
     public void setReponseId(int reponseId){this.reponseId=reponseId;}

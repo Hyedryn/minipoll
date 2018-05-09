@@ -224,7 +224,9 @@ public class CreationChoiceActivity extends FragmentActivity {
         q.add(q1);
         Sondage s = new Sondage(MiniPollApp.connectedUser,p,0,q,Sondage.Type.AIDER_UN_AMI);
 
+MiniPollApp.connectedUser.addSondage(s);
 
+//SaveSondageIntoDatabase insertSondage();
 
         launchHomeScreen();
     }

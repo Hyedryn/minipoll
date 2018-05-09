@@ -167,6 +167,11 @@ public class Utilisateur {
         }
     }
 
+    public void addSondage(Sondage s){
+        if(sondages==null)
+            sondages=new ArrayList<Sondage>();
+        sondages.add(s);
+    }
 
     public void addDemandeAmi(String id) {
         for(Utilisateur demandeami : MiniPollApp.utilisateurs) {

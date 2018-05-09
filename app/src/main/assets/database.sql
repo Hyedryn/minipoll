@@ -7,6 +7,11 @@ PRAGMA foreign_keys = off;
 BEGIN TRANSACTION;
 
 -- Table: choix
+DROP TABLE IF EXISTS id_static;
+CREATE TABLE id_static (ID_MAIN integer);
+INSERT INTO id_static (ID_MAIN) VALUES (15);
+
+-- Table: choix
 DROP TABLE IF EXISTS choix;
 CREATE TABLE choix (ID_question integer NOT NULL REFERENCES contenu (ID_question), ID_sondage integer NOT NULL REFERENCES sondage (ID_sondage), ID_reponse integer NOT NULL REFERENCES reponse (ID_reponse),donnees REFERENCES reponse (donnees),  ID_participant text NOT NULL REFERENCES utilisateur (identifiant), score INTEGER);
 INSERT INTO choix (ID_question, ID_sondage, ID_reponse, donnees, ID_participant, score) VALUES (1, 1, 1, 'Margherita', 'floflo', 1);

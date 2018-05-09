@@ -207,26 +207,28 @@ public class CreationChoiceActivity extends FragmentActivity {
 
 
         if(CreationChoiceFillChoice.format.equalsIgnoreCase("image")) {
-            r1 = new Reponse(1, Reponse.Categorie.BONNE, Reponse.Format.IMAGE, image1);
-            r2 = new Reponse(2, Reponse.Categorie.BONNE, Reponse.Format.IMAGE, image2);
+            r1 = new Reponse(++MiniPollApp.id_Main, Reponse.Categorie.BONNE, Reponse.Format.IMAGE, image1);
+            r2 = new Reponse(++MiniPollApp.id_Main, Reponse.Categorie.BONNE, Reponse.Format.IMAGE, image2);
         }else{
-            r1 = new Reponse(1, Reponse.Categorie.BONNE, Reponse.Format.TEXTE, texte1);
-            r2 = new Reponse(2, Reponse.Categorie.BONNE, Reponse.Format.TEXTE, texte2);
+            r1 = new Reponse(++MiniPollApp.id_Main, Reponse.Categorie.BONNE, Reponse.Format.TEXTE, texte1);
+            r2 = new Reponse(++MiniPollApp.id_Main, Reponse.Categorie.BONNE, Reponse.Format.TEXTE, texte2);
         }
         ArrayList<Reponse> r = new ArrayList<Reponse>();
         r.add(r1);
         r.add(r2);
-        Question q1 = new Question(question,2,r,1);
+        Question q1 = new Question(question,2,r,++MiniPollApp.id_Main);
         Participant p1 = new Participant(MiniPollApp.connectedUser.getAmi(identifiant),Participant.Status.EN_ATTENTE);
+        Participant p2 = new Participant(MiniPollApp.connectedUser,Participant.Status.A_REPONDU);
         ArrayList<Participant> p = new ArrayList<Participant>();
         p.add(p1);
+        p.add(p2);
         ArrayList<Question> q = new ArrayList<Question>();
         q.add(q1);
-        Sondage s = new Sondage(MiniPollApp.connectedUser,p,0,q,Sondage.Type.AIDER_UN_AMI);
+        Sondage s = new Sondage(MiniPollApp.connectedUser,p,++MiniPollApp.id_Main,q,Sondage.Type.AIDER_UN_AMI);
 
 MiniPollApp.connectedUser.addSondage(s);
+MiniPollApp.insertSondage(s,p,q);
 
-//SaveSondageIntoDatabase insertSondage();
 
         launchHomeScreen();
     }

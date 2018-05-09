@@ -28,6 +28,7 @@ import be.lsinf1225.g16.mini_poll.model.Utilisateur;
 
 public class MiniPollApp extends Application {
 
+    public static int id_Main;
 
     //ArrayList comprennant tout les utilisateurs de la database
     public static ArrayList<Utilisateur> utilisateurs = new ArrayList<>();
@@ -510,7 +511,7 @@ public class MiniPollApp extends Application {
     public  static void updateID(String id){
         Utilisateur user = new Utilisateur(id, connectedUser.getPassword(), connectedUser.getNom(), connectedUser.getPrenom(), connectedUser.getEmail(), connectedUser.getMeilleurAmi(), connectedUser.getPhoto());
         // saveUser(user);
-        //editDatabase
+        //editDatabase pour que tout les anciens id soit remplacer par les nouveaux id
         loadUtilisateurs();
         loadConnectedUser();
         connectedUser = user;
@@ -608,6 +609,16 @@ public class MiniPollApp extends Application {
 
         // Fermeture du curseur et de la base de données.
         cursor.close();
+
+
+
+        String[] colonne = {"ID_MAIN"};
+        Cursor cursorMain = db.query("id_static", colonne, null, null, null, null, null);
+        cursorMain.moveToFirst();
+
+        id_Main = cursorMain.getInt(0);
+        cursor.close();
+
         db.close();
 
         utilisateurs = users;
@@ -657,6 +668,14 @@ public class MiniPollApp extends Application {
                 db.insert("reponse",null, values_rep);
             }
         }
+
+
+
+
+        // update static id
+        ContentValues id_s = new ContentValues();
+        id_s.put("ID_MAIN",MiniPollApp.id_Main);
+        db.update("id_static", id_s, null, null);
 
     db.close();
 

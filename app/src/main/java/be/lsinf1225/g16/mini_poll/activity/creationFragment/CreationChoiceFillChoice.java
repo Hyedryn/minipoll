@@ -46,9 +46,6 @@ public class CreationChoiceFillChoice extends Fragment {
                 R.layout.creation_choice_fill_choice, container, false);
 
         return rootView;
-
-
-
     }
 
     @Override

@@ -1,5 +1,6 @@
 package be.lsinf1225.g16.mini_poll.activity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -21,6 +22,7 @@ import java.util.ArrayList;
 import be.lsinf1225.g16.mini_poll.MiniPollApp;
 import be.lsinf1225.g16.mini_poll.R;
 import be.lsinf1225.g16.mini_poll.activity.creationFragment.CreationAgreementFillChoice;
+import be.lsinf1225.g16.mini_poll.activity.creationFragment.CreationAgreementFormat;
 import be.lsinf1225.g16.mini_poll.activity.creationFragment.CreationAgreementFriendsList;
 import be.lsinf1225.g16.mini_poll.activity.creationFragment.CreationAgreementPreview;
 import be.lsinf1225.g16.mini_poll.activity.creationFragment.CreationAgreementSend;
@@ -33,7 +35,7 @@ public class CreationAgreementActivity extends FragmentActivity {
     /**
      * The number of pages (wizard steps) to show in this demo.
      */
-    private static final int NUM_PAGES = 4;
+    private static final int NUM_PAGES = 5;
 
     /**
      * The pager widget, which handles animation and allows swiping horizontally to access previous
@@ -41,6 +43,7 @@ public class CreationAgreementActivity extends FragmentActivity {
      */
     private ViewPager mPager;
 
+    public static Activity creationagreement;
 
     //dots
     private Button btnSkip, btnNext;
@@ -56,7 +59,7 @@ public class CreationAgreementActivity extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_creation_agreement);
-
+        creationagreement = this;
         // Instantiate a ViewPager and a PagerAdapter.
         mPager = (ViewPager) findViewById(R.id.view_pager);
         mPagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
@@ -201,10 +204,12 @@ public class CreationAgreementActivity extends FragmentActivity {
                 case 0:
                     return new CreationAgreementFriendsList();
                 case 1:
-                    return new CreationAgreementFillChoice();
+                    return new CreationAgreementFormat();
                 case 2:
-                    return new CreationAgreementPreview();
+                    return new CreationAgreementFillChoice();
                 case 3:
+                    return new CreationAgreementPreview();
+                case 4:
                     return new CreationAgreementSend();
                 default:
                     // This should never happen. Always account for each position above

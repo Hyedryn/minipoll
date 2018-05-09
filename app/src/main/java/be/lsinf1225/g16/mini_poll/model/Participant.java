@@ -25,6 +25,11 @@ public class Participant {
         this.s=s;
     }
 
+    public Participant(Utilisateur participant, Status s){
+        this.participant=participant;
+        this.s=s;
+    }
+
     public Participant(Utilisateur participant, int sondageId, String status){
         this.participant=participant;
         this.sondageID=sondageId;

@@ -61,7 +61,7 @@
                             app:srcCompat="@android:drawable/ic_input_add" />
 
                         <TextView
-                            android:id="@+id/textView"
+                            android:id="@+id/trtrtextView"
                             android:layout_width="match_parent"
                             android:layout_height="50dp"
                             android:layout_weight="1"
@@ -72,7 +72,7 @@
                             android:textStyle="bold" />
 
                         <ImageButton
-                            android:id="@+id/imageButton"
+                            android:id="@+id/imagerttrButton"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal|center"

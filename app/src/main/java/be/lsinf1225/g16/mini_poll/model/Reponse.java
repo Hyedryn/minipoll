@@ -6,12 +6,12 @@ public class Reponse {
 
     protected int reponseId;
 
-    protected enum Format {
+    public enum Format {
         IMAGE,
         TEXTE;
     }
 
-    protected enum Categorie {
+    public enum Categorie {
         BONNE,
         MAUVAISE;
     }

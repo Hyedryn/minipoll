@@ -20,6 +20,8 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 import be.lsinf1225.g16.mini_poll.MiniPollApp;
 import be.lsinf1225.g16.mini_poll.R;
 import be.lsinf1225.g16.mini_poll.activity.creationFragment.CreationAgreementFriendsList;
@@ -28,6 +30,10 @@ import be.lsinf1225.g16.mini_poll.activity.creationFragment.CreationChoiceFormat
 import be.lsinf1225.g16.mini_poll.activity.creationFragment.CreationChoiceFriend;
 import be.lsinf1225.g16.mini_poll.activity.creationFragment.CreationChoicePreview;
 import be.lsinf1225.g16.mini_poll.activity.creationFragment.CreationChoiceSend;
+import be.lsinf1225.g16.mini_poll.model.Participant;
+import be.lsinf1225.g16.mini_poll.model.Question;
+import be.lsinf1225.g16.mini_poll.model.Reponse;
+import be.lsinf1225.g16.mini_poll.model.Sondage;
 
 import static be.lsinf1225.g16.mini_poll.activity.MenuSurveyCreationActivity.creationmenu;
 
@@ -142,13 +148,10 @@ public class CreationChoiceActivity extends FragmentActivity {
 
     public void saveReponse(){
 
-
         question = ((TextView) findViewById(R.id.question)).getText().toString();
 
         fillchoice.save();
         preview.settxt();
-
-
 
     }
 
@@ -188,7 +191,7 @@ public class CreationChoiceActivity extends FragmentActivity {
 
 
     private void saveAndLaunchHomeScreen(){
-        RadioGroup radioButtonGroup = CreationChoiceFriend.radioGroup; //(RadioGroup) findViewById(R.id.creation_choice_placeholder);
+        RadioGroup radioButtonGroup = CreationChoiceFriend.radioGroup;
         int radioButtonID = radioButtonGroup.getCheckedRadioButtonId();
         if(radioButtonID==-1){
             MiniPollApp.notifyShort(R.string.error_no_friend_selected);
@@ -198,6 +201,30 @@ public class CreationChoiceActivity extends FragmentActivity {
         int idx = radioButtonGroup.indexOfChild(radioButton);
         RadioButton btn = (RadioButton) radioButtonGroup.getChildAt(idx);
         String identifiant = (String) btn.getText();
+
+        Reponse r1;
+        Reponse r2;
+
+
+        if(CreationChoiceFillChoice.format.equalsIgnoreCase("image")) {
+            r1 = new Reponse(1, Reponse.Categorie.BONNE, Reponse.Format.IMAGE, image1);
+            r2 = new Reponse(2, Reponse.Categorie.BONNE, Reponse.Format.IMAGE, image2);
+        }else{
+            r1 = new Reponse(1, Reponse.Categorie.BONNE, Reponse.Format.TEXTE, texte1);
+            r2 = new Reponse(2, Reponse.Categorie.BONNE, Reponse.Format.TEXTE, texte2);
+        }
+        ArrayList<Reponse> r = new ArrayList<Reponse>();
+        r.add(r1);
+        r.add(r2);
+        Question q1 = new Question(question,2,r,1);
+        Participant p1 = new Participant(MiniPollApp.connectedUser.getAmi(identifiant),Participant.Status.EN_ATTENTE);
+        ArrayList<Participant> p = new ArrayList<Participant>();
+        p.add(p1);
+        ArrayList<Question> q = new ArrayList<Question>();
+        q.add(q1);
+        Sondage s = new Sondage(MiniPollApp.connectedUser,p,0,q,Sondage.Type.AIDER_UN_AMI);
+
+
 
         launchHomeScreen();
     }

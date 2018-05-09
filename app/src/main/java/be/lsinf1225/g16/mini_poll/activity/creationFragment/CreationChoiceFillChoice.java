@@ -77,7 +77,58 @@ public class CreationChoiceFillChoice extends Fragment {
                format = (String) btn.getText();
 
                if(format.equalsIgnoreCase("Image")){
+                   for(int j=1;j<=2;j++){
+                       CardView c = new CardView(getActivity());
+                       LinearLayout l = new LinearLayout(getActivity());
+                       EditText t = new EditText(getActivity());
+                       if(j==1)
+                           r1=t;
+                       else
+                           r2=t;
+                       //     ImageView i = new ImageView(getActivity());
 
+                       CardView.LayoutParams paramsL = new CardView.LayoutParams(CardView.LayoutParams.MATCH_PARENT, CardView.LayoutParams.WRAP_CONTENT);
+
+                       LinearLayout.LayoutParams paramsC = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
+
+                       paramsC.setMargins(5, 5, 5, 5);
+
+                       LinearLayout.LayoutParams paramsT = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT, 1);
+
+                       //    LinearLayout.LayoutParams paramsI = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.MATCH_PARENT);
+
+                       c.setMaxCardElevation(5);
+                       c.setCardElevation(2.0f);
+                       c.setRadius(2.0f);
+                       c.setCardBackgroundColor(getResources().getColor(R.color.dot_dark_screen3));
+                       c.setLayoutParams(paramsC);
+
+                       l.setOrientation(LinearLayout.HORIZONTAL);
+                       l.setLayoutParams(paramsL);
+
+
+                       t.setGravity(Gravity.CENTER);
+                       t.setTextColor(Color.WHITE);
+                       t.setTextSize(18f);
+                       t.setHint("Réponse " + j);
+
+
+                       t.setTypeface(Typeface.DEFAULT_BOLD);
+                       t.setLayoutParams(paramsT);
+
+                       //    i.setLayoutParams(paramsI);
+                       //    i.setImageResource(android.R.drawable.ic_delete);
+                       //    i.setBackgroundColor(getResources().getColor(R.color.backgroundqcrea1));
+                       //    i.setColorFilter(getResources().getColor(R.color.tint1));
+
+                       l.addView(t);
+                       //    l.addView(i);
+                       c.addView(l);
+
+
+                       linearLayout.addView(c);
+
+                   }
                }else {
 
                    for(int j=1;j<=2;j++){

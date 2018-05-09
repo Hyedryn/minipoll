@@ -22,6 +22,7 @@ import android.widget.TextView;
 
 import be.lsinf1225.g16.mini_poll.MiniPollApp;
 import be.lsinf1225.g16.mini_poll.R;
+import be.lsinf1225.g16.mini_poll.activity.creationFragment.CreationAgreementFriendsList;
 import be.lsinf1225.g16.mini_poll.activity.creationFragment.CreationChoiceFillChoice;
 import be.lsinf1225.g16.mini_poll.activity.creationFragment.CreationChoiceFormat;
 import be.lsinf1225.g16.mini_poll.activity.creationFragment.CreationChoiceFriend;
@@ -131,10 +132,8 @@ public class CreationChoiceActivity extends FragmentActivity {
                 if (current < NUM_PAGES) {
                     // move to next screen
                     mPager.setCurrentItem(current);
-
-
                 } else {
-                    launchHomeScreen();
+                    saveAndLaunchHomeScreen();
                 }
             }
         });
@@ -188,11 +187,7 @@ public class CreationChoiceActivity extends FragmentActivity {
     }
 
 
-
-
-    private void launchHomeScreen() {
-     //   startActivity(new Intent(CreationChoiceActivity.this, MenuMainActivity.class));
-
+    private void saveAndLaunchHomeScreen(){
         RadioGroup radioButtonGroup = CreationChoiceFriend.radioGroup; //(RadioGroup) findViewById(R.id.creation_choice_placeholder);
         int radioButtonID = radioButtonGroup.getCheckedRadioButtonId();
         if(radioButtonID==-1){
@@ -204,8 +199,11 @@ public class CreationChoiceActivity extends FragmentActivity {
         RadioButton btn = (RadioButton) radioButtonGroup.getChildAt(idx);
         String identifiant = (String) btn.getText();
 
+        launchHomeScreen();
+    }
 
-
+    private void launchHomeScreen() {
+     //   startActivity(new Intent(CreationChoiceActivity.this, MenuMainActivity.class));
         if(creationmenu!=null)
             creationmenu.finish();
         finish();

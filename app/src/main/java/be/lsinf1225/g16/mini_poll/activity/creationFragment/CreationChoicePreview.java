@@ -21,6 +21,7 @@ import be.lsinf1225.g16.mini_poll.activity.CreationChoiceActivity;
 
 public class CreationChoicePreview extends Fragment {
 
+    TextView title;
     TextView question;
     TextView r1_txt;
     TextView r2_txt;
@@ -41,11 +42,13 @@ public class CreationChoicePreview extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
       //  linearLayout = (LinearLayout) view.findViewById(R.id.creation_choice_fill_placeholder);
+        title = (TextView) view.findViewById(R.id.creation_choice_preview_title);
         question = (TextView) view.findViewById(R.id.creation_choice_preview_question);
         r1_txt = (TextView) view.findViewById(R.id.creation_choice_preview_r1_txt);
         r2_txt = (TextView) view.findViewById(R.id.creation_choice_preview_r2_txt);
         r1_img = (ImageView) view.findViewById(R.id.creation_choice_preview_r1_img);
         r2_img = (ImageView) view.findViewById(R.id.creation_choice_preview_r2_img);
+        title.setText("Demande d'aide de "+MiniPollApp.connectedUser.getIdentifiant());
 
     }
 
@@ -76,7 +79,8 @@ public class CreationChoicePreview extends Fragment {
                 r2_img.setVisibility(View.VISIBLE);
                 r1_txt.setVisibility(View.INVISIBLE);
                 r2_txt.setVisibility(View.INVISIBLE);
-
+                r1_img.setImageBitmap(CreationChoiceActivity.image1);
+                r2_img.setImageBitmap(CreationChoiceActivity.image2);
 
             }else {
                 r1_img.setVisibility(View.GONE);
@@ -112,7 +116,8 @@ public class CreationChoicePreview extends Fragment {
             r2_img.setVisibility(View.VISIBLE);
             r1_txt.setVisibility(View.INVISIBLE);
             r2_txt.setVisibility(View.INVISIBLE);
-
+            r1_img.setImageBitmap(CreationChoiceActivity.image1);
+            r2_img.setImageBitmap(CreationChoiceActivity.image2);
 
         }else {
             r1_img.setVisibility(View.GONE);

@@ -12,13 +12,20 @@ import android.text.Html;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
+import be.lsinf1225.g16.mini_poll.MiniPollApp;
 import be.lsinf1225.g16.mini_poll.R;
 import be.lsinf1225.g16.mini_poll.activity.creationFragment.CreationAgreementFillChoice;
 import be.lsinf1225.g16.mini_poll.activity.creationFragment.CreationAgreementFriendsList;
 import be.lsinf1225.g16.mini_poll.activity.creationFragment.CreationAgreementPreview;
 import be.lsinf1225.g16.mini_poll.activity.creationFragment.CreationAgreementSend;
+import be.lsinf1225.g16.mini_poll.activity.creationFragment.CreationChoiceFriend;
+import be.lsinf1225.g16.mini_poll.activity.creationFragment.CreationQuestionFriendsList;
 
 import static be.lsinf1225.g16.mini_poll.activity.MenuSurveyCreationActivity.creationmenu;
 
@@ -110,7 +117,7 @@ public class CreationAgreementActivity extends FragmentActivity {
 
 
                 } else {
-                    launchHomeScreen();
+                    saveAndLaunchHomeScreen();
                 }
             }
         });
@@ -155,8 +162,22 @@ public class CreationAgreementActivity extends FragmentActivity {
 
 
 
+    private void saveAndLaunchHomeScreen(){
+
+        if(CreationAgreementFriendsList.selectedfriends.size()<1){
+            MiniPollApp.notifyShort(R.string.error_no_friend_selected);
+            return;
+        }
+
+        for(String s : CreationAgreementFriendsList.selectedfriends){
+            System.out.println("Ami select: "+s);
+        }
+        launchHomeScreen();
+    }
+
     private void launchHomeScreen() {
         //   startActivity(new Intent(CreationChoiceActivity.this, MenuMainActivity.class));
+
         if(creationmenu!=null)
             creationmenu.finish();
         finish();

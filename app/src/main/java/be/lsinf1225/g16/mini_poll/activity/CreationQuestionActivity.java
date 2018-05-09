@@ -14,7 +14,9 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import be.lsinf1225.g16.mini_poll.MiniPollApp;
 import be.lsinf1225.g16.mini_poll.R;
+import be.lsinf1225.g16.mini_poll.activity.creationFragment.CreationAgreementFriendsList;
 import be.lsinf1225.g16.mini_poll.activity.creationFragment.CreationQuestionEditOrder;
 import be.lsinf1225.g16.mini_poll.activity.creationFragment.CreationQuestionFillChoice;
 import be.lsinf1225.g16.mini_poll.activity.creationFragment.CreationQuestionFriendsList;
@@ -111,7 +113,7 @@ public class CreationQuestionActivity extends FragmentActivity {
 
 
                 } else {
-                    launchHomeScreen();
+                    saveAndLaunchHomeScreen();
                 }
             }
         });
@@ -155,9 +157,24 @@ public class CreationQuestionActivity extends FragmentActivity {
 
 
 
+    private void saveAndLaunchHomeScreen(){
+
+        if(CreationQuestionFriendsList.selectedfriends.size()<1){
+            MiniPollApp.notifyShort(R.string.error_no_friend_selected);
+            return;
+        }
+
+        for(String s : CreationQuestionFriendsList.selectedfriends){
+            System.out.println("Ami select: "+s);
+        }
+
+        launchHomeScreen();
+    }
 
     private void launchHomeScreen() {
         //   startActivity(new Intent(CreationChoiceActivity.this, MenuMainActivity.class));
+
+
         if(creationmenu!=null)
             creationmenu.finish();
         finish();

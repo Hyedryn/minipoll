@@ -17,7 +17,7 @@
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="120sp"
+            android:layout_height="wrap_content"
             android:gravity="center"
             android:padding="20dp"
             android:text="Nom du sondage et du créateur"
@@ -51,7 +51,7 @@
                         <TextView
                             android:id="@+id/textView"
                             android:layout_width="match_parent"
-                            android:layout_height="50dp"
+                            android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:gravity="center"
                             android:text="Question 1"

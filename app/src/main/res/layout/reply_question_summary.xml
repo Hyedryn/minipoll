@@ -95,34 +95,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_margin="5dp"
-                    app:cardBackgroundColor="#4d6dbe"
-                    app:cardCornerRadius="2dp"
-                    app:cardElevation="2dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:id="@+id/txtView"
-                            android:layout_width="match_parent"
-                            android:layout_height="50dp"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:text="Question 2"
-                            android:textColor="@android:color/white"
-                            android:textSize="@dimen/slide_title"
-                            android:textStyle="bold" />
-
-                    </LinearLayout>
-
-                </android.support.v7.widget.CardView>
-
-                <android.support.v7.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="5dp"
                     app:cardBackgroundColor="@color/dot_dark_screen3"
                     app:cardCornerRadius="2dp"
                     app:cardElevation="2dp">
@@ -132,20 +104,19 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
-                        <TextView
-                            android:id="@+id/textView"
+                        <ImageView
+                            android:id="@+id/imageView"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
                             android:layout_weight="1"
-                            android:gravity="center"
-                            android:text="Réponse 3"
-                            android:textColor="@android:color/white"
-                            android:textSize="18sp"
-                            android:textStyle="bold" />
+                            android:padding="5dp"
+                            android:src="@drawable/edit_pen" />
 
                     </LinearLayout>
 
                 </android.support.v7.widget.CardView>
+
             </LinearLayout>
         </ScrollView>
 

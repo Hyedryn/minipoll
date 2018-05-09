@@ -68,6 +68,14 @@ public class Sondage {
 
     public Etat getState() {return this.etat;}
 
+    public String getStateAsString(){
+        if(this.etat== Etat.ACTIF){
+            return "actif";
+        }else{
+            return "cloture";
+        }
+        }
+
     public void setQuestions(ArrayList<Question> q) {this.questions = q;}
 
     public ArrayList<Question> getQuestions() {return this.questions;}

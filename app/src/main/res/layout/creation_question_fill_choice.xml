@@ -55,16 +55,16 @@
                         <ImageButton
                             android:id="@+id/imageButton8"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
                             android:background="#43b5b5b5"
                             android:padding="10dp"
-                            android:tint="#ffffffff"
-                            android:src="@android:drawable/ic_input_add" />
+                            android:src="@android:drawable/ic_input_add"
+                            android:tint="#ffffffff" />
 
                         <EditText
                             android:id="@+id/question"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:background="@drawable/textview_border"
                             android:gravity="center_vertical|center"
@@ -79,12 +79,12 @@
                         <ImageButton
                             android:id="@+id/imageButton"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
                             android:layout_gravity="center_horizontal|center"
                             android:background="#43b5b5b5"
                             android:padding="10dp"
-                            android:tint="#ffffffff"
-                            android:src="@android:drawable/ic_delete" />
+                            android:src="@android:drawable/ic_delete"
+                            android:tint="#ffffffff" />
 
                     </LinearLayout>
 

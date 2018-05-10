@@ -38,7 +38,7 @@ public class ReplyChoiceFillAnswer extends Fragment {
     private CheckBox checkBox1;
     private CheckBox checkBox2;
 
-    private AiderUnAmi aiderUnAmis = (AiderUnAmi) sondage;
+    private AiderUnAmi aiderUnAmi = (AiderUnAmi) sondage;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -58,15 +58,17 @@ public class ReplyChoiceFillAnswer extends Fragment {
         return rootView;
     }
 
+    /*
     public void Answer(){
         if(checkBox1.isChecked()){
-            aiderUnAmis.setResult(ListeReponses.get(0));
+            aiderUnAmi.setResult(ListeReponses.get(0));
         }
         else if(checkBox2.isChecked()){
-            aiderUnAmis.setResult(ListeReponses.get(1));
+            aiderUnAmi.setResult(ListeReponses.get(1));
         }
         else{
             MiniPollApp.notifyShort(R.string.error_field_required);
         }
     }
+    */
 }

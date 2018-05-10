@@ -785,5 +785,16 @@ public class MiniPollApp extends Application {
 
         db.close();
     }
+    public static void saveChoix(Sondage s, Choix c, Participant p, Question q ){
+        SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("ID_question",q.getQuestionId());
+        values.put("ID_sondage",s.getSondageId());
+        values.put("ID_reponse",c.getReponse().getReponseId());
+        values.put("ID_participant",p.getParticipant().getIdentifiant());
+        values.put("score",c.getPoids());
+        db.insert("choix",null,values);
 
+        db.close();
+    }
 }

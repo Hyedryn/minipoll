@@ -54,6 +54,10 @@ public class Reponse {
         return this.donnee_txt;
     }
 
+    public Bitmap getDonnee_img(){
+        return this.donnee_img;
+    }
+
     public String getFormatAsString(){
         if(this.f==Format.IMAGE){return "image";}
         else{return "texte";}

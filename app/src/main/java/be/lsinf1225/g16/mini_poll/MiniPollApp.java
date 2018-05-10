@@ -660,12 +660,27 @@ public class MiniPollApp extends Application {
         ContentValues values_rep = new ContentValues();
         for(Question quest : q){
             for(int i=0;i<quest.getListeReponses().size();i++){
+                if(quest.getListeReponses().get(i).getFormatAsString().equalsIgnoreCase("texte")){
                 values_rep.put("ID_reponse",quest.getListeReponses().get(i).getReponseId());
                 values_rep.put("ID_question",quest.getQuestionId());
                 values_rep.put("format",quest.getListeReponses().get(i).getFormatAsString());
                 values_rep.put("donnees",quest.getListeReponses().get(i).getDonnee_txt());
                 values_rep.put("categorie",quest.getListeReponses().get(i).getCategorieAsString());
                 db.insert("reponse",null, values_rep);
+                }else{
+                    values_rep.put("ID_reponse",quest.getListeReponses().get(i).getReponseId());
+                    values_rep.put("ID_question",quest.getQuestionId());
+                    values_rep.put("format",quest.getListeReponses().get(i).getFormatAsString());
+
+                    Bitmap image = quest.getListeReponses().get(i).getDonnee_img();
+                    ByteArrayOutputStream bos = new ByteArrayOutputStream();
+                    image.compress(Bitmap.CompressFormat.PNG, 100, bos);
+                    byte[] bArray = bos.toByteArray();
+
+                    values_rep.put("donnees",bArray);
+                    values_rep.put("categorie",quest.getListeReponses().get(i).getCategorieAsString());
+                    db.insert("reponse",null, values_rep);
+                }
             }
         }
 

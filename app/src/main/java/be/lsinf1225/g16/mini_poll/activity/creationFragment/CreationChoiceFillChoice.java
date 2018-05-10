@@ -53,6 +53,10 @@ public class CreationChoiceFillChoice extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         linearLayout = (LinearLayout) view.findViewById(R.id.creation_choice_fill_placeholder);
         this.view = view;
+        r1 = (EditText) view.findViewById(R.id.creation_choice_fill_r1_txt);
+        r2 = (EditText) view.findViewById(R.id.creation_choice_fill_r2_txt);
+        i1 = (ImageView) view.findViewById(R.id.creation_choice_fill_r1_img);
+        i2 = (ImageView) view.findViewById(R.id.creation_choice_fill_r2_img);
     }
 
     @Override
@@ -74,112 +78,17 @@ public class CreationChoiceFillChoice extends Fragment {
                format = (String) btn.getText();
 
                if(format.equalsIgnoreCase("Image")){
-                   for(int j=1;j<=2;j++){
-                       CardView c = new CardView(getActivity());
-                       LinearLayout l = new LinearLayout(getActivity());
-                       EditText t = new EditText(getActivity());
-                       if(j==1)
-                           r1=t;
-                       else
-                           r2=t;
-                       //     ImageView i = new ImageView(getActivity());
-
-                       CardView.LayoutParams paramsL = new CardView.LayoutParams(CardView.LayoutParams.MATCH_PARENT, CardView.LayoutParams.WRAP_CONTENT);
-
-                       LinearLayout.LayoutParams paramsC = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
-
-                       paramsC.setMargins(5, 5, 5, 5);
-
-                       LinearLayout.LayoutParams paramsT = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT, 1);
-
-                       //    LinearLayout.LayoutParams paramsI = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.MATCH_PARENT);
-
-                       c.setMaxCardElevation(5);
-                       c.setCardElevation(2.0f);
-                       c.setRadius(2.0f);
-                       c.setCardBackgroundColor(getResources().getColor(R.color.dot_dark_screen3));
-                       c.setLayoutParams(paramsC);
-
-                       l.setOrientation(LinearLayout.HORIZONTAL);
-                       l.setLayoutParams(paramsL);
+                   r1.setVisibility(View.GONE);
+                   r2.setVisibility(View.GONE);
+                   i1.setVisibility(View.VISIBLE);
+                   i2.setVisibility(View.VISIBLE);
 
 
-                       t.setGravity(Gravity.CENTER);
-                       t.setTextColor(Color.WHITE);
-                       t.setTextSize(18f);
-                       t.setHint("Réponse " + j);
-
-
-                       t.setTypeface(Typeface.DEFAULT_BOLD);
-                       t.setLayoutParams(paramsT);
-
-                       //    i.setLayoutParams(paramsI);
-                       //    i.setImageResource(android.R.drawable.ic_delete);
-                       //    i.setBackgroundColor(getResources().getColor(R.color.backgroundqcrea1));
-                       //    i.setColorFilter(getResources().getColor(R.color.tint1));
-
-                       l.addView(t);
-                       //    l.addView(i);
-                       c.addView(l);
-
-
-                       linearLayout.addView(c);
-
-                   }
                }else {
-
-                   for(int j=1;j<=2;j++){
-                   CardView c = new CardView(getActivity());
-                   LinearLayout l = new LinearLayout(getActivity());
-                   EditText t = new EditText(getActivity());
-                   if(j==1)
-                       r1=t;
-                   else
-                       r2=t;
-              //     ImageView i = new ImageView(getActivity());
-
-                   CardView.LayoutParams paramsL = new CardView.LayoutParams(CardView.LayoutParams.MATCH_PARENT, CardView.LayoutParams.WRAP_CONTENT);
-
-                   LinearLayout.LayoutParams paramsC = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
-
-                   paramsC.setMargins(5, 5, 5, 5);
-
-                   LinearLayout.LayoutParams paramsT = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT, 1);
-
-               //    LinearLayout.LayoutParams paramsI = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.MATCH_PARENT);
-
-                   c.setMaxCardElevation(5);
-                   c.setCardElevation(2.0f);
-                   c.setRadius(2.0f);
-                   c.setCardBackgroundColor(getResources().getColor(R.color.dot_dark_screen3));
-                   c.setLayoutParams(paramsC);
-
-                   l.setOrientation(LinearLayout.HORIZONTAL);
-                   l.setLayoutParams(paramsL);
-
-
-                   t.setGravity(Gravity.CENTER);
-                   t.setTextColor(Color.WHITE);
-                   t.setTextSize(18f);
-                   t.setHint("Réponse " + j);
-
-
-                   t.setTypeface(Typeface.DEFAULT_BOLD);
-                   t.setLayoutParams(paramsT);
-
-               //    i.setLayoutParams(paramsI);
-               //    i.setImageResource(android.R.drawable.ic_delete);
-               //    i.setBackgroundColor(getResources().getColor(R.color.backgroundqcrea1));
-               //    i.setColorFilter(getResources().getColor(R.color.tint1));
-
-                   l.addView(t);
-               //    l.addView(i);
-                   c.addView(l);
-
-
-                   linearLayout.addView(c);
-
-                   }
+                    r1.setVisibility(View.VISIBLE);
+                    r2.setVisibility(View.VISIBLE);
+                    i1.setVisibility(View.GONE);
+                    i2.setVisibility(View.GONE);
                }
         }
     }
@@ -189,6 +98,8 @@ public void save(){
         ImageView imageView1 = (ImageView)  i1;
         ImageView imageView2 = (ImageView)  i2;
 
+        imageView1.buildDrawingCache();
+        imageView2.buildDrawingCache();
         CreationChoiceActivity.image1 = imageView1.getDrawingCache().copy(imageView1.getDrawingCache().getConfig(), true);
         CreationChoiceActivity.image2 = imageView2.getDrawingCache().copy(imageView2.getDrawingCache().getConfig(), true);
 

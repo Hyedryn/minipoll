@@ -48,6 +48,15 @@ public class Reponse {
         this.donnee_txt =d;
     }
 
+    public Reponse(int reponseId,String c, String f, Bitmap d){
+        this.reponseId=reponseId;
+        if("bonne".equals(c)){this.c=Categorie.BONNE;}
+        else{this.c=Categorie.MAUVAISE;};
+        if("texte".equals(f)){this.f=Format.TEXTE;}
+        else{this.f=Format.IMAGE;};
+        this.donnee_img=d;
+    }
+
     public int getReponseId() {return this.reponseId;}
 
     public String getDonnee_txt(){

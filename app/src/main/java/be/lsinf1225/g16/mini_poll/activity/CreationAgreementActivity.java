@@ -2,6 +2,7 @@ package be.lsinf1225.g16.mini_poll.activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -22,7 +23,6 @@ import java.util.ArrayList;
 import be.lsinf1225.g16.mini_poll.MiniPollApp;
 import be.lsinf1225.g16.mini_poll.R;
 import be.lsinf1225.g16.mini_poll.activity.creationFragment.CreationAgreementFillChoice;
-import be.lsinf1225.g16.mini_poll.activity.creationFragment.CreationAgreementFormat;
 import be.lsinf1225.g16.mini_poll.activity.creationFragment.CreationAgreementFriendsList;
 import be.lsinf1225.g16.mini_poll.activity.creationFragment.CreationAgreementPreview;
 import be.lsinf1225.g16.mini_poll.activity.creationFragment.CreationAgreementSend;
@@ -35,7 +35,7 @@ public class CreationAgreementActivity extends FragmentActivity {
     /**
      * The number of pages (wizard steps) to show in this demo.
      */
-    private static final int NUM_PAGES = 5;
+    private static final int NUM_PAGES = 4;
 
     /**
      * The pager widget, which handles animation and allows swiping horizontally to access previous
@@ -45,10 +45,28 @@ public class CreationAgreementActivity extends FragmentActivity {
 
     public static Activity creationagreement;
 
+    public static Bitmap image1;
+    public static Bitmap image2;
+    public static Bitmap image3;
+    public static Bitmap image4;
+    public static Bitmap image5;
+    public static Bitmap image6;
+
+    public static String question;
+    public static String texte1;
+    public static String texte2;
+    public static String texte3;
+    public static String texte4;
+    public static String texte5;
+    public static String texte6;
+
     //dots
     private Button btnSkip, btnNext;
     private LinearLayout dotsLayout;
     private TextView[] dots;
+
+    CreationAgreementFillChoice fillchoice;
+    CreationAgreementPreview preview;
 
     /**
      * The pager adapter, which provides the pages to the view pager widget.
@@ -73,6 +91,10 @@ public class CreationAgreementActivity extends FragmentActivity {
 
             public void onPageSelected(int position) {
                 // Check if this is the page you want.
+
+                if(position==2){
+                    saveReponse();
+                }
 
                 System.out.println("Position +"+position);
                 addBottomDots(position);
@@ -126,7 +148,10 @@ public class CreationAgreementActivity extends FragmentActivity {
         });
     }
 
-
+    public void saveReponse(){
+        fillchoice.save();
+        preview.settxt();
+    }
 
     @Override
     public void onBackPressed() {
@@ -204,12 +229,10 @@ public class CreationAgreementActivity extends FragmentActivity {
                 case 0:
                     return new CreationAgreementFriendsList();
                 case 1:
-                    return new CreationAgreementFormat();
+                    return fillchoice = new CreationAgreementFillChoice();
                 case 2:
-                    return new CreationAgreementFillChoice();
+                    return preview = new CreationAgreementPreview();
                 case 3:
-                    return new CreationAgreementPreview();
-                case 4:
                     return new CreationAgreementSend();
                 default:
                     // This should never happen. Always account for each position above

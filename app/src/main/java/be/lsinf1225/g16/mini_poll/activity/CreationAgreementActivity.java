@@ -2,8 +2,12 @@ package be.lsinf1225.g16.mini_poll.activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -26,8 +30,13 @@ import be.lsinf1225.g16.mini_poll.activity.creationFragment.CreationAgreementFil
 import be.lsinf1225.g16.mini_poll.activity.creationFragment.CreationAgreementFriendsList;
 import be.lsinf1225.g16.mini_poll.activity.creationFragment.CreationAgreementPreview;
 import be.lsinf1225.g16.mini_poll.activity.creationFragment.CreationAgreementSend;
+import be.lsinf1225.g16.mini_poll.activity.creationFragment.CreationChoiceFillChoice;
 import be.lsinf1225.g16.mini_poll.activity.creationFragment.CreationChoiceFriend;
 import be.lsinf1225.g16.mini_poll.activity.creationFragment.CreationQuestionFriendsList;
+import be.lsinf1225.g16.mini_poll.model.Participant;
+import be.lsinf1225.g16.mini_poll.model.Question;
+import be.lsinf1225.g16.mini_poll.model.Reponse;
+import be.lsinf1225.g16.mini_poll.model.Sondage;
 
 import static be.lsinf1225.g16.mini_poll.activity.MenuSurveyCreationActivity.creationmenu;
 
@@ -190,6 +199,27 @@ public class CreationAgreementActivity extends FragmentActivity {
 
 
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == CreationAgreementFillChoice.RESULT_LOAD_IMAGE && resultCode == RESULT_OK && null != data) {
+            Uri selectedImage = data.getData();
+            String[] filePathColumn = {MediaStore.Images.Media.DATA};
+
+            Cursor cursor = getContentResolver().query(selectedImage,
+                    filePathColumn, null, null, null);
+            cursor.moveToFirst();
+
+            int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+            String picturePath = cursor.getString(columnIndex);
+            cursor.close();
+
+            CreationAgreementFillChoice.imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
+
+        }
+    }
+
     private void saveAndLaunchHomeScreen(){
 
         if(CreationAgreementFriendsList.selectedfriends.size()<1){
@@ -197,9 +227,63 @@ public class CreationAgreementActivity extends FragmentActivity {
             return;
         }
 
-        for(String s : CreationAgreementFriendsList.selectedfriends){
-            System.out.println("Ami select: "+s);
+        if((texte1==null&&image1==null)||(texte2==null&&image2==null)){
+            MiniPollApp.notifyShort(R.string.error_no_2_reponse);
+            return;
         }
+
+        if(question==null||question.length()<1){
+            MiniPollApp.notifyShort(R.string.error_question_empty);
+            return;
+        }
+
+
+        ArrayList<Reponse> r = new ArrayList<Reponse>();
+        if(texte1!=null){
+            r.add(new Reponse(++MiniPollApp.id_Main, Reponse.Categorie.BONNE, Reponse.Format.TEXTE, texte1));
+        }else if(image1!=null){
+            r.add(new Reponse(++MiniPollApp.id_Main, Reponse.Categorie.BONNE, Reponse.Format.IMAGE, image1));
+        }
+        if(texte2!=null){
+            r.add(new Reponse(++MiniPollApp.id_Main, Reponse.Categorie.BONNE, Reponse.Format.TEXTE, texte2));
+        }else if(image2!=null){
+            r.add(new Reponse(++MiniPollApp.id_Main, Reponse.Categorie.BONNE, Reponse.Format.IMAGE, image2));
+        }
+        if(texte3!=null){
+            r.add(new Reponse(++MiniPollApp.id_Main, Reponse.Categorie.BONNE, Reponse.Format.TEXTE, texte3));
+        }else if(image3!=null){
+            r.add(new Reponse(++MiniPollApp.id_Main, Reponse.Categorie.BONNE, Reponse.Format.IMAGE, image3));
+        }
+        if(texte4!=null){
+            r.add(new Reponse(++MiniPollApp.id_Main, Reponse.Categorie.BONNE, Reponse.Format.TEXTE, texte4));
+        }else if(image4!=null){
+            r.add(new Reponse(++MiniPollApp.id_Main, Reponse.Categorie.BONNE, Reponse.Format.IMAGE, image4));
+        }
+        if(texte5!=null){
+            r.add(new Reponse(++MiniPollApp.id_Main, Reponse.Categorie.BONNE, Reponse.Format.TEXTE, texte5));
+        }else if(image5!=null){
+            r.add(new Reponse(++MiniPollApp.id_Main, Reponse.Categorie.BONNE, Reponse.Format.IMAGE, image5));
+        }
+        if(texte6!=null){
+            r.add(new Reponse(++MiniPollApp.id_Main, Reponse.Categorie.BONNE, Reponse.Format.TEXTE, texte6));
+        }else if(image6!=null){
+            r.add(new Reponse(++MiniPollApp.id_Main, Reponse.Categorie.BONNE, Reponse.Format.IMAGE, image6));
+        }
+
+        ArrayList<Question> q = new ArrayList<Question>();
+        q.add(new Question(question,r.size(),r,++MiniPollApp.id_Main));
+
+        ArrayList<Participant> p = new ArrayList<Participant>();
+        for(String s : CreationAgreementFriendsList.selectedfriends){
+            p.add(new Participant(MiniPollApp.connectedUser.getAmi(s),Participant.Status.EN_ATTENTE));
+        }
+        p.add(new Participant(MiniPollApp.connectedUser,Participant.Status.A_REPONDU));
+
+        Sondage s = new Sondage(MiniPollApp.connectedUser,p,++MiniPollApp.id_Main,q,Sondage.Type.SONDAGE_POUR_ACCORD);
+
+        MiniPollApp.connectedUser.addSondage(s);
+        MiniPollApp.insertSondage(s,p,q);
+
         launchHomeScreen();
     }
 

@@ -11,26 +11,28 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import be.lsinf1225.g16.mini_poll.MiniPollApp;
 import be.lsinf1225.g16.mini_poll.R;
 import be.lsinf1225.g16.mini_poll.activity.CreationAgreementActivity;
 
 public class CreationAgreementPreview extends Fragment {
 
-    public TextView question;
+    TextView title;
+    TextView question;
 
-    public TextView r1;
-    public TextView r2;
-    public TextView r3;
-    public TextView r4;
-    public TextView r5;
-    public TextView r6;
+    TextView r1;
+    TextView r2;
+    TextView r3;
+    TextView r4;
+    TextView r5;
+    TextView r6;
 
-    public ImageView i1;
-    public ImageView i2;
-    public ImageView i3;
-    public ImageView i4;
-    public ImageView i5;
-    public ImageView i6;
+    ImageView i1;
+    ImageView i2;
+    ImageView i3;
+    ImageView i4;
+    ImageView i5;
+    ImageView i6;
 
     public View view;
 
@@ -49,6 +51,8 @@ public class CreationAgreementPreview extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         this.view = view;
 
+        title = (TextView) view.findViewById(R.id.creation_agreement_preview_title);
+
         question = (TextView) view.findViewById(R.id.creation_agreement_preview_question);
 
         i1 = (ImageView) view.findViewById(R.id.creation_agreement_preview_r1_img);
@@ -64,6 +68,7 @@ public class CreationAgreementPreview extends Fragment {
         r4 = (TextView) view.findViewById(R.id.creation_agreement_preview_r4_txt);
         r5 = (TextView) view.findViewById(R.id.creation_agreement_preview_r5_txt);
         r6 = (TextView) view.findViewById(R.id.creation_agreement_preview_r6_txt);
+        title.setText("Sondage de "+ MiniPollApp.connectedUser.getIdentifiant());
 
     }
     public void settxt(){

@@ -1,5 +1,6 @@
 package be.lsinf1225.g16.mini_poll.activity.creationFragment;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -48,6 +49,9 @@ public class CreationAgreementFillChoice extends Fragment {
     public Button addImg;
     public Button addTxt;
     public Button remove;
+
+    public static int RESULT_LOAD_IMAGE = 1;
+    public static ImageView imageView;
 
     private int lastIndex = 0;
 
@@ -199,6 +203,76 @@ public class CreationAgreementFillChoice extends Fragment {
         });
 
 
+        i1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                imageView=i1;
+                Intent i = new Intent(
+                        Intent.ACTION_PICK,
+                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+
+                getActivity().startActivityForResult(i, RESULT_LOAD_IMAGE);
+
+            }
+        });
+
+        i2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                imageView=i2;
+                Intent i = new Intent(
+                        Intent.ACTION_PICK,
+                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+
+                getActivity().startActivityForResult(i, RESULT_LOAD_IMAGE);
+            }
+        });
+        i3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                imageView=i3;
+                Intent i = new Intent(
+                        Intent.ACTION_PICK,
+                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+
+                getActivity().startActivityForResult(i, RESULT_LOAD_IMAGE);
+            }
+        });
+
+        i4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                imageView=i4;
+                Intent i = new Intent(
+                        Intent.ACTION_PICK,
+                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+
+                getActivity().startActivityForResult(i, RESULT_LOAD_IMAGE);
+            }
+        });
+        i5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                imageView=i5;
+                Intent i = new Intent(
+                        Intent.ACTION_PICK,
+                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+
+                startActivityForResult(i, RESULT_LOAD_IMAGE);
+            }
+        });
+
+        i6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                imageView=i6;
+                Intent i = new Intent(
+                        Intent.ACTION_PICK,
+                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+
+                getActivity().startActivityForResult(i, RESULT_LOAD_IMAGE);
+            }
+        });
 
     }
 

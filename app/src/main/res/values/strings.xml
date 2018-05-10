@@ -81,5 +81,7 @@
     <string name="mdp_modify">Le mot de passe a été modifé avec succès!</string>
     <string name="error_no_friend_selected">Veuillez choisir un ami</string>
     <string name="error_no_format_selected">Vous n\'avez pas choisis de format. Fin de la creation du sondage.</string>
+    <string name="error_question_empty">Veuillez entrer une question.</string>
+    <string name="error_no_2_reponse">Veuillez entrer au moins deux réponses.</string>
 
 </resources>

@@ -529,6 +529,40 @@ public class MiniPollApp extends Application {
         loadUtilisateurs();
         loadConnectedUser();
         connectedUser = user;
+
+        String oldID=connectedUser.getIdentifiant();
+        SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
+
+        //1) On change le ID_participant dans la table choix
+        ContentValues values_choix = new ContentValues();
+        values_choix.put("ID_participant",id);
+        String whereArgs[]={oldID};
+        db.update("liste_participants",values_choix,"ID_participant=?",whereArgs);
+
+        //2) On change l'identifiant1 /identifiant2 dans table liste_amis
+        ContentValues values_amis = new ContentValues();
+        values_amis.put("identifiant_1",id);
+        db.update("liste_amis",values_amis,"identifiant_1=?",whereArgs);
+        values_amis.put("identifiant_2",id);
+        db.update("liste_amis",values_amis,"identifiant_2=?",whereArgs);
+
+        //3) On change l'identifiant du participant dans table liste_participant
+        ContentValues values_participants = new ContentValues();
+        values_participants.put("identifiant",id);
+        db.update("liste_participants",values_participants,"identifiant=?",whereArgs);
+
+        //4) On change le createur dans la table sondage
+        ContentValues values_sondage = new ContentValues();
+        values_sondage.put("createur",id);
+        db.update("sondage",values_sondage,"createur=?",whereArgs);
+
+        //5) on change l'identifiant dans la table createur
+        ContentValues values_utilisateur = new ContentValues();
+        values_utilisateur.put("identifiant",id);
+        db.update("utilisateur",values_utilisateur,"identifiant=?",whereArgs);
+
+        db.close();
+
     }
 
     public static void saveNewUser(Utilisateur u){

@@ -267,9 +267,9 @@ public class MiniPollApp extends Application {
         // Tant qu'il y a des lignes.
         while (!cursorK.isAfterLast()) {
             // Récupération des informations de l'utilisateur pour chaque ligne.
-            String uID = cursorP.getString(0);
-            int uID_Sondage = cursorP.getInt(1);
-            String uStatut = cursorP.getString(2);
+            String uID = cursorK.getString(0);
+            int uID_Sondage = cursorK.getInt(1);
+            String uStatut = cursorK.getString(2);
 
             Participant participant_p = null;
             for (Participant p : part) {

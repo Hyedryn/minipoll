@@ -2,7 +2,10 @@ package be.lsinf1225.g16.mini_poll.activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
@@ -197,6 +200,17 @@ public class CreationChoiceActivity extends FragmentActivity {
             MiniPollApp.notifyShort(R.string.error_no_friend_selected);
             return;
         }
+
+        if((texte1==null&&image1==null)||(texte2==null&&image2==null)){
+            MiniPollApp.notifyShort(R.string.error_no_2_reponse);
+            return;
+        }
+
+        if(question==null||question.length()<1){
+            MiniPollApp.notifyShort(R.string.error_question_empty);
+            return;
+        }
+
         View radioButton = radioButtonGroup.findViewById(radioButtonID);
         int idx = radioButtonGroup.indexOfChild(radioButton);
         RadioButton btn = (RadioButton) radioButtonGroup.getChildAt(idx);
@@ -241,6 +255,28 @@ MiniPollApp.insertSondage(s,p,q);
     }
 
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == CreationChoiceFillChoice.RESULT_LOAD_IMAGE && resultCode == RESULT_OK && null != data) {
+            Uri selectedImage = data.getData();
+            String[] filePathColumn = {MediaStore.Images.Media.DATA};
+
+            Cursor cursor = getContentResolver().query(selectedImage,
+                    filePathColumn, null, null, null);
+            cursor.moveToFirst();
+
+            int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+            String picturePath = cursor.getString(columnIndex);
+            cursor.close();
+
+
+            CreationChoiceFillChoice.imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
+
+
+        }
+    }
 
     /**
      * A simple pager adapter that represents 5 ScreenSlidePageFragment objects, in

@@ -1,8 +1,13 @@
 package be.lsinf1225.g16.mini_poll.activity.creationFragment;
 
+import android.content.Intent;
+import android.database.Cursor;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.CardView;
 import android.view.Gravity;
@@ -21,6 +26,8 @@ import be.lsinf1225.g16.mini_poll.MiniPollApp;
 import be.lsinf1225.g16.mini_poll.R;
 import be.lsinf1225.g16.mini_poll.activity.CreationChoiceActivity;
 
+import static android.app.Activity.RESULT_OK;
+
 public class CreationChoiceFillChoice extends Fragment {
 
     public static LinearLayout linearLayout;
@@ -36,6 +43,9 @@ public class CreationChoiceFillChoice extends Fragment {
     public ImageView i1;
 
     public ImageView i2;
+
+    public static int RESULT_LOAD_IMAGE = 1;
+    public static ImageView imageView;
 
     boolean alreadyinit = false;
     @Override
@@ -57,6 +67,31 @@ public class CreationChoiceFillChoice extends Fragment {
         r2 = (EditText) view.findViewById(R.id.creation_choice_fill_r2_txt);
         i1 = (ImageView) view.findViewById(R.id.creation_choice_fill_r1_img);
         i2 = (ImageView) view.findViewById(R.id.creation_choice_fill_r2_img);
+
+        i1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                imageView=i1;
+                Intent i = new Intent(
+                        Intent.ACTION_PICK,
+                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+
+                getActivity().startActivityForResult(i, RESULT_LOAD_IMAGE);
+            }
+        });
+
+        i2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                imageView=i2;
+                Intent i = new Intent(
+                        Intent.ACTION_PICK,
+                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+
+                getActivity().startActivityForResult(i, RESULT_LOAD_IMAGE);
+            }
+        });
+
     }
 
     @Override
@@ -92,6 +127,9 @@ public class CreationChoiceFillChoice extends Fragment {
                }
         }
     }
+
+
+
 
 public void save(){
     if(format.equalsIgnoreCase("Image")){

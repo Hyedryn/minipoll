@@ -40,7 +40,7 @@ public class MenuAgreementActivity extends AppCompatActivity {
                                 startActivity(intent);
                             }
                         });
-                        b.setText("Sondage");
+                        b.setText("Sondage "+s.getSondageId());
                         b.setBackgroundColor(getResources().getColor(R.color.Button1));
                         linearLayout.addView(b, linearLayout.indexOfChild(findViewById(R.id.menu_agreement_mes_sondages))+1);
                     }else if(s.getState().equals(Sondage.Etat.ACTIF)){

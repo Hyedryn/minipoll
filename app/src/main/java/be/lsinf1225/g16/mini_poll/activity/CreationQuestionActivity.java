@@ -2,7 +2,12 @@ package be.lsinf1225.g16.mini_poll.activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -32,6 +37,65 @@ public class CreationQuestionActivity extends FragmentActivity {
      * The number of pages (wizard steps) to show in this demo.
      */
     private static final int NUM_PAGES = 6;
+
+
+    public static Bitmap q1image1;
+    public static Bitmap q1image2;
+    public static Bitmap q1image3;
+    public static Bitmap q1image4;
+
+    public static String question1;
+    public static String q1texte1;
+    public static String q1texte2;
+    public static String q1texte3;
+    public static String q1texte4;
+
+    public static Bitmap q2image1;
+    public static Bitmap q2image2;
+    public static Bitmap q2image3;
+    public static Bitmap q2image4;
+
+    public static String question2;
+    public static String q2texte1;
+    public static String q2texte2;
+    public static String q2texte3;
+    public static String q2texte4;
+
+    public static Bitmap q3image1;
+    public static Bitmap q3image2;
+    public static Bitmap q3image3;
+    public static Bitmap q3image4;
+
+    public static String question3;
+    public static String q3texte1;
+    public static String q3texte2;
+    public static String q3texte3;
+    public static String q3texte4;
+
+    public static Bitmap q4image1;
+    public static Bitmap q4image2;
+    public static Bitmap q4image3;
+    public static Bitmap q4image4;
+
+    public static String question4;
+    public static String q4texte1;
+    public static String q4texte2;
+    public static String q4texte3;
+    public static String q4texte4;
+
+    public static Bitmap q5image1;
+    public static Bitmap q5image2;
+    public static Bitmap q5image3;
+    public static Bitmap q5image4;
+
+    public static String question5;
+    public static String q5texte1;
+    public static String q5texte2;
+    public static String q5texte3;
+    public static String q5texte4;
+
+    CreationQuestionFillChoice fillchoice;
+    CreationQuestionPreview preview;
 
     /**
      * The pager widget, which handles animation and allows swiping horizontally to access previous
@@ -72,6 +136,10 @@ public class CreationQuestionActivity extends FragmentActivity {
 
                 System.out.println("Position +"+position);
                 addBottomDots(position);
+
+                if(position==2){
+                    saveReponse();
+                }
 
                 // changing the next button text 'NEXT' / 'GOT IT'
                 if (position == mPagerAdapter.getCount()-1) {
@@ -136,6 +204,11 @@ public class CreationQuestionActivity extends FragmentActivity {
         }
     }
 
+    public void saveReponse(){
+        fillchoice.save();
+        preview.settxt();
+    }
+
 
 
 
@@ -158,6 +231,27 @@ public class CreationQuestionActivity extends FragmentActivity {
             dots[currentPage].setTextColor(colorsActive[currentPage]);
     }
 
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == CreationQuestionFillChoice.RESULT_LOAD_IMAGE && resultCode == RESULT_OK && null != data) {
+            Uri selectedImage = data.getData();
+            String[] filePathColumn = {MediaStore.Images.Media.DATA};
+
+            Cursor cursor = getContentResolver().query(selectedImage,
+                    filePathColumn, null, null, null);
+            cursor.moveToFirst();
+
+            int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+            String picturePath = cursor.getString(columnIndex);
+            cursor.close();
+
+            CreationQuestionFillChoice.imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
+
+        }
+    }
 
 
     private void saveAndLaunchHomeScreen(){
@@ -203,9 +297,9 @@ public class CreationQuestionActivity extends FragmentActivity {
                 case 1:
                     return new CreationQuestionFormat();
                 case 2:
-                    return new CreationQuestionFillChoice();
+                    return fillchoice = new CreationQuestionFillChoice();
                 case 3:
-                    return new CreationQuestionPreview();
+                    return preview = new CreationQuestionPreview();
                 case 4:
                     return new CreationQuestionEditOrder();
                 case 5:

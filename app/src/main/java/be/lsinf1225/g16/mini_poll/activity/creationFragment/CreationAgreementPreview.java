@@ -71,6 +71,8 @@ public class CreationAgreementPreview extends Fragment {
         title.setText("Sondage de "+ MiniPollApp.connectedUser.getIdentifiant());
 
     }
+
+
     public void settxt(){
 
         question.setText(CreationAgreementActivity.question);

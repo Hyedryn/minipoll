@@ -1,5 +1,6 @@
 package be.lsinf1225.g16.mini_poll.activity.creationFragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -83,6 +84,8 @@ public class CreationQuestionFillChoice extends Fragment {
     ImageView q5i3;
     ImageView q5i4;
 
+    public static int RESULT_LOAD_IMAGE = 1;
+    public static ImageView imageView;
 
     boolean alreadyinit = false;
 
@@ -157,6 +160,260 @@ public class CreationQuestionFillChoice extends Fragment {
         q5i2 = (ImageView) view.findViewById(R.id.creation_question_fill_q5_r2_img);
         q5i3 = (ImageView) view.findViewById(R.id.creation_question_fill_q5_r3_img);
         q5i4 = (ImageView) view.findViewById(R.id.creation_question_fill_q5_r4_img);
+
+
+        q1i1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                imageView=q1i1;
+                Intent i = new Intent(
+                        Intent.ACTION_PICK,
+                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+
+                getActivity().startActivityForResult(i, RESULT_LOAD_IMAGE);
+
+            }
+        });
+
+        q1i2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                imageView=q1i2;
+                Intent i = new Intent(
+                        Intent.ACTION_PICK,
+                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+
+                getActivity().startActivityForResult(i, RESULT_LOAD_IMAGE);
+            }
+        });
+        q1i3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                imageView=q1i3;
+                Intent i = new Intent(
+                        Intent.ACTION_PICK,
+                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+
+                getActivity().startActivityForResult(i, RESULT_LOAD_IMAGE);
+            }
+        });
+
+        q1i4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                imageView=q1i4;
+                Intent i = new Intent(
+                        Intent.ACTION_PICK,
+                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+
+                getActivity().startActivityForResult(i, RESULT_LOAD_IMAGE);
+            }
+        });
+
+
+
+
+
+        q2i1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                imageView=q2i1;
+                Intent i = new Intent(
+                        Intent.ACTION_PICK,
+                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+
+                getActivity().startActivityForResult(i, RESULT_LOAD_IMAGE);
+
+            }
+        });
+
+        q2i2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                imageView=q2i2;
+                Intent i = new Intent(
+                        Intent.ACTION_PICK,
+                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+
+                getActivity().startActivityForResult(i, RESULT_LOAD_IMAGE);
+            }
+        });
+        q2i3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                imageView=q2i3;
+                Intent i = new Intent(
+                        Intent.ACTION_PICK,
+                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+
+                getActivity().startActivityForResult(i, RESULT_LOAD_IMAGE);
+            }
+        });
+
+        q2i4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                imageView=q2i4;
+                Intent i = new Intent(
+                        Intent.ACTION_PICK,
+                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+
+                getActivity().startActivityForResult(i, RESULT_LOAD_IMAGE);
+            }
+        });
+
+
+
+
+        q3i1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                imageView=q3i1;
+                Intent i = new Intent(
+                        Intent.ACTION_PICK,
+                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+
+                getActivity().startActivityForResult(i, RESULT_LOAD_IMAGE);
+
+            }
+        });
+
+        q3i2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                imageView=q3i2;
+                Intent i = new Intent(
+                        Intent.ACTION_PICK,
+                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+
+                getActivity().startActivityForResult(i, RESULT_LOAD_IMAGE);
+            }
+        });
+        q3i3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                imageView=q3i3;
+                Intent i = new Intent(
+                        Intent.ACTION_PICK,
+                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+
+                getActivity().startActivityForResult(i, RESULT_LOAD_IMAGE);
+            }
+        });
+
+        q3i4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                imageView=q3i4;
+                Intent i = new Intent(
+                        Intent.ACTION_PICK,
+                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+
+                getActivity().startActivityForResult(i, RESULT_LOAD_IMAGE);
+            }
+        });
+
+
+
+        q4i1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                imageView=q4i1;
+                Intent i = new Intent(
+                        Intent.ACTION_PICK,
+                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+
+                getActivity().startActivityForResult(i, RESULT_LOAD_IMAGE);
+
+            }
+        });
+
+        q4i2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                imageView=q4i2;
+                Intent i = new Intent(
+                        Intent.ACTION_PICK,
+                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+
+                getActivity().startActivityForResult(i, RESULT_LOAD_IMAGE);
+            }
+        });
+        q4i3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                imageView=q4i3;
+                Intent i = new Intent(
+                        Intent.ACTION_PICK,
+                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+
+                getActivity().startActivityForResult(i, RESULT_LOAD_IMAGE);
+            }
+        });
+
+        q4i4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                imageView=q4i4;
+                Intent i = new Intent(
+                        Intent.ACTION_PICK,
+                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+
+                getActivity().startActivityForResult(i, RESULT_LOAD_IMAGE);
+            }
+        });
+
+
+
+
+        q5i1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                imageView=q5i1;
+                Intent i = new Intent(
+                        Intent.ACTION_PICK,
+                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+
+                getActivity().startActivityForResult(i, RESULT_LOAD_IMAGE);
+
+            }
+        });
+
+        q5i2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                imageView=q5i2;
+                Intent i = new Intent(
+                        Intent.ACTION_PICK,
+                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+
+                getActivity().startActivityForResult(i, RESULT_LOAD_IMAGE);
+            }
+        });
+        q5i3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                imageView=q5i3;
+                Intent i = new Intent(
+                        Intent.ACTION_PICK,
+                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+
+                getActivity().startActivityForResult(i, RESULT_LOAD_IMAGE);
+            }
+        });
+
+        q5i4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                imageView=q5i4;
+                Intent i = new Intent(
+                        Intent.ACTION_PICK,
+                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+
+                getActivity().startActivityForResult(i, RESULT_LOAD_IMAGE);
+            }
+        });
+
     }
 
     @Override
@@ -552,6 +809,103 @@ public class CreationQuestionFillChoice extends Fragment {
             }
 
         }
+    }
+
+    public void save(){
+
+
+
+        if(q1p.getVisibility()==View.VISIBLE){
+            CreationQuestionActivity.question1 = q1.getText().toString();
+            if(g1.getCheckedRadioButtonId()==R.id.creation_question_format_q1_img){
+                q1i1.buildDrawingCache();
+                CreationQuestionActivity.q1image1 = q1i1.getDrawingCache().copy(q1i1.getDrawingCache().getConfig(), true);
+                q1i2.buildDrawingCache();
+                CreationQuestionActivity.q1image2 = q1i2.getDrawingCache().copy(q1i2.getDrawingCache().getConfig(), true);
+                q1i3.buildDrawingCache();
+                CreationQuestionActivity.q1image3 = q1i3.getDrawingCache().copy(q1i3.getDrawingCache().getConfig(), true);
+                q1i4.buildDrawingCache();
+                CreationQuestionActivity.q1image4 = q1i4.getDrawingCache().copy(q1i4.getDrawingCache().getConfig(), true);
+            }else{
+                CreationQuestionActivity.q1texte1 = q1r1.getText().toString();
+                CreationQuestionActivity.q1texte2 = q1r2.getText().toString();
+                CreationQuestionActivity.q1texte3 = q1r3.getText().toString();
+                CreationQuestionActivity.q1texte4 = q1r4.getText().toString();
+            }
+        }
+        if(q2p.getVisibility()==View.VISIBLE){
+            CreationQuestionActivity.question2 = q2.getText().toString();
+            if(g2.getCheckedRadioButtonId()==R.id.creation_question_format_q2_img){
+                q2i1.buildDrawingCache();
+                CreationQuestionActivity.q2image1 = q2i1.getDrawingCache().copy(q2i1.getDrawingCache().getConfig(), true);
+                q2i2.buildDrawingCache();
+                CreationQuestionActivity.q2image2 = q2i2.getDrawingCache().copy(q2i2.getDrawingCache().getConfig(), true);
+                q2i3.buildDrawingCache();
+                CreationQuestionActivity.q2image3 = q2i3.getDrawingCache().copy(q2i3.getDrawingCache().getConfig(), true);
+                q2i4.buildDrawingCache();
+                CreationQuestionActivity.q2image4 = q2i4.getDrawingCache().copy(q2i4.getDrawingCache().getConfig(), true);
+            }else{
+                CreationQuestionActivity.q2texte1 = q2r1.getText().toString();
+                CreationQuestionActivity.q2texte2 = q2r2.getText().toString();
+                CreationQuestionActivity.q2texte3 = q2r3.getText().toString();
+                CreationQuestionActivity.q2texte4 = q2r4.getText().toString();
+            }
+        }
+        if(q3p.getVisibility()==View.VISIBLE){
+            CreationQuestionActivity.question3 = q3.getText().toString();
+            if(g3.getCheckedRadioButtonId()==R.id.creation_question_format_q3_img){
+                q3i1.buildDrawingCache();
+                CreationQuestionActivity.q3image1 = q3i1.getDrawingCache().copy(q3i1.getDrawingCache().getConfig(), true);
+                q3i2.buildDrawingCache();
+                CreationQuestionActivity.q3image2 = q3i2.getDrawingCache().copy(q3i2.getDrawingCache().getConfig(), true);
+                q3i3.buildDrawingCache();
+                CreationQuestionActivity.q3image3 = q3i3.getDrawingCache().copy(q3i3.getDrawingCache().getConfig(), true);
+                q3i4.buildDrawingCache();
+                CreationQuestionActivity.q3image4 = q3i4.getDrawingCache().copy(q3i4.getDrawingCache().getConfig(), true);
+            }else{
+                CreationQuestionActivity.q3texte1 = q3r1.getText().toString();
+                CreationQuestionActivity.q3texte2 = q3r2.getText().toString();
+                CreationQuestionActivity.q3texte3 = q3r3.getText().toString();
+                CreationQuestionActivity.q3texte4 = q3r4.getText().toString();
+            }
+        }
+        if(q4p.getVisibility()==View.VISIBLE){
+            CreationQuestionActivity.question4 = q4.getText().toString();
+            if(g4.getCheckedRadioButtonId()==R.id.creation_question_format_q4_img){
+                q4i1.buildDrawingCache();
+                CreationQuestionActivity.q4image1 = q4i1.getDrawingCache().copy(q4i1.getDrawingCache().getConfig(), true);
+                q4i2.buildDrawingCache();
+                CreationQuestionActivity.q4image2 = q4i2.getDrawingCache().copy(q4i2.getDrawingCache().getConfig(), true);
+                q4i3.buildDrawingCache();
+                CreationQuestionActivity.q4image3 = q4i3.getDrawingCache().copy(q4i3.getDrawingCache().getConfig(), true);
+                q4i4.buildDrawingCache();
+                CreationQuestionActivity.q4image4 = q4i4.getDrawingCache().copy(q4i4.getDrawingCache().getConfig(), true);
+            }else{
+                CreationQuestionActivity.q4texte1 = q4r1.getText().toString();
+                CreationQuestionActivity.q4texte2 = q4r2.getText().toString();
+                CreationQuestionActivity.q4texte3 = q4r3.getText().toString();
+                CreationQuestionActivity.q4texte4 = q4r4.getText().toString();
+            }
+        }
+        if(q5p.getVisibility()==View.VISIBLE){
+            CreationQuestionActivity.question5 = q5.getText().toString();
+            if(g5.getCheckedRadioButtonId()==R.id.creation_question_format_q5_img){
+                q5i1.buildDrawingCache();
+                CreationQuestionActivity.q5image1 = q5i1.getDrawingCache().copy(q5i1.getDrawingCache().getConfig(), true);
+                q5i2.buildDrawingCache();
+                CreationQuestionActivity.q5image2 = q5i2.getDrawingCache().copy(q5i2.getDrawingCache().getConfig(), true);
+                q5i3.buildDrawingCache();
+                CreationQuestionActivity.q5image3 = q5i3.getDrawingCache().copy(q5i3.getDrawingCache().getConfig(), true);
+                q5i4.buildDrawingCache();
+                CreationQuestionActivity.q5image4 = q5i4.getDrawingCache().copy(q5i4.getDrawingCache().getConfig(), true);
+            }else{
+                CreationQuestionActivity.q5texte1 = q5r1.getText().toString();
+                CreationQuestionActivity.q5texte2 = q5r2.getText().toString();
+                CreationQuestionActivity.q5texte3 = q5r3.getText().toString();
+                CreationQuestionActivity.q5texte4 = q5r4.getText().toString();
+            }
+        }
+
     }
 
 }

@@ -2,7 +2,10 @@ package be.lsinf1225.g16.mini_poll.activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
@@ -197,6 +200,17 @@ public class CreationChoiceActivity extends FragmentActivity {
             MiniPollApp.notifyShort(R.string.error_no_friend_selected);
             return;
         }
+
+        if((texte1==null&&image1==null)||(texte2==null&&image2==null)){
+            MiniPollApp.notifyShort(R.string.error_no_2_reponse);
+            return;
+        }
+
+        if(question==null||question.length()<1){
+            MiniPollApp.notifyShort(R.string.error_question_empty);
+            return;
+        }
+
         View radioButton = radioButtonGroup.findViewById(radioButtonID);
         int idx = radioButtonGroup.indexOfChild(radioButton);
         RadioButton btn = (RadioButton) radioButtonGroup.getChildAt(idx);
@@ -207,26 +221,28 @@ public class CreationChoiceActivity extends FragmentActivity {
 
 
         if(CreationChoiceFillChoice.format.equalsIgnoreCase("image")) {
-            r1 = new Reponse(1, Reponse.Categorie.BONNE, Reponse.Format.IMAGE, image1);
-            r2 = new Reponse(2, Reponse.Categorie.BONNE, Reponse.Format.IMAGE, image2);
+            r1 = new Reponse(++MiniPollApp.id_Main, Reponse.Categorie.BONNE, Reponse.Format.IMAGE, image1);
+            r2 = new Reponse(++MiniPollApp.id_Main, Reponse.Categorie.BONNE, Reponse.Format.IMAGE, image2);
         }else{
-            r1 = new Reponse(1, Reponse.Categorie.BONNE, Reponse.Format.TEXTE, texte1);
-            r2 = new Reponse(2, Reponse.Categorie.BONNE, Reponse.Format.TEXTE, texte2);
+            r1 = new Reponse(++MiniPollApp.id_Main, Reponse.Categorie.BONNE, Reponse.Format.TEXTE, texte1);
+            r2 = new Reponse(++MiniPollApp.id_Main, Reponse.Categorie.BONNE, Reponse.Format.TEXTE, texte2);
         }
         ArrayList<Reponse> r = new ArrayList<Reponse>();
         r.add(r1);
         r.add(r2);
-        Question q1 = new Question(question,2,r,1);
+        Question q1 = new Question(question,2,r,++MiniPollApp.id_Main);
         Participant p1 = new Participant(MiniPollApp.connectedUser.getAmi(identifiant),Participant.Status.EN_ATTENTE);
+        Participant p2 = new Participant(MiniPollApp.connectedUser,Participant.Status.A_REPONDU);
         ArrayList<Participant> p = new ArrayList<Participant>();
+        p.add(p2);
         p.add(p1);
         ArrayList<Question> q = new ArrayList<Question>();
         q.add(q1);
-        Sondage s = new Sondage(MiniPollApp.connectedUser,p,0,q,Sondage.Type.AIDER_UN_AMI);
+        Sondage s = new Sondage(MiniPollApp.connectedUser,p,++MiniPollApp.id_Main,q,Sondage.Type.AIDER_UN_AMI);
 
 MiniPollApp.connectedUser.addSondage(s);
+MiniPollApp.insertSondage(s,p,q);
 
-//SaveSondageIntoDatabase insertSondage();
 
         launchHomeScreen();
     }
@@ -239,6 +255,28 @@ MiniPollApp.connectedUser.addSondage(s);
     }
 
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == CreationChoiceFillChoice.RESULT_LOAD_IMAGE && resultCode == RESULT_OK && null != data) {
+            Uri selectedImage = data.getData();
+            String[] filePathColumn = {MediaStore.Images.Media.DATA};
+
+            Cursor cursor = getContentResolver().query(selectedImage,
+                    filePathColumn, null, null, null);
+            cursor.moveToFirst();
+
+            int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+            String picturePath = cursor.getString(columnIndex);
+            cursor.close();
+
+
+            CreationChoiceFillChoice.imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
+
+
+        }
+    }
 
     /**
      * A simple pager adapter that represents 5 ScreenSlidePageFragment objects, in

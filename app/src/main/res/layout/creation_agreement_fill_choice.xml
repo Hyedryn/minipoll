@@ -52,7 +52,7 @@
                         android:orientation="horizontal">
 
                         <EditText
-                            android:id="@+id/Question"
+                            android:id="@+id/creation_agreement_fill_question"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -84,27 +84,42 @@
                         android:orientation="horizontal">
 
                         <EditText
-                            android:id="@+id/réponse"
+                            android:id="@+id/creation_agreement_fill_r1_txt"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:background="@drawable/textview_border"
                             android:gravity="center_vertical|center"
-                            android:hint="Réponse"
+                            android:hint="Réponse "
+                            android:visibility="gone"
                             android:inputType="text"
+                            android:textColor="@android:color/white"
                             android:paddingBottom="8dp"
                             android:paddingStart="6dp"
                             android:paddingTop="6dp"
                             android:textSize="18sp"
                             android:textStyle="bold" />
 
+                        <ImageView
+                            android:id="@+id/creation_agreement_fill_r1_img"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:layout_weight="1"
+                            android:visibility="gone"
+                            android:padding="5dp"
+                            android:src="@drawable/edit_pen" />
+
+
                         <ImageButton
-                            android:id="@+id/imageButton"
+                            android:id="@+id/creation_agreement_fill_r1_button"
                             android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0"
+                            android:visibility="gone"
                             android:background="#43b5b5b5"
                             android:src="@android:drawable/ic_delete"
                             android:tint="#ffffffff" />
+
 
                     </LinearLayout>
 
@@ -123,38 +138,257 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
+                        <EditText
+                            android:id="@+id/creation_agreement_fill_r2_txt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical|center"
+                            android:hint="Réponse "
+                            android:visibility="gone"
+                            android:inputType="text"
+                            android:textColor="@android:color/white"
+                            android:paddingBottom="8dp"
+                            android:paddingStart="6dp"
+                            android:paddingTop="6dp"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
                         <ImageView
-                            android:id="@+id/imageView"
+                            android:id="@+id/creation_agreement_fill_r2_img"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_margin="5dp"
                             android:layout_weight="1"
-                            android:background="@android:color/background_light"
+                            android:visibility="gone"
                             android:padding="5dp"
                             android:src="@drawable/edit_pen" />
 
-                        <ImageButton
-                            android:id="@+id/imageButton2"
-                            android:layout_width="wrap_content"
+
+
+
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dp"
+                    app:cardBackgroundColor="@color/dot_dark_screen3"
+                    app:cardCornerRadius="2dp"
+                    app:cardElevation="2dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/creation_agreement_fill_r3_txt"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="0"
-                            android:background="#43b5b5b5"
-                            android:src="@android:drawable/ic_delete"
-                            android:tint="#ffffffff" />
+                            android:layout_weight="1"
+                            android:gravity="center_vertical|center"
+                            android:hint="Réponse "
+                            android:visibility="gone"
+                            android:inputType="text"
+                            android:textColor="@android:color/white"
+                            android:paddingBottom="8dp"
+                            android:paddingStart="6dp"
+                            android:paddingTop="6dp"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <ImageView
+                            android:id="@+id/creation_agreement_fill_r3_img"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:layout_weight="1"
+                            android:visibility="gone"
+                            android:padding="5dp"
+                            android:src="@drawable/edit_pen" />
+
+
+
+
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dp"
+                    app:cardBackgroundColor="@color/dot_dark_screen3"
+                    app:cardCornerRadius="2dp"
+                    app:cardElevation="2dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/creation_agreement_fill_r4_txt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical|center"
+                            android:hint="Réponse "
+                            android:visibility="gone"
+                            android:inputType="text"
+                            android:textColor="@android:color/white"
+                            android:paddingBottom="8dp"
+                            android:paddingStart="6dp"
+                            android:paddingTop="6dp"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <ImageView
+                            android:id="@+id/creation_agreement_fill_r4_img"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:layout_weight="1"
+                            android:visibility="gone"
+                            android:padding="5dp"
+                            android:src="@drawable/edit_pen" />
+
+
+
+
+
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dp"
+                    app:cardBackgroundColor="@color/dot_dark_screen3"
+                    app:cardCornerRadius="2dp"
+                    app:cardElevation="2dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/creation_agreement_fill_r5_txt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical|center"
+                            android:hint="Réponse "
+                            android:visibility="gone"
+                            android:inputType="text"
+                            android:textColor="@android:color/white"
+                            android:paddingBottom="8dp"
+                            android:paddingStart="6dp"
+                            android:paddingTop="6dp"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <ImageView
+                            android:id="@+id/creation_agreement_fill_r5_img"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:layout_weight="1"
+                            android:visibility="gone"
+                            android:padding="5dp"
+                            android:src="@drawable/edit_pen" />
+
+
+
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dp"
+                    app:cardBackgroundColor="@color/dot_dark_screen3"
+                    app:cardCornerRadius="2dp"
+                    app:cardElevation="2dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/creation_agreement_fill_r6_txt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical|center"
+                            android:hint="Réponse "
+                            android:visibility="gone"
+                            android:inputType="text"
+                            android:textColor="@android:color/white"
+                            android:paddingBottom="8dp"
+                            android:paddingStart="6dp"
+                            android:paddingTop="6dp"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <ImageView
+                            android:id="@+id/creation_agreement_fill_r6_img"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:layout_weight="1"
+                            android:visibility="gone"
+                            android:padding="5dp"
+                            android:src="@drawable/edit_pen" />
+
+
+
 
                     </LinearLayout>
 
                 </android.support.v7.widget.CardView>
 
                 <Button
-                    android:id="@+id/button"
+                    android:id="@+id/creation_agreement_fill_add_rep_img"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="15dp"
+                    android:layout_margin="3dp"
                     android:background="#3d5aa3"
-                    android:padding="8dp"
-                    android:text="Ajouter Réponse"
+                    android:padding="3dp"
+                    android:clickable="true"
+                    android:text="Ajouter Réponse (Image)"
                     android:textColor="#ffffffff" />
+
+
+                <Button
+                    android:id="@+id/creation_agreement_fill_add_rep_txt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="3dp"
+                    android:background="#3d5aa3"
+                    android:padding="3dp"
+                    android:clickable="true"
+                    android:text="Ajouter Réponse (Texte)"
+                    android:textColor="#ffffffff" />
+
+                <Button
+                    android:id="@+id/creation_agreement_fill_remove_rep"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="3dp"
+                    android:background="#3d5aa3"
+                    android:padding="3dp"
+                    android:clickable="true"
+                    android:text="Retirer la dernière réponse"
+                    android:textColor="#ffffffff" />
+
 
             </LinearLayout>
         </ScrollView>

@@ -28,6 +28,7 @@ import be.lsinf1225.g16.mini_poll.model.Utilisateur;
 
 public class MiniPollApp extends Application {
 
+    public static int id_Main;
 
     //ArrayList comprennant tout les utilisateurs de la database
     public static ArrayList<Utilisateur> utilisateurs = new ArrayList<>();
@@ -241,7 +242,7 @@ public class MiniPollApp extends Application {
         while (!cursorP.isAfterLast()) {
             // Récupération des informations de l'utilisateur pour chaque ligne.
             String uID = cursorP.getString(0);
-            int uID_Sondage = Integer.parseInt(cursorP.getString(1));
+            int uID_Sondage = cursorP.getInt(1);
             String uStatut = cursorP.getString(2);
 
             if (uID.equals(connectedUser.getIdentifiant())) {
@@ -253,22 +254,28 @@ public class MiniPollApp extends Application {
             cursorP.moveToNext();
         }
 
+        cursorP.close();
+
+        // Requête de selection (SELECT)
+        Cursor cursorK = db.query(DB_TABLE_P, colonnes, null, null, null, null, null);
+
         // Placement du curseur sur la première ligne.
-        cursorP.moveToFirst(); //cursor still on liste_participants
+        cursorK.moveToFirst(); //cursor still on liste_participants
 
         //Chargement des participants du même Sondage
 
         // Tant qu'il y a des lignes.
-        while (!cursorP.isAfterLast()) {
+        while (!cursorK.isAfterLast()) {
             // Récupération des informations de l'utilisateur pour chaque ligne.
-            String uID = cursorP.getString(0);
-            int uID_Sondage = Integer.parseInt(cursorP.getString(1));
-            String uStatut = cursorP.getString(2);
+            String uID = cursorK.getString(0);
+            int uID_Sondage = cursorK.getInt(1);
+            String uStatut = cursorK.getString(2);
 
             Participant participant_p = null;
             for (Participant p : part) {
                 if (!uID.equals(connectedUser.getIdentifiant()) && uID_Sondage == p.getSondageID()) {
                     participant_p = new Participant(uID, uID_Sondage, uStatut);
+
                 }
             }
 
@@ -276,7 +283,7 @@ public class MiniPollApp extends Application {
                 part.add(participant_p);
 
             // Passe à la ligne suivante.
-            cursorP.moveToNext();
+            cursorK.moveToNext();
         }
 
         //At this point we have connected user's info and all of the other users that participate in the same sondage
@@ -284,7 +291,7 @@ public class MiniPollApp extends Application {
         //need to access table sondage in database
 
         // Fermeture du curseur
-        cursorP.close();
+        cursorK.close();
 
         final String DB_COLUMN_CREATEUR = "createur";
 
@@ -403,7 +410,14 @@ public class MiniPollApp extends Application {
         while(!cursorE.isAfterLast()){
             int ID_question=cursorE.getInt(0);
             String reponse_format=cursorE.getString(1);
-            String reponse_donnees=cursorE.getString(2);
+            String reponse_donnees_txt="";
+            Bitmap reponse_donnees_img=null;
+            if(reponse_format.equalsIgnoreCase("image")){
+                byte[] byteArrayPhoto = cursorE.getBlob(2);
+                reponse_donnees_img = BitmapFactory.decodeByteArray(byteArrayPhoto, 0, byteArrayPhoto.length);
+            }else{
+                reponse_donnees_txt=cursorE.getString(2);
+            }
             String reponse_cat=cursorE.getString(3);
             int reponse_id=cursorE.getInt(4);
 
@@ -411,7 +425,12 @@ public class MiniPollApp extends Application {
                 for(Question q : s.getQuestions()){
                     if(q.getQuestionId()==ID_question){
                         Reponse r=null;
-                        r= new Reponse(reponse_id,reponse_cat,reponse_format,reponse_donnees);
+
+                        if(reponse_format.equalsIgnoreCase("image")){
+                            r= new Reponse(reponse_id,reponse_cat,reponse_format,reponse_donnees_img.copy(reponse_donnees_img.getConfig(),true));
+                        }else{
+                            r= new Reponse(reponse_id,reponse_cat,reponse_format,reponse_donnees_txt);
+                        }
                         if(r!=null){
                             q.addReponse(r);
                         }
@@ -461,6 +480,14 @@ public class MiniPollApp extends Application {
         db.close();
 
         MiniPollApp.connectedUser.setSondages(sondages);
+
+
+        //méthode de test length sondage
+        for(Sondage s : sondages){
+            System.out.println("Sondage ID: "+s.getSondageId());
+            System.out.println("Nombre de participants: "+s.getListeParticipants().size());
+        }
+
     }
 
 
@@ -510,10 +537,44 @@ public class MiniPollApp extends Application {
     public  static void updateID(String id){
         Utilisateur user = new Utilisateur(id, connectedUser.getPassword(), connectedUser.getNom(), connectedUser.getPrenom(), connectedUser.getEmail(), connectedUser.getMeilleurAmi(), connectedUser.getPhoto());
         // saveUser(user);
-        //editDatabase
+        //editDatabase pour que tout les anciens id soit remplacer par les nouveaux id
         loadUtilisateurs();
         loadConnectedUser();
+        String oldID=connectedUser.getIdentifiant();
         connectedUser = user;
+
+        SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
+
+        //1) On change le ID_participant dans la table choix
+        ContentValues values_choix = new ContentValues();
+        values_choix.put("ID_participant",id);
+        String whereArgs[]={oldID};
+        db.update("liste_participants",values_choix,"ID_participant=?",whereArgs);
+
+        //2) On change l'identifiant1 /identifiant2 dans table liste_amis
+        ContentValues values_amis = new ContentValues();
+        values_amis.put("identifiant_1",id);
+        db.update("liste_amis",values_amis,"identifiant_1=?",whereArgs);
+        values_amis.put("identifiant_2",id);
+        db.update("liste_amis",values_amis,"identifiant_2=?",whereArgs);
+
+        //3) On change l'identifiant du participant dans table liste_participant
+        ContentValues values_participants = new ContentValues();
+        values_participants.put("identifiant",id);
+        db.update("liste_participants",values_participants,"identifiant=?",whereArgs);
+
+        //4) On change le createur dans la table sondage
+        ContentValues values_sondage = new ContentValues();
+        values_sondage.put("createur",id);
+        db.update("sondage",values_sondage,"createur=?",whereArgs);
+
+        //5) on change l'identifiant dans la table createur
+        ContentValues values_utilisateur = new ContentValues();
+        values_utilisateur.put("identifiant",id);
+        db.update("utilisateur",values_utilisateur,"identifiant=?",whereArgs);
+
+        db.close();
+
     }
 
     public static void saveNewUser(Utilisateur u){
@@ -608,10 +669,132 @@ public class MiniPollApp extends Application {
 
         // Fermeture du curseur et de la base de données.
         cursor.close();
+
+
+
+        String[] colonne = {"ID_MAIN"};
+        Cursor cursorMain = db.query("id_static", colonne, null, null, null, null, null);
+        cursorMain.moveToFirst();
+
+        id_Main = cursorMain.getInt(0);
+        cursor.close();
+
         db.close();
 
         utilisateurs = users;
 
     }
 
+    public static void insertSondage(Sondage s, ArrayList<Participant> p,
+                                     ArrayList<Question> q) {
+
+        //On ajoute les informations dans la table sondage: sondage id, createur, statut
+
+        SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
+        ContentValues values = new ContentValues();
+        int sondageId = s.getSondageId();
+        values.put("ID_sondage", s.getSondageId());
+        values.put("createur", s.getCreateur().getIdentifiant());
+        values.put("statut", s.getStateAsString());
+
+        db.insert("sondage", null, values);
+
+        ContentValues values_part = new ContentValues();
+
+        for (Participant part : p) {
+            System.out.println("insert + " + part.getParticipant().getIdentifiant() + " id: " + sondageId);
+            values_part.put("identifiant", part.getParticipant().getIdentifiant());
+            values_part.put("ID_sondage", sondageId);
+            values_part.put("statut", part.getStatusAsString());
+            db.insert("liste_participants", null, values_part);
+        }
+
+        ContentValues values_quest = new ContentValues();
+
+        for (Question quest : q) {
+            values_quest.put("ID_question", quest.getQuestionId());
+            values_quest.put("enonce", quest.getEnonce());
+            values_quest.put("nombreReponses", quest.getNbreReponses());
+            db.insert("question", null, values_quest);
+        }
+
+        ContentValues values_rep = new ContentValues();
+        for (Question quest : q) {
+            for (int i = 0; i < quest.getListeReponses().size(); i++) {
+                if (quest.getListeReponses().get(i).getFormatAsString().equalsIgnoreCase("texte")) {
+                    values_rep.put("ID_reponse", quest.getListeReponses().get(i).getReponseId());
+                    values_rep.put("ID_question", quest.getQuestionId());
+                    values_rep.put("format", quest.getListeReponses().get(i).getFormatAsString());
+                    values_rep.put("donnees", quest.getListeReponses().get(i).getDonnee_txt());
+                    values_rep.put("categorie", quest.getListeReponses().get(i).getCategorieAsString());
+                    db.insert("reponse", null, values_rep);
+                } else {
+                    values_rep.put("ID_reponse", quest.getListeReponses().get(i).getReponseId());
+                    values_rep.put("ID_question", quest.getQuestionId());
+                    values_rep.put("format", quest.getListeReponses().get(i).getFormatAsString());
+
+                    Bitmap image = quest.getListeReponses().get(i).getDonnee_img();
+                    ByteArrayOutputStream bos = new ByteArrayOutputStream();
+                    image.compress(Bitmap.CompressFormat.PNG, 100, bos);
+                    byte[] bArray = bos.toByteArray();
+
+                    values_rep.put("donnees", bArray);
+                    values_rep.put("categorie", quest.getListeReponses().get(i).getCategorieAsString());
+                    db.insert("reponse", null, values_rep);
+                }
+            }
+        }
+
+
+        ContentValues values_contenu = new ContentValues();
+        for (Question quest : q) {
+            values_contenu.put("ID_question", quest.getQuestionId());
+            values_contenu.put("ID_sondage", s.getSondageId());
+            values_contenu.put("type", s.getTypeAsString());
+            db.insert("contenu", null, values_contenu);
+        }
+
+
+        // update static id
+        ContentValues id_s = new ContentValues();
+        id_s.put("ID_MAIN", MiniPollApp.id_Main);
+        db.update("id_static", id_s, null, null);
+
+        db.close();
+
+    }
+    public static void setStatusSondage(Sondage s,String statut){
+        int sondageID=s.getSondageId();
+        SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put("statut",statut);
+        String whereArgs[]={Integer.toString(s.getSondageId())};
+        db.update("sondage",values,"ID_sondage=?",whereArgs);
+
+        db.close();
+    }
+
+    public static void setStatusParticipant(Participant p, String statut){
+        String identifiant=p.getParticipant().getIdentifiant();
+        SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("statut",statut);
+        String whereArgs[]={identifiant};
+        db.update("liste_participants",values,"identifiant=?",whereArgs);
+
+        db.close();
+    }
+    public static void saveChoix(Sondage s, Choix c, Participant p, Question q ){
+        SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("ID_question",q.getQuestionId());
+        values.put("ID_sondage",s.getSondageId());
+        values.put("ID_reponse",c.getReponse().getReponseId());
+        values.put("ID_participant",p.getParticipant().getIdentifiant());
+        values.put("score",c.getPoids());
+        db.insert("choix",null,values);
+
+        db.close();
+    }
 }

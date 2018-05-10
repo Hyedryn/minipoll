@@ -23,5 +23,5 @@ public class SwipeFriendList extends FragmentStatePagerAdapter{
     }
 
     @Override
-    public int getCount() { return 5; }//MiniPollApp.connectedUser.getListAmi().size();
+    public int getCount() { return MiniPollApp.connectedUser.getListAmi().size();}
 }

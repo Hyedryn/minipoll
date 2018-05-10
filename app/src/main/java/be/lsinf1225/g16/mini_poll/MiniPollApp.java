@@ -462,6 +462,14 @@ public class MiniPollApp extends Application {
         db.close();
 
         MiniPollApp.connectedUser.setSondages(sondages);
+
+
+        //méthode de test length sondage
+        for(Sondage s : sondages){
+            System.out.println("Sondage ID: "+s.getSondageId());
+            System.out.println("Nombre de participants: "+s.getListeParticipants().size());
+        }
+
     }
 
 
@@ -702,6 +710,7 @@ public class MiniPollApp extends Application {
         db.update("id_static", id_s, null, null);
 
     db.close();
+
 
     }
 

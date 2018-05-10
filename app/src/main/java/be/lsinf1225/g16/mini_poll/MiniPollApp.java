@@ -410,7 +410,14 @@ public class MiniPollApp extends Application {
         while(!cursorE.isAfterLast()){
             int ID_question=cursorE.getInt(0);
             String reponse_format=cursorE.getString(1);
-            String reponse_donnees=cursorE.getString(2);
+            String reponse_donnees_txt="";
+            Bitmap reponse_donnees_img=null;
+            if(reponse_format.equalsIgnoreCase("image")){
+                byte[] byteArrayPhoto = cursorE.getBlob(2);
+                reponse_donnees_img = BitmapFactory.decodeByteArray(byteArrayPhoto, 0, byteArrayPhoto.length);
+            }else{
+                reponse_donnees_txt=cursorE.getString(2);
+            }
             String reponse_cat=cursorE.getString(3);
             int reponse_id=cursorE.getInt(4);
 
@@ -418,7 +425,12 @@ public class MiniPollApp extends Application {
                 for(Question q : s.getQuestions()){
                     if(q.getQuestionId()==ID_question){
                         Reponse r=null;
-                        r= new Reponse(reponse_id,reponse_cat,reponse_format,reponse_donnees);
+
+                        if(reponse_format.equalsIgnoreCase("image")){
+                            r= new Reponse(reponse_id,reponse_cat,reponse_format,reponse_donnees_img.copy(reponse_donnees_img.getConfig(),true));
+                        }else{
+                            r= new Reponse(reponse_id,reponse_cat,reponse_format,reponse_donnees_txt);
+                        }
                         if(r!=null){
                             q.addReponse(r);
                         }

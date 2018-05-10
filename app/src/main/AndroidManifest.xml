@@ -42,6 +42,7 @@
         <activity android:name=".activity.MenuAgreementActivity" />
         <activity android:name=".activity.MenuQuestionActivity" />
         <activity android:name=".activity.MenuChoiceActivity" />
+        <activity android:name=".activity.SwipeMain" />
         <activity android:theme="@style/NoActionBar" android:name=".activity.ReplyAgreementActivity" />
         <activity android:theme="@style/NoActionBar" android:name=".activity.ReplyQuestionActivity" />
         <activity android:theme="@style/NoActionBar" android:name=".activity.ReplyChoiceActivity" />

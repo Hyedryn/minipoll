@@ -23,7 +23,7 @@ public class FriendsActivity extends AppCompatActivity {
 
     public void friendslist(View view)
     {
-        Intent intent = new Intent(FriendsActivity.this, FriendsListActivity.class);
+        Intent intent = new Intent(FriendsActivity.this, SwipeMain.class);//FriendsListActivity
         startActivity(intent);
     }
 }

@@ -71,6 +71,15 @@ public class Participant {
         return this.s;
     }
 
+    public String getStatusAsString(){
+        if(this.s== Status.A_REPONDU){
+            return "a repondu";
+        }else{
+            return "en attente";
+        }
+    }
+
+
     //methodes set
 
     public void setParticipant(Utilisateur participant) {

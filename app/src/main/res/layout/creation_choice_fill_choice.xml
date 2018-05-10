@@ -56,7 +56,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:background="@drawable/textview_border"
+                            android:textColor="@android:color/white"
                             android:gravity="center_vertical|center"
                             android:hint="Question"
                             android:inputType="text"
@@ -83,31 +83,36 @@
                         android:orientation="horizontal">
 
                         <EditText
-                            android:id="@+id/réponse"
+                            android:id="@+id/creation_choice_fill_r1_txt"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:background="@drawable/textview_border"
                             android:gravity="center_vertical|center"
-                            android:hint="Réponse"
+                            android:hint="Réponse 1"
+                            android:visibility="visible"
                             android:inputType="text"
+                            android:textColor="@android:color/white"
                             android:paddingBottom="8dp"
                             android:paddingStart="6dp"
                             android:paddingTop="6dp"
                             android:textSize="18sp"
                             android:textStyle="bold" />
 
-                        <ImageButton
-                            android:id="@+id/imageButton"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:background="#43b5b5b5"
-                            android:src="@android:drawable/ic_delete"
-                            android:tint="#ffffffff" />
+                        <ImageView
+                            android:id="@+id/creation_choice_fill_r1_img"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:layout_weight="1"
+                            android:visibility="gone"
+                            android:padding="5dp"
+                            android:src="@drawable/edit_pen" />
+
 
                     </LinearLayout>
 
                 </android.support.v7.widget.CardView>
+
 
                 <android.support.v7.widget.CardView
                     android:layout_width="match_parent"
@@ -122,28 +127,41 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
+                        <EditText
+                            android:id="@+id/creation_choice_fill_r2_txt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical|center"
+                            android:hint="Réponse 1"
+                            android:visibility="visible"
+                            android:inputType="text"
+                            android:textColor="@android:color/white"
+                            android:paddingBottom="8dp"
+                            android:paddingStart="6dp"
+                            android:paddingTop="6dp"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
                         <ImageView
-                            android:id="@+id/imageView"
+                            android:id="@+id/creation_choice_fill_r2_img"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_margin="5dp"
                             android:layout_weight="1"
-                            android:background="@android:color/background_light"
+                            android:visibility="gone"
                             android:padding="5dp"
                             android:src="@drawable/edit_pen" />
 
-                        <ImageButton
-                            android:id="@+id/imageButton2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0"
-                            android:background="#43b5b5b5"
-                            android:src="@android:drawable/ic_delete"
-                            android:tint="#ffffffff" />
 
                     </LinearLayout>
 
                 </android.support.v7.widget.CardView>
+
+
+
+
+
 
 
             </LinearLayout>

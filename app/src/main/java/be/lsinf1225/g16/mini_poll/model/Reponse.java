@@ -14,6 +14,7 @@ public class Reponse {
     public enum Categorie {
         BONNE,
         MAUVAISE;
+
     }
 
     private Format f;
@@ -47,10 +48,38 @@ public class Reponse {
         this.donnee_txt =d;
     }
 
+    public Reponse(int reponseId,String c, String f, Bitmap d){
+        this.reponseId=reponseId;
+        if("bonne".equals(c)){this.c=Categorie.BONNE;}
+        else{this.c=Categorie.MAUVAISE;};
+        if("texte".equals(f)){this.f=Format.TEXTE;}
+        else{this.f=Format.IMAGE;};
+        this.donnee_img=d;
+    }
+
     public int getReponseId() {return this.reponseId;}
 
     public String getDonnee_txt(){
         return this.donnee_txt;
+    }
+
+    public Bitmap getDonnee_img(){
+        return this.donnee_img;
+    }
+
+    public String getFormatAsString(){
+        if(this.f==Format.IMAGE){return "image";}
+        else{return "texte";}
+    }
+
+    public Format getFormat(){
+        return this.f;
+    }
+
+    public String getCategorieAsString(){
+        if(this.c==Categorie.BONNE){return "bonne";}
+        else if(this.c==Categorie.MAUVAISE){return "mauvaise";}
+        else{return null;}
     }
 
     public void setReponseId(int reponseId){this.reponseId=reponseId;}

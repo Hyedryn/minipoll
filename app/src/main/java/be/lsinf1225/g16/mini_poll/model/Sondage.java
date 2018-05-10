@@ -68,6 +68,14 @@ public class Sondage {
 
     public Etat getState() {return this.etat;}
 
+    public String getStateAsString(){
+        if(this.etat== Etat.ACTIF){
+            return "actif";
+        }else{
+            return "cloture";
+        }
+        }
+
     public void setQuestions(ArrayList<Question> q) {this.questions = q;}
 
     public ArrayList<Question> getQuestions() {return this.questions;}
@@ -98,6 +106,16 @@ public class Sondage {
             this.participants= new ArrayList<Participant>();
 
         this.participants.add(ami);
+    }
+
+    public String getTypeAsString(){
+        if(this.t == Type.AIDER_UN_AMI){
+            return "aide a un ami";
+        }else if(this.t == Type.QUESTIONNAIRE){
+            return "questionnaire";
+        }else{
+            return "sondage";
+        }
     }
 
     public void addQuestion(Question question)

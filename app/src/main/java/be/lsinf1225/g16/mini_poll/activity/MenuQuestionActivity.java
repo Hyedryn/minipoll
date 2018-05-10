@@ -37,7 +37,7 @@ public class MenuQuestionActivity extends AppCompatActivity {
                                 startActivity(intent);
                             }
                         });
-                        b.setText("Questionnaire");
+                        b.setText("Questionnaire "+s.getSondageId());
                         b.setBackgroundColor(getResources().getColor(R.color.Button1));
                         linearLayout.addView(b, linearLayout.indexOfChild(findViewById(R.id.menu_question_mes_questions))+1);
                     }else if(s.getState().equals(Sondage.Etat.ACTIF)){

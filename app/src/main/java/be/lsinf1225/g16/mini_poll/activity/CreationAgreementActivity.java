@@ -2,7 +2,12 @@ package be.lsinf1225.g16.mini_poll.activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -22,12 +27,16 @@ import java.util.ArrayList;
 import be.lsinf1225.g16.mini_poll.MiniPollApp;
 import be.lsinf1225.g16.mini_poll.R;
 import be.lsinf1225.g16.mini_poll.activity.creationFragment.CreationAgreementFillChoice;
-import be.lsinf1225.g16.mini_poll.activity.creationFragment.CreationAgreementFormat;
 import be.lsinf1225.g16.mini_poll.activity.creationFragment.CreationAgreementFriendsList;
 import be.lsinf1225.g16.mini_poll.activity.creationFragment.CreationAgreementPreview;
 import be.lsinf1225.g16.mini_poll.activity.creationFragment.CreationAgreementSend;
+import be.lsinf1225.g16.mini_poll.activity.creationFragment.CreationChoiceFillChoice;
 import be.lsinf1225.g16.mini_poll.activity.creationFragment.CreationChoiceFriend;
 import be.lsinf1225.g16.mini_poll.activity.creationFragment.CreationQuestionFriendsList;
+import be.lsinf1225.g16.mini_poll.model.Participant;
+import be.lsinf1225.g16.mini_poll.model.Question;
+import be.lsinf1225.g16.mini_poll.model.Reponse;
+import be.lsinf1225.g16.mini_poll.model.Sondage;
 
 import static be.lsinf1225.g16.mini_poll.activity.MenuSurveyCreationActivity.creationmenu;
 
@@ -35,7 +44,7 @@ public class CreationAgreementActivity extends FragmentActivity {
     /**
      * The number of pages (wizard steps) to show in this demo.
      */
-    private static final int NUM_PAGES = 5;
+    private static final int NUM_PAGES = 4;
 
     /**
      * The pager widget, which handles animation and allows swiping horizontally to access previous
@@ -45,10 +54,28 @@ public class CreationAgreementActivity extends FragmentActivity {
 
     public static Activity creationagreement;
 
+    public static Bitmap image1;
+    public static Bitmap image2;
+    public static Bitmap image3;
+    public static Bitmap image4;
+    public static Bitmap image5;
+    public static Bitmap image6;
+
+    public static String question;
+    public static String texte1;
+    public static String texte2;
+    public static String texte3;
+    public static String texte4;
+    public static String texte5;
+    public static String texte6;
+
     //dots
     private Button btnSkip, btnNext;
     private LinearLayout dotsLayout;
     private TextView[] dots;
+
+    CreationAgreementFillChoice fillchoice;
+    CreationAgreementPreview preview;
 
     /**
      * The pager adapter, which provides the pages to the view pager widget.
@@ -73,6 +100,10 @@ public class CreationAgreementActivity extends FragmentActivity {
 
             public void onPageSelected(int position) {
                 // Check if this is the page you want.
+
+                if(position==2){
+                    saveReponse();
+                }
 
                 System.out.println("Position +"+position);
                 addBottomDots(position);
@@ -126,7 +157,10 @@ public class CreationAgreementActivity extends FragmentActivity {
         });
     }
 
-
+    public void saveReponse(){
+        fillchoice.save();
+        preview.settxt();
+    }
 
     @Override
     public void onBackPressed() {
@@ -165,6 +199,27 @@ public class CreationAgreementActivity extends FragmentActivity {
 
 
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == CreationAgreementFillChoice.RESULT_LOAD_IMAGE && resultCode == RESULT_OK && null != data) {
+            Uri selectedImage = data.getData();
+            String[] filePathColumn = {MediaStore.Images.Media.DATA};
+
+            Cursor cursor = getContentResolver().query(selectedImage,
+                    filePathColumn, null, null, null);
+            cursor.moveToFirst();
+
+            int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+            String picturePath = cursor.getString(columnIndex);
+            cursor.close();
+
+            CreationAgreementFillChoice.imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
+
+        }
+    }
+
     private void saveAndLaunchHomeScreen(){
 
         if(CreationAgreementFriendsList.selectedfriends.size()<1){
@@ -172,9 +227,63 @@ public class CreationAgreementActivity extends FragmentActivity {
             return;
         }
 
-        for(String s : CreationAgreementFriendsList.selectedfriends){
-            System.out.println("Ami select: "+s);
+        if((texte1==null&&image1==null)||(texte2==null&&image2==null)){
+            MiniPollApp.notifyShort(R.string.error_no_2_reponse);
+            return;
         }
+
+        if(question==null||question.length()<1){
+            MiniPollApp.notifyShort(R.string.error_question_empty);
+            return;
+        }
+
+
+        ArrayList<Reponse> r = new ArrayList<Reponse>();
+        if(texte1!=null){
+            r.add(new Reponse(++MiniPollApp.id_Main, Reponse.Categorie.BONNE, Reponse.Format.TEXTE, texte1));
+        }else if(image1!=null){
+            r.add(new Reponse(++MiniPollApp.id_Main, Reponse.Categorie.BONNE, Reponse.Format.IMAGE, image1));
+        }
+        if(texte2!=null){
+            r.add(new Reponse(++MiniPollApp.id_Main, Reponse.Categorie.BONNE, Reponse.Format.TEXTE, texte2));
+        }else if(image2!=null){
+            r.add(new Reponse(++MiniPollApp.id_Main, Reponse.Categorie.BONNE, Reponse.Format.IMAGE, image2));
+        }
+        if(texte3!=null){
+            r.add(new Reponse(++MiniPollApp.id_Main, Reponse.Categorie.BONNE, Reponse.Format.TEXTE, texte3));
+        }else if(image3!=null){
+            r.add(new Reponse(++MiniPollApp.id_Main, Reponse.Categorie.BONNE, Reponse.Format.IMAGE, image3));
+        }
+        if(texte4!=null){
+            r.add(new Reponse(++MiniPollApp.id_Main, Reponse.Categorie.BONNE, Reponse.Format.TEXTE, texte4));
+        }else if(image4!=null){
+            r.add(new Reponse(++MiniPollApp.id_Main, Reponse.Categorie.BONNE, Reponse.Format.IMAGE, image4));
+        }
+        if(texte5!=null){
+            r.add(new Reponse(++MiniPollApp.id_Main, Reponse.Categorie.BONNE, Reponse.Format.TEXTE, texte5));
+        }else if(image5!=null){
+            r.add(new Reponse(++MiniPollApp.id_Main, Reponse.Categorie.BONNE, Reponse.Format.IMAGE, image5));
+        }
+        if(texte6!=null){
+            r.add(new Reponse(++MiniPollApp.id_Main, Reponse.Categorie.BONNE, Reponse.Format.TEXTE, texte6));
+        }else if(image6!=null){
+            r.add(new Reponse(++MiniPollApp.id_Main, Reponse.Categorie.BONNE, Reponse.Format.IMAGE, image6));
+        }
+
+        ArrayList<Question> q = new ArrayList<Question>();
+        q.add(new Question(question,r.size(),r,++MiniPollApp.id_Main));
+
+        ArrayList<Participant> p = new ArrayList<Participant>();
+        for(String s : CreationAgreementFriendsList.selectedfriends){
+            p.add(new Participant(MiniPollApp.connectedUser.getAmi(s),Participant.Status.EN_ATTENTE));
+        }
+        p.add(new Participant(MiniPollApp.connectedUser,Participant.Status.A_REPONDU));
+
+        Sondage s = new Sondage(MiniPollApp.connectedUser,p,++MiniPollApp.id_Main,q,Sondage.Type.SONDAGE_POUR_ACCORD);
+
+        MiniPollApp.connectedUser.addSondage(s);
+        MiniPollApp.insertSondage(s,p,q);
+
         launchHomeScreen();
     }
 
@@ -204,12 +313,10 @@ public class CreationAgreementActivity extends FragmentActivity {
                 case 0:
                     return new CreationAgreementFriendsList();
                 case 1:
-                    return new CreationAgreementFormat();
+                    return fillchoice = new CreationAgreementFillChoice();
                 case 2:
-                    return new CreationAgreementFillChoice();
+                    return preview = new CreationAgreementPreview();
                 case 3:
-                    return new CreationAgreementPreview();
-                case 4:
                     return new CreationAgreementSend();
                 default:
                     // This should never happen. Always account for each position above

@@ -38,6 +38,13 @@ public class ReplyChoiceSummary extends Fragment {
         ViewGroup rootView = (ViewGroup) inflater.inflate(
                 R.layout.reply_choice_summary, container, false);
 
+        return rootView;
+    }
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
         titre = (TextView) getActivity().findViewById(R.id.reply_choice_summary_title);
         questionText = (TextView) getActivity().findViewById(R.id.reply_choice_summary_question);
         answer = (TextView) getActivity().findViewById(R.id.reply_choice_summary_answer);
@@ -46,6 +53,5 @@ public class ReplyChoiceSummary extends Fragment {
         questionText.setText(question.get(0).getEnonce());
         answer.setText(aiderUnAmi.getResult().getDonnee_txt());
 
-        return rootView;
     }
 }

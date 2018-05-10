@@ -44,6 +44,7 @@
 
                 <LinearLayout
                     android:id="@+id/creation_question_fill_q1_placeholder"
+                    android:visibility="gone"
                     android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -273,6 +274,7 @@
 
                 <LinearLayout
                     android:id="@+id/creation_question_fill_q2_placeholder"
+                    android:visibility="gone"
                     android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -504,6 +506,7 @@
 
                 <LinearLayout
                     android:id="@+id/creation_question_fill_q3_placeholder"
+                    android:visibility="gone"
                     android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -731,6 +734,7 @@
 
                 <LinearLayout
                     android:id="@+id/creation_question_fill_q4_placeholder"
+                    android:visibility="gone"
                     android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -961,6 +965,7 @@
                 <LinearLayout
                     android:id="@+id/creation_question_fill_q5_placeholder"
                     android:orientation="vertical"
+                    android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 

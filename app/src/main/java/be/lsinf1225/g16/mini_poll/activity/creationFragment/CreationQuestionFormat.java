@@ -12,7 +12,11 @@ import be.lsinf1225.g16.mini_poll.R;
 public class CreationQuestionFormat extends Fragment {
 
 
-    public static RadioGroup radioButtonGroup;
+    public static RadioGroup g1;
+    public static RadioGroup g2;
+    public static RadioGroup g3;
+    public static RadioGroup g4;
+    public static RadioGroup g5;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -26,6 +30,11 @@ public class CreationQuestionFormat extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        radioButtonGroup = (RadioGroup) view.findViewById(R.id.creation_question_format_group);
+        g1 = (RadioGroup) view.findViewById(R.id.creation_question_format_q1);
+        g2 = (RadioGroup) view.findViewById(R.id.creation_question_format_q2);
+        g3 = (RadioGroup) view.findViewById(R.id.creation_question_format_q3);
+        g4 = (RadioGroup) view.findViewById(R.id.creation_question_format_q4);
+        g5 = (RadioGroup) view.findViewById(R.id.creation_question_format_q5);
     }
+
 }

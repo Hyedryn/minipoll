@@ -108,6 +108,16 @@ public class Sondage {
         this.participants.add(ami);
     }
 
+    public String getTypeAsString(){
+        if(this.t == Type.AIDER_UN_AMI){
+            return "aide a un ami";
+        }else if(this.t == Type.QUESTIONNAIRE){
+            return "questionnaire";
+        }else{
+            return "sondage";
+        }
+    }
+
     public void addQuestion(Question question)
     {
         if(this.questions==null)

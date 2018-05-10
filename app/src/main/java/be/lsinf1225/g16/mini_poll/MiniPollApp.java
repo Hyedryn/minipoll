@@ -642,6 +642,7 @@ public class MiniPollApp extends Application {
         ContentValues values_part = new ContentValues();
 
         for(Participant part : p){
+            System.out.println("insert + " + part.getParticipant().getIdentifiant()+" id: "+sondageId);
             values_part.put("identifiant",part.getParticipant().getIdentifiant());
             values_part.put("ID_sondage",sondageId);
             values_part.put("statut",part.getStatusAsString());
@@ -684,6 +685,14 @@ public class MiniPollApp extends Application {
             }
         }
 
+
+        ContentValues values_contenu = new ContentValues();
+        for(Question quest : q){
+            values_contenu.put("ID_question",quest.getQuestionId());
+            values_contenu.put("ID_sondage",s.getSondageId());
+            values_contenu.put("type",s.getTypeAsString());
+            db.insert("contenu",null,values_contenu);
+        }
 
 
 

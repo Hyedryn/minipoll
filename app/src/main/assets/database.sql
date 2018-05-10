@@ -44,6 +44,7 @@ INSERT INTO liste_participants (identifiant, ID_sondage, statut) VALUES ('floflo
 INSERT INTO liste_participants (identifiant, ID_sondage, statut) VALUES ('Sara', 1, 'en attente');
 INSERT INTO liste_participants (identifiant, ID_sondage, statut) VALUES ('Soukeina', 2, 'en attente');
 INSERT INTO liste_participants (identifiant, ID_sondage, statut) VALUES ('Quentin', 2, 'a repondu');
+INSERT INTO liste_participants (identifiant, ID_sondage, statut) VALUES ('Sara', 2, 'en attente');
 INSERT INTO liste_participants (identifiant, ID_sondage, statut) VALUES ('Edouard', 3, 'a repondu');
 INSERT INTO liste_participants (identifiant, ID_sondage, statut) VALUES ('floflo', 3, 'en attente');
 

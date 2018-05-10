@@ -220,8 +220,8 @@ public class CreationChoiceActivity extends FragmentActivity {
         Participant p1 = new Participant(MiniPollApp.connectedUser.getAmi(identifiant),Participant.Status.EN_ATTENTE);
         Participant p2 = new Participant(MiniPollApp.connectedUser,Participant.Status.A_REPONDU);
         ArrayList<Participant> p = new ArrayList<Participant>();
-        p.add(p1);
         p.add(p2);
+        p.add(p1);
         ArrayList<Question> q = new ArrayList<Question>();
         q.add(q1);
         Sondage s = new Sondage(MiniPollApp.connectedUser,p,++MiniPollApp.id_Main,q,Sondage.Type.AIDER_UN_AMI);

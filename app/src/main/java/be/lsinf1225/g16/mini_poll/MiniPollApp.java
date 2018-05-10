@@ -540,9 +540,9 @@ public class MiniPollApp extends Application {
         //editDatabase pour que tout les anciens id soit remplacer par les nouveaux id
         loadUtilisateurs();
         loadConnectedUser();
+        String oldID=connectedUser.getIdentifiant();
         connectedUser = user;
 
-        String oldID=connectedUser.getIdentifiant();
         SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
 
         //1) On change le ID_participant dans la table choix
@@ -686,85 +686,104 @@ public class MiniPollApp extends Application {
     }
 
     public static void insertSondage(Sondage s, ArrayList<Participant> p,
-                                     ArrayList<Question> q){
+                                     ArrayList<Question> q) {
 
-    //On ajoute les informations dans la table sondage: sondage id, createur, statut
+        //On ajoute les informations dans la table sondage: sondage id, createur, statut
 
         SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
         ContentValues values = new ContentValues();
-        int sondageId=s.getSondageId();
-        values.put("ID_sondage",s.getSondageId());
-        values.put("createur",s.getCreateur().getIdentifiant());
-        values.put("statut",s.getStateAsString());
+        int sondageId = s.getSondageId();
+        values.put("ID_sondage", s.getSondageId());
+        values.put("createur", s.getCreateur().getIdentifiant());
+        values.put("statut", s.getStateAsString());
 
-        db.insert("sondage",null,values);
+        db.insert("sondage", null, values);
 
         ContentValues values_part = new ContentValues();
 
-        for(Participant part : p){
-            System.out.println("insert + " + part.getParticipant().getIdentifiant()+" id: "+sondageId);
-            values_part.put("identifiant",part.getParticipant().getIdentifiant());
-            values_part.put("ID_sondage",sondageId);
-            values_part.put("statut",part.getStatusAsString());
-            db.insert("liste_participants",null,values_part);
+        for (Participant part : p) {
+            System.out.println("insert + " + part.getParticipant().getIdentifiant() + " id: " + sondageId);
+            values_part.put("identifiant", part.getParticipant().getIdentifiant());
+            values_part.put("ID_sondage", sondageId);
+            values_part.put("statut", part.getStatusAsString());
+            db.insert("liste_participants", null, values_part);
         }
 
         ContentValues values_quest = new ContentValues();
 
-        for(Question quest : q){
-            values_quest.put("ID_question",quest.getQuestionId());
-            values_quest.put("enonce",quest.getEnonce());
-            values_quest.put("nombreReponses",quest.getNbreReponses());
-            db.insert("question",null,values_quest);
+        for (Question quest : q) {
+            values_quest.put("ID_question", quest.getQuestionId());
+            values_quest.put("enonce", quest.getEnonce());
+            values_quest.put("nombreReponses", quest.getNbreReponses());
+            db.insert("question", null, values_quest);
         }
 
         ContentValues values_rep = new ContentValues();
-        for(Question quest : q){
-            for(int i=0;i<quest.getListeReponses().size();i++){
-                if(quest.getListeReponses().get(i).getFormatAsString().equalsIgnoreCase("texte")){
-                values_rep.put("ID_reponse",quest.getListeReponses().get(i).getReponseId());
-                values_rep.put("ID_question",quest.getQuestionId());
-                values_rep.put("format",quest.getListeReponses().get(i).getFormatAsString());
-                values_rep.put("donnees",quest.getListeReponses().get(i).getDonnee_txt());
-                values_rep.put("categorie",quest.getListeReponses().get(i).getCategorieAsString());
-                db.insert("reponse",null, values_rep);
-                }else{
-                    values_rep.put("ID_reponse",quest.getListeReponses().get(i).getReponseId());
-                    values_rep.put("ID_question",quest.getQuestionId());
-                    values_rep.put("format",quest.getListeReponses().get(i).getFormatAsString());
+        for (Question quest : q) {
+            for (int i = 0; i < quest.getListeReponses().size(); i++) {
+                if (quest.getListeReponses().get(i).getFormatAsString().equalsIgnoreCase("texte")) {
+                    values_rep.put("ID_reponse", quest.getListeReponses().get(i).getReponseId());
+                    values_rep.put("ID_question", quest.getQuestionId());
+                    values_rep.put("format", quest.getListeReponses().get(i).getFormatAsString());
+                    values_rep.put("donnees", quest.getListeReponses().get(i).getDonnee_txt());
+                    values_rep.put("categorie", quest.getListeReponses().get(i).getCategorieAsString());
+                    db.insert("reponse", null, values_rep);
+                } else {
+                    values_rep.put("ID_reponse", quest.getListeReponses().get(i).getReponseId());
+                    values_rep.put("ID_question", quest.getQuestionId());
+                    values_rep.put("format", quest.getListeReponses().get(i).getFormatAsString());
 
                     Bitmap image = quest.getListeReponses().get(i).getDonnee_img();
                     ByteArrayOutputStream bos = new ByteArrayOutputStream();
                     image.compress(Bitmap.CompressFormat.PNG, 100, bos);
                     byte[] bArray = bos.toByteArray();
 
-                    values_rep.put("donnees",bArray);
-                    values_rep.put("categorie",quest.getListeReponses().get(i).getCategorieAsString());
-                    db.insert("reponse",null, values_rep);
+                    values_rep.put("donnees", bArray);
+                    values_rep.put("categorie", quest.getListeReponses().get(i).getCategorieAsString());
+                    db.insert("reponse", null, values_rep);
                 }
             }
         }
 
 
         ContentValues values_contenu = new ContentValues();
-        for(Question quest : q){
-            values_contenu.put("ID_question",quest.getQuestionId());
-            values_contenu.put("ID_sondage",s.getSondageId());
-            values_contenu.put("type",s.getTypeAsString());
-            db.insert("contenu",null,values_contenu);
+        for (Question quest : q) {
+            values_contenu.put("ID_question", quest.getQuestionId());
+            values_contenu.put("ID_sondage", s.getSondageId());
+            values_contenu.put("type", s.getTypeAsString());
+            db.insert("contenu", null, values_contenu);
         }
-
 
 
         // update static id
         ContentValues id_s = new ContentValues();
-        id_s.put("ID_MAIN",MiniPollApp.id_Main);
+        id_s.put("ID_MAIN", MiniPollApp.id_Main);
         db.update("id_static", id_s, null, null);
 
-    db.close();
-
+        db.close();
 
     }
+    public static void setStatusSondage(Sondage s,String statut){
+        int sondageID=s.getSondageId();
+        SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
 
+        ContentValues values = new ContentValues();
+        values.put("statut",statut);
+        String whereArgs[]={Integer.toString(s.getSondageId())};
+        db.update("sondage",values,"ID_sondage=?",whereArgs);
+
+        db.close();
+    }
+
+    public static void setStatusParticipant(Participant p, String statut){
+        String identifiant=p.getParticipant().getIdentifiant();
+        SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("statut",statut);
+        String whereArgs[]={identifiant};
+        db.update("liste_participants",values,"identifiant=?",whereArgs);
+
+        db.close();
+    }
 
 }

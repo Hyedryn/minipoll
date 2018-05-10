@@ -242,7 +242,7 @@ public class MiniPollApp extends Application {
         while (!cursorP.isAfterLast()) {
             // Récupération des informations de l'utilisateur pour chaque ligne.
             String uID = cursorP.getString(0);
-            int uID_Sondage = Integer.parseInt(cursorP.getString(1));
+            int uID_Sondage = cursorP.getInt(1);
             String uStatut = cursorP.getString(2);
 
             if (uID.equals(connectedUser.getIdentifiant())) {
@@ -254,22 +254,28 @@ public class MiniPollApp extends Application {
             cursorP.moveToNext();
         }
 
+        cursorP.close();
+
+        // Requête de selection (SELECT)
+        Cursor cursorK = db.query(DB_TABLE_P, colonnes, null, null, null, null, null);
+
         // Placement du curseur sur la première ligne.
-        cursorP.moveToFirst(); //cursor still on liste_participants
+        cursorK.moveToFirst(); //cursor still on liste_participants
 
         //Chargement des participants du même Sondage
 
         // Tant qu'il y a des lignes.
-        while (!cursorP.isAfterLast()) {
+        while (!cursorK.isAfterLast()) {
             // Récupération des informations de l'utilisateur pour chaque ligne.
             String uID = cursorP.getString(0);
-            int uID_Sondage = Integer.parseInt(cursorP.getString(1));
+            int uID_Sondage = cursorP.getInt(1);
             String uStatut = cursorP.getString(2);
 
             Participant participant_p = null;
             for (Participant p : part) {
                 if (!uID.equals(connectedUser.getIdentifiant()) && uID_Sondage == p.getSondageID()) {
                     participant_p = new Participant(uID, uID_Sondage, uStatut);
+
                 }
             }
 
@@ -277,7 +283,7 @@ public class MiniPollApp extends Application {
                 part.add(participant_p);
 
             // Passe à la ligne suivante.
-            cursorP.moveToNext();
+            cursorK.moveToNext();
         }
 
         //At this point we have connected user's info and all of the other users that participate in the same sondage
@@ -285,7 +291,7 @@ public class MiniPollApp extends Application {
         //need to access table sondage in database
 
         // Fermeture du curseur
-        cursorP.close();
+        cursorK.close();
 
         final String DB_COLUMN_CREATEUR = "createur";
 

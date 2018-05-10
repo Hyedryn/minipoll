@@ -26,51 +26,51 @@ public class CreationQuestionPreview extends Fragment {
     LinearLayout q4p;
     LinearLayout q5p;
 
-    EditText q1;
-    EditText q1r1;
-    EditText q1r2;
-    EditText q1r3;
-    EditText q1r4;
+    TextView q1;
+    TextView q1r1;
+    TextView q1r2;
+    TextView q1r3;
+    TextView q1r4;
     ImageView q1i1;
     ImageView q1i2;
     ImageView q1i3;
     ImageView q1i4;
 
-    EditText q2;
-    EditText q2r1;
-    EditText q2r2;
-    EditText q2r3;
-    EditText q2r4;
+    TextView q2;
+    TextView q2r1;
+    TextView q2r2;
+    TextView q2r3;
+    TextView q2r4;
     ImageView q2i1;
     ImageView q2i2;
     ImageView q2i3;
     ImageView q2i4;
 
-    EditText q3;
-    EditText q3r1;
-    EditText q3r2;
-    EditText q3r3;
-    EditText q3r4;
+    TextView q3;
+    TextView q3r1;
+    TextView q3r2;
+    TextView q3r3;
+    TextView q3r4;
     ImageView q3i1;
     ImageView q3i2;
     ImageView q3i3;
     ImageView q3i4;
 
-    EditText q4;
-    EditText q4r1;
-    EditText q4r2;
-    EditText q4r3;
-    EditText q4r4;
+    TextView q4;
+    TextView q4r1;
+    TextView q4r2;
+    TextView q4r3;
+    TextView q4r4;
     ImageView q4i1;
     ImageView q4i2;
     ImageView q4i3;
     ImageView q4i4;
 
-    EditText q5;
-    EditText q5r1;
-    EditText q5r2;
-    EditText q5r3;
-    EditText q5r4;
+    TextView q5;
+    TextView q5r1;
+    TextView q5r2;
+    TextView q5r3;
+    TextView q5r4;
     ImageView q5i1;
     ImageView q5i2;
     ImageView q5i3;
@@ -98,51 +98,51 @@ public class CreationQuestionPreview extends Fragment {
         q4p = (LinearLayout) view.findViewById(R.id.creation_question_preview_q4_placeholder);
         q5p = (LinearLayout) view.findViewById(R.id.creation_question_preview_q5_placeholder);
 
-        q1 = (EditText) view.findViewById(R.id.creation_question_preview_q1);
-        q1r1 = (EditText) view.findViewById(R.id.creation_question_preview_q1_r1_txt);
-        q1r2 = (EditText) view.findViewById(R.id.creation_question_preview_q1_r2_txt);
-        q1r3 = (EditText) view.findViewById(R.id.creation_question_preview_q1_r3_txt);
-        q1r4 = (EditText) view.findViewById(R.id.creation_question_preview_q1_r4_txt);
+        q1 = (TextView) view.findViewById(R.id.creation_question_preview_q1);
+        q1r1 = (TextView) view.findViewById(R.id.creation_question_preview_q1_r1_txt);
+        q1r2 = (TextView) view.findViewById(R.id.creation_question_preview_q1_r2_txt);
+        q1r3 = (TextView) view.findViewById(R.id.creation_question_preview_q1_r3_txt);
+        q1r4 = (TextView) view.findViewById(R.id.creation_question_preview_q1_r4_txt);
         q1i1 = (ImageView) view.findViewById(R.id.creation_question_preview_q1_r1_img);
         q1i2 = (ImageView) view.findViewById(R.id.creation_question_preview_q1_r2_img);
         q1i3 = (ImageView) view.findViewById(R.id.creation_question_preview_q1_r3_img);
         q1i4 = (ImageView) view.findViewById(R.id.creation_question_preview_q1_r4_img);
 
-        q2 = (EditText) view.findViewById(R.id.creation_question_preview_q2);
-        q2r1 = (EditText) view.findViewById(R.id.creation_question_preview_q2_r1_txt);
-        q2r2 = (EditText) view.findViewById(R.id.creation_question_preview_q2_r2_txt);
-        q2r3 = (EditText) view.findViewById(R.id.creation_question_preview_q2_r3_txt);
-        q2r4 = (EditText) view.findViewById(R.id.creation_question_preview_q2_r4_txt);
+        q2 = (TextView) view.findViewById(R.id.creation_question_preview_q2);
+        q2r1 = (TextView) view.findViewById(R.id.creation_question_preview_q2_r1_txt);
+        q2r2 = (TextView) view.findViewById(R.id.creation_question_preview_q2_r2_txt);
+        q2r3 = (TextView) view.findViewById(R.id.creation_question_preview_q2_r3_txt);
+        q2r4 = (TextView) view.findViewById(R.id.creation_question_preview_q2_r4_txt);
         q2i1 = (ImageView) view.findViewById(R.id.creation_question_preview_q2_r1_img);
         q2i2 = (ImageView) view.findViewById(R.id.creation_question_preview_q2_r2_img);
         q2i3 = (ImageView) view.findViewById(R.id.creation_question_preview_q2_r3_img);
         q2i4 = (ImageView) view.findViewById(R.id.creation_question_preview_q2_r4_img);
 
-        q3 = (EditText) view.findViewById(R.id.creation_question_preview_q3);
-        q3r1 = (EditText) view.findViewById(R.id.creation_question_preview_q3_r1_txt);
-        q3r2 = (EditText) view.findViewById(R.id.creation_question_preview_q3_r2_txt);
-        q3r3 = (EditText) view.findViewById(R.id.creation_question_preview_q3_r3_txt);
-        q3r4 = (EditText) view.findViewById(R.id.creation_question_preview_q3_r4_txt);
+        q3 = (TextView) view.findViewById(R.id.creation_question_preview_q3);
+        q3r1 = (TextView) view.findViewById(R.id.creation_question_preview_q3_r1_txt);
+        q3r2 = (TextView) view.findViewById(R.id.creation_question_preview_q3_r2_txt);
+        q3r3 = (TextView) view.findViewById(R.id.creation_question_preview_q3_r3_txt);
+        q3r4 = (TextView) view.findViewById(R.id.creation_question_preview_q3_r4_txt);
         q3i1 = (ImageView) view.findViewById(R.id.creation_question_preview_q3_r1_img);
         q3i2 = (ImageView) view.findViewById(R.id.creation_question_preview_q3_r2_img);
         q3i3 = (ImageView) view.findViewById(R.id.creation_question_preview_q3_r3_img);
         q3i4 = (ImageView) view.findViewById(R.id.creation_question_preview_q3_r4_img);
 
-        q4 = (EditText) view.findViewById(R.id.creation_question_preview_q4);
-        q4r1 = (EditText) view.findViewById(R.id.creation_question_preview_q4_r1_txt);
-        q4r2 = (EditText) view.findViewById(R.id.creation_question_preview_q4_r2_txt);
-        q4r3 = (EditText) view.findViewById(R.id.creation_question_preview_q4_r3_txt);
-        q4r4 = (EditText) view.findViewById(R.id.creation_question_preview_q4_r4_txt);
+        q4 = (TextView) view.findViewById(R.id.creation_question_preview_q4);
+        q4r1 = (TextView) view.findViewById(R.id.creation_question_preview_q4_r1_txt);
+        q4r2 = (TextView) view.findViewById(R.id.creation_question_preview_q4_r2_txt);
+        q4r3 = (TextView) view.findViewById(R.id.creation_question_preview_q4_r3_txt);
+        q4r4 = (TextView) view.findViewById(R.id.creation_question_preview_q4_r4_txt);
         q4i1 = (ImageView) view.findViewById(R.id.creation_question_preview_q4_r1_img);
         q4i2 = (ImageView) view.findViewById(R.id.creation_question_preview_q4_r2_img);
         q4i3 = (ImageView) view.findViewById(R.id.creation_question_preview_q4_r3_img);
         q4i4 = (ImageView) view.findViewById(R.id.creation_question_preview_q4_r4_img);
 
-        q5 = (EditText) view.findViewById(R.id.creation_question_preview_q5);
-        q5r1 = (EditText) view.findViewById(R.id.creation_question_preview_q5_r1_txt);
-        q5r2 = (EditText) view.findViewById(R.id.creation_question_preview_q5_r2_txt);
-        q5r3 = (EditText) view.findViewById(R.id.creation_question_preview_q5_r3_txt);
-        q5r4 = (EditText) view.findViewById(R.id.creation_question_preview_q5_r4_txt);
+        q5 = (TextView) view.findViewById(R.id.creation_question_preview_q5);
+        q5r1 = (TextView) view.findViewById(R.id.creation_question_preview_q5_r1_txt);
+        q5r2 = (TextView) view.findViewById(R.id.creation_question_preview_q5_r2_txt);
+        q5r3 = (TextView) view.findViewById(R.id.creation_question_preview_q5_r3_txt);
+        q5r4 = (TextView) view.findViewById(R.id.creation_question_preview_q5_r4_txt);
         q5i1 = (ImageView) view.findViewById(R.id.creation_question_preview_q5_r1_img);
         q5i2 = (ImageView) view.findViewById(R.id.creation_question_preview_q5_r2_img);
         q5i3 = (ImageView) view.findViewById(R.id.creation_question_preview_q5_r3_img);
@@ -195,7 +195,7 @@ public class CreationQuestionPreview extends Fragment {
             }
         }
 
-        if(CreationQuestionActivity.question1!=null){
+        if(CreationQuestionActivity.question2!=null){
             q2p.setVisibility(View.VISIBLE);
             q2.setVisibility(View.VISIBLE);
             if(CreationQuestionActivity.q2image1!=null){
@@ -229,7 +229,7 @@ public class CreationQuestionPreview extends Fragment {
             }
         }
 
-        if(CreationQuestionActivity.question1!=null){
+        if(CreationQuestionActivity.question3!=null){
             q3p.setVisibility(View.VISIBLE);
             q3.setVisibility(View.VISIBLE);
             if(CreationQuestionActivity.q3image1!=null){
@@ -263,7 +263,7 @@ public class CreationQuestionPreview extends Fragment {
             }
         }
 
-        if(CreationQuestionActivity.question1!=null){
+        if(CreationQuestionActivity.question4!=null){
             q4p.setVisibility(View.VISIBLE);
             q4.setVisibility(View.VISIBLE);
             if(CreationQuestionActivity.q4image1!=null){
@@ -297,7 +297,7 @@ public class CreationQuestionPreview extends Fragment {
             }
         }
 
-        if(CreationQuestionActivity.question1!=null){
+        if(CreationQuestionActivity.question5!=null){
             q5p.setVisibility(View.VISIBLE);
             q5.setVisibility(View.VISIBLE);
             if(CreationQuestionActivity.q5image1!=null){

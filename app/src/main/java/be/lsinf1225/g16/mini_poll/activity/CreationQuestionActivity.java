@@ -137,7 +137,7 @@ public class CreationQuestionActivity extends FragmentActivity {
                 System.out.println("Position +"+position);
                 addBottomDots(position);
 
-                if(position==2){
+                if(position==3){
                     saveReponse();
                 }
 
@@ -264,6 +264,13 @@ public class CreationQuestionActivity extends FragmentActivity {
         for(String s : CreationQuestionFriendsList.selectedfriends){
             System.out.println("Ami select: "+s);
         }
+
+
+        if(question1==null||question1.length()<1){
+            MiniPollApp.notifyShort(R.string.error_question_empty);
+            return;
+        }
+
 
         launchHomeScreen();
     }

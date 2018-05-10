@@ -872,12 +872,16 @@ public class CreationQuestionFillChoice extends Fragment {
         if(q4p.getVisibility()==View.VISIBLE){
             CreationQuestionActivity.question4 = q4.getText().toString();
             if(g4.getCheckedRadioButtonId()==R.id.creation_question_format_q4_img){
+                q4i1.setDrawingCacheEnabled(true);
                 q4i1.buildDrawingCache();
                 CreationQuestionActivity.q4image1 = q4i1.getDrawingCache().copy(q4i1.getDrawingCache().getConfig(), true);
+                q4i2.setDrawingCacheEnabled(true);
                 q4i2.buildDrawingCache();
                 CreationQuestionActivity.q4image2 = q4i2.getDrawingCache().copy(q4i2.getDrawingCache().getConfig(), true);
+                q4i3.setDrawingCacheEnabled(true);
                 q4i3.buildDrawingCache();
                 CreationQuestionActivity.q4image3 = q4i3.getDrawingCache().copy(q4i3.getDrawingCache().getConfig(), true);
+                q4i4.setDrawingCacheEnabled(true);
                 q4i4.buildDrawingCache();
                 CreationQuestionActivity.q4image4 = q4i4.getDrawingCache().copy(q4i4.getDrawingCache().getConfig(), true);
             }else{

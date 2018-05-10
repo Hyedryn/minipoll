@@ -36,6 +36,7 @@
                 android:paddingBottom="4dp">
 
                 <android.support.v7.widget.CardView
+                    android:id="@+id/creation_question_editorder_q1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
@@ -49,7 +50,6 @@
                         android:orientation="horizontal">
 
                         <TextView
-                            android:id="@+id/textView"
                             android:layout_width="match_parent"
                             android:layout_height="50dp"
                             android:layout_weight="1"
@@ -60,8 +60,45 @@
                             android:textStyle="bold" />
 
                         <ImageButton
-                            android:id="@+id/imageButton"
-                            style="@android:style/Widget.Material.Light.ImageButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:background="#00000000"
+                            android:foregroundGravity="center_vertical|center"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp"
+                            android:tint="@android:color/white"
+                            android:src="@drawable/ic_reorder" />
+
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
+
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/creation_question_editorder_q2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    app:cardBackgroundColor="#4d6dbe"
+                    app:cardCornerRadius="2dp"
+                    app:cardElevation="2dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="Question 2"
+                            android:textColor="@android:color/white"
+                            android:textSize="@dimen/slide_title"
+                            android:textStyle="bold" />
+
+                        <ImageButton
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:layout_gravity="center"
@@ -76,6 +113,7 @@
                 </android.support.v7.widget.CardView>
 
                 <android.support.v7.widget.CardView
+                    android:id="@+id/creation_question_editorder_q3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
@@ -89,19 +127,92 @@
                         android:orientation="horizontal">
 
                         <TextView
-                            android:id="@+id/txtView"
                             android:layout_width="match_parent"
                             android:layout_height="50dp"
                             android:layout_weight="1"
                             android:gravity="center"
-                            android:text="Question 2"
+                            android:text="Question 3"
                             android:textColor="@android:color/white"
                             android:textSize="@dimen/slide_title"
                             android:textStyle="bold" />
 
                         <ImageButton
-                            android:id="@+id/imageButton"
-                            style="@android:style/Widget.Material.ImageButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:background="#00000000"
+                            android:foregroundGravity="center_vertical|center"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp"
+                            android:tint="@android:color/white"
+                            android:src="@drawable/ic_reorder" />
+
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/creation_question_editorder_q4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    app:cardBackgroundColor="#4d6dbe"
+                    app:cardCornerRadius="2dp"
+                    app:cardElevation="2dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="Question 4"
+                            android:textColor="@android:color/white"
+                            android:textSize="@dimen/slide_title"
+                            android:textStyle="bold" />
+
+                        <ImageButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:background="#00000000"
+                            android:foregroundGravity="center_vertical|center"
+                            android:paddingLeft="10dp"
+                            android:paddingRight="10dp"
+                            android:tint="@android:color/white"
+                            android:src="@drawable/ic_reorder" />
+
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/creation_question_editorder_q5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    app:cardBackgroundColor="#4d6dbe"
+                    app:cardCornerRadius="2dp"
+                    app:cardElevation="2dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="Question 5"
+                            android:textColor="@android:color/white"
+                            android:textSize="@dimen/slide_title"
+                            android:textStyle="bold" />
+
+                        <ImageButton
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:layout_gravity="center"

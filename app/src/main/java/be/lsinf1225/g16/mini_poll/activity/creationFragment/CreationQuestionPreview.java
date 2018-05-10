@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import be.lsinf1225.g16.mini_poll.MiniPollApp;
 import be.lsinf1225.g16.mini_poll.R;
+import be.lsinf1225.g16.mini_poll.activity.CreationQuestionActivity;
 
 public class CreationQuestionPreview extends Fragment {
 
@@ -152,5 +153,182 @@ public class CreationQuestionPreview extends Fragment {
     }
 
     public void settxt() {
+
+        q1p.setVisibility(View.GONE);
+        q2p.setVisibility(View.GONE);
+        q3p.setVisibility(View.GONE);
+        q4p.setVisibility(View.GONE);
+        q5p.setVisibility(View.GONE);
+
+
+        if(CreationQuestionActivity.question1!=null){
+            q1p.setVisibility(View.VISIBLE);
+            q1.setVisibility(View.VISIBLE);
+            if(CreationQuestionActivity.q1image1!=null){
+                q1i1.setVisibility(View.VISIBLE);
+                q1i2.setVisibility(View.VISIBLE);
+                q1i3.setVisibility(View.VISIBLE);
+                q1i4.setVisibility(View.VISIBLE);
+                q1r1.setVisibility(View.GONE);
+                q1r2.setVisibility(View.GONE);
+                q1r3.setVisibility(View.GONE);
+                q1r4.setVisibility(View.GONE);
+
+                q1i1.setImageBitmap(CreationQuestionActivity.q1image1);
+                q1i2.setImageBitmap(CreationQuestionActivity.q1image2);
+                q1i3.setImageBitmap(CreationQuestionActivity.q1image3);
+                q1i4.setImageBitmap(CreationQuestionActivity.q1image4);
+            }else{
+                q1r1.setVisibility(View.VISIBLE);
+                q1r2.setVisibility(View.VISIBLE);
+                q1r3.setVisibility(View.VISIBLE);
+                q1r4.setVisibility(View.VISIBLE);
+                q1i1.setVisibility(View.GONE);
+                q1i2.setVisibility(View.GONE);
+                q1i3.setVisibility(View.GONE);
+                q1i4.setVisibility(View.GONE);
+
+                q1r1.setText(CreationQuestionActivity.q1texte1);
+                q1r2.setText(CreationQuestionActivity.q1texte2);
+                q1r3.setText(CreationQuestionActivity.q1texte3);
+                q1r4.setText(CreationQuestionActivity.q1texte4);
+            }
+        }
+
+        if(CreationQuestionActivity.question1!=null){
+            q2p.setVisibility(View.VISIBLE);
+            q2.setVisibility(View.VISIBLE);
+            if(CreationQuestionActivity.q2image1!=null){
+                q2i1.setVisibility(View.VISIBLE);
+                q2i2.setVisibility(View.VISIBLE);
+                q2i3.setVisibility(View.VISIBLE);
+                q2i4.setVisibility(View.VISIBLE);
+                q2r1.setVisibility(View.GONE);
+                q2r2.setVisibility(View.GONE);
+                q2r3.setVisibility(View.GONE);
+                q2r4.setVisibility(View.GONE);
+
+                q2i1.setImageBitmap(CreationQuestionActivity.q2image1);
+                q2i2.setImageBitmap(CreationQuestionActivity.q2image2);
+                q2i3.setImageBitmap(CreationQuestionActivity.q2image3);
+                q2i4.setImageBitmap(CreationQuestionActivity.q2image4);
+            }else{
+                q2r1.setVisibility(View.VISIBLE);
+                q2r2.setVisibility(View.VISIBLE);
+                q2r3.setVisibility(View.VISIBLE);
+                q2r4.setVisibility(View.VISIBLE);
+                q2i1.setVisibility(View.GONE);
+                q2i2.setVisibility(View.GONE);
+                q2i3.setVisibility(View.GONE);
+                q2i4.setVisibility(View.GONE);
+
+                q2r1.setText(CreationQuestionActivity.q2texte1);
+                q2r2.setText(CreationQuestionActivity.q2texte2);
+                q2r3.setText(CreationQuestionActivity.q2texte3);
+                q2r4.setText(CreationQuestionActivity.q2texte4);
+            }
+        }
+
+        if(CreationQuestionActivity.question1!=null){
+            q3p.setVisibility(View.VISIBLE);
+            q3.setVisibility(View.VISIBLE);
+            if(CreationQuestionActivity.q3image1!=null){
+                q3i1.setVisibility(View.VISIBLE);
+                q3i2.setVisibility(View.VISIBLE);
+                q3i3.setVisibility(View.VISIBLE);
+                q3i4.setVisibility(View.VISIBLE);
+                q3r1.setVisibility(View.GONE);
+                q3r2.setVisibility(View.GONE);
+                q3r3.setVisibility(View.GONE);
+                q3r4.setVisibility(View.GONE);
+
+                q3i1.setImageBitmap(CreationQuestionActivity.q3image1);
+                q3i2.setImageBitmap(CreationQuestionActivity.q3image2);
+                q3i3.setImageBitmap(CreationQuestionActivity.q3image3);
+                q3i4.setImageBitmap(CreationQuestionActivity.q3image4);
+            }else{
+                q3r1.setVisibility(View.VISIBLE);
+                q3r2.setVisibility(View.VISIBLE);
+                q3r3.setVisibility(View.VISIBLE);
+                q3r4.setVisibility(View.VISIBLE);
+                q3i1.setVisibility(View.GONE);
+                q3i2.setVisibility(View.GONE);
+                q3i3.setVisibility(View.GONE);
+                q3i4.setVisibility(View.GONE);
+
+                q3r1.setText(CreationQuestionActivity.q3texte1);
+                q3r2.setText(CreationQuestionActivity.q3texte2);
+                q3r3.setText(CreationQuestionActivity.q3texte3);
+                q3r4.setText(CreationQuestionActivity.q3texte4);
+            }
+        }
+
+        if(CreationQuestionActivity.question1!=null){
+            q4p.setVisibility(View.VISIBLE);
+            q4.setVisibility(View.VISIBLE);
+            if(CreationQuestionActivity.q4image1!=null){
+                q4i1.setVisibility(View.VISIBLE);
+                q4i2.setVisibility(View.VISIBLE);
+                q4i3.setVisibility(View.VISIBLE);
+                q4i4.setVisibility(View.VISIBLE);
+                q4r1.setVisibility(View.GONE);
+                q4r2.setVisibility(View.GONE);
+                q4r3.setVisibility(View.GONE);
+                q4r4.setVisibility(View.GONE);
+
+                q4i1.setImageBitmap(CreationQuestionActivity.q4image1);
+                q4i2.setImageBitmap(CreationQuestionActivity.q4image2);
+                q4i3.setImageBitmap(CreationQuestionActivity.q4image3);
+                q4i4.setImageBitmap(CreationQuestionActivity.q4image4);
+            }else{
+                q4r1.setVisibility(View.VISIBLE);
+                q4r2.setVisibility(View.VISIBLE);
+                q4r3.setVisibility(View.VISIBLE);
+                q4r4.setVisibility(View.VISIBLE);
+                q4i1.setVisibility(View.GONE);
+                q4i2.setVisibility(View.GONE);
+                q4i3.setVisibility(View.GONE);
+                q4i4.setVisibility(View.GONE);
+
+                q4r1.setText(CreationQuestionActivity.q4texte1);
+                q4r2.setText(CreationQuestionActivity.q4texte2);
+                q4r3.setText(CreationQuestionActivity.q4texte3);
+                q4r4.setText(CreationQuestionActivity.q4texte4);
+            }
+        }
+
+        if(CreationQuestionActivity.question1!=null){
+            q5p.setVisibility(View.VISIBLE);
+            q5.setVisibility(View.VISIBLE);
+            if(CreationQuestionActivity.q5image1!=null){
+                q5i1.setVisibility(View.VISIBLE);
+                q5i2.setVisibility(View.VISIBLE);
+                q5i3.setVisibility(View.VISIBLE);
+                q5i4.setVisibility(View.VISIBLE);
+                q5r1.setVisibility(View.GONE);
+                q5r2.setVisibility(View.GONE);
+                q5r3.setVisibility(View.GONE);
+                q5r4.setVisibility(View.GONE);
+
+                q5i1.setImageBitmap(CreationQuestionActivity.q5image1);
+                q5i2.setImageBitmap(CreationQuestionActivity.q5image2);
+                q5i3.setImageBitmap(CreationQuestionActivity.q5image3);
+                q5i4.setImageBitmap(CreationQuestionActivity.q5image4);
+            }else{
+                q5r1.setVisibility(View.VISIBLE);
+                q5r2.setVisibility(View.VISIBLE);
+                q5r3.setVisibility(View.VISIBLE);
+                q5r4.setVisibility(View.VISIBLE);
+                q5i1.setVisibility(View.GONE);
+                q5i2.setVisibility(View.GONE);
+                q5i3.setVisibility(View.GONE);
+                q5i4.setVisibility(View.GONE);
+
+                q5r1.setText(CreationQuestionActivity.q5texte1);
+                q5r2.setText(CreationQuestionActivity.q5texte2);
+                q5r3.setText(CreationQuestionActivity.q5texte3);
+                q5r4.setText(CreationQuestionActivity.q5texte4);
+            }
+        }
     }
 }
